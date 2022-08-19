@@ -1,0 +1,37 @@
+.signform{
+    display: flex;
+    flex-direction: column;
+    width:150px;
+    margin-left: 20px;
+}
+.email {
+    display: flex;
+    flex-direction: column;
+    width:150px;
+    margin-left: 5px;
+}
+.username {
+    display: flex;
+    flex-direction: column;
+    width:150px;
+}
+.password {
+    display: flex;
+    flex-direction: column;
+    width:150px;
+}
+.confirmname {
+    display: flex;
+    flex-direction: column;
+    width:150px;
+    margin-left: 5px;
+}
+.signbt{
+    display: flex;
+    flex-direction: column;
+    width:90px;
+    margin: 15px 0 0 5px;
+
+    text-align: center;
+    align-items: center;
+}
