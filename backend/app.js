@@ -41,6 +41,7 @@ app.use(
     );
 
 const routes = require('./routes');
+const user = require('./db/models/user');
 app.use(routes);
 
 app.use((_req,_res,next)=> {
@@ -53,8 +54,28 @@ app.use((_req,_res,next)=> {
 
 app.use((err, _req,_res, next) => {
   if (err instanceof ValidationError) {
-    err.errors = err.errors.map((e)=> e.message);
-    err.title = 'validation error';
+    // let errorName = 'email'
+    // if(err.errors[0].path === 'username'){
+    
+    //   _res.status(403).json({
+    //     message: "User already exists",
+    //     statusCode: 403,
+    //     errors: {
+    //       username:`User with that ${err.errors[0].path} already exists`
+    //     }
+    //   })
+      err.errors = err.errors.map((e)=> e.message);
+      // err.status
+      err.title = 'validation error';
+    // } else {
+      // _res.status(403).json({
+      //   message: "User already exists",
+      //   statusCode: 403,
+      //   errors: {
+      //     email:`User with that ${err.errors[0].path} already exists`
+      //   }
+      // })
+    // }
   }
   next(err);
 });
@@ -63,11 +84,15 @@ app.use((err,_req,res,_next)=>{
   res.status(err.status || 500);
   console.error(err);
   res.json({
-    title: err.title || 'Server Error',
+    // title: err.title || 'Server Error',
     message: err.message,
+    statusCode:err.status,
     errors: err.errors,
-    stack: isProduction ? null : err.stack
+    // stack: isProduction ? null : err.stack
   });
 });
+
+
+
 
   module.exports = app;
