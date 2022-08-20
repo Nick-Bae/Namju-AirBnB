@@ -15,6 +15,16 @@ const deleteOne = spotId => ({
     spotId
 });
 
+export const getAllSpots = () => async dispatch => {
+    const response = await fetch('/api/spots');
+    console.log(response)
+
+    if (response.ok) {
+        const spots = await response.json();
+        dispatch(load(spots));
+    }
+};
+
 const initialState = { lists: [] }
 export const spotReducer = (state = initialState, action) => {
     let newState;
