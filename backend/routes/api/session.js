@@ -62,9 +62,10 @@ router.delete(
       const token = setTokenCookie(res, user);
      if (user){
        return res.json({
-         id: user.id,
-         username: user.username,
-         email: user.email,
+      //    id: user.id,
+      //    username: user.username,
+      //    email: user.email,
+      user
        }
        );
      }
