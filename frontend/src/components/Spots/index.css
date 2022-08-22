@@ -1,0 +1,15 @@
+.img {
+    width:150px;
+    height:130px;
+    /* padding:5px */
+}
+.imglayout {
+    display: flex;
+    flex-direction: row;;
+    flex-wrap: wrap
+}
+
+.imglist{
+    /* text-decoration: none; */
+    list-style-type: none
+}

@@ -9,7 +9,7 @@ import { spotReducer } from '../../store/spot';
 
 function Navigation({ isLoaded }){
     const sessionUser = useSelector(state => state.session.user);
-    const spots = useSelector(state => console.log(state.spot.lists));
+    // const spots = useSelector(state => state.spot);
 
   let sessionLinks;
   if (sessionUser) {
@@ -29,7 +29,7 @@ function Navigation({ isLoaded }){
     <ul>
       <li>
         <NavLink exact to="/" className='nav home'>Home</NavLink>
-        <NavLink exact to="/" className='nav home'>{spots}</NavLink>
+        {/* <NavLink exact to="/" className='nav home'>{spots}</NavLink> */}
         {isLoaded && sessionLinks}
       </li>
     </ul>

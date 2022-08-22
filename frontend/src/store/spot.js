@@ -15,6 +15,8 @@ const deleteOne = spotId => ({
     spotId
 });
 
+export const getSpots =(state)=>Object.values(state.spot)
+
 export const getAllSpots = () => async dispatch => {
     const response = await fetch('/api/spots');
     console.log(response)
@@ -25,17 +27,29 @@ export const getAllSpots = () => async dispatch => {
     }
 };
 
-const initialState = { lists: [] }
-export const spotReducer = (state = initialState, action) => {
-    let newState;
+export const createSpot = (payload)=>async dispatch => {
+    const response = await fetch(`/api/spots`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify(payload)
+    });
+    const spot = await response.json();
+    dispatch(addOne(spot));
+    return spot;
+}
+
+// const initialState = { lists: [] }
+export const spotReducer = (state = {}, action) => {
+    let newState = {...state};
     switch (action.type) {
         case ADD_ONE:
-            newState = Object.assign({}, state);
-            newState.user = action.payload;
+            newState.spot = action.spot;
             return newState;
         case LOAD:
-            newState = Object.assign({}, state);
-            newState.lists = [...action.lists];
+            const spots = action.spots.Spots
+           spots.forEach((spot)=> {
+            newState[spot.id]= spot
+           })
             return newState;
         case DELETE:
             newState = Object.assign({}, state);
