@@ -1,7 +1,7 @@
 .img {
     width:150px;
     height:130px;
-    /* padding:5px */
+    border-radius: 10px;
 }
 .imglayout {
     display: flex;
@@ -12,4 +12,8 @@
 .imglist{
     /* text-decoration: none; */
     list-style-type: none
+}
+
+.spotname{
+        text-decoration: none;
 }

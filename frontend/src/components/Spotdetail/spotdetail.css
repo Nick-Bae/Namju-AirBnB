@@ -1,0 +1,17 @@
+.editDelete{
+    display: flex;
+    flex-direction: row;
+}
+
+.edit{
+    padding: 10px;
+}
+
+.delete {
+    /* height: 20px; */
+}
+
+.imgdetail{
+    width:400px;
+    height: 350px
+}

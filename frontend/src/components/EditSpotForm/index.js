@@ -1,35 +1,33 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createSpot } from '../../store/spot';
-import { Redirect,useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import { editSpot } from '../../store/spot';
+import {useHistory} from 'react-router-dom';
+import  { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 
- const CreateSpot = ({ spot, formType }) => {
-    const { id } = useSelector(state => state.session.user)
+export const EditSpotForm = () => {
+  const { id } = useParams();
+  const spot = useSelector(state => state.spot[id])
     const history = useHistory();
+    // let updateSpot= spot.find(info => info.id == spotId)
+    const [address, setAddress] = useState(spot.address);
+    const [city, setCity] = useState(spot.city);
+    const [state, setState] = useState(spot.state);
+    const [country, setCountry] = useState(spot.country);
+    const [lat, setLat] = useState(spot.lat);
+    const [lng, setLng] = useState(spot.lng);
+    const [name, setName] = useState(spot.name);
+    const [description, setDescription] = useState(spot.description);
+    const [price, setPrice] = useState(spot.price);
 
-    const [address, setAddress] = useState();
-    const [city, setCity] = useState();
-    const [state, setState] = useState();
-    const [country, setCountry] = useState();
-    const [lat, setLat] = useState();
-    const [lng, setLng] = useState();
-    const [name, setName] = useState();
-    const [description, setDescription] = useState();
-    const [price, setPrice] = useState();
-    
     const dispatch = useDispatch();
-
-    const spotsObj = useSelector(state => state.spot);
-  const spots = Object.values(spotsObj);
-  const newSpotId = spots[spots.length-1].id
-
-  console.log(newSpotId)
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        spot = {
+       const spot = {
+            id: id,
+            // ownerId: id,
             address,
             city,
             state,
@@ -41,14 +39,16 @@ import { Redirect,useParams } from 'react-router-dom';
             price,
         };
 
-    const newSpot = await dispatch(createSpot(spot));
+       await dispatch(editSpot(spot));
 
-      if(newSpot) {
-        history.push(`/spots/${newSpotId+1}`);
-          reset();
-      }
+      //  if (updateSpot) {
+
+         history.push(`/spots/${id}`);
+         reset();
+      //  }
+
     };
-    
+
     const reset = () => {
         setAddress("");
         setCity("");
@@ -68,7 +68,7 @@ import { Redirect,useParams } from 'react-router-dom';
     return (
         <section>
             <form onSubmit={onSubmit}>
-                <h2>{formType}</h2>
+                <h2>Update</h2>
                 {/* <div>
                         <label htmlFor='userId'>userId:</label>
                         <input
@@ -164,12 +164,13 @@ import { Redirect,useParams } from 'react-router-dom';
                 </div>
 
                 {/* <button type='submit'>Creat new spot</button> */}
-                <input type="submit" value={formType} />
+                <button type="submit"  > Update</button>
                 <button type="button" onClick={handleCancelClick}>Cancel</button>
             </form>
         </section>
+        // <div><h1>hello??</h1></div>
     );
 
 };
 
-export default CreateSpot;
+export default EditSpotForm;

@@ -3,14 +3,14 @@ import { csrfFetch } from './csrf';
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
-const setUser = (user) => {
+export const setUser = (user) => {
   return {
     type: SET_USER,
     payload: user,
   };
 };
 
-const removeUser = () => {
+export const removeUser = () => {
   return {
     type: REMOVE_USER,
   };
@@ -19,7 +19,7 @@ const removeUser = () => {
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');
   const data = await response.json();
-  dispatch(setUser(data.user));
+  dispatch(setUser(data));
   return response;
 };
 

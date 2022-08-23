@@ -17,7 +17,7 @@ const validateCreateSpot = [
         .withMessage('name must be less than 15 characters'),
     check('address')
         .exists({ checkFalsy: true })
-        .withMessage('Street address is required'),
+        .withMessage('Address is required'),
     check('city')
         .exists({ checkFalsy: true })
         .withMessage('city is required'),

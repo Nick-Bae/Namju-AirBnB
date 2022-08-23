@@ -1,68 +1,58 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, NavLink, Link } from 'react-router-dom';
-import thunk from 'redux-thunk';
-import Spotdetail from '../Spotdetail'
 import { getAllSpots } from '../../store/spot';
-import {useState} from 'react'
+import { useState } from 'react'
+import Fab from '../Fab'
 import './index.css'
 
 const SpotList = () => {
   const dispatch = useDispatch();
   const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
-  const [showSpot, setShowSpot]= useState(true);
+  const [showSpot, setShowSpot] = useState(true);
 
-  const openSpot = () => {
-    console.log(" before true")
-    
-    if (!showSpot) return;
-    setShowSpot(true);
-    console.log("after false")
-  }
+  // const newSpotId = spots[spots.length-1].id
+
+  // console.log(newSpotId)
+
   useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (showSpot) return;
-        setShowSpot(false);
-        console.log('after effect false')
-  }, [showSpot] );
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <div>
       <h1>Spot List</h1>
-     {showSpot && (
-      
-      <div className='imglayout'>
-        {spots.map(({ id, name, previewImage }) => (
-          <ul >
-            <li key={id} className='imglist'>
-              <NavLink to={`/spots/${id}`} onClick={openSpot}>{name}</NavLink>
-            </li>
+      <NavLink to={`/spots/new`} className="spotnew" >Add New Spot</NavLink>
 
-            {/* style={{ backgroundImage: `('${previewImage}')` }} */}
-           <Link to={`/spots/${id}`}>
+      {/* <Fab hidden={showForm} onClick={()=> setShowForm(true)} />
+      {showSpot && ( */}
 
-            <img className="img" src={previewImage} />
-           </Link>
-          </ul>
-        ))}
-      </div>
-      )} 
+        <div className='imglayout'>
+          {spots.map(({ id, name, previewImage }) => (
+            <ul >
+              <li key={id} className='imglist'>
+                {/* <NavLink to={`/spots/${id}`} onClick={openSpot}>{name}</NavLink> */}
+                <NavLink to={`/spots/${id}`} className="spotname" >{name}</NavLink>
+              </li>
 
-        
-      <Route path='/spots/:id'>
-      {/* {showSpot && ( */}
-          <Spotdetail  showSpot={false}/>
-          {/* )} */}
-          </Route>
+              {/* style={{ backgroundImage: `('${previewImage}')` }} */}
+              <Link to={`/spots/${id}`}>
+
+                <img className="img" src={previewImage} />
+              </Link>
+            </ul>
+          ))}
+        </div>
+      {/* )} */}
+
       
     </div>
+
   );
 };
 
 export default SpotList;
-
 
