@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createSpot } from '../../store/spot';
 import { Redirect,useParams } from 'react-router-dom';
+import { createImage } from '../../store/spot';
 
  const CreateSpot = ({ spot, formType }) => {
     const { id } = useSelector(state => state.session.user)
@@ -17,14 +18,14 @@ import { Redirect,useParams } from 'react-router-dom';
     const [name, setName] = useState();
     const [description, setDescription] = useState();
     const [price, setPrice] = useState();
+    const [url, setUrl] = useState();
     
     const dispatch = useDispatch();
 
     const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
-  const newSpotId = spots[spots.length-1].id
-
-  console.log(newSpotId)
+  const newSpotId = Number(spots[spots.length-1].id+1)
+// console.log(newSpotId)
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -36,17 +37,20 @@ import { Redirect,useParams } from 'react-router-dom';
             country,
             lat,
             lng,
+            url,
             name,
             description,
             price,
         };
 
-    const newSpot = await dispatch(createSpot(spot));
+     await dispatch(createSpot(spot));
+    // const newImage = await dispatch(createImage(image))
 
-      if(newSpot) {
-        history.push(`/spots/${newSpotId+1}`);
+    //   if(newSpot) {
+        // history.push(`/spots/${newSpotId+1}`);
+        history.push('/')
           reset();
-      }
+    //   }
     };
     
     const reset = () => {
@@ -69,16 +73,16 @@ import { Redirect,useParams } from 'react-router-dom';
         <section>
             <form onSubmit={onSubmit}>
                 <h2>{formType}</h2>
-                {/* <div>
-                        <label htmlFor='userId'>userId:</label>
+                <div>
+                        <label htmlFor='url'>url:</label>
                         <input
-                            id='userId'
+                            id='url'
                             type='text'
-                            placeholder='userId'
-                            onChange={e => setUserId(e.target.value)}
-                            value={userId}
+                            placeholder='url'
+                            onChange={e => setUrl(e.target.value)}
+                            value={url}
                         />
-                    </div> */}
+                    </div>
                 <div>
                     <label htmlFor='address'>address:</label>
                     <input

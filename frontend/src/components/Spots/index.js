@@ -11,11 +11,7 @@ const SpotList = () => {
   const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
   const [showSpot, setShowSpot] = useState(true);
-
-  // const newSpotId = spots[spots.length-1].id
-
-  // console.log(newSpotId)
-
+  
   useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);

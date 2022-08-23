@@ -1,5 +1,5 @@
 import { getAllSpots } from "../../store/spot"
-import { useParams, Link, Route } from 'react-router-dom';
+import { useParams, Link, Route,Redirect  } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { EditSpot } from "../../store/spot";
@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { deleteSpot } from "../../store/spot";
 import './spotdetail.css'
 import {useHistory} from 'react-router-dom';
+import {SpotList} from '../Spots/index'
 
 export const Spotdetail = () => {
     const dispatch = useDispatch();
@@ -15,18 +16,22 @@ export const Spotdetail = () => {
     const spot = useSelector(state => state.spot[id]);
     const [remove, setRemove]=useState(false)
 
+    
     const deleteReport = async (e) => {
         e.preventDefault();
-       await dispatch(deleteSpot(id))
-       await  setRemove(true)
-    //    window.location.reload(true);
-        history.push('/')
+        await dispatch(deleteSpot(id))
+        
+        // {<Redirect to="/" />}
+        //   setRemove(true)
+        dispatch(getAllSpots());
+          history.push('/')
+        //   window.location.reload(true);
     };
-//   console.log(getAllSpots())
     useEffect(() => {
         dispatch(getAllSpots());
-        // dispatch(deleteSpot(id))
-      }, [dispatch, remove]);
+        console.log('this working?')
+      }, [dispatch]);
+
 
     if (!spot) return null;
     return (
@@ -40,6 +45,10 @@ export const Spotdetail = () => {
             <div className="editDelete">
                 <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                 <button onClick={deleteReport} className="delete">Delete</button>
+                {/* <button onClick={()=> dispatch(deleteSpot(id))} className="delete">Delete</button> */}
+                {/* <button onClick={addImage} className="addImage">Add Image</button> */}
+                <Link to={`/spots/${id}/images`}> Add Image </Link>
+                
             </div>
             <div>
                 <Link to="/">Back to Spot List</Link>

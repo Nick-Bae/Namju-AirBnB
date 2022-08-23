@@ -48,7 +48,8 @@ export const createSpot = (payload) => async dispatch => {
 }
 
 export const createImage = (payload) => async dispatch => {
-    const response = await csrfFetch('/api/:spotId/images', {
+    // const response = await csrfFetch(`/api/${payload.image.spotId}/images`, {
+    const response = await csrfFetch(`/api/spots/:spotId/images`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -80,7 +81,7 @@ export const deleteSpot = (id) => async (dispatch) => {
     if (response.ok) {
         dispatch(deleteOne(id));
     }
-    return response;
+    // return response;
 };
 
 
