@@ -11,10 +11,11 @@ const SpotList = () => {
   const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
   const [showSpot, setShowSpot] = useState(true);
+
   
   useEffect(() => {
     dispatch(getAllSpots());
-  }, [dispatch]);
+  }, [dispatch] );
 
   const [showForm, setShowForm] = useState(false);
 
@@ -27,18 +28,20 @@ const SpotList = () => {
       {showSpot && ( */}
 
         <div className='imglayout'>
-          {spots.map(({ id, name, previewImage }) => (
-            <ul >
-              <li key={id} className='imglist'>
+          {spots.map(( spot ) => (
+           
+           <ul >
+              <li key={spot.id} className='imglist'>
                 {/* <NavLink to={`/spots/${id}`} onClick={openSpot}>{name}</NavLink> */}
-                <NavLink to={`/spots/${id}`} className="spotname" >{name}</NavLink>
+                <NavLink spot={spot} to={`/spots/${spot.id}`} className="spotname" >{spot.name}</NavLink>
               </li>
 
               {/* style={{ backgroundImage: `('${previewImage}')` }} */}
-              <Link to={`/spots/${id}`}>
+              <Link to={`/spots/${spot.id}`}>
 
-                <img className="img" src={previewImage} />
+                <img spot={spot} className="img" src={spot.previewImage} />
               </Link>
+              {/* <Spotdetail spot={spot} key={spot.id}/> */}
             </ul>
           ))}
         </div>

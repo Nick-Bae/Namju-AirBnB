@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 import { SpotList } from '../Spots/index'
 import { Review } from '../Review';
 
-export const Spotdetail = () => {
+export const Spotdetail = ({}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
@@ -42,18 +42,20 @@ export const Spotdetail = () => {
         console.log('this working?')
     }, [dispatch]);
 
+console.log('????????',spot)
 
     if (!spot) return null;
     return (
         <section>
             <div>
-                {showSpot && (
+                {/* {showSpot && ( */}
                     <div>
                         <img className="imgdetail" src={spot.previewImage} />
                         <ul>
                             <li> Name: {spot.name} </li>
                             <li> Address: {spot.address} </li>
                             <li> Price: {spot.price} </li>
+                            <li> 'can I see this ???' </li>
                         </ul>
                         <div className="editDelete">
                             <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
@@ -70,9 +72,8 @@ export const Spotdetail = () => {
                                 )}
                              </Route>
                         </div>
-                        {/* <div><Review /></div> */}
                     </div>
-                )}
+                {/* )} */}
                 <div>
                     <Link to="/">Back to Spot List</Link>
                 </div>

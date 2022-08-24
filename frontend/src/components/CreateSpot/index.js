@@ -19,7 +19,7 @@ import { createImage } from '../../store/spot';
     const [description, setDescription] = useState();
     const [price, setPrice] = useState();
     const [url, setUrl] = useState();
-    
+    const [errorMessages, setErrorMessages] = useState({});
     const dispatch = useDispatch();
 
     const spotsObj = useSelector(state => state.spot);

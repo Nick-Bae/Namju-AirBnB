@@ -16,44 +16,44 @@ export const Review = (id) => {
     const spotReviews = Object.values(spotReviewsObj);
     const currSpot = id.id;
     const spotReview = spotReviews.filter(spot=> (spot.spotId === parseInt(currSpot)))
-    const [list, setList] = useState(false)
+    const [update, setUpdate] = useState(false);
+    const [remove, setRemove] = useState(false);
 
-    const handleSubmit = (e) => {
+    // ============ create new review======================
+    const handleSubmit =  (e) => {
         e.preventDefault();
         const report = { review, stars, currSpot };
 
         // console.log('report????',report)
         dispatch(createReview(report));
-
+        setUpdate(true)
         history.push(`/spots/${currSpot}`);
         reset();
+    };
+
+   
+
+    // ================== delete Review ==================
+    const deleteReview = async (e) => {
+        // e.preventDefault();
+        const id = e.target.getAttribute("name")
+        
+        // console.log('button Id', parseInt(id) === 32)
+        await dispatch(deleteReview(parseInt(id)))
+        setRemove(true)
+        // history.push(`/spots/${currSpot}`);
+        // {<Redirect to="/" />}
+        //   setRemove(true)
+        // dispatch(getAllSpots());
+        // history.push('/')
+        //   window.location.reload(true);
     };
 
     useEffect(() => {
         dispatch(getSpotReviews(id.id));
         // console.log(id.id)
-    }, [dispatch]);
+    }, [dispatch, update, remove]);
 
-    
-    // const deleteReview = async (e) => {
-    //     // e.preventDefault();
-    //     const id = e.target.getAttribute("name")
-    //     console.log('delete',id)
-    //     // updateList(list.filter(review => {
-    //     //     console.log(review.id)
-    //     // }))
-    // //    const test =list.filter(review => {
-    // //         console.log(review.id)
-    // //     })
-    //     // review.id !== id));
-    //     await dispatch(deleteReview(id))
-    //     history.push(`/spots/${currSpot}`);
-    //     // {<Redirect to="/" />}
-    //     //   setRemove(true)
-    //     // dispatch(getAllSpots());
-    //     // history.push('/')
-    //     //   window.location.reload(true);
-    // };
     // console.log('allreviews', spotReviewsObj)
     const reset = () => {
         setReview("");
@@ -99,16 +99,7 @@ export const Review = (id) => {
                            Stars: {stars}
                         </li>
                        
-                        <button name={id} onClick={()=>{
-
-                            dispatch(deleteReview(id)); 
-                            setList (true)
-                            // history.push(`/spots/${currSpot}`)
-                        }
-
-                         } className="delete">delete</button>
-
-                            
+                        <button name={id} onClick={deleteReview} className="delete">delete</button>  
                         
                     </ul>
                 ))}
