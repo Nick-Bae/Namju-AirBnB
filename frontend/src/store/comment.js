@@ -90,7 +90,7 @@ export const reviewReducer = (state = {}, action) => {
             })
             return newState;
         case DELETE:
-            delete newState[action.id]
+            delete newState[action.reviewId]
             return newState;
         default:
             return state;
