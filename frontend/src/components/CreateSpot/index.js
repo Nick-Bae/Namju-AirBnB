@@ -24,7 +24,6 @@ import { createImage } from '../../store/spot';
 
     const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
-  const newSpotId = Number(spots[spots.length-1].id+1)
 // console.log(newSpotId)
 
     const onSubmit = async (e) => {
@@ -43,12 +42,11 @@ import { createImage } from '../../store/spot';
             price,
         };
 
-     await dispatch(createSpot(spot));
+    const newSpot = await dispatch(createSpot(spot));
     // const newImage = await dispatch(createImage(image))
 
     //   if(newSpot) {
-        // history.push(`/spots/${newSpotId+1}`);
-        history.push('/')
+        history.push(`/spots/${newSpot.id}`);
           reset();
     //   }
     };
