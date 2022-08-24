@@ -5,6 +5,7 @@ import { getAllSpots } from '../../store/spot';
 import { useState } from 'react'
 import Fab from '../Fab'
 import './index.css'
+// import Transfer fr
 
 const SpotList = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const SpotList = () => {
            <ul >
               <li key={spot.id} className='imglist'>
                 {/* <NavLink to={`/spots/${id}`} onClick={openSpot}>{name}</NavLink> */}
-                <NavLink spot={spot} to={`/spots/${spot.id}`} className="spotname" >{spot.name}</NavLink>
+                <Link to={ `/spots/${spot.id}`} spots={spots} className="spotname" >{spot.name}</Link>
               </li>
 
               {/* style={{ backgroundImage: `('${previewImage}')` }} */}
@@ -42,7 +43,9 @@ const SpotList = () => {
                 <img spot={spot} className="img" src={spot.previewImage} />
               </Link>
               {/* <Spotdetail spot={spot} key={spot.id}/> */}
+            {/* <Transfer spots={spots}/> */}
             </ul>
+            
           ))}
         </div>
       {/* )} */}
@@ -54,4 +57,3 @@ const SpotList = () => {
 };
 
 export default SpotList;
-

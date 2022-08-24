@@ -55,7 +55,6 @@ console.log('????????',spot)
                             <li> Name: {spot.name} </li>
                             <li> Address: {spot.address} </li>
                             <li> Price: {spot.price} </li>
-                            <li> 'can I see this ???' </li>
                         </ul>
                         <div className="editDelete">
                             <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
