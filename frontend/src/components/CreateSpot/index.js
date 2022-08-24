@@ -2,32 +2,50 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createSpot } from '../../store/spot';
-import { Redirect,useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import { createImage } from '../../store/spot';
 
- const CreateSpot = ({ spot, formType }) => {
+const CreateSpot = ({ spot, formType }) => {
     const { id } = useSelector(state => state.session.user)
     const history = useHistory();
 
-    const [address, setAddress] = useState();
-    const [city, setCity] = useState();
-    const [state, setState] = useState();
-    const [country, setCountry] = useState();
-    const [lat, setLat] = useState();
-    const [lng, setLng] = useState();
-    const [name, setName] = useState();
-    const [description, setDescription] = useState();
-    const [price, setPrice] = useState();
-    const [url, setUrl] = useState();
-    const [errorMessages, setErrorMessages] = useState({});
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
+    const [lat, setLat] = useState('');
+    const [lng, setLng] = useState('');
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
     const dispatch = useDispatch();
+    const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const spotsObj = useSelector(state => state.spot);
-  const spots = Object.values(spotsObj);
-// console.log(newSpotId)
+    const spots = Object.values(spotsObj);
+    // console.log(newSpotId)
+
+    useEffect(() => {
+        const errors = [];
+        if (!address.length) errors.push('Please enter your address');
+        if (!city.length) errors.push('Please enter your City');
+        if (!state.length) errors.push('Please enter your State');
+        if (!country.length) errors.push('Please enter your Country');
+        if (!lat.length) errors.push('Please enter your Latitude');
+        // if (!lat < -90) errors.push('Please enter your Latitude');
+        if (!lng.length) errors.push('Please enter your Longitude');
+        // if (!lng.length) errors.push('Please enter your Longitude');
+        if (!description.length) errors.push('Please enter your description');
+        if (!price.length || price < 0) errors.push('Please enter your Correct Price');
+        setValidationErrors(errors);
+    }, [address, city, state, country, lat, lng, name, description, price,])
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        setHasSubmitted(true);
+        if (validationErrors.length) return alert(`Cannot Submit`);
 
         spot = {
             address,
@@ -36,21 +54,19 @@ import { createImage } from '../../store/spot';
             country,
             lat,
             lng,
-            url,
             name,
             description,
             price,
         };
 
-    const newSpot = await dispatch(createSpot(spot));
-    // const newImage = await dispatch(createImage(image))
-
-    //   if(newSpot) {
+        const newSpot = await dispatch(createSpot(spot));
+        // const newImage = await dispatch(createImage(image))
+        //   if(newSpot) {
         history.push(`/spots/${newSpot.id}`);
-          reset();
-    //   }
+        reset();
+        //   }
     };
-    
+
     const reset = () => {
         setAddress("");
         setCity("");
@@ -69,9 +85,19 @@ import { createImage } from '../../store/spot';
 
     return (
         <section>
+            {hasSubmitted && validationErrors.length > 0 && (
+                <div>
+                    The following errors were found:
+                    <ul>
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
             <form onSubmit={onSubmit}>
                 <h2>{formType}</h2>
-                <div>
+                {/* <div>
                         <label htmlFor='url'>url:</label>
                         <input
                             id='url'
@@ -80,7 +106,7 @@ import { createImage } from '../../store/spot';
                             onChange={e => setUrl(e.target.value)}
                             value={url}
                         />
-                    </div>
+                    </div> */}
                 <div>
                     <label htmlFor='address'>address:</label>
                     <input

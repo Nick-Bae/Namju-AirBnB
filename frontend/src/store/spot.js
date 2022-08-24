@@ -5,19 +5,19 @@ const LOAD = 'spot/LOAD';
 const DELETE = 'spot/DELETE';
 const UPDATE = 'spot/UPDATE'
 
- const addOne = spot => ({
+const addOne = spot => ({
     type: ADD_ONE,
     spot
 });
- const load = (spots) => ({
+const load = (spots) => ({
     type: LOAD,
     spots
 });
- const deleteOne = spotId => ({
+const deleteOne = spotId => ({
     type: DELETE,
     spotId
 });
- const update = spot => ({
+const update = spot => ({
     type: UPDATE,
     spot
 });
@@ -62,7 +62,7 @@ export const createImage = (payload) => async dispatch => {
 export const editSpot = data => async dispatch => {
     const response = await csrfFetch(`/api/spots/${data.id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json'  },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
 
@@ -92,15 +92,14 @@ export const spotReducer = (state = {}, action) => {
         case ADD_ONE:
             newState[action.spot.id] = action.spot;
             return newState;
-        case UPDATE:
-            // console.log('ns', newState)
-              newState[action.spot.id] = action.spot
-            return newState;
         case LOAD:
             const spots = action.spots.Spots
             spots.forEach((spot) => {
                 newState[spot.id] = spot
             })
+            return newState;
+        case UPDATE:
+            newState[action.spot.id] = action.spot
             return newState;
         case DELETE:
             delete newState[action.spotId]

@@ -33,23 +33,17 @@ const SpotList = () => {
            
            <ul >
               <li key={spot.id} className='imglist'>
-                {/* <NavLink to={`/spots/${id}`} onClick={openSpot}>{name}</NavLink> */}
                 <Link to={ `/spots/${spot.id}`} spots={spots} className="spotname" >{spot.name}</Link>
               </li>
 
-              {/* style={{ backgroundImage: `('${previewImage}')` }} */}
               <Link to={`/spots/${spot.id}`}>
 
                 <img spot={spot} className="img" src={spot.previewImage} />
               </Link>
-              {/* <Spotdetail spot={spot} key={spot.id}/> */}
-            {/* <Transfer spots={spots}/> */}
             </ul>
             
           ))}
         </div>
-      {/* )} */}
-
       
     </div>
 

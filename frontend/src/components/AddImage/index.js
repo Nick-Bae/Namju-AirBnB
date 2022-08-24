@@ -1,28 +1,40 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createImage } from '../../store/spot';
 import { Redirect, useParams } from 'react-router-dom';
+import { createImage } from '../../store/image';
+import { getAllImages } from '../../store/image';
 // import { createImage } from '../../store/image';
 
 const AddImage = () => {
     const [url, setUrl] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
-    const {spotId} = useParams();
+    const { id } = useParams();
 
-    const img = useSelector(state=>state);
-    console.log(img)
+    const img = useSelector(state => state);
+
+    // console.log('spotid',id)
+
     const handleSubmit = (e) => {
 
         e.preventDefault();
         const image = {
             url: url,
-            spotId: spotId
+            spotId: id
         }
         dispatch(createImage(image))
-        history.pushState('/')
+        history.push(`/spots/${id}`);
+        reset();
     }
+    const reset = () => {
+        setUrl('');
+    }
+    const handleCancelClick = (e) => {
+        e.preventDefault();
+        history.push(`/`);
+    };
+
     return (
 
         <div id="new-image">
@@ -34,8 +46,10 @@ const AddImage = () => {
                     placeholder="Add a image"
                     id="new-image-form-textarea"
                 />
+            <button type="submit"> Add Image</button>
+            <button type="button" onClick={handleCancelClick}>Cancel</button>
             </form>
-            <button > Add Image</button>
+
         </div>
     )
 }

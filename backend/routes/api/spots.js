@@ -94,7 +94,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
         // } else if (page<0){
 
     }
-    
+
 
     const spots = await Spot.findAll({
         include: [
@@ -121,7 +121,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
             ]
         },
         include: [
-                 { model: Review, attributes: [] },
+            { model: Review, attributes: [] },
         ],
         group: ['Spot.id'],
     })
@@ -325,12 +325,12 @@ router.get('/:spotId', async (req, res) => {
 //===============Create a Spot================
 router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
     const { user } = req;
-// const {createdAt}= req
-function getDateWithoutTime(date) {
-    return require('moment')(date).format('YYYY-MM-DD');
-}
+    // const {createdAt}= req
+    function getDateWithoutTime(date) {
+        return require('moment')(date).format('YYYY-MM-DD');
+    }
     const { address, city, state, country,
-        lat, lng, name, description, price,createdAt } = req.body
+        lat, lng, name, description, price, createdAt } = req.body
     const newSpot = await Spot.create({
         ownerId: user.id,
         address,
@@ -345,8 +345,8 @@ function getDateWithoutTime(date) {
         // date: getDateWithoutTime(createdAt)
         createdAt
         //createdAt: moment(req.getDataValue('updatedAt')).format('YYYY-MM-DD hh:mm:ss'),
-      //  updatedAt
-    //    createdAt: createdAt
+        //  updatedAt
+        //    createdAt: createdAt
     })
     const newSpot2 = {
         id: newSpot.id,
@@ -370,29 +370,30 @@ function getDateWithoutTime(date) {
 //============== Add an Image to a Spot based on the Spot's id
 router.post('/:spotId/images', requireAuth, async (req, res) => {
     const { user } = req;
-    const { url } = req;
+    const { url } = req.body
     const spot = await Spot.findByPk(req.params.spotId);
     if (!spot) {
         res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
-    } else if (user === null || user.id !== parseInt(spot.ownerId)) {
+    } else if (user.id !== parseInt(spot.ownerId)) {
         res.status(403).json("No Permission")
     } else {
-        const newImage = await Image.create({
-            // imageableId,
-            url,
+        const newImg = await Image.create({
             spotId: req.params.spotId,
-            userId: user.id
-        })
+            url: url,
+            userId: user.id,
+        });
+        res.status(200);
         res.json({
-            id: newImage.id,
-            imageableId: newImage.spotId,
-            url: newImage.url
+            id: newImg.id,
+            imageableId: newImg.spotId,
+            url: newImg.url,
         });
     }
 })
+
 
 //==============Edit a Spot===================
 router.put('/:spotId', requireAuth, validateCreateSpot, async (req, res) => {
@@ -470,7 +471,7 @@ router.get('/:spotId/reviews', requireAuth, async (req, res) => {
 })
 
 
-const validateReview = (req, res, next)=>{
+const validateReview = (req, res, next) => {
     const { stars } = req.body
     if (stars < 1 || stars > 5) {
         const error = new Error;
@@ -480,7 +481,7 @@ const validateReview = (req, res, next)=>{
             "statusCode": 400,
             error
         })
-        
+
     }
     next()
 }

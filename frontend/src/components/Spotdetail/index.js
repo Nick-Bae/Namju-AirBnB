@@ -16,7 +16,9 @@ export const Spotdetail = ({}) => {
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
     const [showSpot, setShowSpot] = useState(true);
-
+    const userId = useSelector(state => state.session.user.id)
+    
+    console.log('userid',userId)
     const openSpot = () => {
         if (!showSpot) return;
         setShowSpot(true);
@@ -28,21 +30,21 @@ export const Spotdetail = ({}) => {
     }, [showSpot]);
 
     const deleteReport = async (e) => {
-        e.preventDefault();
-       const removeSpot= await dispatch(deleteSpot(id))
+      const permission =  spot.ownerId !== userId ? alert("No permission to delete") : true
+      
+      if (permission) {
 
-        // {<Redirect to="/" />}
-        //   setRemove(true)
-        history.push('/')
-        //   window.location.reload(true);
+          e.preventDefault();
+         const removeSpot= await dispatch(deleteSpot(id))
+  
+          history.push('/')
+          //   window.location.reload(true);
+      }
     };
 
     useEffect(() => {
         dispatch(getAllSpots());
-        console.log('this working?')
     }, [dispatch]);
-
-console.log('????????',spot)
 
     if (!spot) return null;
     return (

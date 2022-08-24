@@ -39,6 +39,9 @@ function App() {
           <Route exact path='/spots/:id'>
             <Spotdetail />
           </Route>
+          <Route exact path='/spots/:id/images'>
+            <AddImage />
+          </Route>
 
           <Route path= "/spots/:id/edit" >
             <EditSpotForm />

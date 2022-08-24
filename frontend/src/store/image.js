@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const ADD_ONE = 'image/ADD_ONE';
 const LOAD = 'image/LOAD';
 const DELETE = 'image/DELETE';
+const UPDATE = 'image/UPDATE';
 
 const addOne = image => ({
     type: ADD_ONE,
@@ -16,6 +17,10 @@ const deleteOne = imageId => ({
     type: DELETE,
     imageId
 });
+const update = imageId => ({
+    type: UPDATE,
+    imageId
+});
 
 export const getAllImages = () => async dispatch => {
     const response = await csrfFetch('/api/spots');
@@ -26,11 +31,11 @@ export const getAllImages = () => async dispatch => {
         dispatch(load(spots));
     }
 };
-export const createImage = (payload) => async dispatch => {
-    const response = await csrfFetch(`/api/spots/:spotId/images`, {
+export const createImage = (data) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${data.spotId}/images`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body:JSON.stringify(payload)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
     });
     const image = await response.json();
     dispatch(addOne(image));
@@ -40,21 +45,24 @@ export const createImage = (payload) => async dispatch => {
 
 // const initialState = { lists: [] }
 export const imageReducer = (state = {}, action) => {
-    let newState = {...state};
+    let newState = { ...state };
     switch (action.type) {
         case ADD_ONE:
-            newState.url = action.url;
+            newState[action.image.id] = action.image;
             return newState;
         case LOAD:
-            const images = action.urls
-           images.forEach((image)=> {
-            newState[image.id]= image
-           })
+            const images = action.images.Images
+
+            images.forEach((url) => {
+                newState[url.id] = url
+            })
+            return newState;
+        case UPDATE:
+            newState[action.image.id] = action.image
             return newState;
         case DELETE:
-            newState = Object.assign({}, state);
-            newState.user = null;
-            return newState;
+            delete newState[action.urlId]
+            return newState
         default:
             return state;
     }
