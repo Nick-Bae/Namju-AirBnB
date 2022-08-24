@@ -19,8 +19,9 @@ export const Review = (id) => {
     const [update, setUpdate] = useState(false);
     const [remove, setRemove] = useState(false);
 
+
     // ============ create new review======================
-    const handleSubmit =  (e) => {
+      const handleSubmit =  (e) => {
         e.preventDefault();
         const report = { review, stars, currSpot };
 
@@ -31,23 +32,27 @@ export const Review = (id) => {
         reset();
     };
 
-   
 
     // ================== delete Review ==================
-    const deleteReview = async (e) => {
-        // e.preventDefault();
-        const id = e.target.getAttribute("name")
-        
-        // console.log('button Id', parseInt(id) === 32)
-        await dispatch(deleteReview(parseInt(id)))
-        setRemove(true)
-        // history.push(`/spots/${currSpot}`);
-        // {<Redirect to="/" />}
-        //   setRemove(true)
-        // dispatch(getAllSpots());
-        // history.push('/')
-        //   window.location.reload(true);
-    };
+    // const deleteReview =  (e) => {
+    //     // e.preventDefault();
+    //     console.log('befor ')
+    //     const id = e.target.getAttribute("value")
+
+    //     // const id = obj
+    //     // const id  = e.getAttribute('value')
+    //     console.log('button Id', id)
+    //      dispatch(deleteReview(parseInt(id)))
+    //     setRemove(true)
+
+
+    //     // history.push(`/spots/${currSpot}`);
+    //     // {<Redirect to="/" />}
+    //     //   setRemove(true)
+    //     // dispatch(getAllSpots());
+    //     // history.push('/')
+    //     //   window.location.reload(true);
+    // };
 
     useEffect(() => {
         dispatch(getSpotReviews(id.id));
@@ -59,6 +64,7 @@ export const Review = (id) => {
         setReview("");
         setStars("");
     };
+    if (!spotReview) return null
 
     return (
         <section>
@@ -99,8 +105,11 @@ export const Review = (id) => {
                            Stars: {stars}
                         </li>
                        
-                        <button name={id} onClick={deleteReview} className="delete">delete</button>  
-                        
+                        <button value={id} onClick={()=>{
+                            dispatch(deleteReview(parseInt(id)));
+                            setRemove(true)
+                            history.push(`/spots/${currSpot}`);
+                        }} className="delete">delete</button>  
                     </ul>
                 ))}
             </div>
