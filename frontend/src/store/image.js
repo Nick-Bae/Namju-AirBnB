@@ -66,6 +66,7 @@ export const imageReducer = (state = {}, action) => {
 
         case LOAD:
             const images = action.images.Images
+            console.log('image reducer',action.image)
             images.forEach((url) => {
                 newState[url.id] = url
             })
@@ -74,10 +75,11 @@ export const imageReducer = (state = {}, action) => {
         case UPDATE:
             newState[action.image.id] = action.image
             return newState;
-            
+
         case DELETE:
             delete newState[action.urlId]
             return newState
+
         default:
             return state;
     }

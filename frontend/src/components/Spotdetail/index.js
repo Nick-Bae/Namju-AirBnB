@@ -18,7 +18,6 @@ export const Spotdetail = ({ }) => {
     const [showSpot, setShowSpot] = useState(true);
     const userId = useSelector(state => state.session.user.id)
 
-    console.log('userid', userId)
     const openSpot = () => {
         if (!showSpot) return;
         setShowSpot(true);
