@@ -17,7 +17,7 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (errors.length) return alert(`Cannot Submit`);
+    // if (errors.length) return alert(`Cannot Submit`);
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
@@ -27,7 +27,6 @@ function LoginForm() {
     );
   };
 
-  console.log(errors)
   return (
     <section>
 
