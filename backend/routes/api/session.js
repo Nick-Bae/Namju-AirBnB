@@ -39,7 +39,8 @@ router.delete(
       return res.json(
         user.toSafeObject()
          );
-    } else return res.json("No logg in user");
+    // } else return res.json("No log in user");
+    } else return res.json({});
   }
 );
 
@@ -52,11 +53,11 @@ router.delete(
   
       const user = await User.login({ credential, password });
       if (!user) {
-        const err = new Error('Invalid credentials');
-        err.status = 401;
+        const errors = new Error('Invalid credentials');
+        errors.status = 401;
         // err.title = 'Login failed';
         // err.errors = ['The provided credentials were invalid.'];
-        return next(err);
+        return next(errors);
       }
   
       const token = setTokenCookie(res, user);

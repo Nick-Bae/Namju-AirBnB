@@ -13,10 +13,10 @@ export const Review = (id) => {
     const spotReviewsObj = useSelector(state => state.review)
     const spotReviews = Object.values(spotReviewsObj);
     const currSpot = id.id;
-    const spotReview = spotReviews.filter(spot=> (spot.spotId === parseInt(currSpot)))
+    const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
     const [update, setUpdate] = useState(false);
     const [remove, setRemove] = useState(false);
-    const currentUserId = useSelector(state => state.session.user.id)
+    const currentUser = useSelector(state => state.session.user)
 
     const [review, setReview] = useState("");
     const [stars, setStars] = useState("");
@@ -29,10 +29,10 @@ export const Review = (id) => {
         if (!stars.length) errors.push('Please enter your stars');
         if (stars < 0 || stars > 6) errors.push('Please enter between 0~5')
         setValidationErrors(errors);
-    }, [review,stars,])
+    }, [review, stars,])
 
     // ============ create new review======================
-      const handleSubmit =  (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const report = { review, stars, currSpot };
 
@@ -107,26 +107,30 @@ export const Review = (id) => {
 
                 {spotReview.map(({ id, userId, spotId, review, stars }) => (
 
-                //    (currSpot === spotId) &&
+                    //    (currSpot === spotId) &&
                     <ul >
                         <li className='userId: '>
                             User Id: {userId}
                         </li>
-                        <li  className='review'>
+                        <li className='review'>
                             Review: {review}
                         </li>
                         <li className='review'>
-                           Stars: {stars}
+                            Stars: {stars}
                         </li>
-                       
-                        <button value={id} onClick={()=>{
-                            const deletePermission = userId !== currentUserId ? alert("No Permission to delete") : true
-                            if(deletePermission) {
-                                dispatch(deleteReview(parseInt(id)));
-                                setRemove(true)
-                                history.push(`/spots/${currSpot}`);
+
+                        <button value={id} onClick={() => {
+                            const login = (!currentUser) ? alert("Please log in") : true
+
+                            if (login) {
+                                const deletePermission = userId !== currentUser.id ? alert("No Permission to delete") : true
+                                if (deletePermission) {
+                                    dispatch(deleteReview(parseInt(id)));
+                                    setRemove(true)
+                                    history.push(`/spots/${currSpot}`);
+                                }
                             }
-                        }} className="delete">delete</button>  
+                        }} className="delete">delete</button>
                     </ul>
                 ))}
             </div>

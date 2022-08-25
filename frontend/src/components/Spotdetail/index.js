@@ -10,13 +10,14 @@ import { useHistory } from 'react-router-dom';
 import { SpotList } from '../Spots/index'
 import { Review } from '../Review';
 
+
 export const Spotdetail = ({ }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
     const [showSpot, setShowSpot] = useState(true);
-    const userId = useSelector(state => state.session.user.id)
+    const user = useSelector(state => state.session.user)
 
     const openSpot = () => {
         if (!showSpot) return;
@@ -29,16 +30,17 @@ export const Spotdetail = ({ }) => {
     }, [showSpot]);
 
     const deleteReport = async (e) => {
-        const permission = spot.ownerId !== userId ? alert("No permission to delete") : true
-
-        if (permission) {
-
-            e.preventDefault();
-            await dispatch(deleteSpot(id))
-
-            history.push('/')
-            //   window.location.reload(true);
-        }
+        const login = (!user) ? alert("Please log in") : true
+    
+       if (login) {
+           const permission = spot.ownerId !== user.id ? alert("No permission to delete") : true
+           if (permission) {
+               e.preventDefault();
+               await dispatch(deleteSpot(id))
+               history.push('/')
+               //   window.location.reload(true);
+           }
+       }
     };
 
     useEffect(() => {
@@ -58,13 +60,14 @@ export const Spotdetail = ({ }) => {
                         <div className="editDelete">
                             <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                             <button onClick={deleteReport} className="delete">Delete</button>
+                            
                             <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
-                            <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Write Review</NavLink>
+                            <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink>
                         </div>
                         <ul>
                             {/* <li> Name: {spot.name} </li> */}
                             <li> Address: {spot.address} </li>
-                            <li> Price: {spot.price} </li>
+                            <li> Price: ${spot.price} </li>
                         </ul>
                     </div>
                     <div className="review">

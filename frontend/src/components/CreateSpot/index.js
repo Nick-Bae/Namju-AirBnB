@@ -36,6 +36,8 @@ const CreateSpot = ({ spot, formType }) => {
         // if (!lat < -90) errors.push('Please enter your Latitude');
         if (!lng.length) errors.push('Please enter your Longitude');
         // if (!lng.length) errors.push('Please enter your Longitude');
+        if (!name.length) errors.push('Please enter your Name');
+        if (name.length >15) errors.push('Name must be less than 15 chracters');
         if (!description.length) errors.push('Please enter your description');
         if (!price.length || price < 0) errors.push('Please enter your Correct Price');
         setValidationErrors(errors);

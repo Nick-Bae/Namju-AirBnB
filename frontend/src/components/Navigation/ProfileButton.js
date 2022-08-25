@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import CreateSpot from "../CreateSpot";
+import {Link, NavLink} from 'react-router-dom';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -31,15 +33,19 @@ function ProfileButton({ user }) {
   return (
     <>
       <button className="userlogo" onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+        <i className="fas fa-user-circle logocolor" />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
+            {/* <NavLink className="new-spot" to='/spots/new'>creat new spot</NavLink> */}
+          </li>
+          <li>
             <button onClick={logout}>Log Out</button>
           </li>
+          {/* <Link> <CreateSpot />Create Spot </Link> */}
         </ul>
       )}
     </>

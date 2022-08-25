@@ -9,20 +9,26 @@
     align-items: center;
     margin: 0 20px 0 20px;
     font-size: 15px;
+    
 }
-.edit{
-    padding: 10px;
-    border-style: groove;
-    height: 5px;
-    text-align: center;
-    align-content: center;
-}
+/* .edit{
+    height: 20px;
+    
+    width: 30px;
+    
+    margin: 0 auto;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+
+} */
 .edit, .write, .addimage{
     text-decoration: none;
 }
 
 .delete {
-    height: 20px;
+   border: none;
+    
 }
 
 li{

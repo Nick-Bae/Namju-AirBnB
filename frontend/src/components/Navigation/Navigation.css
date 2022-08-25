@@ -1,4 +1,4 @@
-#log {
+/* #log {
     display: flex;
     flex-direction: column;
     padding:5px;
@@ -16,13 +16,13 @@
     flex-direction: column;
     width: 170px;
     padding:5px
-}
+} */
 
 .logo{
     width: 70px;
     height: 35px
 }
-
+/* 
 .logolist {
     list-style-type: none;
     display: flex;
@@ -31,4 +31,31 @@
 
 .userlogo{
 height: 30px;
+position: absolute;
+right: 40px;
+border-color: white;
+border-radius: 3px;;
 }
+
+.logocolor{
+    color: rgb(237, 129, 129);
+}
+
+.new-spot{
+    list-style-type: none;
+}
+
+body{
+    margin:0;
+}
+.profile-dropdown{
+    position:relative;
+top: 50px
+}
+ */
+
+ .navlink {
+    list-style-type: none;
+    text-decoration: none;
+    
+ }

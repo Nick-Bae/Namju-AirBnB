@@ -21,10 +21,25 @@
         text-decoration: none;
 }
 
-.table-2col{
-    text-align: right;
+.rating{
+    text-align:right;
 }
 
 .spot-wrap{
     margin: 10px;
+}
+
+header,
+footer,
+main {
+  margin: auto;
+  max-width: 1400px;
+  padding: 0 40px;
+}
+
+.spotnew{
+    text-decoration: none;
+}
+table {
+    width:150px
 }

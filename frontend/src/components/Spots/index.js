@@ -12,7 +12,7 @@ const SpotList = () => {
   const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
   const [showSpot, setShowSpot] = useState(true);
-
+  const user = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(getAllSpots());
@@ -20,48 +20,64 @@ const SpotList = () => {
 
   const [showForm, setShowForm] = useState(false);
 
-  return (
-    <section className='spot-wrap'>
-      <div className='list-container'>
-        <h1>Find Place</h1>
-        <NavLink to={`/spots/new`} className="spotnew" >Add New Spot</NavLink>
+//   onClick={() => {
+    const login = (!user) ? false : true
+//     // if (!login) return ("please log in first")
+// }} 
 
-        {/* <Fab hidden={showForm} onClick={()=> setShowForm(true)} />
+  return (
+    <main>
+      <section className='spot-wrap'>
+        <div className='list-container'>
+          <h1>Find Place</h1>
+        {(login) &&(
+          <div>
+          <i class="fa-solid fa-circle-plus"></i>
+          <NavLink to={`/spots/new`} className="spotnew">Add New Spot</NavLink>
+          </div>
+        )}
+
+          
+
+          {/* <Fab hidden={showForm} onClick={()=> setShowForm(true)} />
       {showSpot && ( */}
 
-        <div className='imglayout'>
-          {spots.map((spot) => (
+          <div className='imglayout'>
+            {spots.map((spot) => (
 
-            <ul >
+              <ul >
 
-              <Link to={`/spots/${spot.id}`}>
-                <img spot={spot} className="img" src={spot.previewImage} />
-              </Link>
-              <li key={spot.id} className='imglist'>
-              </li>
-              <table className='table'>
-                <tr>
-                  <th className='table-1col'>
-                    <Link to={`/spots/${spot.id}`} spots={spots} className="spotname" >{spot.name}</Link>
-                  </th>
-                  <th className='table-2col'>
-                    ★ {spot.avgRating}
-                  </th>
-                </tr>
-                <tr>
-                  <td>
-                    ${spot.price} night
-                  </td>
-                </tr>
-              </table>
-
-            </ul>
-
-          ))}
+                <Link to={`/spots/${spot.id}`}>
+                  <img spot={spot} className="img" src={spot.previewImage} />
+                </Link>
+                <li key={spot.id} className='imglist'>
+                </li>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <td className='smalltitle'>
+                        <Link to={`/spots/${spot.id}`} spots={spots} className="spotname" >{spot.name}, {spot.state}</Link>
+                      </td>
+                      <td className='rating'>
+                        ★ {spot.avgRating}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        ${spot.price} night
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ul>
+            ))}
+          </div>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 
