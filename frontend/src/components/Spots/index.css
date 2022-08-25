@@ -1,3 +1,6 @@
+.list-container{
+    font-size: 10px;
+}
 .img {
     width:150px;
     height:130px;
@@ -16,4 +19,12 @@
 
 .spotname{
         text-decoration: none;
+}
+
+.table-2col{
+    text-align: right;
+}
+
+.spot-wrap{
+    margin: 10px;
 }

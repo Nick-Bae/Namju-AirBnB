@@ -42,6 +42,19 @@ export const createImage = (data) => async dispatch => {
     return image;
 }
 
+export const updateImage = data => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${data.id}/images`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        const image = await response.json();
+        dispatch(update(image));
+        return image;
+    }
+}
 
 // const initialState = { lists: [] }
 export const imageReducer = (state = {}, action) => {
@@ -50,16 +63,18 @@ export const imageReducer = (state = {}, action) => {
         case ADD_ONE:
             newState[action.image.id] = action.image;
             return newState;
+
         case LOAD:
             const images = action.images.Images
-
             images.forEach((url) => {
                 newState[url.id] = url
             })
             return newState;
+
         case UPDATE:
             newState[action.image.id] = action.image
             return newState;
+            
         case DELETE:
             delete newState[action.urlId]
             return newState

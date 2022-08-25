@@ -24,8 +24,10 @@ function Navigation({ isLoaded }){
 
   return (
     <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+      <li className='logolist'>
+        <NavLink exact to="/" >
+          <img className="logo" src="https://miro.medium.com/max/1400/0*NChTo-XqLOxLabIW"></img>
+        </NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>

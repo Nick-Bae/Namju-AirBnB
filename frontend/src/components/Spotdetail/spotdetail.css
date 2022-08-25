@@ -3,15 +3,42 @@
     flex-direction: row;
 }
 
+.editDelete{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    margin: 0 20px 0 20px;
+    font-size: 15px;
+}
 .edit{
     padding: 10px;
+    border-style: groove;
+    height: 5px;
+    text-align: center;
+    align-content: center;
+}
+.edit, .write, .addimage{
+    text-decoration: none;
 }
 
 .delete {
-    /* height: 20px; */
+    height: 20px;
+}
+
+li{
+    list-style-type: none;
 }
 
 .imgdetail{
     width:400px;
     height: 350px
+}
+
+.spot-outside{
+    display: flex;
+    flex-direction: row;
+}
+
+img{
+  border-radius: 10px;
 }

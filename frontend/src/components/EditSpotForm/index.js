@@ -19,7 +19,7 @@ export const EditSpotForm = () => {
     const [name, setName] = useState(spot.name);
     const [description, setDescription] = useState(spot.description);
     const [price, setPrice] = useState(spot.price);
-
+    const [url, setUrl] = useState(spot.image);
     const dispatch = useDispatch();
 
     const onSubmit = async (e) => {
@@ -69,16 +69,16 @@ export const EditSpotForm = () => {
         <section>
             <form onSubmit={onSubmit}>
                 <h2>Update</h2>
-                {/* <div>
-                        <label htmlFor='userId'>userId:</label>
+                <div>
+                        <label htmlFor='url'>url</label>
                         <input
-                            id='userId'
+                            id='url'
                             type='text'
-                            placeholder='userId'
-                            onChange={e => setUserId(e.target.value)}
-                            value={userId}
+                            placeholder='url'
+                            onChange={e => setUrl(e.target.value)}
+                            value={url}
                         />
-                    </div> */}
+                    </div>
                 <div>
                     <label htmlFor='address'>address:</label>
                     <input

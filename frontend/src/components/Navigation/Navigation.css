@@ -17,3 +17,18 @@
     width: 170px;
     padding:5px
 }
+
+.logo{
+    width: 70px;
+    height: 35px
+}
+
+.logolist {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userlogo{
+height: 30px;
+}

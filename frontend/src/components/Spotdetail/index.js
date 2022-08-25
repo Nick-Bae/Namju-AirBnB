@@ -10,19 +10,19 @@ import { useHistory } from 'react-router-dom';
 import { SpotList } from '../Spots/index'
 import { Review } from '../Review';
 
-export const Spotdetail = ({}) => {
+export const Spotdetail = ({ }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
     const [showSpot, setShowSpot] = useState(true);
     const userId = useSelector(state => state.session.user.id)
-    
-    console.log('userid',userId)
+
+    console.log('userid', userId)
     const openSpot = () => {
         if (!showSpot) return;
         setShowSpot(true);
-      }
+    }
 
     useEffect(() => {
         if (showSpot) return;
@@ -30,16 +30,16 @@ export const Spotdetail = ({}) => {
     }, [showSpot]);
 
     const deleteReport = async (e) => {
-      const permission =  spot.ownerId !== userId ? alert("No permission to delete") : true
-      
-      if (permission) {
+        const permission = spot.ownerId !== userId ? alert("No permission to delete") : true
 
-          e.preventDefault();
-         const removeSpot= await dispatch(deleteSpot(id))
-  
-          history.push('/')
-          //   window.location.reload(true);
-      }
+        if (permission) {
+
+            e.preventDefault();
+            await dispatch(deleteSpot(id))
+
+            history.push('/')
+            //   window.location.reload(true);
+        }
     };
 
     useEffect(() => {
@@ -49,34 +49,36 @@ export const Spotdetail = ({}) => {
     if (!spot) return null;
     return (
         <section>
-            <div>
+            <h2>{spot.name}</h2>
+            <div className="spot-container">
                 {/* {showSpot && ( */}
-                    <div>
+                <div className="spot-outside">
+                    <div className="spot-inside">
                         <img className="imgdetail" src={spot.previewImage} />
-                        <ul>
-                            <li> Name: {spot.name} </li>
-                            <li> Address: {spot.address} </li>
-                            <li> Price: {spot.price} </li>
-                        </ul>
+                        
                         <div className="editDelete">
                             <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                             <button onClick={deleteReport} className="delete">Delete</button>
-                            {/* <button onClick={()=> dispatch(deleteSpot(id))} className="delete">Delete</button> */}
-                            {/* <button onClick={addImage} className="addImage">Add Image</button> */}
-                            <Link to={`/spots/${id}/images`}> Add Image </Link>
-                            {/* <button >Write Review</button> */}
-                            <NavLink to={`/spots/${id}`} onClick={openSpot}>Write Review</NavLink>
-                            
-                            <Route path={`/spots/${id}`}>
-                                {showSpot && (
-                                    <Review showSpot={false} id={id}/>
-                                )}
-                             </Route>
+                            <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
+                            <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Write Review</NavLink>
                         </div>
+                        <ul>
+                            {/* <li> Name: {spot.name} </li> */}
+                            <li> Address: {spot.address} </li>
+                            <li> Price: {spot.price} </li>
+                        </ul>
                     </div>
+                    <div className="review">
+                        <Route path={`/spots/${id}`}>
+                            {showSpot && (
+                                <Review showSpot={false} id={id} />
+                            )}
+                        </Route>
+                    </div>
+                </div>
                 {/* )} */}
                 <div>
-                    <Link to="/">Back to Spot List</Link>
+                    {/* <Link to="/">Back to Spot List</Link> */}
                 </div>
             </div>
         </section>

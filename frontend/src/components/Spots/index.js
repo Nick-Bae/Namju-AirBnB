@@ -13,40 +13,55 @@ const SpotList = () => {
   const spots = Object.values(spotsObj);
   const [showSpot, setShowSpot] = useState(true);
 
-  
+
   useEffect(() => {
     dispatch(getAllSpots());
-  }, [dispatch] );
+  }, [dispatch]);
 
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div>
-      <h1>Spot List</h1>
-      <NavLink to={`/spots/new`} className="spotnew" >Add New Spot</NavLink>
+    <section className='spot-wrap'>
+      <div className='list-container'>
+        <h1>Find Place</h1>
+        <NavLink to={`/spots/new`} className="spotnew" >Add New Spot</NavLink>
 
-      {/* <Fab hidden={showForm} onClick={()=> setShowForm(true)} />
+        {/* <Fab hidden={showForm} onClick={()=> setShowForm(true)} />
       {showSpot && ( */}
 
         <div className='imglayout'>
-          {spots.map(( spot ) => (
-           
-           <ul >
-              <li key={spot.id} className='imglist'>
-                <Link to={ `/spots/${spot.id}`} spots={spots} className="spotname" >{spot.name}</Link>
-              </li>
+          {spots.map((spot) => (
+
+            <ul >
 
               <Link to={`/spots/${spot.id}`}>
-
                 <img spot={spot} className="img" src={spot.previewImage} />
               </Link>
+              <li key={spot.id} className='imglist'>
+              </li>
+              <table className='table'>
+                <tr>
+                  <th className='table-1col'>
+                    <Link to={`/spots/${spot.id}`} spots={spots} className="spotname" >{spot.name}</Link>
+                  </th>
+                  <th className='table-2col'>
+                    ★ {spot.avgRating}
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    ${spot.price} night
+                  </td>
+                </tr>
+              </table>
+
             </ul>
-            
+
           ))}
         </div>
-      
-    </div>
 
+      </div>
+    </section>
   );
 };
 
