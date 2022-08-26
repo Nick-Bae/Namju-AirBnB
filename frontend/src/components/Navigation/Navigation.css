@@ -33,9 +33,9 @@
 .userlogo{
 height: 30px;
 margin-top: 10px;
-border-color: white;
-border-radius: 3px;
-
+/* border-color: white; */
+/* border-radius: 3px; */
+align-items: center;
 }
 .profile-dropdown{
     position:relative;

@@ -50,3 +50,27 @@ img{
     vertical-align: middle;
 
 }
+
+section{
+    margin-top: 20px;
+    border-top: 1px solid var(--grey-light-color);
+}
+
+.title{
+    margin-top: 20px;
+    font-weight: bold;
+}
+.rating{
+    text-align: left;
+}
+.breifinfo{
+    font-size: var(--font-micro);
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+    gap: 10px;
+    align-items: center;
+}
+.address{
+    gap: 5px;
+}

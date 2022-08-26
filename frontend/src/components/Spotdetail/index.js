@@ -50,7 +50,15 @@ export const Spotdetail = ({ }) => {
     if (!spot) return null;
     return (
         <section>
-            <h2>{spot.name}</h2>
+            <div>
+            <div className="title">{spot.name}</div>
+
+            </div>
+            <ul className="breifinfo">
+                 <li className="rating"> ★{spot.avgRating}</li>
+                <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
+                <li className="address"> {spot.name} {spot.city} {spot.state} </li>
+            </ul>
             <div className="spot-container">
                 {/* {showSpot && ( */}
                 <div className="spot-outside">
