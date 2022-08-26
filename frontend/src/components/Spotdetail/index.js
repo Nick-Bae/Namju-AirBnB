@@ -31,16 +31,16 @@ export const Spotdetail = ({ }) => {
 
     const deleteReport = async (e) => {
         const login = (!user) ? alert("Please log in") : true
-    
-       if (login) {
-           const permission = spot.ownerId !== user.id ? alert("No permission to delete") : true
-           if (permission) {
-               e.preventDefault();
-               await dispatch(deleteSpot(id))
-               history.push('/')
-               //   window.location.reload(true);
-           }
-       }
+
+        if (login) {
+            const permission = spot.ownerId !== user.id ? alert("No permission to delete") : true
+            if (permission) {
+                e.preventDefault();
+                await dispatch(deleteSpot(id))
+                history.push('/')
+                //   window.location.reload(true);
+            }
+        }
     };
 
     useEffect(() => {
@@ -49,42 +49,67 @@ export const Spotdetail = ({ }) => {
 
     if (!spot) return null;
     return (
+        // <body className="detailview">
         <section>
             <div>
-            <div className="title">{spot.name}</div>
-
+                <div className="title">{spot.name}</div>
             </div>
+
             <ul className="breifinfo">
-                 <li className="rating"> ★{spot.avgRating}</li>
+                <li className="rating"> <i class="fa-solid fa-star"></i>&nbsp;{spot.avgRating}</li>
                 <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
                 <li className="address"> {spot.name} {spot.city} {spot.state} </li>
             </ul>
             <div className="spot-container">
-                {/* {showSpot && ( */}
-                <div className="spot-outside">
-                    <div className="spot-inside">
-                        <img className="imgdetail" src={spot.previewImage} />
-                        
-                        <div className="editDelete">
-                            <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
-                            <button onClick={deleteReport} className="delete">Delete</button>
-                            
-                            <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
-                            <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink>
-                        </div>
-                        <ul>
-                            {/* <li> Name: {spot.name} </li> */}
-                            <li> Address: {spot.address} </li>
-                            <li> Price: ${spot.price} </li>
-                        </ul>
+                {/* <div className="spot-outside"> */}
+                <div className="spot-inside">
+                    <img className="imgdetail" src={spot.previewImage} />
+                    <div className="editDelete">
+                        <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
+                        <button onClick={deleteReport} className="delete">Delete</button>
+                        <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
+                        <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink>
+                    </div>
+                    <div className="maininfo">
+                        <section className="maininfo-left">
+
+                            <div className="hostname">
+                                <li> Entire home hosted by  </li>
+                            </div>
+                            <div className="checkinInfo">
+                                <li> <i class="fa-solid fa-building-circle-check"></i> &nbsp;Self check-in</li>
+                                <li> <i class="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
+                                <li><i class="fa-solid fa-calendar"></i> Free cancellation </li>
+                            </div>
+                            <div className="descprition">
+                                {spot.description}
+                            </div>
+
+                        </section>
+
+                        <section className="column menu maininfo-right">
+                            <ul className="float">
+                                <div className="float-top">
+                                <li className="price">${spot.price} </li>
+                                <li className="night">night</li>
+                                <li className="stars"> <i class="fa-solid fa-star"></i>{spot.avgRating}</li>
+                                </div>
+                                <div>
+
+                                <li>The City</li>
+                                <li>The Island</li>
+                                <li>The Food</li>
+                                </div>
+                            </ul>
+                        </section>
+
                     </div>
                     <div className="review">
                         <Route path={`/spots/${id}`}>
-                            {showSpot && (
-                                <Review showSpot={false} id={id} />
-                            )}
+                            <Review showSpot={false} id={id} />
                         </Route>
                     </div>
+                    {/* </div> */}
                 </div>
                 {/* )} */}
                 <div>
@@ -92,6 +117,7 @@ export const Spotdetail = ({ }) => {
                 </div>
             </div>
         </section>
+        // </body>
     )
 }
 

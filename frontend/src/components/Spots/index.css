@@ -45,8 +45,8 @@ table {
 }
 
 .list-container{
-    margin-top: 50px;
-    border-top: 1px solid var(--grey-light-color);
+    margin-top: 20px;
+    /* border-top: 1px solid var(--grey-light-color); */
     
 }
 

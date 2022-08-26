@@ -25,6 +25,7 @@ const SpotList = () => {
 //     // if (!login) return ("please log in first")
 // }} 
 
+
   return (
     <main>
       <section className='spot-wrap'>

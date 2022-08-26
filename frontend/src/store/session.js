@@ -15,11 +15,11 @@ export const removeUser = () => {
     type: REMOVE_USER,
   };
 };
-
+ 
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');
   const data = await response.json();
-  dispatch(setUser(data.user));
+  dispatch(setUser(data));
   // console.log('restore',data)
   return response;
 };
@@ -34,7 +34,7 @@ export const login = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  dispatch(setUser(data.user));
+  dispatch(setUser(data));
   return response;
 };
 

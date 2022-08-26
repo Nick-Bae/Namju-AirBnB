@@ -27,7 +27,12 @@
     list-style-type: none;
     display: flex;
     justify-content: space-between;
-    height: 20px;
+    height: 60px;
+    border-bottom: 1px solid var(--grey-light-color);
+}
+
+.underline{
+    margin: 0 50px;
 }
 
 .userlogo{
@@ -63,7 +68,7 @@ body{
  }
  
 .signup{
-    font-size: var(--font-medium);
+    /* font-size: var(--font-medium); */
 }
 
 .header {

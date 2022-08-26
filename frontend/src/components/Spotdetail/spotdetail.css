@@ -1,15 +1,17 @@
-.editDelete{
-    display: flex;
-    flex-direction: row;
-}
 
 .editDelete{
     display: flex;
-    justify-content:space-around;
-    align-items: center;
-    margin: 0 20px 0 20px;
+    justify-content:center;
+    /* align-items: center; */
+    /* margin: 0 140px; */
     font-size: 15px;
+    /* max-width: 600px; */
+    padding:20px;
+    gap: 20px;
     
+}
+.spot-inside{
+
 }
 
 .edit, .write, .addimage{
@@ -18,16 +20,12 @@
 
 .delete {
    border: none;
+   color: white
     
 }
 
 li{
     list-style-type: none;
-}
-
-.imgdetail{
-    width:400px;
-    height: 350px
 }
 
 .spot-outside{
@@ -37,28 +35,34 @@ li{
 
 img{
   border-radius: 10px;
+  width: 100%;
+  height: auto;
+  max-width: 900px;
+  display: block;
+  margin: auto;
 } 
 
  .edit{
-    height: 20px;
+    /* height: 20px;
     
     width: 30px;
     
     margin: 0 auto;
     padding: 0;
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: middle; */
 
 }
 
-section{
+/* section{
     margin-top: 20px;
     border-top: 1px solid var(--grey-light-color);
-}
+} */
 
 .title{
     margin-top: 20px;
     font-weight: bold;
+    margin: 20px 50px
 }
 .rating{
     text-align: left;
@@ -67,10 +71,93 @@ section{
     font-size: var(--font-micro);
     display: flex;
     flex-direction: row;
-    margin: 10px 0;
+    margin: 10px 0 10px 50px;
     gap: 10px;
     align-items: center;
 }
 .address{
     gap: 5px;
+    text-decoration: underline;
 }
+.fa-star{
+    font-size: 8px;
+}
+
+/* .detailview {
+margin: auto;
+} */
+
+.hostname{
+    border-bottom: 1px solid var(--grey-light-color);
+    padding: 20px 0;
+}
+
+.checkinInfo{
+    padding: 20px 0;
+    border-bottom: 1px solid var(--grey-light-color);
+}
+.descprition {
+    padding: 20px 0;
+    font-size: var(--font-small)
+}
+
+.maininfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.smallinfo{
+    /* margin: 0 0 0 50px;  */
+}
+.column menu{
+    margin:auto;
+    /* max-width: 100px; */
+}
+
+.maininfo-left{
+    max-width: 500px;
+}
+
+.column {
+    float: left;
+    padding: 5px;
+  }
+  
+  .menu {
+    width: 25%;
+  }
+  
+ 
+  
+  .menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    padding:18px;
+    margin-bottom: 8px;
+    /* background-color: #33b5e5; */
+
+  }
+  .float{
+    border: 1px solid var(--grey-light-color);
+    border-radius: 10px;
+    box-shadow:15px 15px 30px var(--grey-light-color) ;
+    display: flex;
+    flex-direction: row;
+  }
+  .float-top{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  /* .menu li:hover {
+    background-color: #0099cc;
+  } */
+
+  .review {
+    border-top: 1px solid var(--grey-light-color);
+  }
+

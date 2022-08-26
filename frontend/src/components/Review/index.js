@@ -5,7 +5,7 @@ import { getSpotReviews } from '../../store/comment';
 import { createReview } from '../../store/comment';
 import { useSelector } from 'react-redux';
 import { deleteReview } from '../../store/comment';
-
+import './review.css'
 
 export const Review = (id) => {
     const history = useHistory();
