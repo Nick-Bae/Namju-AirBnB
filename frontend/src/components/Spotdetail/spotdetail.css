@@ -11,17 +11,7 @@
     font-size: 15px;
     
 }
-/* .edit{
-    height: 20px;
-    
-    width: 30px;
-    
-    margin: 0 auto;
-    padding: 0;
-    display: table-cell;
-    vertical-align: middle;
 
-} */
 .edit, .write, .addimage{
     text-decoration: none;
 }
@@ -47,4 +37,16 @@ li{
 
 img{
   border-radius: 10px;
+} 
+
+ .edit{
+    height: 20px;
+    
+    width: 30px;
+    
+    margin: 0 auto;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+
 }

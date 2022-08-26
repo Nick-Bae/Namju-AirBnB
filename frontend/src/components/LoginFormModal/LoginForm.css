@@ -27,6 +27,23 @@
 }
 
 form{
-    width:300px;
-    height: 300px;
+    width:200px;
+    height: 150px;
+    padding:15px
+    
+}
+
+.error{
+    font-size: 15px;
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.beforelogbt{
+    height:25px;
+    font-size: var(--font-medium);
+    position:relative;
+    right: 10px;
+    top: 20px;
 }

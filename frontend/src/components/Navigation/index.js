@@ -17,7 +17,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink className="signup" to="/signup">Sign Up</NavLink>
       </>
     );
   }
@@ -26,7 +26,7 @@ function Navigation({ isLoaded }){
     <ul>
       <li className='logolist'>
         <NavLink className="navlink" exact to="/" >
-          <img className="logo" src="https://miro.medium.com/max/1400/0*NChTo-XqLOxLabIW"></img>
+          <img className="logo header" src="https://miro.medium.com/max/1400/0*NChTo-XqLOxLabIW"></img>
         </NavLink>
         {isLoaded && sessionLinks}
       </li>

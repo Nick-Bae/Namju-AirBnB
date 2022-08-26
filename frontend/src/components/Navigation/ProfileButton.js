@@ -31,8 +31,8 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <>
-      <button className="userlogo" onClick={openMenu}>
+    <div className="loginfoBT">
+      <button className="userlogo header" onClick={openMenu}>
         <i className="fas fa-user-circle logocolor" />
       </button>
       {showMenu && (
@@ -40,15 +40,12 @@ function ProfileButton({ user }) {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
-            {/* <NavLink className="new-spot" to='/spots/new'>creat new spot</NavLink> */}
-          </li>
-          <li>
             <button onClick={logout}>Log Out</button>
           </li>
           {/* <Link> <CreateSpot />Create Spot </Link> */}
         </ul>
       )}
-    </>
+    </div>
   );
 }
 

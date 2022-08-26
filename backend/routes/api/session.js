@@ -31,18 +31,18 @@ router.delete(
 
  //==========Get the Current User===========
  router.get(
-  '/',
-  restoreUser,
-  (req, res) => {
-    const { user } = req;
-    if (user) {
-      return res.json(
-        user.toSafeObject()
-         );
-    // } else return res.json("No log in user");
-    } else return res.json({});
-  }
-);
+  "/", 
+  restoreUser, (req, res) => {
+  const { user } = req;
+  if (user) {
+    return res.json({
+      user: user.toSafeObject(),
+    });
+  } else return res.json(null);
+});
+
+module.exports = router;
+
 
   //=============log in a user=================
   router.post(
