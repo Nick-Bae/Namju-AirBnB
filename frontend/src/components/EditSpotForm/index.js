@@ -4,6 +4,7 @@ import { editSpot } from '../../store/spot';
 import {useHistory} from 'react-router-dom';
 import  { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
+import './EditSpotForm.css'
 
 export const EditSpotForm = () => {
   const { id } = useParams();
@@ -145,21 +146,21 @@ export const EditSpotForm = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor='description'>description:</label>
-                    <input
-                        id='description'
-                        type='text'
-                        onChange={e => setDescription(e.target.value)}
-                        value={description}
-                    />
-                </div>
-                <div>
                     <label htmlFor='price'>price:</label>
                     <input
                         id='price'
                         type='number'
                         onChange={e => setPrice(e.target.value)}
                         value={price}
+                    />
+                </div>
+                <div>
+                    <label htmlFor='description'>description:</label>
+                    <textarea
+                        id='description'
+                        type='text'
+                        onChange={e => setDescription(e.target.value)}
+                        value={description}
                     />
                 </div>
 

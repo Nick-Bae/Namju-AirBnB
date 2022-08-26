@@ -127,8 +127,6 @@ margin: auto;
     width: 25%;
   }
   
- 
-  
   .menu ul {
     list-style-type: none;
     margin: 0;
@@ -139,25 +137,45 @@ margin: auto;
     padding:18px;
     margin-bottom: 8px;
     /* background-color: #33b5e5; */
-
   }
   .float{
     border: 1px solid var(--grey-light-color);
     border-radius: 10px;
-    box-shadow:15px 15px 30px var(--grey-light-color) ;
+    box-shadow:15px 15px 50px var(--grey-light-color) ;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
   .float-top{
     display: flex;
     flex-direction: row;
+    gap: 1px;
+    /* font-size: var(--font-micro); */
   }
   
   /* .menu li:hover {
     background-color: #0099cc;
   } */
 
+  .price {
+}
+.night {
+      font-size: var(--font-micro);
+
+  }
+  .calender {
+    border: 1px solid var(--grey-light-color);
+    border-radius: 5px;
+    /* padding:18px; */
+    margin:5px;
+    padding:0px;
+  }
+
   .review {
     border-top: 1px solid var(--grey-light-color);
+  }
+
+  .checkin{
+    display: flex;
+    padding:0px;
   }
 

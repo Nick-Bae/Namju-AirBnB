@@ -80,26 +80,27 @@ export const Review = (id) => {
     return (
         <section>
             <form onSubmit={handleSubmit} >
-                <h2>Review</h2>
-                <label>
-                    Review
-                    <input
-                        type="text"
-                        placeholder='please leave a review'
-                        value={review}
-                        onChange={e => setReview(e.target.value)}
-                    />
-                </label>
-                <label>
-                    stars
-                    <input
-                        type="number"
-                        min="0" max="5"
-                        placeholder='0'
-                        value={stars}
-                        onChange={e => setStars(e.target.value)}
-                    />
-                </label>
+                <div id="review">
+                    <label>
+                        Review
+                        <input
+                            type="text"
+                            placeholder='please leave a review'
+                            value={review}
+                            onChange={e => setReview(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        stars
+                        <input
+                            type="number"
+                            min="0" max="5"
+                            placeholder='0'
+                            value={stars}
+                            onChange={e => setStars(e.target.value)}
+                        />
+                    </label>
+                </div>
                 <button type="submit"> Submit </button>
             </form>
 

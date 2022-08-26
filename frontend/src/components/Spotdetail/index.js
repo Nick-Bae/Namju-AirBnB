@@ -96,9 +96,15 @@ export const Spotdetail = ({ }) => {
                                 </div>
                                 <div>
 
-                                <li>The City</li>
-                                <li>The Island</li>
-                                <li>The Food</li>
+                                <li className="calender"> 
+                                    <div className="checkin">
+                                    <li>check-in</li>
+                                    <li>check-out</li>
+                                    </div>
+                                    <div>Guests</div>                                
+                                </li>
+                                <li>Reserve</li>
+                                <li>Total before taxes</li>
                                 </div>
                             </ul>
                         </section>
