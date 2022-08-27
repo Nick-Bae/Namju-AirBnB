@@ -24,11 +24,14 @@ const UPDATE = 'review/UPDATE'
 
 export const getSpotReviews = (id) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${id}/reviews`);
-    // console.log("review",id)
+    // console.log("review where is it??",id)
 
     if (response.ok) {
         const reviews = await response.json();
         dispatch(load(reviews.Reviews));
+        return reviews
+    } else {
+        return response;
     }
 };
 
@@ -76,18 +79,18 @@ export const deleteReview = (id) => async (dispatch) => {
 export const reviewReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
-        case ADD_ONE:
-            newState[action.review.id] = action.review;
-            return newState;
-        case UPDATE:
-              newState[action.review.id] = action.review
-            return newState;
         case LOAD:
             const reviews = action.reviews
             // console.log('state',reviews)
             reviews.forEach((review) => {
                 newState[review.id] = review
             })
+            return newState;
+        case ADD_ONE:
+            newState[action.review.id] = action.review;
+            return newState;
+        case UPDATE:
+              newState[action.review.id] = action.review
             return newState;
         case DELETE:
             delete newState[action.reviewId]

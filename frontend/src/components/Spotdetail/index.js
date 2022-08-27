@@ -96,13 +96,13 @@ export const Spotdetail = ({ }) => {
                                 </div>
                                 <div>
 
-                                <li className="calender"> 
+                                <div className="calender"> 
                                     <div className="checkin">
                                     <li>check-in</li>
                                     <li>check-out</li>
                                     </div>
                                     <div>Guests</div>                                
-                                </li>
+                                </div>
                                 <li>Reserve</li>
                                 <li>Total before taxes</li>
                                 </div>

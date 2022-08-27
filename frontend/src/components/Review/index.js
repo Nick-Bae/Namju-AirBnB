@@ -8,6 +8,7 @@ import { deleteReview } from '../../store/comment';
 import './review.css'
 
 export const Review = (id) => {
+    // console.log("????",id)
     const history = useHistory();
     const dispatch = useDispatch();
     const spotReviewsObj = useSelector(state => state.review)
@@ -32,13 +33,15 @@ export const Review = (id) => {
     }, [review, stars,])
 
     // ============ create new review======================
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!currentUser) return alert ("Please log in")
+
         const report = { review, stars, currSpot };
 
         // console.log('report????',report)
-        dispatch(createReview(report));
         setUpdate(true)
+        dispatch(createReview(report));
         history.push(`/spots/${currSpot}`);
         reset();
     };
@@ -67,14 +70,16 @@ export const Review = (id) => {
 
     useEffect(() => {
         dispatch(getSpotReviews(id.id));
+        setUpdate(false)
         // console.log(id.id)
-    }, [dispatch, update, remove]);
+    }, [dispatch, update]);
 
     // console.log('allreviews', spotReviewsObj)
     const reset = () => {
         setReview("");
         setStars("");
     };
+
     if (!spotReview) return null
 
     return (
@@ -108,7 +113,6 @@ export const Review = (id) => {
 
                 {spotReview.map(({ id, userId, spotId, review, stars }) => (
 
-                    //    (currSpot === spotId) &&
                     <ul >
                         <li className='userId: '>
                             User Id: {userId}
@@ -127,11 +131,12 @@ export const Review = (id) => {
                                 const deletePermission = userId !== currentUser.id ? alert("No Permission to delete") : true
                                 if (deletePermission) {
                                     dispatch(deleteReview(parseInt(id)));
-                                    setRemove(true)
+                                    // setRemove(true)
                                     history.push(`/spots/${currSpot}`);
                                 }
                             }
-                        }} className="delete">delete</button>
+                        // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
+                        }} className="delete" >delete</button>
                     </ul>
                 ))}
             </div>
