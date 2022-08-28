@@ -9,7 +9,7 @@ import './spotdetail.css'
 import { useHistory } from 'react-router-dom';
 import { SpotList } from '../Spots/index'
 import { Review } from '../Review';
-
+import ReviewFormModal from "../ReviewModal";
 
 export const Spotdetail = ({ }) => {
     const dispatch = useDispatch();
@@ -69,6 +69,7 @@ export const Spotdetail = ({ }) => {
                         <button onClick={deleteReport} className="delete">Delete</button>
                         <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
                         <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink>
+                        <ReviewFormModal spot={spot}/>
                     </div>
                     <div className="maininfo">
                         <section className="maininfo-left">

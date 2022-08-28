@@ -1,0 +1,23 @@
+.reviewbt{
+    /* text-decoration: none;
+    color: black;
+    border: 1px solid var(--grey-light-color);
+    padding:5px;
+    border-radius: 5px;
+    background-color: white; */
+    color: red;
+}
+
+.review{
+    text-decoration: none;
+    color: black;
+    border: 1px solid var(--grey-light-color);
+    padding:5px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+#errormessage{
+    font-size: var(--font-small);
+    color:red;
+}
