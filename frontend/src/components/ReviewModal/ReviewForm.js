@@ -39,8 +39,9 @@ export const ReviewForm = ({spot}) => {
         e.preventDefault();
         if (!currentUser) return alert("Please log in")
 
-        // const isReview=spotReview.find(review=> review.userId === currentUser.id)
-        //  if (isReview) return alert ("You've already left a review on this spot")
+        const isReview=spotReviews.find(review=> review.userId === currentUser.id)
+         if (isReview) return alert ("You've already left a review on this spot")
+
         setHasSubmitted(true);
         setUpdate(true);
         if (validationErrors.length) return alert(`Cannot Submit`);
@@ -59,13 +60,7 @@ export const ReviewForm = ({spot}) => {
         await dispatch(createReview(report))
             .then(()=>dispatch(getSpotBySpotId(spot.id)))
             .then(()=>dispatch(getSpotReviews(spot.id)))
-        // .catch(async (res) => {
-        //     const data = await res.json()
-        //     if (data && data.message) {
-        //         const issue = Object.values(data.message)
-        //          message = (issue.join(''))
-        //     }
-        // })
+        //
         // setUpdate(true)
         // const createRe = await dispatch(createReview(report));
         history.push(`/spots/${spot.id}`);
