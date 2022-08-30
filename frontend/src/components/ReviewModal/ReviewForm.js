@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getSpotReviews } from '../../store/comment';
 import { createReview } from '../../store/comment';
 import { useSelector } from 'react-redux';
 import { deleteReview } from '../../store/comment';
-import { getAllSpots } from '../../store/spot';
+import { getAllSpots, getSpotBySpotId } from '../../store/spot';
 import './review.css'
 
-export const ReviewForm = () => {
-    // console.log("????",spot)
+export const ReviewForm = ({spot}) => {
     const history = useHistory();
     const dispatch = useDispatch();
+
     const spotReviewsObj = useSelector(state => state.review)
     const spotReviews = Object.values(spotReviewsObj);
     // const currSpot = spot.id;
-    const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
+    // const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
     const [update, setUpdate] = useState(false);
     const currentUser = useSelector(state => state.session.user)
 
@@ -25,7 +25,7 @@ export const ReviewForm = () => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     // const [errors, setErrors] = useState([]);
     // let message = '';
-
+    
     useEffect(() => {
         const errors = [];
         if (!review.length) errors.push('Please enter your review');
@@ -35,7 +35,7 @@ export const ReviewForm = () => {
     }, [review, stars])
 
     // ============ create new review======================
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         if (!currentUser) return alert("Please log in")
 
@@ -45,9 +45,10 @@ export const ReviewForm = () => {
         setUpdate(true);
         if (validationErrors.length) return alert(`Cannot Submit`);
 
-        const report = { review, stars, currSpot };
+        const report = { review, stars, spotId: spot.id };
 
-        // console.log('report????',report)
+        
+        //console.log('ReviewForm ????',spot)
         // function onChange(){
         //     const newCount = count + 1;
         //     setCount(newCount);
@@ -55,7 +56,9 @@ export const ReviewForm = () => {
             
         //   }
 
-        dispatch(createReview(report))
+        await dispatch(createReview(report))
+            .then(()=>dispatch(getSpotBySpotId(spot.id)))
+            .then(()=>dispatch(getSpotReviews(spot.id)))
         // .catch(async (res) => {
         //     const data = await res.json()
         //     if (data && data.message) {
@@ -65,24 +68,24 @@ export const ReviewForm = () => {
         // })
         // setUpdate(true)
         // const createRe = await dispatch(createReview(report));
-        // history.push(`/spots/${currSpot}`);
+        history.push(`/spots/${spot.id}`);
 
      
     };
 
     useEffect(() => {
-        console.log("useeffect ",currSpot)
+        // console.log("useeffect ",currSpot)
         
-        dispatch(getSpotReviews(currSpot));
-        dispatch(getAllSpots())
+        // dispatch(getSpotReviews(currSpot));
+        // dispatch(getAllSpots())
     }, [dispatch, update]);
     
   
-    if (!spotReview) return null
+    if (!spotReviews) return null
 
     return (
         <section>
-            {console.log(spot)}
+           
             {hasSubmitted && validationErrors.length > 0 && (
                 <div id="errormessage">
                     The following errors were found:

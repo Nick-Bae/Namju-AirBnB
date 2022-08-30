@@ -1,5 +1,5 @@
-import { useState, useParams, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useHistory,useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getSpotReviews } from '../../store/comment';
 import { createReview } from '../../store/comment';
@@ -13,18 +13,18 @@ export const ReviewDisplay = ({reviews}) => {
 const history = useHistory();
 const dispatch = useDispatch();
 const spotReviewsObj = useSelector(state => state.review)
-const spotReviews = Object.values(spotReviewsObj);
+const spotReviews = Object.values(reviews);
+
 // const currSpot = spot.id;
 // const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
 const [update, setUpdate] = useState(false);
 const [remove, setRemove] = useState(false);
 const currentUser = useSelector(state => state.session.user)
-
+const {id} = useParams();
 const [review, setReview] = useState("");
 const [stars, setStars] = useState("");
 const [validationErrors, setValidationErrors] = useState([]);
 const [hasSubmitted, setHasSubmitted] = useState(false);
-
 useEffect(() => {
     const errors = [];
     if (!review.length) errors.push('Please enter your review');
@@ -47,33 +47,11 @@ useEffect(() => {
 //     reset();
 // };
 
-
-// ================== delete Review ==================
-// const deleteReview =  (e) => {
-//     // e.preventDefault();
-//     console.log('befor ')
-//     const id = e.target.getAttribute("value")
-
-//     // const id = obj
-//     // const id  = e.getAttribute('value')
-//     console.log('button Id', id)
-//      dispatch(deleteReview(parseInt(id)))
-//     setRemove(true)
-
-
-//     // history.push(`/spots/${currSpot}`);
-//     // {<Redirect to="/" />}
-//     //   setRemove(true)
-//     // dispatch(getAllSpots());
-//     // history.push('/')
-//     //   window.location.reload(true);
-// };
-
-// useEffect(() => {
-//     dispatch(getSpotReviews(spot.id));
-//     setUpdate(false)
-//     // console.log(id.id)
-// }, [dispatch, update]);
+useEffect(() => {
+    dispatch(getSpotReviews(id));
+    setUpdate(false)
+    // console.log(id.id)
+}, [dispatch, update]);
 
 // console.log('allreviews', spotReviewsObj)
 // const reset = () => {
@@ -81,12 +59,12 @@ useEffect(() => {
 //     setStars("");
 // };
 
-if (!reviews) return null
+if (!spotReviews) return null
     return (
     
     <div id='reviewlist'>
     
-                    {setHasSubmitted && reviews.map(({ id, userId, spotId, review, stars }) => (
+                    {setHasSubmitted && spotReviews.map(({ id, userId, spotId, review, stars }) => (
     
                         <ul >
                             <li className='userId: '>
@@ -119,3 +97,23 @@ if (!reviews) return null
 }
 
 export default ReviewDisplay;
+// ================== delete Review ==================
+// const deleteReview =  (e) => {
+//     // e.preventDefault();
+//     console.log('befor ')
+//     const id = e.target.getAttribute("value")
+
+//     // const id = obj
+//     // const id  = e.getAttribute('value')
+//     console.log('button Id', id)
+//      dispatch(deleteReview(parseInt(id)))
+//     setRemove(true)
+
+
+//     // history.push(`/spots/${currSpot}`);
+//     // {<Redirect to="/" />}
+//     //   setRemove(true)
+//     // dispatch(getAllSpots());
+//     // history.push('/')
+//     //   window.location.reload(true);
+// };

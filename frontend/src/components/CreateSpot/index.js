@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { createSpot } from '../../store/spot';
 import { Redirect, useParams } from 'react-router-dom';
 import { createImage } from '../../store/spot';
-
+import { getSpotBySpotId } from '../../store/spot';
 const CreateSpot = ({ spot, formType }) => {
     const { id } = useSelector(state => state.session.user)
     const history = useHistory();
@@ -60,11 +60,15 @@ const CreateSpot = ({ spot, formType }) => {
             description,
             price,
         };
+     console.log("this is showing")
+        const newSpot = await dispatch(createSpot(spot))
+                        .then((spot)=> dispatch(getSpotBySpotId(spot.id)))
+                        
 
-        const newSpot = await dispatch(createSpot(spot));
         // const newImage = await dispatch(createImage(image))
         //   if(newSpot) {
-        history.push(`/spots/${newSpot.id}`);
+            console.log("newSpot",newSpot)
+        // history.push(`/spots/${newSpot.id}`);
         reset();
         //   }
     };

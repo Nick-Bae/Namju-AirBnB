@@ -14,6 +14,7 @@ export const Spotdetail = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
+    console.log('Spot id is',id)
     const spot = useSelector(state => state.spot[id]);
     const user = useSelector(state => state.session.user)
     const review = useSelector((state) => state.review)
@@ -48,7 +49,7 @@ export const Spotdetail = () => {
         dispatch(getSpotBySpotId(id))
         .then(() => dispatch(getSpotReviews(id)))
         .then (() => setShowSpot(true))
-    }, [dispatch], review,id );
+    }, [dispatch], review );
   
     // useEffect(() => {
     //     dispatch(getSpotBySpotId(id)).then(() =>
@@ -72,13 +73,15 @@ export const Spotdetail = () => {
             <div className="spot-container">
                 {/* <div className="spot-outside"> */}
                 <div className="spot-inside">
-                    <img className="imgdetail" src={spot.image.url} />
+                    { (spot.image) &&
+                        <img className="imgdetail" src={spot?.image.url} />
+                    }
                     <div className="editDelete">
                         <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                         <button onClick={deleteReport} className="delete">Delete</button>
                         <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
                         {/* <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink> */}
-                        <ReviewFormModal spot={spot}/>
+                        <ReviewFormModal spot={spot} reviews={review}/>
                     </div>
                     <div className="maininfo">
                         <section className="maininfo-left">
@@ -125,7 +128,7 @@ export const Spotdetail = () => {
                             <Review showSpot={false} id={id} />
                         </Route>
                     </div> */}
-                    <ReviewDisplay  />
+                    <ReviewDisplay reviews={review} />
                     {/* </div> */}
                 </div>
                 {/* )} */}

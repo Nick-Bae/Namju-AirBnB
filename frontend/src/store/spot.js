@@ -58,9 +58,12 @@ export const createSpot = (payload) => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
+
+    if (response.ok) {
     const spot = await response.json();
     dispatch(create(spot));
     return spot;
+    }
 }
 
 export const createImage = (payload) => async dispatch => {

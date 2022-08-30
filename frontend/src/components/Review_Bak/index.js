@@ -1,50 +1,49 @@
-import { useState, useParams, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { getSpotReviews } from '../../store/comment';
-import { createReview } from '../../store/comment';
-import { useSelector } from 'react-redux';
-import { deleteReview } from '../../store/comment';
-import './review.css'
+// import { useState, useParams, useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { getSpotReviews } from '../../store/comment';
+// import { createReview } from '../../store/comment';
+// import { useSelector } from 'react-redux';
+// import { deleteReview } from '../../store/comment';
+// import './review.css'
 
-export const Review = (id) => {
+// export const Review = (id) => {
     // console.log("????",id)
-    const history = useHistory();
-    const dispatch = useDispatch();
-    const spotReviewsObj = useSelector(state => state.review)
-    const spotReviews = Object.values(spotReviewsObj);
-    const currSpot = id.id;
-    const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
-    const [update, setUpdate] = useState(false);
-    const [remove, setRemove] = useState(false);
-    const currentUser = useSelector(state => state.session.user)
+    // const history = useHistory();
+    // const dispatch = useDispatch();
+    // const spotReviewsObj = useSelector(state => state.review)
+    // const spotReviews = Object.values(spotReviewsObj);
+    // const currSpot = id.id;
+    // const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
+    // const [update, setUpdate] = useState(false);
+    // const [remove, setRemove] = useState(false);
+    // const currentUser = useSelector(state => state.session.user)
 
-    const [review, setReview] = useState("");
-    const [stars, setStars] = useState("");
-    const [validationErrors, setValidationErrors] = useState([]);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    // const [review, setReview] = useState("");
+    // const [stars, setStars] = useState("");
+    // const [validationErrors, setValidationErrors] = useState([]);
+    // const [hasSubmitted, setHasSubmitted] = useState(false);
 
-    useEffect(() => {
-        const errors = [];
-        if (!review.length) errors.push('Please enter your review');
-        if (!stars.length) errors.push('Please enter your stars');
-        if (stars < 0 || stars > 6) errors.push('Please enter between 0~5')
-        setValidationErrors(errors);
-    }, [review, stars,])
+    // useEffect(() => {
+    //     const errors = [];
+    //     if (!review.length) errors.push('Please enter your review');
+    //     if (!stars.length) errors.push('Please enter your stars');
+    //     if (stars < 0 || stars > 6) errors.push('Please enter between 0~5')
+    //     setValidationErrors(errors);
+    // }, [review, stars,])
 
     // ============ create new review======================
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!currentUser) return alert ("Please log in")
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     if (!currentUser) return alert ("Please log in")
 
-        const report = { review, stars, currSpot };
+    //     const report = { review, stars, currSpot };
 
-        // console.log('report????',report)
-        setUpdate(true)
-        dispatch(createReview(report));
-        history.push(`/spots/${currSpot}`);
-        reset();
-    };
+    //     setUpdate(true)
+    //     dispatch(createReview(report));
+    //     history.push(`/spots/${currSpot}`);
+    //     reset();
+    // };
 
 
     // ================== delete Review ==================
@@ -68,23 +67,23 @@ export const Review = (id) => {
     //     //   window.location.reload(true);
     // };
 
-    useEffect(() => {
-        dispatch(getSpotReviews(id.id));
-        setUpdate(false)
-        // console.log(id.id)
-    }, [dispatch, update]);
+    // useEffect(() => {
+    //     // dispatch(getSpotReviews(id.id));
+    //     setUpdate(false)
+    //     // console.log(id.id)
+    // }, [dispatch, update]);
 
-    // console.log('allreviews', spotReviewsObj)
-    const reset = () => {
-        setReview("");
-        setStars("");
-    };
+    // // console.log('allreviews', spotReviewsObj)
+    // const reset = () => {
+    //     setReview("");
+    //     setStars("");
+    // };
 
-    if (!spotReview) return null
+    // if (!spotReview) return null
 
-    return (
-        <section>
-            <form onSubmit={handleSubmit} >
+    // return (
+        // <section>
+            {/* <form onSubmit={handleSubmit} >
                 <div id="review">
                     <label>
                         Review
@@ -107,11 +106,11 @@ export const Review = (id) => {
                     </label>
                 </div>
                 <button type="submit"> Submit </button>
-            </form>
+            </form> */}
 
-            <div>
+            // <div>
 
-                {spotReview.map(({ id, userId, spotId, review, stars }) => (
+                {/* {spotReview.map(({ id, userId, spotId, review, stars }) => (
 
                     <ul >
                         <li className='userId: '>
@@ -138,10 +137,10 @@ export const Review = (id) => {
                         // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
                         }} className="delete" >delete</button>
                     </ul>
-                ))}
-            </div>
-        </section>
-    );
-}
+                ))} */}
+            // </div>
+        // </section>
+    // );
+// }
 
-export default Review
+// export default Review

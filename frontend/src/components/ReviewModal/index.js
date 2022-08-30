@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { Modal } from '../../context/Modal';
-import ReviewForm from '../Review';
-import { getSpotReviews } from '../../store/comment';
+import ReviewForm from './ReviewForm';
+// import { getSpotReviews } from '../../store/comment';
 import { getSpotBySpotId } from '../../store/spot';
 
-function ReviewFormModal({spot}) {
+function ReviewFormModal({spot, reviews}) {
   const dispatch = useDispatch();
+  // const reviews = useSelector((state) => state.reviews);
+  // console.log("reviews",reviews)
+
   const [showModal, setShowModal] = useState(false);
   
   // const reviews = useSelector(state=>state.reviews)
   
   // console.log("reviewformModal",spot)
   // console.log("reviews from useSelector",reviews)
-  useEffect(() => {
-    dispatch(getSpotBySpotId(spot.id));
-    dispatch(getSpotReviews(spot.id));
-    // .then(() => dispatch (getAllSpots()))
-}, [dispatch, spot.id]);
+//   useEffect(() => {
+//     dispatch(getSpotBySpotId(spot.id));
+//     dispatch(getSpotReviews(spot.id));
+// }, [dispatch, spot.id]);
 
   useEffect(()=> {
     setShowModal(false);
@@ -25,14 +27,14 @@ function ReviewFormModal({spot}) {
 // console.log("inside useeffect",spot.id)
       // dispatch(getSpotReviews(spot.id));
     // }
-  },[dispatch]);
+  },[reviews]);
 
   return (
     <div className='review'>
       <button className="reviewbt" onClick={() => setShowModal(true)}>Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewForm />
+          <ReviewForm spot={spot} />
         </Modal>
       )}
     </div>
