@@ -11,20 +11,16 @@ const SpotList = () => {
   const dispatch = useDispatch();
   const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
-  const [showSpot, setShowSpot] = useState(true);
   const user = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
-  const [showForm, setShowForm] = useState(false);
 
 //   onClick={() => {
     const login = (!user) ? false : true
 //     // if (!login) return ("please log in first")
-// }} 
-
 
   return (
     <main>
@@ -45,7 +41,6 @@ const SpotList = () => {
 
           <div className='imglayout'>
             {spots.map((spot) => (
-
               <ul >
 
                 <Link to={`/spots/${spot.id}`}>
@@ -60,7 +55,7 @@ const SpotList = () => {
                     </tr>
                     <tr>
                       <td className='smalltitle'>
-                        <Link to={`/spots/${spot.id}`} spots={spots} className="spotname" >{spot.name}, {spot.state}</Link>
+                        <Link to={`/spots/${spot.id}`}  className="spotname" >{spot.name}, {spot.state}</Link>
                       </td>
                       <td className='rating'>
                         ★ {spot.avgRating}

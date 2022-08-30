@@ -1,37 +1,60 @@
 import { csrfFetch } from './csrf';
 
-const ADD_ONE = 'review/ADD_ONE';
+const LOAD_ONE = 'review/LOAD_ONE';
 const LOAD = 'review/LOAD';
 const DELETE = 'review/DELETE';
-const UPDATE = 'review/UPDATE'
+const UPDATE = 'review/UPDATE';
+const CREATE ='review/CREATE';
 
- const addOne = review => ({
-    type: ADD_ONE,
-    review
-});
- const load = (reviews) => ({
+const load = (reviews) => ({
     type: LOAD,
     reviews
 });
- const deleteOne = reviewId => ({
+const loadOne = reviews => ({
+    type: LOAD_ONE,
+    reviews
+});
+const deleteOne = reviewId => ({
     type: DELETE,
     reviewId
 });
- const update = review => ({
+const update = review => ({
     type: UPDATE,
     review
 });
 
-export const getSpotReviews = (id) => async dispatch => {
-    const response = await csrfFetch(`/api/spots/${id}/reviews`);
-    // console.log("review where is it??",id)
+const create = review =>({
+    type:CREATE,
+    review
+})
+
+export const getAllReviews = () => async (dispatch) => {
+    const response = await csrfFetch("/api/reviews");
 
     if (response.ok) {
         const reviews = await response.json();
-        dispatch(load(reviews.Reviews));
+        dispatch(load(reviews));
+
+    };
+};
+
+
+
+export const getSpotReviews = (id) => async dispatch => {
+    console.log("this is for getting spot reviews")
+
+    const response = await csrfFetch(`/api/spots/${id}/reviews`);
+    // console.log(response)
+
+    if (response.ok) {
+        const reviews = await response.json();
+        // console.log(reviews.message)
+        // if (reviews.message !== "No Review yet"){
+        // dispatch(loadOne(reviews.Reviews));
+        dispatch(load(reviews.reviews));
+        // }
         return reviews
-    } else {
-        return response;
+
     }
 };
 
@@ -44,7 +67,7 @@ export const createReview = (report) => async dispatch => {
     });
     const review = await response.json();
     // console.log(review)
-    dispatch(addOne(review));
+    dispatch(create(review));
     return review;
 }
 
@@ -80,17 +103,24 @@ export const reviewReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
         case LOAD:
-            const reviews = action.reviews
+            const allReviews = action.reviews
             // console.log('state',reviews)
+            allReviews.forEach((review) => {
+                newState[review.id] = review
+            })
+            return newState;
+        case LOAD_ONE:
+            const reviews = action.reviews
+            console.log(reviews)
             reviews.forEach((review) => {
                 newState[review.id] = review
             })
             return newState;
-        case ADD_ONE:
-            newState[action.review.id] = action.review;
-            return newState;
+        case CREATE: 
+            newState[action.review.id] = action.review
+            return newState   
         case UPDATE:
-              newState[action.review.id] = action.review
+            newState[action.review.id] = action.review
             return newState;
         case DELETE:
             delete newState[action.reviewId]

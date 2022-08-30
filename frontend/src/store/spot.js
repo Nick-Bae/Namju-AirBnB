@@ -1,12 +1,17 @@
 import { csrfFetch } from './csrf';
 
-const ADD_ONE = 'spot/ADD_ONE';
 const LOAD = 'spot/LOAD';
+const READ = 'spot/ADD_ONE';
+const CREATE = 'spot/ADD_ONE'
 const DELETE = 'spot/DELETE';
 const UPDATE = 'spot/UPDATE'
 
-const addOne = spot => ({
-    type: ADD_ONE,
+const read = spotId => ({
+    type: READ,
+    spotId
+});
+const create = spot => ({
+    type: CREATE,
     spot
 });
 const load = (spots) => ({
@@ -36,6 +41,17 @@ export const getAllSpots = () => async dispatch => {
     }
 };
 
+export const getSpotBySpotId =spotId =>async dispatch =>{
+    console.log("getSpotBySpotId is running")
+    const response = await csrfFetch(`/api/spots/${spotId}`)
+
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(read(spot));
+        return spot;
+    };
+}
+
 export const createSpot = (payload) => async dispatch => {
     const response = await csrfFetch(`/api/spots`, {
         method: 'POST',
@@ -43,7 +59,7 @@ export const createSpot = (payload) => async dispatch => {
         body: JSON.stringify(payload)
     });
     const spot = await response.json();
-    dispatch(addOne(spot));
+    dispatch(create(spot));
     return spot;
 }
 
@@ -55,7 +71,7 @@ export const createImage = (payload) => async dispatch => {
         body: JSON.stringify(payload)
     });
     const image = await response.json();
-    dispatch(addOne(image));
+    dispatch(create(image));
     return image;
 }
 
@@ -89,14 +105,17 @@ export const deleteSpot = (id) => async (dispatch) => {
 export const spotReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
-        case ADD_ONE:
-            newState[action.spot.id] = action.spot;
-            return newState;
         case LOAD:
             const spots = action.spots.Spots
             spots.forEach((spot) => {
                 newState[spot.id] = spot
             })
+            return newState;
+        case READ:
+            newState[action.spotId.id] = action.spotId;
+            return newState;
+        case CREATE:
+            newState[action.spot.id] = action.spot;
             return newState;
         case UPDATE:
             newState[action.spot.id] = action.spot

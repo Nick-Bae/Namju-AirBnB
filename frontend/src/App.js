@@ -32,9 +32,9 @@ function App() {
             {/* <CreateSpotForm /> */}
           </Route>
 
-          <Route path='/:spot.id/'>
+          {/* <Route path='/:spot.id/'>
             <AddImage />
-          </Route>
+          </Route> */}
 
           <Route exact path='/spots/:id'>
             <Spotdetail />

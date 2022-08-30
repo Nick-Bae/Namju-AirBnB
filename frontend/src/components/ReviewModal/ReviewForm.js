@@ -5,15 +5,16 @@ import { getSpotReviews } from '../../store/comment';
 import { createReview } from '../../store/comment';
 import { useSelector } from 'react-redux';
 import { deleteReview } from '../../store/comment';
+import { getAllSpots } from '../../store/spot';
 import './review.css'
 
-export const ReviewForm = ({spot}) => {
-    // console.log("????",id)
+export const ReviewForm = () => {
+    // console.log("????",spot)
     const history = useHistory();
     const dispatch = useDispatch();
     const spotReviewsObj = useSelector(state => state.review)
     const spotReviews = Object.values(spotReviewsObj);
-    const currSpot = spot.id;
+    // const currSpot = spot.id;
     const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
     const [update, setUpdate] = useState(false);
     const currentUser = useSelector(state => state.session.user)
@@ -38,8 +39,8 @@ export const ReviewForm = ({spot}) => {
         e.preventDefault();
         if (!currentUser) return alert("Please log in")
 
-        const isReview=spotReview.find(review=> review.userId === currentUser.id)
-         if (isReview) return alert ("You've already left a review on this spot")
+        // const isReview=spotReview.find(review=> review.userId === currentUser.id)
+        //  if (isReview) return alert ("You've already left a review on this spot")
         setHasSubmitted(true);
         setUpdate(true);
         if (validationErrors.length) return alert(`Cannot Submit`);
@@ -71,15 +72,17 @@ export const ReviewForm = ({spot}) => {
 
     useEffect(() => {
         console.log("useeffect ",currSpot)
+        
         dispatch(getSpotReviews(currSpot));
-    }, [ update]);
+        dispatch(getAllSpots())
+    }, [dispatch, update]);
     
   
     if (!spotReview) return null
 
     return (
         <section>
-            {/* <h2>Errors</h2> */}
+            {console.log(spot)}
             {hasSubmitted && validationErrors.length > 0 && (
                 <div id="errormessage">
                     The following errors were found:

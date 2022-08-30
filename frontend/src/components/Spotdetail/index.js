@@ -1,33 +1,34 @@
-import { getAllSpots } from "../../store/spot"
+import { getAllSpots, getSpotBySpotId } from "../../store/spot"
 import { useParams, Link, Route, Redirect, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { EditSpot } from "../../store/spot";
 import { useDispatch } from 'react-redux';
 import { deleteSpot } from "../../store/spot";
 import './spotdetail.css'
 import { useHistory } from 'react-router-dom';
-import { SpotList } from '../Spots/index'
-import { Review } from '../Review';
 import ReviewFormModal from "../ReviewModal";
+import ReviewDisplay from "../ReviewModal/ReviewDisplay";
+import { getSpotReviews } from "../../store/comment";
 
-export const Spotdetail = ({ }) => {
+export const Spotdetail = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
-    const [showSpot, setShowSpot] = useState(true);
     const user = useSelector(state => state.session.user)
+    const review = useSelector((state) => state.review)
+    const [showSpot, setShowSpot] = useState(false);
+    // const reviews = useSelector((state) => Object.values(state.reviews));
+    console.log("spot detail",spot)
+    // const openSpot = () => {
+    //     if (!showSpot) return;
+    //     setShowSpot(true);
+    // }
 
-    const openSpot = () => {
-        if (!showSpot) return;
-        setShowSpot(true);
-    }
-
-    useEffect(() => {
-        if (showSpot) return;
-        setShowSpot(false);
-    }, [showSpot]);
+    // useEffect(() => {
+    //     if (showSpot) return;
+    //     setShowSpot(false);
+    // }, [showSpot]);
 
     const deleteReport = async (e) => {
         const login = (!user) ? alert("Please log in") : true
@@ -44,15 +45,23 @@ export const Spotdetail = ({ }) => {
     };
 
     useEffect(() => {
-        dispatch(getAllSpots());
-    }, [dispatch]);
+        dispatch(getSpotBySpotId(id))
+        .then(() => dispatch(getSpotReviews(id)))
+        .then (() => setShowSpot(true))
+    }, [dispatch], review,id );
+  
+    // useEffect(() => {
+    //     dispatch(getSpotBySpotId(id)).then(() =>
+    //     dispatch(getSpotReviews(id)))
+    //     .then(() => setShowSpot(true));
+    // }, [ dispatch, id ]);
 
     if (!spot) return null;
-    return (
+    return    showSpot&&  (
         // <body className="detailview">
-        <section>
+             <section>
             <div>
-                <div className="title">{spot.name}</div>
+                <div className="title">{spot?.name}</div>
             </div>
 
             <ul className="breifinfo">
@@ -63,12 +72,12 @@ export const Spotdetail = ({ }) => {
             <div className="spot-container">
                 {/* <div className="spot-outside"> */}
                 <div className="spot-inside">
-                    <img className="imgdetail" src={spot.previewImage} />
+                    <img className="imgdetail" src={spot.image.url} />
                     <div className="editDelete">
                         <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                         <button onClick={deleteReport} className="delete">Delete</button>
                         <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
-                        <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink>
+                        {/* <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink> */}
                         <ReviewFormModal spot={spot}/>
                     </div>
                     <div className="maininfo">
@@ -111,11 +120,12 @@ export const Spotdetail = ({ }) => {
                         </section>
 
                     </div>
-                    <div className="review">
+                    {/* <div className="review">
                         <Route path={`/spots/${id}`}>
                             <Review showSpot={false} id={id} />
                         </Route>
-                    </div>
+                    </div> */}
+                    <ReviewDisplay  />
                     {/* </div> */}
                 </div>
                 {/* )} */}

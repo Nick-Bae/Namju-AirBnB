@@ -278,47 +278,60 @@ router.get('/current', requireAuth, async (req, res) => {
 //=================Get details of a Spot from an id (56:23)==============
 router.get('/:spotId', async (req, res) => {
 
-    let detail = await Spot.findByPk(req.params.spotId)
+    let spot = await Spot.findByPk(req.params.spotId)
 
-    if (!detail) {
+    if (!spot) {
         res.status(404)
         res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
     }
-    const revAvg = await Review.findAll({
+
+    
+  const numReviews = await Review.count({
+    where: {
+      spotId: req.params.spotId
+    }
+  })
+    const avgRating = await Review.findAll({
         where: { spotId: req.params.spotId },
-        attributes: {
-            include: [
-                [sequelize.fn('COUNT', sequelize.col("review")), "numReviews"],
+        attributes: [
+                // [sequelize.fn('COUNT', sequelize.col("review")), "numReviews"],
                 [sequelize.fn('AVG', sequelize.col("stars")), "avgRating"]
-            ]
-        }, group: ['Review.id']
-    })
+            ],
+            raw: true,
+       })
 
     const image = await Image.findOne({
         where: { spotId: req.params.spotId },
-        atrributes: { exclude: ['previewImage', 'spotId', 'reviewId', 'userId'] }
+        atrributes: ['url']
     })
     // res.json(detail)
     const owner = await User.findOne({
-        where: { id: detail.ownerId },
+        where: { id: spot.ownerId },
         attributes: { exclude: ['username'] }
     })
-    let response = {
-        id: detail.id, ownerId: detail.ownerId,
-        address: detail.address, city: detail.city,
-        state: detail.state, country: detail.country,
-        lat: detail.lat, lng: detail.lng, name: detail.name,
-        description: detail.description, price: detail.price,
-        createAt: detail.createdAt, updateAt: detail.updatedAt,
-        numReviews: revAvg[0].dataValues.numReviews,
-        avgRating: Number(Number(revAvg[0].dataValues.avgRating).toFixed(1)),
-        Images: detail = [{ id: image.id, imageableId: image.spotId, url: image.url }],
-        Owner: detail = owner,
-    }
-    res.json(response)
+
+    const spotDetail = spot.toJSON();
+    spotDetail.numReviews = numReviews;
+    spotDetail.avgRating = Number(avgRating[0].avgRating);
+    // spotDetail.avgRating = parseFloat(avgRating[0].avgRating);
+    spotDetail.image = image;
+    spotDetail.Owner = owner;
+    // let response = {
+    //     id: detail.id, ownerId: detail.ownerId,
+    //     address: detail.address, city: detail.city,
+    //     state: detail.state, country: detail.country,
+    //     lat: detail.lat, lng: detail.lng, name: detail.name,
+    //     description: detail.description, price: detail.price,
+    //     createAt: detail.createdAt, updateAt: detail.updatedAt,
+    //     numReviews: revAvg[0].dataValues.numReviews,
+    //     avgRating: Number(Number(revAvg[0].dataValues.avgRating).toFixed(1)),
+    //     Images: detail = [{ id: image.id, imageableId: image.spotId, url: image.url }],
+    //     Owner: detail = owner,
+    // }
+    res.json(spotDetail)
 
 })
 
@@ -454,20 +467,20 @@ router.delete('/:spotId', restoreUser,requireAuth, async (req, res) => {
 
 
 // ===========Get all Reviews by a Spot's id============
-router.get('/:spotId/reviews', requireAuth, async (req, res) => {
-    const reviewSpot = await Review.findAll({
-        where: { spotId: req.params.spotId },
-        include: [{ model: User, attributes: ['id', 'firstName', 'lastName'] },
-        { model: Image, attributes: ['id', ['spotId', 'imageableId'], 'url'] }]
-    })
-
-    if (!reviewSpot || reviewSpot.length === 0) {
-        res.status(404).json({
-            "message": "Spot couldn't be found",
-            "statusCode": 404
-        })
+router.get('/:spotId/reviews', async (req, res,next) => {
+    
+    
+    const reviewSpot = await Spot.findByPk(req.params.spotId);
+    
+    if (!reviewSpot ) {
+        res.status(404).json({message: "Spot couldn't be found"})
     } else {
-        res.json({ Reviews: reviewSpot })
+        const reviews = await Review.findAll({
+            where: { spotId: req.params.spotId },
+            include: [{ model: User, attributes: ['id', 'firstName', 'lastName'] },
+            { model: Image, attributes: ['id', ['spotId', 'imageableId'], 'url'] }]
+        })
+        res.json({  reviews })
     }
 })
 

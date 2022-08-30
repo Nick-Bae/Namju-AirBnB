@@ -13,7 +13,13 @@ const validateReview = [
     handleValidationErrors
 ]
 
+//get all reviews
+router.get('/', async (req, res) => {
+    const reviews = await Review.findAll()
+    res.json(reviews)
+  })
 
+  
 //==============Get all Reviews of the Current User=============
 router.get('/current', requireAuth, async (req, res) => {
     const { user } = req;
