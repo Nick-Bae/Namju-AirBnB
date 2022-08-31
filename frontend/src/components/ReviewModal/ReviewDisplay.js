@@ -45,7 +45,8 @@ const [stars, setStars] = useState("");
 const [spotId, setSpotId]= useState('')
 const [validationErrors, setValidationErrors] = useState([]);
 const [hasSubmitted, setHasSubmitted] = useState(false);
-
+// console.log("ownerId",revi)
+// const permission = currentUser?.id === spot.ownerId
 const spotReview = onlyspotReviews.filter(review => (review.spotId === (spot.id)))
 
 useEffect(() => {
@@ -101,20 +102,25 @@ if (!spotReview) return null
                             <li className='review'>
                                 Stars: {stars}
                             </li>
-    
-                            <button value={id} onClick={() => {
-                                const login = (!currentUser) ? alert("Please log in") : true
-    
-                                if (login) {
-                                    const deletePermission = userId !== currentUser.id ? alert("No Permission to delete") : true
-                                    if (deletePermission) {
-                                        dispatch(deleteReview(parseInt(id)));
-                                        // setRemove(true)
-                                        // history.push(`/spots/${currSpot}`);
-                                    }
-                                }
-                                // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
-                            }} className="delete" >delete</button>
+                            {
+                                (userId === currentUser?.id) &&      
+                             <li>
+
+                                 <button value={id} onClick={() => {
+                                     const login = (!currentUser) ? alert("Please log in") : true
+         
+                                     if (login) {
+                                         const deletePermission = userId !== currentUser?.id ? alert("No Permission to delete") : true
+                                         if (deletePermission) {
+                                             dispatch(deleteReview(parseInt(id)));
+                                             // setRemove(true)
+                                             // history.push(`/spots/${currSpot}`);
+                                         }
+                                     }
+                                     // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
+                                 }} className="delete" >delete</button>
+                             </li> 
+                            }
                         </ul>
                     ))}
                 </div>

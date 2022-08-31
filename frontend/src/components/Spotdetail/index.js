@@ -18,7 +18,7 @@ export const Spotdetail = () => {
     const user = useSelector(state => state.session.user)
 // console.log("spot information",spot.ownerId)
 // console.log("user info",user.id)
-    const permission = spot.ownerId !== user.id ? false : true
+    const permission = spot?.ownerId !== user?.id ? false : true
     console.log("permission",permission)
     const review = useSelector((state) => state.review)
     const [showSpot, setShowSpot] = useState(false);
@@ -91,10 +91,10 @@ export const Spotdetail = () => {
                         <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                         <button onClick={deleteReport} className="delete">Delete</button>
                         <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
-                        <ReviewFormModal spot={spot} />
                         
                         </>
                        }
+                       <ReviewFormModal spot={spot} />
 
                     </div>
                     <div className="maininfo">
