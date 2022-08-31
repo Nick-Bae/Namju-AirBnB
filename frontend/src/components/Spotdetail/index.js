@@ -16,6 +16,10 @@ export const Spotdetail = () => {
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
     const user = useSelector(state => state.session.user)
+// console.log("spot information",spot.ownerId)
+// console.log("user info",user.id)
+    const permission = spot.ownerId !== user.id ? false : true
+    console.log("permission",permission)
     const review = useSelector((state) => state.review)
     const [showSpot, setShowSpot] = useState(false);
     const [owner, setOwner]=useState(true);
@@ -34,17 +38,17 @@ export const Spotdetail = () => {
     // }, [showSpot]);
 
     // const login = (!user) ? alert("Please log in") : true
-    // const permission = spot.ownerId !== user.id ? alert("No permission to delete") : true
     // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
 
     const deleteReport = async (e) => {
 
-        // if (login) {
+        // if (!user) {
+            // return alert("No permission")
         //     if (permission) {
                 e.preventDefault();
                 await dispatch(deleteSpot(id))
                 history.push('/')
-        //     }
+            // }
         // }
     };
 
@@ -81,17 +85,17 @@ export const Spotdetail = () => {
                         <img className="imgdetail" src={spot?.image.url} />
                     }
                     <div className="editDelete">
-                        {(owner )&& 
+                        {(user )&& 
+                        (permission) &&
                         <>
                         <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                         <button onClick={deleteReport} className="delete">Delete</button>
                         <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
+                        <ReviewFormModal spot={spot} />
                         
                         </>
                        }
 
-                        {/* <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink> */}
-                        <ReviewFormModal spot={spot} />
                     </div>
                     <div className="maininfo">
                         <section className="maininfo-left">
