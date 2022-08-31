@@ -88,11 +88,11 @@ useEffect(() => {
 if (!spotReview) return null
     return (
     
-    <div id='reviewlist'>
+    <div >
     
                     {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars }) => (
     
-                        <ul >
+                        <ul id='reviewlist'>
                             <li className='userId: '>
                                 User Id: {userId}
                             </li>

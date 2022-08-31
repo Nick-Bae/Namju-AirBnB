@@ -178,4 +178,6 @@ margin: auto;
     display: flex;
     padding:0px;
   }
-
+section {
+  margin-left: 50xp;
+}
