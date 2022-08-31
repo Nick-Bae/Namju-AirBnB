@@ -12,8 +12,10 @@ export const ReviewForm = ({spot}) => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const spotReviewsObj = useSelector(state => state.review)
-    const spotReviews = Object.values(spotReviewsObj);
+    const spotReviewsObj = useSelector(state => state.reviews)
+
+    console.log("how many reviews?",spotReviewsObj)
+    // const spotReviews = Object.values(spotReviewsObj);
     // const currSpot = spot.id;
     // const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
     const [update, setUpdate] = useState(false);
@@ -25,6 +27,7 @@ export const ReviewForm = ({spot}) => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     // const [errors, setErrors] = useState([]);
     // let message = '';
+    // console.log("spotreviews", spotReviews)
     
     useEffect(() => {
         const errors = [];
@@ -39,8 +42,9 @@ export const ReviewForm = ({spot}) => {
         e.preventDefault();
         if (!currentUser) return alert("Please log in")
 
-        const isReview=spotReviews.find(review=> review.userId === currentUser.id)
-         if (isReview) return alert ("You've already left a review on this spot")
+        // const isReview=spotReviews.find(review=> review.userId === currentUser.id)
+        //  console.log("isReview",isReview)
+        //  if (isReview) return alert ("You've already left a review on this spot")
 
         setHasSubmitted(true);
         setUpdate(true);
@@ -60,14 +64,17 @@ export const ReviewForm = ({spot}) => {
         await dispatch(createReview(report))
             .then(()=>dispatch(getSpotBySpotId(spot.id)))
             .then(()=>dispatch(getSpotReviews(spot.id)))
+            // .then(()=>review=""; stars="";)
         //
         // setUpdate(true)
         // const createRe = await dispatch(createReview(report));
-        history.push(`/spots/${spot.id}`);
+
+        // history.push(`/spots/${spot.id}`);
 
      
     };
-
+   
+    
     useEffect(() => {
         // console.log("useeffect ",currSpot)
         
@@ -76,7 +83,7 @@ export const ReviewForm = ({spot}) => {
     }, [dispatch, update]);
     
   
-    if (!spotReviews) return null
+    // if (!spotReviews) return null
 
     return (
         <section>

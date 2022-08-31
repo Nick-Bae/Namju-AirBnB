@@ -6,9 +6,9 @@ const CREATE = 'spot/ADD_ONE'
 const DELETE = 'spot/DELETE';
 const UPDATE = 'spot/UPDATE'
 
-const read = spotId => ({
+const read = spot => ({
     type: READ,
-    spotId
+    spot
 });
 const create = spot => ({
     type: CREATE,
@@ -27,8 +27,6 @@ const update = spot => ({
     spot
 });
 
-
-
 // export const getSpots =(state)=>Object.values(state.spot)
 
 export const getAllSpots = () => async dispatch => {
@@ -42,11 +40,11 @@ export const getAllSpots = () => async dispatch => {
 };
 
 export const getSpotBySpotId =spotId =>async dispatch =>{
-    console.log("getSpotBySpotId is running")
     const response = await csrfFetch(`/api/spots/${spotId}`)
 
     if (response.ok) {
         const spot = await response.json();
+
         dispatch(read(spot));
         return spot;
     };
@@ -115,7 +113,7 @@ export const spotReducer = (state = {}, action) => {
             })
             return newState;
         case READ:
-            newState[action.spotId.id] = action.spotId;
+            newState[action.spot.id] = action.spot;
             return newState;
         case CREATE:
             newState[action.spot.id] = action.spot;

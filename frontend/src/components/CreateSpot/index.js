@@ -61,14 +61,20 @@ const CreateSpot = ({ spot, formType }) => {
             price,
         };
      console.log("this is showing")
+     console.log("before dispatch",spot)
         const newSpot = await dispatch(createSpot(spot))
-                        .then((spot)=> dispatch(getSpotBySpotId(spot.id)))
+                        // .then((res)=> {
+                        //     // const newSpot = res.json();
+                        //     // newSpot.then((spot)=>{
+                        //         dispatch(getSpotBySpotId(res.id))
+                        //     })
+                        
+                        // console.log("before dispatch gettting spot by id",res.id), 
                         
 
         // const newImage = await dispatch(createImage(image))
         //   if(newSpot) {
-            console.log("newSpot",newSpot)
-        // history.push(`/spots/${newSpot.id}`);
+        history.push(`/spots/${newSpot.id}`);
         reset();
         //   }
     };

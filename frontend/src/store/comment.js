@@ -51,7 +51,7 @@ export const getSpotReviews = (id) => async dispatch => {
         // console.log(reviews.message)
         // if (reviews.message !== "No Review yet"){
         // dispatch(loadOne(reviews.Reviews));
-        dispatch(load(reviews.reviews));
+        dispatch(loadOne(reviews.reviews));
         // }
         return reviews
 
@@ -111,7 +111,6 @@ export const reviewReducer = (state = {}, action) => {
             return newState;
         case LOAD_ONE:
             const reviews = action.reviews
-            console.log(reviews)
             reviews.forEach((review) => {
                 newState[review.id] = review
             })

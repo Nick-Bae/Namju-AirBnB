@@ -14,13 +14,15 @@ export const Spotdetail = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
-    console.log('Spot id is',id)
     const spot = useSelector(state => state.spot[id]);
     const user = useSelector(state => state.session.user)
     const review = useSelector((state) => state.review)
     const [showSpot, setShowSpot] = useState(false);
+    const [owner, setOwner]=useState(true);
     // const reviews = useSelector((state) => Object.values(state.reviews));
-    console.log("spot detail",spot)
+    // console.log("spot detail",spot.ownerId)
+
+    // if (spot.onwerId)
     // const openSpot = () => {
     //     if (!showSpot) return;
     //     setShowSpot(true);
@@ -31,24 +33,26 @@ export const Spotdetail = () => {
     //     setShowSpot(false);
     // }, [showSpot]);
 
-    const deleteReport = async (e) => {
-        const login = (!user) ? alert("Please log in") : true
+    // const login = (!user) ? alert("Please log in") : true
+    // const permission = spot.ownerId !== user.id ? alert("No permission to delete") : true
+    // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
 
-        if (login) {
-            const permission = spot.ownerId !== user.id ? alert("No permission to delete") : true
-            if (permission) {
+    const deleteReport = async (e) => {
+
+        // if (login) {
+        //     if (permission) {
                 e.preventDefault();
                 await dispatch(deleteSpot(id))
                 history.push('/')
-                //   window.location.reload(true);
-            }
-        }
+        //     }
+        // }
     };
 
     useEffect(() => {
         dispatch(getSpotBySpotId(id))
         .then(() => dispatch(getSpotReviews(id)))
         .then (() => setShowSpot(true))
+        // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
     }, [dispatch], review );
   
     // useEffect(() => {
@@ -77,11 +81,17 @@ export const Spotdetail = () => {
                         <img className="imgdetail" src={spot?.image.url} />
                     }
                     <div className="editDelete">
+                        {(owner )&& 
+                        <>
                         <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                         <button onClick={deleteReport} className="delete">Delete</button>
                         <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
+                        
+                        </>
+                       }
+
                         {/* <NavLink className="write" to={`/spots/${id}`} onClick={openSpot}>Review</NavLink> */}
-                        <ReviewFormModal spot={spot} reviews={review}/>
+                        <ReviewFormModal spot={spot} />
                     </div>
                     <div className="maininfo">
                         <section className="maininfo-left">
@@ -128,7 +138,7 @@ export const Spotdetail = () => {
                             <Review showSpot={false} id={id} />
                         </Route>
                     </div> */}
-                    <ReviewDisplay reviews={review} />
+                    <ReviewDisplay reviews={review} spot={spot}/>
                     {/* </div> */}
                 </div>
                 {/* )} */}
