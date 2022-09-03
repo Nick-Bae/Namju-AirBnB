@@ -42,7 +42,6 @@ function ProfileButton({ user }) {
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
-          {/* <Link> <CreateSpot />Create Spot </Link> */}
         </ul>
       )}
     </div>

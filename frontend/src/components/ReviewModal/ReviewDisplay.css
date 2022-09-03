@@ -1,9 +1,15 @@
-#reviewlist{
+/* #reviewlist{
     margin-left: 150px;
     padding:50px;
-}
+} */
 
-.delete{
-    color:black;
+.deleteBt{
+    color:var(--button-color);
+    background-color: white;
+    text-decoration: none;
+    border-radius:5px;
+    text-decoration: none;
+    padding: 5px;
+    border:  1px solid var(--grey-light-color);
 
 }

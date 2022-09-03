@@ -8,7 +8,7 @@ import { deleteReview } from '../../store/comment';
 import './review.css'
 import { getSpotBySpotId } from '../../store/spot';
 import { getAllImages } from '../../store/image';
-// import { getAllReviews } from '../../store/comment';
+import './ReviewDisplay.css'
 
 export const ReviewDisplay = ({spot, reviews}) => {
     
@@ -118,7 +118,7 @@ if (!spotReview) return null
                                          }
                                      }
                                      // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
-                                 }} className="delete" >delete</button>
+                                 }} className="deleteBt" >delete</button>
                              </li> 
                             }
                         </ul>

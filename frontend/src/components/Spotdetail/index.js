@@ -142,7 +142,10 @@ export const Spotdetail = () => {
                             <Review showSpot={false} id={id} />
                         </Route>
                     </div> */}
+                    <div id="reviews">
+
                     <ReviewDisplay reviews={review} spot={spot}/>
+                    </div>
                     {/* </div> */}
                 </div>
                 {/* )} */}

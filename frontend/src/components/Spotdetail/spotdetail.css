@@ -179,5 +179,9 @@ margin: auto;
     padding:0px;
   }
 section {
-  margin-left: 50xp;
+  /* margin-left: 50xp; */
+}
+
+#reviews{
+  margin-left: 50px;
 }

@@ -12,12 +12,15 @@ export const ReviewForm = ({spot}) => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const spotReviewsObj = useSelector(state => state.reviews)
-
-    console.log("how many reviews?",spotReviewsObj)
-    // const spotReviews = Object.values(spotReviewsObj);
+    const spotReviews = useSelector(state =>  Object.values(state.review))
+    const user = useSelector(state=> state.session.user)
+    const {spotId}= useParams();
+    // console.log("how many reviews?",spotReviewsObj)
     // const currSpot = spot.id;
-    // const spotReview = spotReviews.filter(spot => (spot.spotId === parseInt(currSpot)))
+    const spotReview = spotReviews.filter(review=> review.spotId ===spot.id)
+    const isReview = spotReview.filter(review => review.userId === user.id )
+    console.log("isreview",isReview)
+
     const [update, setUpdate] = useState(false);
     const currentUser = useSelector(state => state.session.user)
 
@@ -25,7 +28,7 @@ export const ReviewForm = ({spot}) => {
     const [stars, setStars] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    // const [errors, setErrors] = useState([]);
+    const [close, setClose] = useState(true);
     // let message = '';
     // console.log("spotreviews", spotReviews)
     
@@ -42,12 +45,13 @@ export const ReviewForm = ({spot}) => {
         e.preventDefault();
         if (!currentUser) return alert("Please log in")
 
-        // const isReview=spotReviews.find(review=> review.userId === currentUser.id)
+        // const isReview=spotReview.find(review=> review.userId === currentUser.id)
         //  console.log("isReview",isReview)
-        //  if (isReview) return alert ("You've already left a review on this spot")
+         if (isReview.length>0) return alert ("You've already left a review on this spot")
 
         setHasSubmitted(true);
         setUpdate(true);
+        setClose(false)
         if (validationErrors.length) return alert(`Cannot Submit`);
 
         const report = { review, stars, spotId: spot.id };
@@ -64,8 +68,7 @@ export const ReviewForm = ({spot}) => {
         await dispatch(createReview(report))
             .then(()=>dispatch(getSpotBySpotId(spot.id)))
             .then(()=>dispatch(getSpotReviews(spot.id)))
-            // .then(()=>review=""; stars="";)
-        //
+            
         // setUpdate(true)
         // const createRe = await dispatch(createReview(report));
 
@@ -77,7 +80,7 @@ export const ReviewForm = ({spot}) => {
     
     useEffect(() => {
         // console.log("useeffect ",currSpot)
-        
+        setHasSubmitted(false);
         // dispatch(getSpotReviews(currSpot));
         // dispatch(getAllSpots())
     }, [dispatch, update]);
@@ -98,7 +101,7 @@ export const ReviewForm = ({spot}) => {
                     </ul>
                 </div>
             )}
-
+            {close && (
             <form onSubmit={handleSubmit} >
                 <div id="review">
                     <label>
@@ -123,6 +126,8 @@ export const ReviewForm = ({spot}) => {
                 </div>
                 <button type="submit"> Submit </button>
             </form>
+
+            )}
 
             
         </section>

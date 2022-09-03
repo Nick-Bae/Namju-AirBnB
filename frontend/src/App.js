@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch,NavLink } from "react-router-dom";
 // import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
@@ -11,6 +11,8 @@ import SpotList from "./components/Spots";
 import EditSpotForm from "./components/EditSpotForm";
 import CreateSpot from "./components/CreateSpot";
 import AddImage from './components/AddImage'
+import LoginFormModal from "./components/LoginFormModal";
+import LoginForm from "./components/LoginFormModal/LoginForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +23,9 @@ function App() {
 
   return (
     <>
+    <div>
       <Navigation isLoaded={isLoaded} />
+    </div>
       {isLoaded && (
         <Switch>
           <Route exact path="/">
@@ -51,6 +55,9 @@ function App() {
           </Route> */}
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/login">
+            <LoginForm />
           </Route>
           <Route paht="/spots">
             <Spots />

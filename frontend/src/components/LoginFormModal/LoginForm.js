@@ -9,11 +9,6 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  // useEffect(()=>{
-  //   const errors=[];
-  //   if (credential !== password ) errors.push('Please enter valid credential info');
-
-  // },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
