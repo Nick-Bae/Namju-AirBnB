@@ -97,7 +97,7 @@ export const ReviewDisplay = ({ spot, reviews }) => {
                     <ul id='reviewer'>
                         <li className='userId'>
                             {/* User Id: {userId} */}
-                            {User.firstName} {User.lastName}
+                            {User?.firstName} {User?.lastName}
                         </li>
                         <li className='date'>
                             {updatedAt.split('T')[0]}
