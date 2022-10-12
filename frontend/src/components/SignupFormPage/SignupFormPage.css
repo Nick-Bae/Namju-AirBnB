@@ -1,37 +1,48 @@
 .signform{
     display: flex;
     flex-direction: column;
-    width:150px;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 .email {
     display: flex;
     flex-direction: column;
-    width:150px;
-    margin-left: 5px;
 }
-.username {
+#username {
     display: flex;
     flex-direction: column;
-    width:150px;
 }
-.password {
+#password {
     display: flex;
     flex-direction: column;
-    width:150px;
 }
 .confirmname {
     display: flex;
     flex-direction: column;
-    width:150px;
-    margin-left: 5px;
 }
 .signbt{
     display: flex;
     flex-direction: column;
-    width:90px;
-    margin: 15px 0 0 5px;
+    margin: 15px 0 0 0;
 
     text-align: center;
     align-items: center;
+    border-radius: 3px;
+    border:1px solid var(--grey-light-color);
+}
+#cancel{
+    margin: 15px 0 0 0;
+    border-radius: 3px;
+    border:1px solid var(--grey-light-color);
+}
+input {
+    border-radius: 3px;
+    border:1px solid var(--grey-light-color);
+    width:150px;
+}
+button {
+    width:75px;
+}
+#button{
+    display: flex;
+    flex-direction: row;
 }

@@ -47,7 +47,7 @@ function SignupFormPage() {
           required
         />
       </label>
-      <label className="username">
+      <label id="username" className="username1">
         User name
         <input
           type="text"
@@ -74,7 +74,7 @@ function SignupFormPage() {
           required
         />
       </label>
-      <label className="password">
+      <label id="password" className="password1">
         Password
         <input
           type="password"

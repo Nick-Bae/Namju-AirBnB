@@ -53,12 +53,12 @@ const SpotList = () => {
                     <tr>
                       <th></th>
                     </tr>
-                    <tr>
+                    <tr id="detail">
                       <td className='smalltitle'>
                         <Link to={`/spots/${spot.id}`}  className="spotname" >{spot.name}, {spot.state}</Link>
                       </td>
                       <td className='rating'>
-                        ★ {spot.avgRating}
+                        ★ {(spot.avgRating).toFixed(1)}
                       </td>
                     </tr>
                     <tr>

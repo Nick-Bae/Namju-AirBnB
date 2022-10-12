@@ -23,6 +23,16 @@
 
 .rating{
     text-align:right;
+    /* align-content: flex-end; */
+    /* justify-content: end; */
+    /* justify-items: end; */
+    /* align-items: flex-end; */
+    display: flex;
+    
+}
+#detail{
+    display: flex;
+    justify-content:space-between;
 }
 
 .spot-wrap{
@@ -41,7 +51,7 @@ main {
     text-decoration: none;
 }
 table {
-    width:150px
+    width:170px
 }
 
 .list-container{
@@ -57,4 +67,6 @@ table {
 .fa-circle-plus {
     padding: 10px;
 }
-
+.spotname{
+    font-weight:bold;
+}

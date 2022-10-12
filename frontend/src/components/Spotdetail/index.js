@@ -74,7 +74,7 @@ export const Spotdetail = () => {
             </div>
 
             <ul className="breifinfo">
-                <li className="rating"> <i class="fa-solid fa-star"></i>&nbsp;{spot.avgRating}</li>
+                <li className="rating"> <i class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
                 <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
                 <li className="address"> {spot.name} {spot.city} {spot.state} </li>
             </ul>
@@ -91,13 +91,14 @@ export const Spotdetail = () => {
                         <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                         <button onClick={deleteReport} className="delete">Delete</button>
                         <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
+                        <Link className="deleteimage" to={`/images/${id}`}> Delete Image </Link>
                         
                         </>
                        }
                        <ReviewFormModal spot={spot} />
 
                     </div>
-                    <div className="maininfo">
+                    {/* <div className="maininfo">
                         <section className="maininfo-left">
 
                             <div className="hostname">
@@ -136,13 +137,13 @@ export const Spotdetail = () => {
                             </ul>
                         </section>
 
-                    </div>
+                    </div> */}
                     {/* <div className="review">
                         <Route path={`/spots/${id}`}>
                             <Review showSpot={false} id={id} />
                         </Route>
                     </div> */}
-                    <div id="reviews">
+                    <div >
 
                     <ReviewDisplay reviews={review} spot={spot}/>
                     </div>

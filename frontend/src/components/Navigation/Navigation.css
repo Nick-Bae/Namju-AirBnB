@@ -1,24 +1,30 @@
 #log {
     display: flex;
     flex-direction: column;
-    padding:5px;
-    width: 170px;
+    padding: 5px;
+    /* width: 70px; */
+    align-items: flex-end;
 }
-.login, .signup, .home{
+
+.login,
+.signup,
+.home {
     text-decoration: none;
 }
+
 .nav {
     display: flex;
     flex-direction: row;
 }
+
 .password {
     display: flex;
     flex-direction: column;
     width: 170px;
-    padding:5px
+    /* padding: 5px */
 }
 
-.logo{
+.logo {
     width: 70px;
     height: 35px
 }
@@ -29,46 +35,76 @@
     justify-content: space-between;
     height: 60px;
     border-bottom: 1px solid var(--grey-light-color);
+    flex-direction: row;
 }
 
-.underline{
+.underline {
     margin: 0 50px;
 }
 
-.userlogo{
-height: 30px;
-margin-top: 10px;
-/* border-color: white; */
-/* border-radius: 3px; */
-align-items: center;
-}
-.profile-dropdown{
-    position:relative;
-top: 50px;
-}
-
-.logocolor{
-    color: rgb(237, 129, 129);
+.userlogo {
+    height: 130px;
     width:30px;
+    margin-top: 5px;
+    right: 5px;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid var(--grey-light-color); 
+    align-items: center;
+    color:rgb(216, 87, 87);
+    margin-bottom: 10px;
+
+    /* position: absolute; */
+    
+}
+/* .fas{
+    height:20px;
+    align-content: center;
+    justify-content: center;
+} */
+
+.profile-dropdown {
+   /* height: 300px; */
+   /* width:200px; */
+    font-size: var(--font-small);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--grey-light-color); 
+    border-radius: 3px; 
+    box-shadow: -1px 10px 10px rgb(244, 243, 243), 2px 10px 10px rgb(244, 243, 243);
+    background-color: rgb(255, 255, 255); 
 }
 
-.new-spot{
+.logOut {
+    font-size: 11px;
+    width:45px;
+}
+
+.logocolor {
+    color: rgb(237, 129, 129);
+    width: 30px;
+}
+
+.new-spot {
     list-style-type: none;
 }
 
-body{
-    margin:auto;
+body {
+    margin: auto;
     max-width: 1000px;
 }
 
- .navlink {
+.navlink {
     list-style-type: none;
     text-decoration: none;
-    
- }
- 
-.signup{
-    /* font-size: var(--font-medium); */
+
+}
+
+#signUp {
+    font-size: var(--font-small);
+    list-style-type: none;
+    text-decoration: none;
+    width: 48px;
 }
 
 .header {
@@ -78,5 +114,33 @@ body{
 }
 
 .loginfoBt {
-   /* height: 150px; */
+    height: 550px;
+    /* position: absolute; */
+    display: flex;
+    flex-direction: column;
 }
+
+.logIn{
+right: 50px;
+height: 100px;
+}
+#topMenu{
+    display: flex;
+    flex-direction: row;
+    justify-items:end;
+    margin-top:10px;
+}
+
+#signupBt{
+    border:1px solid var(--grey-light-color);
+    border-radius: 3px;
+    background-color: white;
+    width: 60px;
+    height:20px;
+    text-align:center;
+    font-size: var(--font-small);
+}
+li{
+    padding:3px;
+}
+

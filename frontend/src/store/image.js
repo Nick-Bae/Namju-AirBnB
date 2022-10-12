@@ -13,9 +13,9 @@ const load = (image) => ({
     type: LOAD,
     image
 });
-const deleteOne = imageId => ({
+const deleteOne = id => ({
     type: DELETE,
-    imageId
+    id
 });
 const update = imageId => ({
     type: UPDATE,
@@ -56,6 +56,22 @@ export const updateImage = data => async dispatch => {
     }
 }
 
+export const deleteImage = (id) => async dispatch => {
+    const spotDetail = await csrfFetch(`/api/spots/${id}`)
+    if (spotDetail.ok){
+        const spot = await spotDetail.json();
+
+        const response = await csrfFetch(`/api/images/${spot.image.id}`, {
+            method: "DELETE",
+        });
+        if (response.ok) {
+            dispatch(deleteOne(id));
+        }
+    }
+
+    // return response;
+};
+
 // const initialState = { lists: [] }
 export const imageReducer = (state = {}, action) => {
     let newState = { ...state };
@@ -77,7 +93,7 @@ export const imageReducer = (state = {}, action) => {
             return newState;
 
         case DELETE:
-            delete newState[action.urlId]
+            delete newState[action.id]
             return newState
 
         default:

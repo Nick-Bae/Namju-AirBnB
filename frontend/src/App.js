@@ -13,7 +13,7 @@ import CreateSpot from "./components/CreateSpot";
 import AddImage from './components/AddImage'
 import LoginFormModal from "./components/LoginFormModal";
 import LoginForm from "./components/LoginFormModal/LoginForm";
-
+import DeleteImage from "./components/AddImage/Delete";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -45,6 +45,9 @@ function App() {
           </Route>
           <Route exact path='/spots/:id/images'>
             <AddImage />
+          </Route>
+          <Route exact path='/images/:id'>
+            <DeleteImage />
           </Route>
 
           <Route path= "/spots/:id/edit" >

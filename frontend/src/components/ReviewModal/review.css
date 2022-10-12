@@ -1,4 +1,4 @@
-.reviewbt{
+/* .reviewbt{
     text-decoration: none;
     color: black;
     border:none;
@@ -8,16 +8,31 @@
     color: var(--button-color);
 }
 
-.review{
+
+
+#errormessage{
+    font-size: var(--font-small);
+    color:red;
+} */
+
+/* .review{
     text-decoration: none;
     color: black;
     border: 1px solid var(--grey-light-color);
     padding:2px;
     border-radius: 5px;
     background-color: white;
-}
+} */
 
-#errormessage{
+.reviewbt{
+    text-decoration: none;
+    border: 1px solid var(--grey-light-color);
+    border-radius: 7px;
+    padding:5px;
     font-size: var(--font-small);
-    color:red;
+    color:black;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
