@@ -41,13 +41,13 @@ const SpotList = () => {
 
           <div className='imglayout'>
             {spots.map((spot) => (
-              <ul >
+              <ul id="thum" >
 
                 <Link to={`/spots/${spot.id}`}>
                   <img spot={spot} className="img" src={spot.previewImage} />
                 </Link>
-                <li key={spot.id} className='imglist'>
-                </li>
+                {/* <li key={spot.id} className='imglist'>
+                </li> */}
                 <table>
                   <tbody>
                     <tr>

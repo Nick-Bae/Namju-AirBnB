@@ -69,12 +69,12 @@ export const Spotdetail = () => {
     return    showSpot&&  (
         // <body className="detailview">
              <section>
-            <div>
+            <div id="title">
                 <div className="title">{spot?.name}</div>
             </div>
 
             <ul className="breifinfo">
-                <li className="rating"> <i class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
+                <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
                 <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
                 <li className="address"> {spot.name} {spot.city} {spot.state} </li>
             </ul>

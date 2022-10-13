@@ -49,15 +49,15 @@ form {
 }
 
 .beforelogbt {
-    height: 20px;
-    font-size: var(--font-small);
+    height: 40px;
+    font-size: var(--font-large);
     /* position:relative; */
     /* right: 10px; */
-    width: 60px;
+    width: 80px;
     text-align: center;
     justify-content: space-around;
     border: 1px solid var(--grey-light-color);
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: white;
     /* margin-top: 10px; */
 }
