@@ -41,33 +41,42 @@
 }
 
 .userlogo {
-    height: 130px;
-    width:30px;
+    height: 150px;
+    width:60px;
     margin-top: 5px;
-    right: 5px;
+    /* right: 5px; */
     background-color: white;
     border-radius: 3px;
     border: 1px solid var(--grey-light-color); 
     align-items: center;
-    color:rgb(216, 87, 87);
-    margin-bottom: 10px;
+    color:rgb(218, 123, 123);
+    font-size:25px;
 }
 
 
 .profile-dropdown {
    
-    font-size: var(--font-small);
+    font-size: var(--font-large);
     display: flex;
     flex-direction: column;
+    /* display: block; */
+    position:absolute;
+    margin-top: 55px;
     border: 1px solid var(--grey-light-color); 
-    border-radius: 3px; 
-    box-shadow: -1px 10px 10px rgb(244, 243, 243), 2px 10px 10px rgb(244, 243, 243);
+    border-radius: 10px; 
+    box-shadow: -1px 3px 3px rgb(244, 243, 243), 2px 3px 3px rgb(244, 243, 243);
     background-color: rgb(255, 255, 255); 
+    height:120px;
+    width: 220px;
+    justify-content: center;
 }
+/* .profile-dropdown li {
+    display: block;
+} */
 
 .logOut {
-    font-size: 11px;
-    width:45px;
+    font-size: var(--font-large);
+    width:70px;
 }
 
 .logocolor {
@@ -102,10 +111,12 @@ body {
     max-width: 1000px;
 }
 
-.loginfoBt {
-    height: 550px;
-    display: flex;
-    flex-direction: column;
+.loginfoBT {
+    /* height: 50px; */
+    /* display: flex;
+    flex-direction: column; */
+        /* position: relative; */
+        /* display: inline-block; */
 }
 
 .logIn{
@@ -120,15 +131,17 @@ height: 100px;
 }
 
 #signupBt{
-    border:1px solid var(--grey-light-color);
+    border:2px solid rgb(249, 205, 205);
     border-radius: 5px;
+    /* background-color: rgb(249, 205, 205); */
     background-color: white;
     width: 80px;
     height:40px;
     text-align:center;
     font-size: var(--font-large);
 }
-li{
+#loginfo{
     padding:3px;
+    margin-left:13px;
 }
 

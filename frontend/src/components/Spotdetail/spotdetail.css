@@ -50,8 +50,9 @@ li {
 img {
   border-radius: 10px;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: 900px;
+  max-height: 600px;
   display: block;
   margin: auto;
 }
@@ -72,9 +73,17 @@ img {
     margin-top: 20px;
     border-top: 1px solid var(--grey-light-color);
 } */
+
+#section {
+display: flex;
+flex-direction: column;
+justify-content: end;
+/* align-items: center; */
+}
 #title{
   display: flex;
-  justify-content: start;
+  text-align: left;
+  max-width: 1000px;
 }
 .title {
   margin-top: 20px;

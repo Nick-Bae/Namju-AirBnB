@@ -68,14 +68,17 @@ export const Spotdetail = () => {
     if (!spot) return null;
     return    showSpot&&  (
         // <body className="detailview">
-             <section>
+             <section id="section">
             <div id="title">
                 <div className="title">{spot?.name}</div>
             </div>
 
             <ul className="breifinfo">
                 <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
+                {
+                   (spot.avgRating >4.5) &&
                 <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
+                }
                 <li className="address"> {spot.name} {spot.city} {spot.state} </li>
             </ul>
             <div className="spot-container">
@@ -95,8 +98,8 @@ export const Spotdetail = () => {
                         
                         </>
                        }
-                       <ReviewFormModal spot={spot} />
 
+                       {(user)&& <ReviewFormModal spot={spot} />}
                     </div>
                     {/* <div className="maininfo"> */}
                         {/* <section className="maininfo-left"> */}

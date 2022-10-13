@@ -68,8 +68,8 @@ function Navigation({ isLoaded }) {
               
             <LoginFormModal />
             </p>
+          
           <p>
-
             <button id="signupBt" onClick={signUp}>Sign up</button>
             {/* <NavLink id="signUp" to="/signup">Sign Up</NavLink> */}
           </p>
