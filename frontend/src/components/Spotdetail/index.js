@@ -98,24 +98,25 @@ export const Spotdetail = () => {
                        <ReviewFormModal spot={spot} />
 
                     </div>
-                    {/* <div className="maininfo">
-                        <section className="maininfo-left">
+                    {/* <div className="maininfo"> */}
+                        {/* <section className="maininfo-left"> */}
 
-                            <div className="hostname">
+                            {/* <div className="hostname">
                                 <li> Entire home hosted by  </li>
                             </div>
                             <div className="checkinInfo">
                                 <li> <i class="fa-solid fa-building-circle-check"></i> &nbsp;Self check-in</li>
                                 <li> <i class="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
                                 <li><i class="fa-solid fa-calendar"></i> Free cancellation </li>
-                            </div>
+                            </div> */}
+                            <p id="info"><i class="fa-solid fa-house"></i> Information</p>
                             <div className="descprition">
                                 {spot.description}
                             </div>
 
-                        </section>
+                        {/* </section> */}
 
-                        <section className="column menu maininfo-right">
+                        {/* <section className="column menu maininfo-right">
                             <ul className="float">
                                 <div className="float-top">
                                 <li className="price">${spot.price} </li>
@@ -135,9 +136,9 @@ export const Spotdetail = () => {
                                 <li>Total before taxes</li>
                                 </div>
                             </ul>
-                        </section>
+                        </section> */}
 
-                    </div> */}
+                    {/* </div> */}
                     {/* <div className="review">
                         <Route path={`/spots/${id}`}>
                             <Review showSpot={false} id={id} />

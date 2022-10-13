@@ -14,7 +14,8 @@ export const ReviewDisplay = ({ spot, reviews }) => {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const onlyspotReviews = useSelector(state => Object.values(state.review))
+    const onlyspotReviews = useSelector(state => Object.values(state.review));
+    // const spot = useSelector(state => Object.values(state.spot));
     // const spotReviews = Object.values(onlyspotReviews);
     // const reviews = useSelector((state) => Object.values(state.review));
     // const propReview = Object.values(reviews)
@@ -31,7 +32,7 @@ export const ReviewDisplay = ({ spot, reviews }) => {
     // if (!spotReviewsObj) return null
     // console.log("how many reviews?",spotReviews)
 
-    // console.log("spot",spot.id)
+    console.log("spot",spot.avgRating)
     // console.log("reviews?????",reviews)
     // console.log("current spot reviews",spotReviews)
 
@@ -48,7 +49,7 @@ export const ReviewDisplay = ({ spot, reviews }) => {
     // console.log("ownerId",revi)
     // const permission = currentUser?.id === spot.ownerId
     const spotReview = onlyspotReviews.filter(review => (review.spotId === (spot.id)))
-
+    
     useEffect(() => {
         const errors = [];
         if (!review.length) errors.push('Please enter your review');
@@ -86,59 +87,63 @@ export const ReviewDisplay = ({ spot, reviews }) => {
     // if (!spotReviewsObj) return null
     // const spotReviews = Object.values(spotReviewsObj);
     if (!spotReview) return null
-   
+
     return (
+        <>
+            <p id="reviewIcon"><i class="fa-solid fa-pen-to-square"> </i> Review </p>
+            <p id="numbers"><i class="fa-sharp fa-solid fa-star"></i> 
+             {spot.avgRating}, {spot.numReviews} Reviews</p>
+            <div id="reviews">
 
-        <div id="reviews">
+                {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars, User, updatedAt }) => (
 
-            {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars, User, updatedAt }) => (
-               
-               <>
-                    <ul id='reviewer'>
-                        <li className='userId'>
-                            {/* User Id: {userId} */}
-                            {User?.firstName} {User?.lastName}
-                        </li>
-                        <li className='date'>
-                            {updatedAt.split('T')[0]}
-                        </li>
-                    </ul>
-                    <ul>
-                        <li className='review'>
-                            {review}
-                        </li>
-                        <li className='reviewStar'>
-                            Stars: {stars}
-                            {(<i class="fa-sharp fa-solid fa-star"></i>)*Number(stars)}
-                            
-                               
-
-                            
-                        </li>
-
-                        {
-                            (userId === currentUser?.id) &&
-                            <li>
-
-                                <button value={id} onClick={() => {
-                                    const login = (!currentUser) ? alert("Please log in") : true
-
-                                    if (login) {
-                                        const deletePermission = userId !== currentUser?.id ? alert("No Permission to delete") : true
-                                        if (deletePermission) {
-                                            dispatch(deleteReview(parseInt(id)));
-                                            // setRemove(true)
-                                            // history.push(`/spots/${currSpot}`);
-                                        }
-                                    }
-                                    // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
-                                }} className="deleteBt" >delete</button>
+                    <>
+                        <ul id='reviewer'>
+                            <li className='userId'>
+                                {/* User Id: {userId} */}
+                                {User?.firstName} {User?.lastName}
                             </li>
-                        }
-                    </ul>
-                </>
-            ))}
-        </div>
+                            <li className='date'>
+                                {updatedAt.split('T')[0]}
+                            </li>
+                        </ul>
+                        <ul>
+                            <li className='review'>
+                                {review}
+                            </li>
+                            <li className='reviewStar'>
+                                Stars: {stars}
+                                {(<i class="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
+
+
+
+
+                            </li>
+
+                            {
+                                (userId === currentUser?.id) &&
+                                <li>
+
+                                    <button value={id} onClick={() => {
+                                        const login = (!currentUser) ? alert("Please log in") : true
+
+                                        if (login) {
+                                            const deletePermission = userId !== currentUser?.id ? alert("No Permission to delete") : true
+                                            if (deletePermission) {
+                                                dispatch(deleteReview(parseInt(id)));
+                                                // setRemove(true)
+                                                // history.push(`/spots/${currSpot}`);
+                                            }
+                                        }
+                                        // }} className="delete" disabled={validationErrors.length > 0}>delete</button>
+                                    }} className="deleteBt" >delete</button>
+                                </li>
+                            }
+                        </ul>
+                    </>
+                ))}
+            </div>
+        </>
     )
 }
 

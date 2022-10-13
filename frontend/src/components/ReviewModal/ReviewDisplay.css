@@ -1,17 +1,15 @@
 #reviews {
     display: grid;
     /* grid-template-columns: repeat(2, minmax(200px, 600px)); */
-    grid-template-columns: 50px auto;
+    grid-template-columns: auto auto;
     /* grid-auto-columns: minmax(1500px, auto); */
     /* grid-auto-rows: minmax(100px, auto); */
-    gap: 20px;
-    /* margin-top: 50px; */
-    margin-bottom: 50px;
-   
-        /* justify-content: space-evenly;  */
-        justify-items: start;
-        align-content: space-evenly;
-    margin: 0 50px 50px 50px;
+    gap: 5px;
+ 
+    justify-content: space-evenly; 
+    /* justify-items: start; */
+    align-content: space-evenly;
+    margin: 0 50px 0px 50px;
 }
 
 .deleteBt {
@@ -24,24 +22,46 @@
     border: 1px solid var(--grey-light-color);
 
 }
-.review, .reviewStar{
+
+.review,
+.reviewStar {
     font-size: var(--font-small);
 }
+
 /* #reviews{
     display: flex;
     gap: 10px;
     flex: 2 2 50%;
     flex-wrap: wrap;
 } */
+#reviewIcon {
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
 
-.date{
+.date {
     font-size: var(--font-micro);
-    color:rgb(113, 114, 115)
+    color: rgb(113, 114, 115);
+    /* text-align: center; */
+
 }
-.userId{
-    font-size: var(--font-small);
-    font-weight:bold;
+
+.userId {
+    font-size: 13px;
+    font-weight: 540;
+    /* text-align: center; */
 }
-#reviewer{
-    width:100px;
+
+#reviewer {
+    /* width: 100px; */
+}
+
+#numbers{
+    margin-left: 50px;
+    font-size: var(--font-medium)
+}
+
+.fa-sharp{
+    font-size: 12px;
+    margin-bottom: 30px;
 }
