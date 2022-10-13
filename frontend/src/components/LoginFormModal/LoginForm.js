@@ -26,7 +26,7 @@ function LoginForm() {
     <section>
 
       <form className="form" onSubmit={handleSubmit}>
-        <label>
+        <label id="loginlabel">
           Username or Email
           <input
             id="input"
@@ -36,7 +36,7 @@ function LoginForm() {
             required
           />
         </label>
-        <label>
+        <label id="loginlabel">
           Password
           <input
             id="input"

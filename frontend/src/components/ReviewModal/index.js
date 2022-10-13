@@ -22,13 +22,10 @@ function ReviewFormModal({spot, reviews}) {
 //     dispatch(getSpotReviews(spot.id));
 // }, [dispatch, spot.id]);
 
-  useEffect(()=> {
-    setShowModal(false);
-    // if (Object.keys(reviews).length !==0) {
-// console.log("inside useeffect",spot.id)
-      // dispatch(getSpotReviews(spot.id));
-    // }
-  },[reviews]);
+  // useEffect(()=> {
+  //   setShowModal(false);
+   
+  // },[reviews]);
 
   return (
     <div >
