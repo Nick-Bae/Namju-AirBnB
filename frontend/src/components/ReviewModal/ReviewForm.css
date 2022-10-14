@@ -36,3 +36,29 @@
     align-items: center;
     justify-content: center;
 }
+
+#reviewFormLabel, #reviewFormStar{
+    font-size:var(--font-large);
+}
+/* #reviewFormStar{
+    font-size:var(--font-large);
+} */
+#reviewModal{
+    display: flex;
+    flex-direction: column;
+    width:600px;
+    height: 300px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+#starInput{
+    width:580px;
+    height:30px;
+    margin-bottom: 10px;
+}
+
+#textInput{
+    width:580px;
+    height:100px;
+    margin-bottom: 10px;
+}

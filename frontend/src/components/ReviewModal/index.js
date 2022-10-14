@@ -4,7 +4,7 @@ import { Modal } from '../../context/Modal';
 import ReviewForm from './ReviewForm';
 // import { getSpotReviews } from '../../store/comment';
 import { getSpotBySpotId } from '../../store/spot';
-import './review.css';
+// import './review.css';
 
 function ReviewFormModal({spot, reviews}) {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function ReviewFormModal({spot, reviews}) {
       <button className="reviewbt" onClick={() => setShowModal(true)}>Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewForm spot={spot} />
+          <ReviewForm spot={spot} setShowModal={setShowModal} />
         </Modal>
       )}
     </div>

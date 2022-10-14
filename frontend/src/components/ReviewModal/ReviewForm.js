@@ -4,17 +4,13 @@ import { useDispatch } from 'react-redux';
 import { getSpotReviews } from '../../store/comment';
 import { createReview } from '../../store/comment';
 import { useSelector } from 'react-redux';
-import { deleteReview } from '../../store/comment';
-import { getAllSpots, getSpotBySpotId } from '../../store/spot';
-import './review.css'
+import './ReviewForm.css'
 
-export const ReviewForm = ({spot}) => {
-    const history = useHistory();
+export const ReviewForm = ({spot, setShowModal}) => {
     const dispatch = useDispatch();
 
-    const spotReviews = useSelector(state =>  Object.values(state.review))
+    const spotReviews = useSelector(state => Object.values(state.review))
     const user = useSelector(state=> state.session.user)
-    const {spotId}= useParams();
     // console.log("how many reviews?",spotReviewsObj)
     // const currSpot = spot.id;
     const spotReview = spotReviews.filter(review=> review.spotId ===spot.id)
@@ -43,15 +39,15 @@ export const ReviewForm = ({spot}) => {
     // ============ create new review======================
     const handleSubmit = async(e) => {
         e.preventDefault();
+        
+        // console.log("showModal",setShowModal)
         if (!currentUser) return alert("Please log in")
 
         // const isReview=spotReview.find(review=> review.userId === currentUser.id)
         //  console.log("isReview",isReview)
          if (isReview.length>0) return alert ("You've already left a review on this spot")
 
-        setHasSubmitted(true);
-        setUpdate(true);
-        setClose(false)
+        
         if (validationErrors.length) return alert(`Cannot Submit`);
 
         const report = { review, stars, spotId: spot.id };
@@ -65,19 +61,25 @@ export const ReviewForm = ({spot}) => {
             
         //   }
 
+        // dispatch(createReview(report))
         await dispatch(createReview(report))
-            .then(()=>dispatch(getSpotBySpotId(spot.id)))
+        //     .then(()=>dispatch(getSpotBySpotId(spot.id)))
             .then(()=>dispatch(getSpotReviews(spot.id)))
-            
+            // .then(()=>history.push(`/spots/${spot.id}`))
         // setUpdate(true)
         // const createRe = await dispatch(createReview(report));
 
-        // history.push(`/spots/${spot.id}`);
-
+        setShowModal(false)
+        setHasSubmitted(true);
+        setUpdate(true);
+        setClose(false)
+        
      
     };
    
-    
+    const cancel =()=>{
+        setShowModal(false)
+    }
     useEffect(() => {
         // console.log("useeffect ",currSpot)
         setHasSubmitted(false);
@@ -89,7 +91,7 @@ export const ReviewForm = ({spot}) => {
     // if (!spotReviews) return null
 
     return (
-        <section>
+        <div id="reviewModal">
            
             {hasSubmitted && validationErrors.length > 0 && (
                 <div id="errormessage">
@@ -102,35 +104,38 @@ export const ReviewForm = ({spot}) => {
                 </div>
             )}
             {close && (
-            <form onSubmit={handleSubmit} >
-                <div id="review">
-                    <label>
+            <form id="reviewForm" onSubmit={handleSubmit} >
+                <div id="reviewFormBox">
+                    <label id="reviewFormLabel">
                         Review
                         <input
-                            type="text"
-                            placeholder='please leave a review'
+                            id="textInput"
+                            type="textarea"
+                            // placeholder='please leave a review'
                             value={review}
                             onChange={e => setReview(e.target.value)}
                         />
                     </label>
-                    <label>
+                    <label id="reviewFormStar">
                         stars
                         <input
+                         id="starInput"
                             type="number"
                             min="0" max="5"
-                            placeholder='0'
+                            placeholder='please leave a star between 1~5'
                             value={stars}
                             onChange={e => setStars(e.target.value)}
                         />
                     </label>
                 </div>
                 <button type="submit"> Submit </button>
+                <button onClick={cancel}> Cancel </button>
             </form>
 
             )}
 
             
-        </section>
+        </div>
     );
 }
 
