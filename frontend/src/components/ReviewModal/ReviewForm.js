@@ -30,8 +30,8 @@ export const ReviewForm = ({spot, setShowModal}) => {
     
     useEffect(() => {
         const errors = [];
-        if (!review.length) errors.push('Please enter your review');
-        if (!stars.length) errors.push('Please enter your stars');
+        if (!review.length) errors.push('-Please enter your review');
+        if (!stars.length) errors.push('-Please enter your stars');
         if (stars < 0 || stars > 6) errors.push('Please enter between 0~5')
         setValidationErrors(errors);
     }, [review, stars])
@@ -40,26 +40,17 @@ export const ReviewForm = ({spot, setShowModal}) => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         
+        
+        setHasSubmitted(true);
+        // setClose(false)
         // console.log("showModal",setShowModal)
         if (!currentUser) return alert("Please log in")
 
-        // const isReview=spotReview.find(review=> review.userId === currentUser.id)
-        //  console.log("isReview",isReview)
          if (isReview.length>0) return alert ("You've already left a review on this spot")
 
-        
         if (validationErrors.length) return alert(`Cannot Submit`);
 
         const report = { review, stars, spotId: spot.id };
-
-        
-        //console.log('ReviewForm ????',spot)
-        // function onChange(){
-        //     const newCount = count + 1;
-        //     setCount(newCount);
-        //     getData(newCount); 
-            
-        //   }
 
         // dispatch(createReview(report))
         await dispatch(createReview(report))
@@ -70,33 +61,28 @@ export const ReviewForm = ({spot, setShowModal}) => {
         // const createRe = await dispatch(createReview(report));
 
         setShowModal(false)
-        setHasSubmitted(true);
-        setUpdate(true);
-        setClose(false)
-        
-     
     };
    
     const cancel =()=>{
         setShowModal(false)
     }
-    useEffect(() => {
-        // console.log("useeffect ",currSpot)
-        setHasSubmitted(false);
-        // dispatch(getSpotReviews(currSpot));
-        // dispatch(getAllSpots())
-    }, [dispatch, update]);
+    // useEffect(() => {
+    //     // console.log("useeffect ",currSpot)
+    //     setHasSubmitted(false);
+    //     // dispatch(getSpotReviews(currSpot));
+    //     // dispatch(getAllSpots())
+    // }, [dispatch, update]);
     
-  
     // if (!spotReviews) return null
+    console.log("error",validationErrors)
 
     return (
         <div id="reviewModal">
            
             {hasSubmitted && validationErrors.length > 0 && (
                 <div id="errormessage">
-                    The following errors were found:
-                    <ul>
+                   <p id="errorTitle"> The following errors were found:</p> 
+                    <ul id="errorDetail">
                         {validationErrors.map(error => (
                             <li key={error}>{error}</li>
                         ))}
@@ -122,7 +108,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
                          id="starInput"
                             type="number"
                             min="0" max="5"
-                            placeholder='please leave a star between 1~5'
+                            placeholder='Please leave a star between 1~5'
                             value={stars}
                             onChange={e => setStars(e.target.value)}
                         />
