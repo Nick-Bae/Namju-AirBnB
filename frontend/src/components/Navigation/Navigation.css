@@ -46,7 +46,7 @@
     margin-top: 5px;
     /* right: 5px; */
     background-color: white;
-    border-radius: 3px;
+    border-radius: 10px;
     border: 1px solid var(--grey-light-color); 
     align-items: center;
     color:rgb(218, 123, 123);

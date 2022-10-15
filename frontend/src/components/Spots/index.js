@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import { getAllSpots } from '../../store/spot';
 import { useState } from 'react'
-import Fab from '../Fab'
 import './index.css'
 // import Transfer fr
 

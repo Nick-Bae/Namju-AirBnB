@@ -7,7 +7,7 @@ import LoginFormModal from '../LoginFormModal';
 import LoginForm from '../LoginFormModal/LoginForm';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormPage';
-import SignupFormPage from '../SignupFormPage/SignupFormPage';
+// import SignupFormPage from '../SignupFormPage/SignupFormPage';
 import { Modal } from '../../context/Modal';
 
 function Navigation({ isLoaded }) {
@@ -64,15 +64,15 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <div id="topMenu">
-            <p>
+            <div>
               
             <LoginFormModal />
-            </p>
+            </div>
           
-          <p>
+          <div>
             <button id="signupBt" onClick={signUp}>Sign up</button>
             {/* <NavLink id="signUp" to="/signup">Sign Up</NavLink> */}
-          </p>
+          </div>
           
       </div>
 

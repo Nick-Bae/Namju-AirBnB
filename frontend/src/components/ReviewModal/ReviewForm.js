@@ -74,7 +74,6 @@ export const ReviewForm = ({spot, setShowModal}) => {
     // }, [dispatch, update]);
     
     // if (!spotReviews) return null
-    console.log("error",validationErrors)
 
     return (
         <div id="reviewModal">
@@ -103,7 +102,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
                         />
                     </label>
                     <label id="reviewFormStar">
-                        stars
+                        Stars
                         <input
                          id="starInput"
                             type="number"
@@ -114,7 +113,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
                         />
                     </label>
                 </div>
-                <button type="submit"> Submit </button>
+                <button type="submit"> Submit </button>&nbsp; 
                 <button onClick={cancel}> Cancel </button>
             </form>
 

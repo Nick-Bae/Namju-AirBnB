@@ -53,11 +53,11 @@ function SignupFormPage() {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
-
+console.log(errors)
   return (
     <form onSubmit={handleSubmit} className='signform'>
       <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {(Object.values(errors)).map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label className="email">
         Email
