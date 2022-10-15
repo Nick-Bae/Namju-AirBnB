@@ -27,12 +27,14 @@
     text-align: center;
     align-items: center;
     border-radius: 3px;
-    border:1px solid var(--grey-light-color);
+    /* border:1px solid var(--grey-light-color); */
+    background-color: rgb(127, 214, 246);
 }
 #cancel{
     margin: 15px 0 0 0;
     border-radius: 3px;
-    border:1px solid var(--grey-light-color);
+    /* border:1px solid var(--grey-light-color); */
+    background-color: rgb(127, 214, 246);
 }
 input {
     border-radius: 3px;

@@ -22,9 +22,12 @@
     width: 170px;
 }
 
-.logo {
+.logoMain {
+    margin-top: 7px;
     width: 95px;
-    height: 56px
+    height: 46px;
+    border-radius:7px;
+    /* border: 2px solid rgb(10, 11, 12); */
 }
 
 .logolist {
@@ -131,10 +134,10 @@ height: 100px;
 }
 
 #signupBt{
-    border:2px solid rgb(249, 205, 205);
+    /* border:2px solid rgb(151, 219, 244); */
     border-radius: 5px;
     /* background-color: rgb(249, 205, 205); */
-    background-color: white;
+    background-color: rgb(127, 214, 246);
     width: 80px;
     height:40px;
     text-align:center;

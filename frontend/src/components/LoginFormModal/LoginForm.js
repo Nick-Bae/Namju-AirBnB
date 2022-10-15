@@ -3,7 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './LoginForm.css'
 
-function LoginForm() {
+function LoginForm({setShowModal}) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +21,10 @@ function LoginForm() {
       }
     );
   };
+
+  const cancel =(e) =>{
+    setShowModal(false)
+  }
 
   return (
     <section>
@@ -46,7 +50,10 @@ function LoginForm() {
             required
           />
         </label>
-        <button className="logbt" type="submit">Log In</button>
+        <div id="button">
+        <button className="logbt" type="submit">Log In </button>&nbsp;
+        <button className="cancelbt" type="submit" onClick={cancel}>Cancel</button>
+        </div>
       </form>
       <div className="error">
         {errors.length > 0 && (

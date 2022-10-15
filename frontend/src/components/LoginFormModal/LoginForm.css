@@ -17,14 +17,15 @@
     padding: 150px
 } */
 
-.logbt {
+.logbt, .cancelbt {
     /* margin-left: 5px;
     width: 80px;
      */
-    border: 1px solid var(--grey-light-color);
+    /* border: 1px solid var(--grey-light-color); */
     border-radius: 3px;
     font-size: var(--font-large);
-    /* background-color: rgb(237, 145, 145); */
+    background-color: rgb(127, 214, 246);
+    height: 35px;
 
 }
 
@@ -36,7 +37,7 @@
 
 .form {
     width: 400px;
-    height: 300px;
+    height: 260px;
     padding: 30px;
     display:flex;
     flex-direction: column;
@@ -62,9 +63,9 @@
     width: 80px;
     text-align: center;
     justify-content: space-around;
-    border: 2px solid rgb(249, 205, 205);
+    /* border: 2px solid rgb(249, 205, 205); */
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(127, 214, 246);
     /* margin-top: 10px; */
 }
 
