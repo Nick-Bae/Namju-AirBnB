@@ -17,57 +17,50 @@ const SpotList = () => {
   }, [dispatch]);
 
 
-//   onClick={() => {
-    const login = (!user) ? false : true
-//     // if (!login) return ("please log in first")
+  //   onClick={() => {
+  const login = (!user) ? false : true
+  //     // if (!login) return ("please log in first")
 
   return (
     <main>
       <section className='spot-wrap'>
         <div className='list-container'>
           {/* <h1>Find Place</h1> */}
-        {(login) &&(
-          <div className="addnewspot">
-          <i class="fa-solid fa-circle-plus"></i>
-          <NavLink to={`/spots/new`} className="spotnew">Add New Spot</NavLink>
-          </div>
-        )}
+          {(login) && (
+            <div className="addnewspot">
+              <i class="fa-solid fa-circle-plus"></i>
+              <NavLink to={`/spots/new`} className="spotnew">Add New Spot</NavLink>
+            </div>
+          )}
 
-          
+
 
           {/* <Fab hidden={showForm} onClick={()=> setShowForm(true)} />
       {showSpot && ( */}
 
           <div className='imglayout'>
             {spots.map((spot) => (
-              <ul id="thum" >
+              <div id="container" >
+                <div className='images'>
+                  <Link to={`/spots/${spot.id}`}>
+                    <img spot={spot} className="img" src={spot.previewImage} />
+                  </Link>
+                </div>
+                <div id="detail">
+                  <div className='smalltitle'>
+                    <Link to={`/spots/${spot.id}`} className="spotname" >{spot.name}, {spot.state}</Link>
+                  </div>
+                  <div className='rating'>
+                    ★ {(spot.avgRating).toFixed(1)}
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    ${spot.price} night
+                  </div>
+                </div>
 
-                <Link to={`/spots/${spot.id}`}>
-                  <img spot={spot} className="img" src={spot.previewImage} />
-                </Link>
-                {/* <li key={spot.id} className='imglist'>
-                </li> */}
-                <table>
-                  <tbody>
-                    <tr>
-                      <th></th>
-                    </tr>
-                    <tr id="detail">
-                      <td className='smalltitle'>
-                        <Link to={`/spots/${spot.id}`}  className="spotname" >{spot.name}, {spot.state}</Link>
-                      </td>
-                      <td className='rating'>
-                        ★ {(spot.avgRating).toFixed(1)}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        ${spot.price} night
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </ul>
+              </div>
             ))}
           </div>
         </div>
