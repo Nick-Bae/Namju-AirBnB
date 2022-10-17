@@ -16,12 +16,12 @@ export const Spotdetail = () => {
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
     const user = useSelector(state => state.session.user)
-// console.log("spot information",spot.ownerId)
-// console.log("user info",user.id)
+    // console.log("spot information",spot.ownerId)
+    // console.log("user info",user.id)
     const permission = spot?.ownerId !== user?.id ? false : true
     const review = useSelector((state) => state.review)
     const [showSpot, setShowSpot] = useState(false);
-    const [owner, setOwner]=useState(true);
+    const [owner, setOwner] = useState(true);
     // const reviews = useSelector((state) => Object.values(state.reviews));
     // console.log("spot detail",spot.ownerId)
 
@@ -42,22 +42,22 @@ export const Spotdetail = () => {
     const deleteReport = async (e) => {
 
         // if (!user) {
-            // return alert("No permission")
+        // return alert("No permission")
         //     if (permission) {
-                e.preventDefault();
-                await dispatch(deleteSpot(id))
-                history.push('/')
-            // }
+        e.preventDefault();
+        await dispatch(deleteSpot(id))
+        history.push('/')
+        // }
         // }
     };
 
     useEffect(() => {
         dispatch(getSpotBySpotId(id))
-        .then(() => dispatch(getSpotReviews(id)))
-        .then (() => setShowSpot(true))
+            .then(() => dispatch(getSpotReviews(id)))
+            .then(() => setShowSpot(true))
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
-    }, [dispatch], review );
-  
+    }, [dispatch], review);
+
     // useEffect(() => {
     //     dispatch(getSpotBySpotId(id)).then(() =>
     //     dispatch(getSpotReviews(id)))
@@ -65,45 +65,49 @@ export const Spotdetail = () => {
     // }, [ dispatch, id ]);
 
     if (!spot) return null;
-    return    showSpot&&  (
+    return showSpot && (
         // <body className="detailview">
-             <section id="section">
-            <div id="title">
-                <div className="title">{spot?.name}</div>
-            </div>
+        <section id="spotDetails">
+            
 
-            <ul className="breifinfo">
-                <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
-                {
-                   (spot.avgRating >4.5) &&
-                <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
-                }
-                <li className="address"> {spot.name} {spot.city} {spot.state} </li>
-            </ul>
             <div className="spot-container">
                 {/* <div className="spot-outside"> */}
                 <div className="spot-inside">
-                    { (spot.image) &&
+                <div id="spotTop">
+                <div id="spotTitle">
+                    <div className="spotTitle">{spot?.name}</div>
+                </div>
+
+                <ul className="breifinfo">
+                    <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
+                    {
+                        (spot.avgRating > 4.5) &&
+                        <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
+                    }
+                    <li className="address"> {spot.name} {spot.city} {spot.state} </li>
+                </ul>
+            </div>
+                    {(spot.image) &&
                         <img className="imgdetail" src={spot?.image.url} />
                     }
                     <div className="editDelete">
-                        {(user )&& 
-                        (permission) &&
-                        <>
-                        <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
-                        <button onClick={deleteReport} className="delete">Delete</button>
-                        <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
-                        <Link className="deleteimage" to={`/images/${id}`}> Delete Image </Link>
-                        
-                        </>
-                       }
+                        {(user) &&
+                            (permission) &&
+                            <>
+                                <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
+                                <button onClick={deleteReport} className="delete">Delete</button>
+                                <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
+                                <Link className="deleteimage" to={`/images/${id}`}> Delete Image </Link>
 
-                       {(user)&& <ReviewFormModal spot={spot} />}
+                            </>
+                        }
+
+                        {(user) && <ReviewFormModal spot={spot} />}
                     </div>
                     {/* <div className="maininfo"> */}
-                        {/* <section className="maininfo-left"> */}
+                    {/* <section className="maininfo-left"> */}
 
-                            {/* <div className="hostname">
+                    {/* <div className="hostname">
                                 <li> Entire home hosted by  </li>
                             </div>
                             <div className="checkinInfo">
@@ -111,14 +115,14 @@ export const Spotdetail = () => {
                                 <li> <i class="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
                                 <li><i class="fa-solid fa-calendar"></i> Free cancellation </li>
                             </div> */}
-                            <p id="info"><i class="fa-solid fa-house"></i> Information</p>
-                            <div className="descprition">
-                                {spot.description}
-                            </div>
+                    <p id="info"><i class="fa-solid fa-house"></i> Information</p>
+                    <div className="descprition">
+                        {spot.description}
+                    </div>
 
-                        {/* </section> */}
+                    {/* </section> */}
 
-                        {/* <section className="column menu maininfo-right">
+                    {/* <section className="column menu maininfo-right">
                             <ul className="float">
                                 <div className="float-top">
                                 <li className="price">${spot.price} </li>
@@ -148,7 +152,7 @@ export const Spotdetail = () => {
                     </div> */}
                     <div >
 
-                    <ReviewDisplay reviews={review} spot={spot}/>
+                        <ReviewDisplay reviews={review} spot={spot} />
                     </div>
                     {/* </div> */}
                 </div>
