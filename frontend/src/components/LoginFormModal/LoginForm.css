@@ -24,8 +24,9 @@
     /* border: 1px solid var(--grey-light-color); */
     border-radius: 3px;
     font-size: var(--font-large);
-    background-color: rgb(14, 165, 235);
+    background-color: rgb(131, 209, 248);
     height: 35px;
+    color:black;
 
 }
 
@@ -65,11 +66,11 @@
     justify-content: space-around;
     /* border: 2px solid rgb(249, 205, 205); */
     border-radius: 5px;
-    background-color: rgb(127, 214, 246);
+    background-color: rgb(131, 209, 248);
     /* margin-top: 10px; */
 }
 
-#input {
+#loginInputCredential, #loginInputCredential {
     border: 1px solid var(--grey-light-color);
     border-radius: 3px;
     width:335px;

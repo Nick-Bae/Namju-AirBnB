@@ -24,8 +24,8 @@
 
 .logoMain {
     margin-top: 7px;
-    width: 95px;
-    height: 46px;
+    width: 97px;
+    height: 51px;
     border-radius:7px;
     /* border: 2px solid rgb(10, 11, 12); */
 }
@@ -67,7 +67,7 @@
     margin-top: 55px;
     border: 1px solid var(--grey-light-color); 
     border-radius: 10px; 
-    box-shadow: -1px 3px 3px rgb(244, 243, 243), 2px 3px 3px rgb(244, 243, 243);
+    box-shadow: 0 3px  rgb(244, 243, 243), 2px 3px 3px rgb(244, 243, 243);
     background-color: rgb(255, 255, 255); 
     height:120px;
     width: 220px;
@@ -142,6 +142,7 @@ height: 100px;
     height:40px;
     text-align:center;
     font-size: var(--font-large);
+    color:black
 }
 #loginfo{
     padding:3px;

@@ -59,7 +59,7 @@
 }
 
 #numbers{
-    margin-left: 50px;
+    /* margin-left: 50px; */
     font-size: var(--font-medium)
 }
 

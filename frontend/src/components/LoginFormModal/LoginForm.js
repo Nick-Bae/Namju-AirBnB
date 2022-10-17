@@ -33,7 +33,7 @@ function LoginForm({setShowModal}) {
         <label id="loginlabel">
           Username or Email
           <input
-            id="input"
+            id="loginInputCredential"
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
@@ -43,14 +43,14 @@ function LoginForm({setShowModal}) {
         <label id="loginlabel">
           Password
           <input
-            id="input"
+            id="loginInputPassword"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <div id="button">
+        <div id="loginButtons">
         <button className="logbt" type="submit">Log In </button>&nbsp;
         <button className="cancelbt" type="submit" onClick={cancel}>Cancel</button>
         </div>
