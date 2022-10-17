@@ -33,3 +33,17 @@
     width:130px;
     border-radius: 7px;
 }
+
+/* #spotErrorTItle, #errorMessages{
+    margin-left:50px;
+} */
+#spotErrors{
+    margin-left:50px;
+}
+#spotErrorTItle{
+    font-size: 30px;
+    font-weight: bold;
+}
+#errorMessages{
+    color: red;
+}

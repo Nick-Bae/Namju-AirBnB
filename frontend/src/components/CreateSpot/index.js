@@ -95,13 +95,13 @@ const CreateSpot = ({ spot, formType }) => {
     };
 
     return (
-        <section>
+        <section className='createSpotForm'>
             {hasSubmitted && validationErrors.length > 0 && (
-                <div>
-                    The following errors were found:
-                    <ul>
+                <div id="spotErrors">
+                    <p id="spotErrorTItle">The following errors were found:</p>
+                    <ul id="errorMessages">
                         {validationErrors.map(error => (
-                            <li key={error}>{error}</li>
+                            <li key={error}>-{error}</li>
                         ))}
                     </ul>
                 </div>
