@@ -27,7 +27,6 @@
     width: 97px;
     height: 51px;
     border-radius:7px;
-    /* border: 2px solid rgb(10, 11, 12); */
 }
 
 .logolist {
@@ -47,7 +46,6 @@
     height: 150px;
     width:60px;
     margin-top: 5px;
-    /* right: 5px; */
     background-color: white;
     border-radius: 10px;
     border: 1px solid var(--grey-light-color); 
@@ -62,7 +60,6 @@
     font-size: var(--font-large);
     display: flex;
     flex-direction: column;
-    /* display: block; */
     position:absolute;
     margin-top: 55px;
     border: 1px solid var(--grey-light-color); 
@@ -73,9 +70,6 @@
     width: 220px;
     justify-content: center;
 }
-/* .profile-dropdown li {
-    display: block;
-} */
 
 .logOut {
     font-size: var(--font-large);
@@ -114,13 +108,6 @@ body {
     max-width: 1000px;
 }
 
-.loginfoBT {
-    /* height: 50px; */
-    /* display: flex;
-    flex-direction: column; */
-        /* position: relative; */
-        /* display: inline-block; */
-}
 
 .logIn{
 right: 50px;
@@ -134,9 +121,7 @@ height: 100px;
 }
 
 #signupBt{
-    /* border:2px solid rgb(151, 219, 244); */
     border-radius: 5px;
-    /* background-color: rgb(249, 205, 205); */
     background-color: rgb(127, 214, 246);
     width: 80px;
     height:40px;

@@ -1,10 +1,7 @@
 .editDelete {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* margin: 0 140px; */
   font-size: 15px;
-  /* max-width: 600px; */
   padding: 20px;
   gap: 20px;
   margin-bottom: 30px;
@@ -41,10 +38,6 @@ li {
   display: flex;
   flex-direction: row;
 }
-.spot-inside {
-  /* width:1000px; */
-  
-}
 
 
 img {
@@ -57,28 +50,11 @@ img {
   margin: auto;
 }
 
-.edit {
-  /* height: 20px;
-    
-    width: 30px;
-    
-    margin: 0 auto;
-    padding: 0;
-    display: table-cell;
-    vertical-align: middle; */
-
-}
-
-/* section{
-    margin-top: 20px;
-    border-top: 1px solid var(--grey-light-color);
-} */
 
 #section {
 display: flex;
 flex-direction: column;
 justify-content: end;
-/* align-items: center; */
 }
 #title{
   display: flex;
@@ -119,9 +95,6 @@ justify-content: end;
   font-size: 8px;
 }
 
-/* .detailview {
-margin: auto;
-} */
 
 .hostname {
   border-bottom: 1px solid var(--grey-light-color);
@@ -136,30 +109,18 @@ margin: auto;
 .descprition {
   padding-bottom: 20px ;
   font-size: var(--font-large);
-  margin: 0 0 30px 0;
+  margin: 0 0px 30px 0px;
   border-bottom: 1px solid var(--grey-light-color);
 }
 #info{
-  /* margin-left:50px; */
   margin-bottom: 30px;
   font-size:23px;
-  /* width:1500px; */
 }
 
-/* .maininfo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-left: 50px;
-} */
 
-.smallinfo {
-  /* margin: 0 0 0 50px;  */
-}
 
 .column menu {
   margin: auto;
-  /* max-width: 100px; */
 }
 
 .maininfo-left {
@@ -184,7 +145,6 @@ margin: auto;
 .menu li {
   padding: 18px;
   margin-bottom: 8px;
-  /* background-color: #33b5e5; */
 }
 
 .float {
@@ -199,12 +159,8 @@ margin: auto;
   display: flex;
   flex-direction: row;
   gap: 1px;
-  /* font-size: var(--font-micro); */
 }
 
-/* .menu li:hover {
-    background-color: #0099cc;
-  } */
 
 .night {
   font-size: var(--font-micro);
@@ -213,7 +169,6 @@ margin: auto;
 .calender {
   border: 1px solid var(--grey-light-color);
   border-radius: 5px;
-  /* padding:18px; */
   margin: 5px;
   padding: 0px;
 }

@@ -1,9 +1,62 @@
 #description {
-    width:270px;
+    width: 270px;
     height: 150px;
 }
 
-/* form {
-    width:250px;
-} */
+#updateTitle {
+    /* margin-left: 50px; */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
+#updateForm{
+    display: flex;
+    flex-direction: column;
+    margin-left:50px;
+    justify-items: center;
+}
+#updateForm,
+#updateAddress,
+#updateCity,
+#updateState,
+#updateCountry,
+#updateLat,
+#updateLng,
+#updateName,
+#updatePrice,
+#updateDescription {
+    display: flex;
+    flex-direction: column;
+    width:300px;
+}
+
+#updateButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+#updateBt, #updateCancel{
+    border-radius: 3px;
+    background-color: rgb(131, 209, 248);
+    width: 133px;
+    height: 40px;
+    font-size:15px;
+    color:black
+}
+input, textarea{
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+#errorTitle{
+    margin-top:30px;
+    font-size:20px;
+}
+
+#errorDisplay{
+    margin-left:50px;
+}
+
+#updateError{
+    color:red;
+}

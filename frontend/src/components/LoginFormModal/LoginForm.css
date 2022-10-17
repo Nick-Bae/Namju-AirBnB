@@ -3,25 +3,10 @@
     flex-direction: column;
 }
 
-/* .username {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    width: 170px
-} */
 
-/* .password {
-    display: flex;
-    flex-direction: column;
-    width: 170px;
-    padding: 150px
-} */
 
 .logbt, .cancelbt {
-    /* margin-left: 5px;
-    width: 80px;
-     */
-    /* border: 1px solid var(--grey-light-color); */
+   
     border-radius: 3px;
     font-size: var(--font-large);
     background-color: rgb(131, 209, 248);
@@ -31,11 +16,7 @@
 
 }
 
-/* .session{
-    display: flex;
-    justify-content: end;
-    position: ablsolute;
-} */
+
 
 .form {
     width: 400px;
@@ -43,7 +24,6 @@
     padding: 30px;
     display:flex;
     flex-direction: column;
-    /* border: 1px solid var(--grey-light-color); */
 
 }
 #loginlabel{
@@ -60,15 +40,11 @@
 .beforelogbt {
     height: 40px;
     font-size: var(--font-large);
-    /* position:relative; */
-    /* right: 10px; */
     width: 80px;
     text-align: center;
     justify-content: space-around;
-    /* border: 2px solid rgb(249, 205, 205); */
     border-radius: 5px;
     background-color: rgb(131, 209, 248);
-    /* margin-top: 10px; */
 }
 
 #loginInputCredential, #loginInputPassword {

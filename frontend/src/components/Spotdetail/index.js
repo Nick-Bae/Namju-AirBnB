@@ -153,9 +153,6 @@ export const Spotdetail = () => {
                     {/* </div> */}
                 </div>
                 {/* )} */}
-                <div>
-                    {/* <Link to="/">Back to Spot List</Link> */}
-                </div>
             </div>
         </section>
         // </body>

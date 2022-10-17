@@ -1,14 +1,14 @@
 import { useParams } from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { editSpot } from '../../store/spot';
-import {useHistory} from 'react-router-dom';
-import  { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import './EditSpotForm.css'
 
 export const EditSpotForm = () => {
-  const { id } = useParams();
-  const spot = useSelector(state => state.spot[id])
+    const { id } = useParams();
+    const spot = useSelector(state => state.spot[id])
     const history = useHistory();
     // let updateSpot= spot.find(info => info.id == spotId)
     const [address, setAddress] = useState(spot.address);
@@ -20,13 +20,32 @@ export const EditSpotForm = () => {
     const [name, setName] = useState(spot.name);
     const [description, setDescription] = useState(spot.description);
     const [price, setPrice] = useState(spot.price);
-    const [url, setUrl] = useState(spot.image);
     const dispatch = useDispatch();
+    const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    useEffect(() => {
+        const errors = [];
+        if (!address.length) errors.push('Please enter your address');
+        if (!city.length) errors.push('Please enter your City');
+        if (!state.length) errors.push('Please enter your State');
+        if (!country.length) errors.push('Please enter your Country');
+        if (lat < -90 || lat > 90 || lat ==="") errors.push('Please enter between -90 and 90 Latitude');
+        if (lng < -180 || lng > 180 || lng ==="") errors.push('Please enter between -180 and 180 Longitude');
+        if (!name.length) errors.push('Please enter your Name');
+        if (name.length >15) errors.push('Name must be less than 15 chracters');
+        if (!description.length) errors.push('Please enter your description');
+        if (price==="" || price < 0) errors.push('Please enter your Correct Price');
+        setValidationErrors(errors);
+    }, [address, city, state, country, lat, lng, name, description, price,])
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
-       const spot = {
+        setHasSubmitted(true);
+        if (validationErrors.length) return alert(`Cannot Submit`);
+
+        const spot = {
             id: id,
             // ownerId: id,
             address,
@@ -40,13 +59,13 @@ export const EditSpotForm = () => {
             price,
         };
 
-       await dispatch(editSpot(spot));
+        await dispatch(editSpot(spot));
 
-      //  if (updateSpot) {
+        //  if (updateSpot) {
 
-         history.push(`/spots/${id}`);
-         reset();
-      //  }
+        history.push(`/spots/${id}`);
+        reset();
+        //  }
 
     };
 
@@ -68,9 +87,21 @@ export const EditSpotForm = () => {
 
     return (
         <section>
-            <form onSubmit={onSubmit}>
-                <h2>Update</h2>
-                <div>
+            {hasSubmitted && validationErrors.length > 0 && (
+                <div id="errorDisplay">
+                    <p id="errorTitle">The following errors were found:</p>
+                <ul>
+                    {validationErrors.map(error => (
+                        <li key={error} id="updateError">-{error}</li>
+                    ))}
+                </ul>
+            </div>
+        )}
+            
+
+            <form id="updateForm" onSubmit={onSubmit}>
+                <h2 id="updateTitle">Update</h2>
+                {/* <div>
                         <label htmlFor='url'>url</label>
                         <input
                             id='url'
@@ -79,8 +110,8 @@ export const EditSpotForm = () => {
                             onChange={e => setUrl(e.target.value)}
                             value={url}
                         />
-                    </div>
-                <div>
+                    </div> */}
+                <div id="updateAddress">
                     <label htmlFor='address'>address:</label>
                     <input
                         id='address'
@@ -90,7 +121,8 @@ export const EditSpotForm = () => {
                         value={address}
                     />
                 </div>
-                <div>
+
+                <div id="updateCity">
                     <label htmlFor='city'>city:</label>
                     <input
                         id='city'
@@ -100,7 +132,8 @@ export const EditSpotForm = () => {
                         value={city}
                     />
                 </div>
-                <div>
+
+                <div id="updateState">
                     <label htmlFor='state'>state:</label>
                     <input
                         id='state'
@@ -109,7 +142,8 @@ export const EditSpotForm = () => {
                         value={state}
                     />
                 </div>
-                <div>
+
+                <div id="updateCountry">
                     <label htmlFor='country'>country:</label>
                     <input
                         id='country'
@@ -118,7 +152,8 @@ export const EditSpotForm = () => {
                         value={country}
                     />
                 </div>
-                <div>
+
+                <div id="updateLat">
                     <label htmlFor='lat'>lat:</label>
                     <input
                         id='lat'
@@ -127,7 +162,8 @@ export const EditSpotForm = () => {
                         value={lat}
                     />
                 </div>
-                <div>
+
+                <div id="updateLng">
                     <label htmlFor='lng'>lng:</label>
                     <input
                         id='lng'
@@ -136,7 +172,8 @@ export const EditSpotForm = () => {
                         value={lng}
                     />
                 </div>
-                <div>
+
+                <div id="updateName">
                     <label htmlFor='name'>name:</label>
                     <input
                         id='name'
@@ -145,7 +182,8 @@ export const EditSpotForm = () => {
                         value={name}
                     />
                 </div>
-                <div>
+
+                <div id="updatePrice">
                     <label htmlFor='price'>price:</label>
                     <input
                         id='price'
@@ -154,7 +192,8 @@ export const EditSpotForm = () => {
                         value={price}
                     />
                 </div>
-                <div>
+
+                <div id="updateDescription">
                     <label htmlFor='description'>description:</label>
                     <textarea
                         id='description'
@@ -165,8 +204,10 @@ export const EditSpotForm = () => {
                 </div>
 
                 {/* <button type='submit'>Creat new spot</button> */}
-                <button type="submit"  > Update</button>
-                <button type="button" onClick={handleCancelClick}>Cancel</button>
+                <div id="updateButtons">
+                    <button id="updateBt" type="submit"  > Update</button> &nbsp;
+                    <button id="updateCancel" type="button" onClick={handleCancelClick}>Cancel</button>
+                </div>
             </form>
         </section>
         // <div><h1>hello??</h1></div>

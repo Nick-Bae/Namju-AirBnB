@@ -34,14 +34,12 @@ const CreateSpot = ({ spot, formType }) => {
         if (!city.length) errors.push('Please enter your City');
         if (!state.length) errors.push('Please enter your State');
         if (!country.length) errors.push('Please enter your Country');
-        if (!lat.length) errors.push('Please enter your Latitude');
-        // if (!lat < -90) errors.push('Please enter your Latitude');
-        if (!lng.length) errors.push('Please enter your Longitude');
-        // if (!lng.length) errors.push('Please enter your Longitude');
+        if (lat < -90 || lat > 90 || lat ==="") errors.push('Please enter between -90 and 90 Latitude');
+        if (lng < -180 || lng > 180 || lng ==="") errors.push('Please enter between -180 and 180 Longitude');
         if (!name.length) errors.push('Please enter your Name');
         if (name.length >15) errors.push('Name must be less than 15 chracters');
         if (!description.length) errors.push('Please enter your description');
-        if (!price.length || price < 0) errors.push('Please enter your Correct Price');
+        if (price==="" || price < 0) errors.push('Please enter your Correct Price');
         setValidationErrors(errors);
     }, [address, city, state, country, lat, lng, name, description, price,])
 
@@ -62,8 +60,7 @@ const CreateSpot = ({ spot, formType }) => {
             description,
             price,
         };
-     console.log("this is showing")
-     console.log("before dispatch",spot)
+
         const newSpot = await dispatch(createSpot(spot))
                         // .then((res)=> {
                         //     // const newSpot = res.json();
