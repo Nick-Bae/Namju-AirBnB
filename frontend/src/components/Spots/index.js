@@ -40,7 +40,7 @@ const SpotList = () => {
 
           <div className='imglayout'>
             {spots.map((spot) => (
-              <div id="container" >
+              <div key={spot.id} id="container" >
                 <div className='images'>
                   <Link to={`/spots/${spot.id}`}>
                     <img spot={spot} className="img" src={spot.previewImage} />

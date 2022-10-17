@@ -13,16 +13,18 @@
     align-items: center;
     justify-content: center;
     border-radius: 3px;
-    background-color: rgb(127, 214, 246);
-    width:142px;
+    background-color: rgb(131, 209, 248);
+    width: 147px;
+    font-size:15px;
 }
 
 #cancel {
     margin: 15px 0 0 0;
     border-radius: 3px;
-    background-color: rgb(127, 214, 246);
+    background-color: rgb(131, 209, 248);
     height: 40px;
-    width:142px;
+    width: 147px;
+    font-size:15px;
 }
 
 
@@ -37,30 +39,35 @@
     margin-bottom: 20px;
 }
 
-#signupInside {
-    display: flex;
-    flex-direction: column;
-}
-
-.firstname,
-.email,
-.username,
-.lastname,
-.password,
-.confirmname {
+#signupEmail,
+#signupUsername,
+#signupFirstName,
+#signupLastName,
+#signupPassword,
+#signupConfirmname {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
 
-#signUpInput {
+
+
+
+#signUpEmailInput,
+#signUpUserInput,
+#signUpFirstNameInput,
+#signUpLastNameInput,
+#singUpPasswordInput,
+#signUpConfirmInput {
     /* border: 1px solid var(--grey-light-color); */
-    width: 30%;
+    width: 300px;
     height: 40px;
     border-radius: 3px;
 }
 
-#password{
-    width:290px;
-    height:40px
+#singUpPasswordInput {
+    width: 300px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 3px;
 }
