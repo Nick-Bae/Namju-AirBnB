@@ -94,6 +94,9 @@ main {
 .spotname {
     font-weight: bold;
 }
+.fa-circle-plus{
+    color: rgb(14, 165, 235);
+}
 
 /* @media (max-width:1800px) {
     .imglayout {

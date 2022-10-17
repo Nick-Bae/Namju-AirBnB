@@ -1,0 +1,35 @@
+
+#createSpotForm{
+    display:flex;
+    flex-direction: column;
+    margin-left:50px;
+    font-size: 20px;
+}
+
+#formTitle{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+#address, #city, #state, #country, #lat, #lng, #name, #price, #description{
+    margin-bottom: 20px;
+    width:270px;
+    height: 35px;
+}
+
+#spotInput{
+    display: flex;
+    flex-direction: column;
+}
+
+#description{
+    margin-bottom: 20px;
+}
+
+#spotBt{
+    border: 1px solid var(--grey-light-color);
+    background-color: rgb(14, 165, 235);
+    height:40px;
+    width:130px;
+    border-radius: 7px;
+}

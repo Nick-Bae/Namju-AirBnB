@@ -32,7 +32,6 @@ export const ReviewDisplay = ({ spot, reviews }) => {
     // if (!spotReviewsObj) return null
     // console.log("how many reviews?",spotReviews)
 
-    console.log("spot",spot.avgRating)
     // console.log("reviews?????",reviews)
     // console.log("current spot reviews",spotReviews)
 

@@ -19,7 +19,6 @@ export const Spotdetail = () => {
 // console.log("spot information",spot.ownerId)
 // console.log("user info",user.id)
     const permission = spot?.ownerId !== user?.id ? false : true
-    console.log("permission",permission)
     const review = useSelector((state) => state.review)
     const [showSpot, setShowSpot] = useState(false);
     const [owner, setOwner]=useState(true);

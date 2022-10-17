@@ -5,8 +5,10 @@ import { createSpot } from '../../store/spot';
 import { Redirect, useParams } from 'react-router-dom';
 import { createImage } from '../../store/spot';
 import { getSpotBySpotId } from '../../store/spot';
+import './createSpot.css'
+
 const CreateSpot = ({ spot, formType }) => {
-    const { id } = useSelector(state => state.session.user)
+    // const { id } = useSelector(state => state.session.user)
     const history = useHistory();
 
     const [address, setAddress] = useState('');
@@ -107,8 +109,9 @@ const CreateSpot = ({ spot, formType }) => {
                     </ul>
                 </div>
             )}
-            <form onSubmit={onSubmit}>
+            <form id="createSpotForm" onSubmit={onSubmit}>
                 <h2>{formType}</h2>
+                <h2 id="formTitle">Create Spot</h2>
                 {/* <div>
                         <label htmlFor='url'>url:</label>
                         <input
@@ -119,27 +122,28 @@ const CreateSpot = ({ spot, formType }) => {
                             value={url}
                         />
                     </div> */}
-                <div>
+            
+                <div id="spotInput">
                     <label htmlFor='address'>address:</label>
-                    <input
+                    <input 
                         id='address'
                         type='text'
-                        placeholder='address'
+                        // placeholder='address'
                         onChange={e => setAddress(e.target.value)}
                         value={address}
                     />
                 </div>
-                <div>
+                <div id="spotInput">
                     <label htmlFor='city'>city:</label>
                     <input
                         id='city'
                         type='text'
-                        placeholder='city'
+                        // placeholder='city'
                         onChange={e => setCity(e.target.value)}
                         value={city}
                     />
                 </div>
-                <div>
+                <div id="spotInput">
                     <label htmlFor='state'>state:</label>
                     <input
                         id='state'
@@ -148,7 +152,7 @@ const CreateSpot = ({ spot, formType }) => {
                         value={state}
                     />
                 </div>
-                <div>
+                <div id="spotInput">
                     <label htmlFor='country'>country:</label>
                     <input
                         id='country'
@@ -157,7 +161,7 @@ const CreateSpot = ({ spot, formType }) => {
                         value={country}
                     />
                 </div>
-                <div>
+                <div id="spotInput">
                     <label htmlFor='lat'>lat:</label>
                     <input
                         id='lat'
@@ -166,7 +170,7 @@ const CreateSpot = ({ spot, formType }) => {
                         value={lat}
                     />
                 </div>
-                <div>
+                <div id="spotInput">
                     <label htmlFor='lng'>lng:</label>
                     <input
                         id='lng'
@@ -175,7 +179,7 @@ const CreateSpot = ({ spot, formType }) => {
                         value={lng}
                     />
                 </div>
-                <div>
+                <div id="spotInput">
                     <label htmlFor='name'>name:</label>
                     <input
                         id='name'
@@ -184,7 +188,7 @@ const CreateSpot = ({ spot, formType }) => {
                         value={name}
                     />
                 </div>
-                <div>
+                <div id="spotInput">
                     <label htmlFor='price'>price:</label>
                     <input
                         id='price'
@@ -193,19 +197,21 @@ const CreateSpot = ({ spot, formType }) => {
                         value={price}
                     />
                 </div>
-                <div>
+                <div id="spotInput">
                     <label htmlFor='description'>description:</label>
                     <input
                         id='description'
-                        type='text'
+                        type='testarea'
                         onChange={e => setDescription(e.target.value)}
                         value={description}
                     />
                 </div>
 
                 {/* <button type='submit'>Creat new spot</button> */}
-                <input type="submit" value={formType} />
-                <button type="button" onClick={handleCancelClick}>Cancel</button>
+                <div>
+                <input id="spotBt" type="submit" value={formType} /> &nbsp;
+                <button id="spotBt" type="button" onClick={handleCancelClick}>Cancel</button>
+                </div>
             </form>
         </section>
     );

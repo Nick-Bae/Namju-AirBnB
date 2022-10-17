@@ -18,7 +18,7 @@ const DeleteImage = () => {
 
         e.preventDefault();
         dispatch(deleteImage(id))
-        history.push(`/images/${id}`);
+        history.push(`/spots/${id}`);
     }
     const handleCancelClick = (e) => {
         e.preventDefault();
