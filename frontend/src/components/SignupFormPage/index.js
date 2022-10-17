@@ -45,7 +45,7 @@ function SignupFormPage() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ username, firstName, lastName, email, password }))
-      // return dispatch(sessionActions.signup({ username,  email, password }))
+        // return dispatch(sessionActions.signup({ username,  email, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -53,71 +53,100 @@ function SignupFormPage() {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
-console.log(errors)
+  console.log(errors)
   return (
-    <form onSubmit={handleSubmit} className='signform'>
-      <ul>
-        {(Object.values(errors)).map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label className="email">
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label className="username">
-        User name
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
+    <>
+      <h2 id="signUpTitle">Sign up</h2>
+      <form onSubmit={handleSubmit} className='signform'>
+        <ul>
+          {(Object.values(errors)).map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
+
+        <div id="signupInside">
+          <label className="email">
+            Email
+            <input
+              id="signUpInput"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+
+        <div id="signupInside">
+          <label className="username">
+            User name
+            <input
+            id="signUpInput"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+
+        <div id="signupInside">
+        <label className="firstname">
+          First Name
+          <input
+          id="signUpInput"
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstname(e.target.value)}
+            required
+          />
         </label>
-      <label className="firstname">
-        First Name
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstname(e.target.value)}
-          required
-        />
+        </div>
+        <div id="signupInside">
+
+        <label className="lastname">
+          Last Name
+          <input
+          id="signUpInput"
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastname(e.target.value)}
+            required
+          />
         </label>
-      <label className="lastname">
-        Last Name
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastname(e.target.value)}
-          required
-        />
-      </label>
-      <label className="password">
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label className="confirmname">
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <div id="button">
-      <button type="submit" className="signbt">Sign Up</button>
-      <button id="cancel" onClick={()=>{history.push('/')}}>Cancel</button>
-      </div>
-    </form>
+        </div>
+
+        <div id="signupInside">
+
+        <label className="password">
+          Password
+          <input
+           id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+        </div>
+        <div id="signupInside">
+
+        <label className="confirmname">
+          Confirm Password
+          <input
+          id="signUpInput"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </label>
+        </div>
+
+        <div id="button">
+          <button type="submit" className="signbt">Sign Up</button>&nbsp;
+          <button id="cancel" onClick={() => { history.push('/') }}>Cancel</button>
+        </div>
+      </form>
+    </>
   );
 }
 

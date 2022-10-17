@@ -1,50 +1,66 @@
-.signform{
+.signform {
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
+    margin-left: 60px;
 }
-.email {
+
+.signbt {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 0 0;
+    height: 40px;
+
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    background-color: rgb(127, 214, 246);
+    width:142px;
+}
+
+#cancel {
+    margin: 15px 0 0 0;
+    border-radius: 3px;
+    background-color: rgb(127, 214, 246);
+    height: 40px;
+    width:142px;
+}
+
+
+#button {
+    display: flex;
+    flex-direction: row;
+}
+
+#signUpTitle {
+    margin-left: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#signupInside {
     display: flex;
     flex-direction: column;
 }
-#username {
-    display: flex;
-    flex-direction: column;
-}
-#password {
-    display: flex;
-    flex-direction: column;
-}
+
+.firstname,
+.email,
+.username,
+.lastname,
+.password,
 .confirmname {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
 }
-.signbt{
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0 0 0;
 
-    text-align: center;
-    align-items: center;
+#signUpInput {
+    /* border: 1px solid var(--grey-light-color); */
+    width: 30%;
+    height: 40px;
     border-radius: 3px;
-    /* border:1px solid var(--grey-light-color); */
-    background-color: rgb(127, 214, 246);
 }
-#cancel{
-    margin: 15px 0 0 0;
-    border-radius: 3px;
-    /* border:1px solid var(--grey-light-color); */
-    background-color: rgb(127, 214, 246);
-}
-input {
-    border-radius: 3px;
-    border:1px solid var(--grey-light-color);
-    width:150px;
-}
-button {
-    width:75px;
-}
-#button{
-    display: flex;
-    flex-direction: row;
+
+#password{
+    width:290px;
+    height:40px
 }
