@@ -27,6 +27,7 @@
     background-color: rgb(131, 209, 248);
     height: 35px;
     color:black;
+    width: 70px;
 
 }
 
@@ -70,7 +71,7 @@
     /* margin-top: 10px; */
 }
 
-#loginInputCredential, #loginInputCredential {
+#loginInputCredential, #loginInputPassword {
     border: 1px solid var(--grey-light-color);
     border-radius: 3px;
     width:335px;

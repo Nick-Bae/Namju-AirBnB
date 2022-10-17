@@ -199,9 +199,9 @@ const CreateSpot = ({ spot, formType }) => {
                 </div>
                 <div id="spotInput">
                     <label htmlFor='description'>description:</label>
-                    <input
+                    <textarea
                         id='description'
-                        type='testarea'
+                        type='text'
                         onChange={e => setDescription(e.target.value)}
                         value={description}
                     />
