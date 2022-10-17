@@ -53,10 +53,10 @@ function Navigation({ isLoaded }) {
   //   dispatch(sessionActions.logout());
   // };
   //================end
-  const signUp = () => {
-    <NavLink id="signUp" to="/signup">Sign Up</NavLink>
-    history.push('/signup')
-  }
+  // const signUp = () => {
+  //   <NavLink id="signUp" to="/signup">Sign Up</NavLink>
+  //   history.push('/signup')
+  // }
 
   if (sessionUser) {
     sessionLinks = (
@@ -73,8 +73,8 @@ function Navigation({ isLoaded }) {
         </div>
 
         <div>
-          <button id="signupBt" onClick={signUp}>Sign up</button>
-          {/* <NavLink id="signUp" to="/signup">Sign Up</NavLink> */}
+          {/* <button id="signupBt" onClick={signUp}>Sign up</button> */}
+        <SignupFormModal />
         </div>
 
       </div>
