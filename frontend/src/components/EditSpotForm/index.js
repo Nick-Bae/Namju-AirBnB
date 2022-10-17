@@ -86,7 +86,7 @@ export const EditSpotForm = () => {
     };
 
     return (
-        <section>
+        <section id="editSpotForm">
             {hasSubmitted && validationErrors.length > 0 && (
                 <div id="errorDisplay">
                     <p id="errorTitle">The following errors were found:</p>

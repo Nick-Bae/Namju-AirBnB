@@ -43,9 +43,9 @@
 }
 
 .userlogo {
-    height: 150px;
+    height: 148px;
     width:60px;
-    margin-top: 5px;
+    margin-top: 3px;
     background-color: white;
     border-radius: 10px;
     border: 1px solid var(--grey-light-color); 
