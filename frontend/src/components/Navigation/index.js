@@ -6,6 +6,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import LoginForm from '../LoginFormModal/LoginForm';
 import './Navigation.css';
+import DemoUser from '../DemoUser';
 import SignupFormModal from '../SignupFormPage';
 // import SignupFormPage from '../SignupFormPage/SignupFormPage';
 import { Modal } from '../../context/Modal';
@@ -52,7 +53,7 @@ function Navigation({ isLoaded }) {
   //   dispatch(sessionActions.logout());
   // };
   //================end
-  const signUp =()=>{
+  const signUp = () => {
     <NavLink id="signUp" to="/signup">Sign Up</NavLink>
     history.push('/signup')
   }
@@ -64,16 +65,18 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <div id="topMenu">
-            <div>
-              
-            <LoginFormModal />
-            </div>
-          
-          <div>
-            <button id="signupBt" onClick={signUp}>Sign up</button>
-            {/* <NavLink id="signUp" to="/signup">Sign Up</NavLink> */}
-          </div>
-          
+        <div>
+          <DemoUser />
+        </div>
+        <div>
+          <LoginFormModal />
+        </div>
+
+        <div>
+          <button id="signupBt" onClick={signUp}>Sign up</button>
+          {/* <NavLink id="signUp" to="/signup">Sign Up</NavLink> */}
+        </div>
+
       </div>
 
       // <div className="loginfoBt">
@@ -103,7 +106,7 @@ function Navigation({ isLoaded }) {
 
   return (
     <ul className='underline'>
-      <li  className='logolist'>
+      <li className='logolist'>
         <NavLink className="navlink" exact to="/" >
           {/* <img className="logo header" src="https://miro.medium.com/max/1400/0*NChTo-XqLOxLabIW"></img> */}
           <img className="logoMain" src="../../../images/logo.png"></img>

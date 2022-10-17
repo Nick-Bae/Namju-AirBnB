@@ -1,0 +1,6 @@
+#demoBt{
+    background-color: rgb(131, 209, 248);
+    height: 40px;
+    border-radius: 5px;
+    font-size: var(--font-large);
+}

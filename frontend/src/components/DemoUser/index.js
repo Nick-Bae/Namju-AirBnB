@@ -1,20 +1,21 @@
 import React from "react";
-import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import * as sessionActions from "../../store/session";
+import './demoUser.css'
 
 export default function DemoUser() {
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const demo = (e) => {
     e.preventDefault();
-    const email = "demo";
-    const password = "password5";
-    return dispatch(sessionActions.login({ email, password }));
+    const credential = "demo";
+    const password = "111111";
+    return dispatch(sessionActions.login({ credential, password }));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <button type="submit">Continue as Demo User</button>
+    <form onSubmit={demo} >
+      <button id="demoBt" type="submit">Demo User</button> &nbsp;
     </form>
   );
 }
