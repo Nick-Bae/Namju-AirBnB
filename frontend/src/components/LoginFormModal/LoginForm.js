@@ -27,6 +27,17 @@ function LoginForm({ setShowModal }) {
     setShowModal(false)
   }
 
+  const demo = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(sessionActions.login({ credential:'demo', password:'111111' })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.message) setErrors([data.message]);
+      }
+    );
+  };
+
   return (
     <section>
 
@@ -53,7 +64,8 @@ function LoginForm({ setShowModal }) {
         </label>
         <div id="loginButtons">
           <button className="logbt" type="submit">Log In </button>
-          <DemoUser />
+          {/* <DemoUser /> */}
+          <button className="demobt" onClick={demo}>Demo</button>
           <button className="cancelbt" type="submit" onClick={cancel}>Cancel</button>
         </div>
       </form>

@@ -19,7 +19,8 @@
     background-color: rgb(131, 209, 248);
     width: 147px;
     font-size:15px;
-    color:black
+    color:black;
+    font-weight: 100px;
 }
 .signupBt{
     border-radius: 5px;
@@ -38,6 +39,7 @@
     width: 147px;
     font-size:15px;
     color: black;
+    font-weight: 100px;
 }
 #signupErrorTitle{
  font-size: 20px;
