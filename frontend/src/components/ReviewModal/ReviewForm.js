@@ -80,7 +80,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
            
             {hasSubmitted && validationErrors.length > 0 && (
                 <div id="errormessage">
-                   <p id="errorTitle"> The following errors were found:</p> 
+                   <p id="reviewErrorTitle"> The following errors were found:</p> 
                     <ul id="errorDetail">
                         {validationErrors.map(error => (
                             <li key={error}>{error}</li>
@@ -113,8 +113,8 @@ export const ReviewForm = ({spot, setShowModal}) => {
                         />
                     </label>
                 </div>
-                <button type="submit"> Submit </button>&nbsp; 
-                <button onClick={cancel}> Cancel </button>
+                <button id="reviewSubmit" type="submit"> Submit </button>&nbsp; 
+                <button id="reviewCancel" onClick={cancel}> Cancel </button>
             </form>
 
             )}

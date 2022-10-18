@@ -14,14 +14,16 @@
 
 #reviewFormLabel, #reviewFormStar{
     font-size:var(--font-large);
+
+    margin-bottom: 5px;
 }
 #reviewModal{
     display: flex;
     flex-direction: column;
     width:600px;
-    height: 310px;
-    margin-top: 20px;
+    min-height: 310px;
     margin-left: 20px;
+    justify-content: center;
 }
 #starInput{
     width:580px;
@@ -35,7 +37,7 @@
     margin-bottom: 10px;
 }
 
-#errorTitle{
+#reviewErrorTitle{
     font-size: 20px;
     font-weight: bold;
 }
@@ -43,4 +45,15 @@
 #errorDetail{
     color: red;
     margin-bottom: 20px;
+}
+
+#reviewSubmit, #reviewCancel {
+    border-radius: 7px;
+    background-color: rgb(131, 209, 248);
+    width: 133px;
+    height: 40px;
+    font-size:15px;
+    color: black;
+    font-weight: 100;
+    /* margin:0 0 10px 0px; */
 }
