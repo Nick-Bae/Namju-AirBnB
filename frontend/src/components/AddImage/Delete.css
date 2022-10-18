@@ -1,0 +1,22 @@
+#new-image{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#imageDelete, #imageDeleteCancel{
+    border-radius: 7px;
+    background-color: rgb(131, 209, 248);
+    width: 133px;
+    height: 40px;
+    font-size:15px;
+    margin:50px;
+}
+
+#imageDeleteTitle{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:50px;
+    font-size: 30px;
+}

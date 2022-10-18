@@ -82,7 +82,7 @@ export const EditSpotForm = () => {
 
     const handleCancelClick = (e) => {
         e.preventDefault();
-        history.push(`/`);
+        history.push(`/spots/${id}`);
     };
 
     return (

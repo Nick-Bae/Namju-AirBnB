@@ -114,9 +114,6 @@ export const ReviewDisplay = ({ spot, reviews }) => {
                                 Stars: {stars}
                                 {(<i class="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
 
-
-
-
                             </li>
 
                             {
