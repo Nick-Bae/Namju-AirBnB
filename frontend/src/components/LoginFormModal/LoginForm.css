@@ -49,6 +49,7 @@
     border-radius: 5px;
     background-color: rgb(131, 209, 248);
     color: black;
+    font-weight: 300;
 }
 
 #loginInputCredential, #loginInputPassword {

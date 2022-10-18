@@ -76,6 +76,8 @@
     width:70px;
    background-color: rgb(131, 209, 248);
    border-radius: 5px;
+   color:black;
+   font-weight: 300;
 }
 
 .logocolor {
