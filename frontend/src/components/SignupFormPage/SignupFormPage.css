@@ -27,6 +27,7 @@
     height: 40px;
     font-size: var(--font-large);
     width: 80px;
+    color:black;
 }
 
 #cancel {

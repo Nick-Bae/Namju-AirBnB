@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './LoginForm.css'
+import DemoUser from "../DemoUser";
 
-function LoginForm({setShowModal}) {
+function LoginForm({ setShowModal }) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +23,7 @@ function LoginForm({setShowModal}) {
     );
   };
 
-  const cancel =(e) =>{
+  const cancel = (e) => {
     setShowModal(false)
   }
 
@@ -51,8 +52,9 @@ function LoginForm({setShowModal}) {
           />
         </label>
         <div id="loginButtons">
-        <button className="logbt" type="submit">Log In </button>&nbsp;
-        <button className="cancelbt" type="submit" onClick={cancel}>Cancel</button>
+          <button className="logbt" type="submit">Log In </button>
+          <DemoUser />
+          <button className="cancelbt" type="submit" onClick={cancel}>Cancel</button>
         </div>
       </form>
       <div className="error">

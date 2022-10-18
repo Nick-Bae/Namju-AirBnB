@@ -66,7 +66,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div id="topMenu">
         <div>
-          <DemoUser />
+          {/* <DemoUser /> */}
         </div>
         <div>
           <LoginFormModal />

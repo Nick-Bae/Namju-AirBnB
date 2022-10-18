@@ -7,10 +7,10 @@
 
 .logbt, .cancelbt {
    
-    border-radius: 3px;
+    border-radius: 5px;
     font-size: var(--font-large);
     background-color: rgb(131, 209, 248);
-    height: 35px;
+    height: 40px;
     color:black;
     width: 70px;
 
@@ -45,6 +45,7 @@
     justify-content: space-around;
     border-radius: 5px;
     background-color: rgb(131, 209, 248);
+    color: black;
 }
 
 #loginInputCredential, #loginInputPassword {
@@ -52,4 +53,13 @@
     border-radius: 3px;
     width:335px;
     height:50px;
+}
+
+#loginButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+.logbt, .cancelbt, #demoBt{
+    margin-right:5px;
 }

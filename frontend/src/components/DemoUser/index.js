@@ -15,7 +15,7 @@ export default function DemoUser() {
 
   return (
     <form onSubmit={demo} >
-      <button id="demoBt" type="submit">Demo User</button> &nbsp;
+      <button id="demoBt" type="submit">Demo </button>
     </form>
   );
 }
