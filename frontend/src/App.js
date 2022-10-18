@@ -62,7 +62,7 @@ function App() {
           <Route path="/login">
             <LoginForm />
           </Route>
-          <Route paht="/spots">
+          <Route path="/spots">
             <Spots />
           </Route>
         </Switch>

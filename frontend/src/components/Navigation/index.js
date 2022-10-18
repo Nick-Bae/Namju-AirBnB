@@ -14,44 +14,43 @@ import { Modal } from '../../context/Modal';
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
   let sessionLinks;
 
-  //=======here
-  // const [showMenu, setShowMenu] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
+  // // =======here
+  const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  // const openMenu = () => {
-  //   if (showMenu) return;
-  //   setShowMenu(true);
-  // };
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
 
-  // useEffect(() => {
-  //   if (!showMenu) return;
+  useEffect(() => {
+    if (!showMenu) return;
 
-  //   const closeMenu = () => {
-  //     setShowMenu(false);
-  //   };
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
 
-  //   document.addEventListener('click', closeMenu);
+    document.addEventListener('click', closeMenu);
 
-  //   var span = document.getElementsByClassName("close")[0];
-  //   var modal = document.getElementById("loginfoBT");
-  //   span.onclick = function () {
-  //     setShowMenu(false);
-  //   }
-  //   window.onclick = function(event) {
-  //     if (event.target !== modal) {
-  //       document.addEventListener('click', closeMenu);
-  //     }
-  //   }
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showMenu]);
+    // var span = document.getElementsByClassName("close")[0];
+    // var modal = document.getElementById("loginfoBT");
+    // span.onclick = function () {
+    //   setShowMenu(false);
+    // }
+    // window.onclick = function(event) {
+    //   if (event.target !== modal) {
+    //     document.addEventListener('click', closeMenu);
+    //   }
+    // }
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
-  // const logout = (e) => {
-  //   e.preventDefault();
-  //   dispatch(sessionActions.logout());
-  // };
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+  };
   //================end
   // const signUp = () => {
   //   <NavLink id="signUp" to="/signup">Sign Up</NavLink>
@@ -73,38 +72,16 @@ function Navigation({ isLoaded }) {
         </div>
 
         <div>
-          {/* <button id="signupBt" onClick={signUp}>Sign up</button> */}
-        <SignupFormModal />
+          <SignupFormModal />
         </div>
-
       </div>
 
-      // <div className="loginfoBt">
-
-      //   <button className="userlogo header" onClick={openMenu} >
-      //     <i className="fas fa-user-circle logocolor" />
-      //   </button>
-
-      //   <span className='close'>
-      //     {showMenu && (
-      //       <ul className="profile-dropdown">
-      //         <li>
-      //         <LoginFormModal   />
-      //         </li>
-      //         <li>
-      //         <NavLink className="signup" to="/signup">Sign Up</NavLink>
-      //         </li>
-      //         <li>
-      //           <button onClick={logout}>Log Out</button>
-      //         </li>
-      //       </ul>
-      //    )}
-      //   </span>
-      // </div>
+      
     );
   }
 
   return (
+    <>
     <ul className='underline'>
       <li className='logolist'>
         <NavLink className="navlink" exact to="/" >
@@ -114,11 +91,35 @@ function Navigation({ isLoaded }) {
         {isLoaded && sessionLinks}
       </li>
       {/* <li>
-      <button className="userlogo header" >
+      <button className="userlogo header" onclick={openMenu} >
         <i className="fas fa-user-circle logocolor" />
       </button>
       </li> */}
     </ul>
+    <div className="loginfoBt">
+
+    <button className="userlogo header" onClick={openMenu} >
+      <i className="fas fa-user-circle logocolor" />
+    </button>
+
+    <span className='close'>
+      {showMenu && (
+        <ul className="profile-dropdown">
+          <li>
+            {/* <button onClick={}>login</button> */}
+          <LoginFormModal   />
+          </li>
+          <li>
+          <SignupFormModal />
+          </li>
+          <li>
+            <button onClick={logout}>Log Out</button>
+          </li>
+        </ul>
+     )}
+    </span>
+  </div>
+  </>
   );
 }
 
