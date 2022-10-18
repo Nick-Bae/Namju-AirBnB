@@ -20,7 +20,7 @@
     width: 147px;
     font-size:15px;
     color:black;
-    font-weight: 100px;
+    ;px;
 }
 .signupBt{
     border-radius: 5px;
@@ -29,7 +29,7 @@
     font-size: var(--font-large);
     width: 80px;
     color:black;
-    font-weight: 100px;
+    font-weight: 300;
 }
 
 #signupCancel {
@@ -40,7 +40,7 @@
     width: 147px;
     font-size:15px;
     color: black;
-    font-weight: 100px;
+    font-weight: 300;
 }
 #signupErrorTitle{
  font-size: 20px;
