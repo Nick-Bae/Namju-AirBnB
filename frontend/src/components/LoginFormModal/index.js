@@ -9,9 +9,11 @@ function LoginFormModal() {
     <div className='session'>
       <button className="beforelogbt" onClick={() => setShowModal(true)
       }>  Log   In  </button>
+      {console.log("login modal",showModal)}
       <>&nbsp;</>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
+
           <LoginForm setShowModal={setShowModal}/>
         </Modal>
        )} 

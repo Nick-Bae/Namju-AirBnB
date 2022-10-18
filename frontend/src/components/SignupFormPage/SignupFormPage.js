@@ -53,7 +53,7 @@ function SignupFormPage({setShowModal}) {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
-  console.log(errors)
+  
   return (
     <>
       <h2 id="signUpTitle">Sign up</h2>

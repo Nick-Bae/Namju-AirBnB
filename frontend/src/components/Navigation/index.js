@@ -17,110 +17,86 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
 
   // // =======here
-  const [showMenu, setShowMenu] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+  // const openMenu = () => {
+  //   if (showMenu) return;
+  //   setShowMenu(true);
+  // };
 
-  useEffect(() => {
-    if (!showMenu) return;
+  // useEffect(() => {
+  //   if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
+  //   const closeMenu = () => {
+  //     setShowMenu(false);
+  //   };
 
-    document.addEventListener('click', closeMenu);
+  //   document.addEventListener('click', closeMenu);
 
-    // var span = document.getElementsByClassName("close")[0];
-    // var modal = document.getElementById("loginfoBT");
-    // span.onclick = function () {
-    //   setShowMenu(false);
-    // }
-    // window.onclick = function(event) {
-    //   if (event.target !== modal) {
-    //     document.addEventListener('click', closeMenu);
-    //   }
-    // }
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  // var span = document.getElementsByClassName("close")[0];
+  // var modal = document.getElementById("loginfoBT");
+  // span.onclick = function () {
+  //   setShowMenu(false);
+  // }
+  // window.onclick = function(event) {
+  //   if (event.target !== modal) {
+  //     document.addEventListener('click', closeMenu);
+  //   }
+  // }
+  //   return () => document.removeEventListener("click", closeMenu);
+  // }, [showMenu]);
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-  };
+  // const logout = (e) => {
+  //   e.preventDefault();
+  //   dispatch(sessionActions.logout());
+  // };
   //================end
   // const signUp = () => {
   //   <NavLink id="signUp" to="/signup">Sign Up</NavLink>
   //   history.push('/signup')
   // }
 
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
-      <div id="topMenu">
-        <div>
-          <DemoUser />
-        </div>
-        <div>
-          <LoginFormModal />
-        </div>
+  // if (sessionUser) {
+  //   sessionLinks = (
+  //     <ProfileButton user={sessionUser} />
+  //   );
+    // } else {
+    //   sessionLinks = (
+    //     <div id="topMenu">
+    //       <div>
+    //         <DemoUser />
+    //       </div>
+    //       <div>
+    //         <LoginFormModal />
+    //       </div>
 
-        <div>
-          <SignupFormModal />
-        </div>
-      </div>
+    //       <div>
+    //         <SignupFormModal />
+    //       </div>
+    //     </div>
 
-      
-    );
-  }
 
-  return (
-    <>
-    <ul className='underline'>
-      <li className='logolist'>
-        <NavLink className="navlink" exact to="/" >
-          {/* <img className="logo header" src="https://miro.medium.com/max/1400/0*NChTo-XqLOxLabIW"></img> */}
-          <img className="logoMain" src="../../../images/logo.png"></img>
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-      {/* <li>
-      <button className="userlogo header" onclick={openMenu} >
-        <i className="fas fa-user-circle logocolor" />
-      </button>
-      </li> */}
-    </ul>
-    <div className="loginfoBt">
+    //   );
+    
 
-    <button className="userlogo header" onClick={openMenu} >
-      <i className="fas fa-user-circle logocolor" />
-    </button>
-
-    <span className='close'>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>
-            {/* <button onClick={}>login</button> */}
-          <LoginFormModal   />
-          </li>
-          <li>
-          <SignupFormModal />
-          </li>
-          <li>
-            <button onClick={logout}>Log Out</button>
+    return (
+      <>
+        <ul className='underline'>
+          <li className='logolist'>
+            <NavLink className="navlink" exact to="/" >
+              {/* <img className="logo header" src="https://miro.medium.com/max/1400/0*NChTo-XqLOxLabIW"></img> */}
+              <img className="logoMain" src="../../../images/logo.png"></img>
+            </NavLink>
+            {/* {isLoaded && sessionLinks} */}
+            {/* <ProfileButton user={sessionUser} /> */}
+            {isLoaded && <ProfileButton user={sessionUser} />}
           </li>
         </ul>
-     )}
-    </span>
-  </div>
-  </>
-  );
+        
+        
+      </>
+    );
+  
 }
-
-export default Navigation;
+  export default Navigation;
