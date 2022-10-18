@@ -29,9 +29,10 @@
     font-size: var(--font-large);
     width: 80px;
     color:black;
+    font-weight: 100px;
 }
 
-#cancel {
+#signupCancel {
     margin: 15px 0 0 0;
     border-radius: 3px;
     background-color: rgb(131, 209, 248);

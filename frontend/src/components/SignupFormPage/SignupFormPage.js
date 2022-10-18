@@ -133,7 +133,7 @@ function SignupFormPage({setShowModal}) {
 
         <div id="button">
           <button type="submit" className="signbt">Sign Up</button>&nbsp;
-          <button id="cancel" onClick={() => setShowModal(false)}>Cancel</button>
+          <button id="signupCancel" onClick={() => setShowModal(false)}>Cancel</button>
         </div>
       </form>
     </>

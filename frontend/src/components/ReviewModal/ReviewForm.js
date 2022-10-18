@@ -93,7 +93,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
                 <div id="reviewFormBox">
                     <label id="reviewFormLabel">
                         Review
-                        <input
+                        <textarea
                             id="textInput"
                             type="textarea"
                             // placeholder='please leave a review'

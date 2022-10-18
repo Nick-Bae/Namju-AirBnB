@@ -48,7 +48,8 @@
     width: 133px;
     height: 40px;
     font-size:15px;
-    color:black
+    color:black;
+    font-weight:100;
 }
 input, textarea{
     border: 2px solid black;

@@ -41,7 +41,7 @@ function LoginForm({ setShowModal }) {
   return (
     <section>
 
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="loginForm" onSubmit={handleSubmit}>
         <label id="loginlabel">
           Username or Email
           <input
@@ -63,10 +63,10 @@ function LoginForm({ setShowModal }) {
           />
         </label>
         <div id="loginButtons">
-          <button className="logbt" type="submit">Log In </button>
+          <button className="loginBt" type="submit">Log In </button>
           {/* <DemoUser /> */}
           <button className="demobt" onClick={demo}>Demo</button>
-          <button className="cancelbt" type="submit" onClick={cancel}>Cancel</button>
+          <button className="loginCancelBt" type="submit" onClick={cancel}>Cancel</button>
         </div>
       </form>
       <div className="error">

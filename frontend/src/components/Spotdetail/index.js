@@ -45,8 +45,12 @@ export const Spotdetail = () => {
         // return alert("No permission")
         //     if (permission) {
         e.preventDefault();
-        await dispatch(deleteSpot(id))
-        history.push('/')
+        let confirmMessage = window.confirm("Are you sure to delete this spot?");
+        if (confirmMessage) {
+            await dispatch(deleteSpot(id))
+            // alert ("The spot deleted")
+            history.push('/')
+        }
         // }
         // }
     };
