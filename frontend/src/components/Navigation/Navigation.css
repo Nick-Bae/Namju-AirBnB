@@ -61,7 +61,7 @@
     display: flex;
     flex-direction: column;
     position:absolute;
-    margin-top: 55px;
+    margin-top: 52px;
     border: 1px solid var(--grey-light-color); 
     border-radius: 10px; 
     box-shadow: 1px 1px -2px   rgb(244, 243, 243), 1px 1px -2px rgb(244, 243, 243);
@@ -110,6 +110,8 @@ body {
     display: flex;
     justify-content: space-evenly;
     max-width: 1000px;
+    height:44px;
+    margin-left:20px;
 }
 
 
@@ -138,3 +140,7 @@ height: 100px;
     margin-left:13px;
 }
 
+#navIcons {
+    display: flex;
+    flex-direction: row;
+}

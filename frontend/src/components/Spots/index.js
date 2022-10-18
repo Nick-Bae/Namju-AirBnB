@@ -26,12 +26,7 @@ const SpotList = () => {
       <section className='spot-wrap'>
         <div className='list-container'>
           {/* <h1>Find Place</h1> */}
-          {(login) && (
-            <div className="addnewspot">
-              <i class="fa-solid fa-circle-plus"></i>
-              <NavLink to={`/spots/new`} className="spotnew">Add New Spot</NavLink>
-            </div>
-          )}
+          
 
 
 

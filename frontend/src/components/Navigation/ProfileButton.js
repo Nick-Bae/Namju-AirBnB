@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import CreateSpot from "../CreateSpot";
-import {Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  
+
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
-  
+
   useEffect(() => {
     if (!showMenu) return;
 
@@ -21,7 +21,7 @@ function ProfileButton({ user }) {
     };
 
     document.addEventListener('click', closeMenu);
-  
+
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
@@ -30,11 +30,21 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
+  const login = (!user) ? false : true
+
   return (
     <div id="log" className="loginfoBT">
-      <button className="userlogo header" onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+      <div id="navIcons">
+        {(login) && (
+          <div className="addnewspot">
+            <i class="fa-solid fa-circle-plus"></i>
+            <NavLink to={`/spots/new`} className="spotnew">Become a Host</NavLink>
+          </div>
+        )}
+        <button className="userlogo header" onClick={openMenu}>
+          <i className="fas fa-user-circle" />
+        </button>
+      </div>
       {showMenu && (
         <ul className="profile-dropdown">
           <li id="loginfo">{user.username}</li>
