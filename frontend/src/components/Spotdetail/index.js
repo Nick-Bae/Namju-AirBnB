@@ -68,6 +68,11 @@ export const Spotdetail = () => {
     //     .then(() => setShowSpot(true));
     // }, [ dispatch, id ]);
 
+    // spot?.image.map((image, idx) =>
+    //     image.previewImage ? <img key={idx} id="previewImage" src={image.url} />
+    //         : <img key={idx} id="spotImages" className="imgdetail" src={image.url} />
+    // )
+
     if (!spot) return null;
     return showSpot && (
         // <body className="detailview">
@@ -93,13 +98,22 @@ export const Spotdetail = () => {
                     </div>
 
                     <div id="spotImages">
-                        {(spot.image) &&
-                            spot?.image.map((image, idx) =>
-                                image.previewImage ? <img key={idx} src={image.url} :
+                        {spot?.image.map((image, idx) => (
 
-                                }
-                                <img key={idx} className="imgdetail" src={image.url}  />
-                            )}
+                            image.previewImage ?
+                               
+                                
+                                <div id="spotPreviewImage">
+                                    <img id="singlePreview" key={idx} src={image.url} />
+                                </div>
+                                
+                                
+                                : <div id="spotImageDetail">
+                                    {/* <div id="singleDetail"> */}
+                                        <img key={idx} className="imgdetail" src={image.url} />
+                                    {/* </div> */}
+                                </div>
+                        ))}
                     </div>
 
                     <div className="editDelete">
