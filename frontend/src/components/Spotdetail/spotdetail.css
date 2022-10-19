@@ -32,7 +32,7 @@ li {
 
 .spot-container{
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
 }
 #spotDetails{
@@ -46,6 +46,7 @@ li {
   flex-direction: column;
   /* align-items: center; */
   /* margin-left: 47px; */
+  justify-items: center;
 }
 
 #spotImages{
@@ -53,13 +54,13 @@ li {
   flex-direction: row;
   /* align-items: center; */
   /* justify-items: center; */
-  /* justify-content: center; */
+  justify-content: center;
   /* max-width:944px;
   max-height: 496px; */
   /* width: 100%;
   height: 100%; */
- width:944px;
- height:496px;
+ width:932px;
+ height:472px;
   /* display: block; */
   /* margin: auto; */
 }
@@ -72,13 +73,20 @@ li {
   /* max-width:472px;
   max-height:472px; */
   max-width:472px;
-  height:472px;
-  border-radius: 10px;
+  height:464px;
+  /* border-radius: 10px 0 0 10px; */
+  margin-top: 8px;
+  /* padding: 8px 0 0 0; */
 }
 
 #smallImages{
  display: flex;
  flex-wrap: wrap;
+ align-items: center;
+ justify-content: center;
+ width:456px;
+ height: 470px;
+ border-radius: 10px;
 }
 
 /* #spotImageDetail{
@@ -90,10 +98,18 @@ li {
   border-radius: 10px;
 } */
 
+#spotImageDetail{
+  border-radius: 0 10px 10px 0;
+  width:228px;
+  height: 233px;
+
+}
 .imgdetail{
   width:228px;
-  height: 236px;
-  border-radius: 10px;
+  height: 227px;
+  /* border-radius: 0 10px 10px 0; */
+  padding: 0 0 0 8px;
+  margin-top:8px;
 }
 
 /* #section {

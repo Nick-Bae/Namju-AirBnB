@@ -68,7 +68,7 @@ export const Spotdetail = () => {
     //     .then(() => setShowSpot(true));
     // }, [ dispatch, id ]);
 
-    const isPreviewImage = spot?.image.find((image, idx) =>
+    const isPreviewImage = spot?.image?.find((image, idx) =>
         image.previewImage = true
     )
 
@@ -79,7 +79,7 @@ export const Spotdetail = () => {
 
             <div className="spot-container">
                 {/* <div className="spot-outside"> */}
-                {/* <div className="spot-inside"> */}
+                <div className="spot-inside">
                     <div id="spotTop">
                         <div id="spotTitle">
                             <div className="spotTitle">{spot?.name}</div>
@@ -176,7 +176,7 @@ export const Spotdetail = () => {
                         <ReviewDisplay reviews={review} spot={spot} />
                     </div>
                     {/* </div> */}
-                {/* </div> */}
+                </div>
                 {/* )} */}
             </div>
         </section>
