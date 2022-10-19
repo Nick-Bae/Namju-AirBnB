@@ -23,7 +23,7 @@ export const Spotdetail = () => {
     const [showSpot, setShowSpot] = useState(false);
     const [owner, setOwner] = useState(true);
     // const reviews = useSelector((state) => Object.values(state.reviews));
-    // console.log("spot detail",spot.ownerId)
+    console.log("spot detail",spot.id)
 
     // if (spot.onwerId)
     // const openSpot = () => {
@@ -117,7 +117,7 @@ export const Spotdetail = () => {
                             <>
                                 <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                                 <button onClick={deleteReport} className="delete">Delete</button>
-                                <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
+                                <Link className="addimage" to={`/spots/${id}/images`} spotId={spot.id}> Add Image </Link>
                                 <Link className="deleteimage" to={`/images/${id}`}> Delete Image </Link>
 
                             </>
