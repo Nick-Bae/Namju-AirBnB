@@ -30,11 +30,11 @@ li {
   list-style-type: none;
 }
 
-/* .spot-container{
+.spot-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
-} */
+}
 #spotDetails{
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@ li {
   display: flex;
   flex-direction: row;
   /* align-items: center; */
-  justify-items: center;
+  /* justify-items: center; */
   /* justify-content: center; */
   /* max-width:944px;
   max-height: 496px; */
