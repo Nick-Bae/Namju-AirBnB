@@ -68,16 +68,14 @@ export const Spotdetail = () => {
     //     .then(() => setShowSpot(true));
     // }, [ dispatch, id ]);
 
-    // spot?.image.map((image, idx) =>
-    //     image.previewImage ? <img key={idx} id="previewImage" src={image.url} />
-    //         : <img key={idx} id="spotImages" className="imgdetail" src={image.url} />
-    // )
+    const isPreviewImage = spot?.image.find((image, idx) =>
+        image.previewImage = true
+    )
 
     if (!spot) return null;
     return showSpot && (
         // <body className="detailview">
         <section id="spotDetails">
-
 
             <div className="spot-container">
                 {/* <div className="spot-outside"> */}
@@ -98,22 +96,19 @@ export const Spotdetail = () => {
                     </div>
 
                     <div id="spotImages">
-                        {spot?.image.map((image, idx) => (
+                        <div id="previewImageBox">
+                            <img id="previewImage" src={isPreviewImage.url} />
+                        </div>
+                        <div id="smallImages">
+                            {spot?.image.map((image, idx) => (
+                                image.previewImage === false ?
 
-                            image.previewImage ?
-                               
-                                
-                                <div id="spotPreviewImage">
-                                    <img id="singlePreview" key={idx} src={image.url} />
-                                </div>
-                                
-                                
-                                : <div id="spotImageDetail">
-                                    {/* <div id="singleDetail"> */}
+                                    <div id="spotImageDetail">
                                         <img key={idx} className="imgdetail" src={image.url} />
-                                    {/* </div> */}
-                                </div>
-                        ))}
+                                    </div>
+                                    : <div></div>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="editDelete">
