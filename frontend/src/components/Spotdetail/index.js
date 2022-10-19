@@ -83,7 +83,7 @@ export const Spotdetail = () => {
                         </div>
 
                         <ul className="breifinfo">
-                            <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
+                            <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)} · {spot.numReviews} Reviews</li>
                             {
                                 (spot.avgRating > 4.5) &&
                                 <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
