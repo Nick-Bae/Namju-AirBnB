@@ -72,9 +72,7 @@ export const Spotdetail = () => {
     return showSpot && (
         // <body className="detailview">
         <section id="spotDetails">
-
-
-            <div className="spot-container">
+           <div className="spot-container">
                 {/* <div className="spot-outside"> */}
                 <div className="spot-inside">
                     <div id="spotTop">
