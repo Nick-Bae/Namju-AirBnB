@@ -95,10 +95,9 @@ export const Spotdetail = () => {
                     <div id="spotImages">
                         {(spot.image) &&
                             spot?.image.map((image, idx) =>
-                                image.previewImage ? <img key={idx} src={image.url} :
+                                image.previewImage ? <img key={idx} src={image.url} /> :
 
-                                }
-                                <img key={idx} className="imgdetail" src={image.url}  />
+                                <img key={idx} className="imgdetail" src={image.url} />
                             )}
                     </div>
 
