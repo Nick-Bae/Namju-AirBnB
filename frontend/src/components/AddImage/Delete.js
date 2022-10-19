@@ -13,11 +13,9 @@ const DeleteImage = () => {
     const { id } = useParams();
 
 
-    console.log('spotid', id)
-
     const handleSubmit = (e) => {
 
-        window.alert("Are you sure to delte the image?")
+        // window.alert("Are you sure to delte the image?")
         e.preventDefault();
         dispatch(deleteImage(id))
         history.push(`/spots/${id}`);

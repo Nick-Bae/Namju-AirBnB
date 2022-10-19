@@ -303,9 +303,9 @@ router.get('/:spotId', async (req, res) => {
             raw: true,
        })
 
-    const image = await Image.findOne({
+    const image = await Image.findAll({
         where: { spotId: req.params.spotId },
-        atrributes: ['url']
+        atrributes: ['url','previewImage','imageableId']
     })
     // res.json(detail)
     const owner = await User.findOne({
@@ -383,7 +383,7 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
 //============== Add an Image to a Spot based on the Spot's id
 router.post('/:spotId/images', requireAuth, async (req, res) => {
     const { user } = req;
-    const { url } = req.body
+    const { url, previewImage } = req.body
     const spot = await Spot.findByPk(req.params.spotId);
     if (!spot) {
         res.json({
@@ -397,11 +397,13 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             spotId: req.params.spotId,
             url: url,
             userId: user.id,
+            previewImage: previewImage
         });
         res.status(200);
         res.json({
             id: newImg.id,
             imageableId: newImg.spotId,
+            previewImage: previewImage,
             url: newImg.url,
         });
     }

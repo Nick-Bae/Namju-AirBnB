@@ -20,10 +20,24 @@ const AddImage = () => {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        const image = {
-            url: url,
-            spotId: id
+        // let isPreviewImage=false;
+        const isPreviewImage  = document.querySelector('#preImageCheck');
+
+        let image;
+        if (isPreviewImage.checked){
+            image = {
+                url: url,
+                spotId: id,
+                previewImage: true
+            }
+        } else {
+            image = {
+                url: url,
+                spotId: id,
+                previewImage: false
+            }
         }
+        console.log("previewImage",isPreviewImage.checked)
         dispatch(createImage(image))
         history.push(`/spots/${id}`);
         reset();
@@ -47,6 +61,11 @@ const AddImage = () => {
                     placeholder="Add a image"
                     id="new-image-form-textarea"
                 />
+                <div>
+                    <input id='preImageCheck' type="checkbox" value="previewImage" />
+                    <label for="previewImage"> Preview Image</label>
+                </div>
+
                 <div id="addImageBt">
                     <button id="addImage" type="submit"> Add Image</button> &nbsp;
                     <button id="imageCancel" type="button" onClick={handleCancelClick}>Cancel</button>

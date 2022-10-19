@@ -72,28 +72,36 @@ export const Spotdetail = () => {
     return showSpot && (
         // <body className="detailview">
         <section id="spotDetails">
-            
+
 
             <div className="spot-container">
                 {/* <div className="spot-outside"> */}
                 <div className="spot-inside">
-                <div id="spotTop">
-                <div id="spotTitle">
-                    <div className="spotTitle">{spot?.name}</div>
-                </div>
+                    <div id="spotTop">
+                        <div id="spotTitle">
+                            <div className="spotTitle">{spot?.name}</div>
+                        </div>
 
-                <ul className="breifinfo">
-                    <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
-                    {
-                        (spot.avgRating > 4.5) &&
-                        <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
-                    }
-                    <li className="address"> {spot.name} {spot.city} {spot.state} </li>
-                </ul>
-            </div>
-                    {(spot.image) &&
-                        <img className="imgdetail" src={spot?.image.url} />
-                    }
+                        <ul className="breifinfo">
+                            <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot.avgRating).toFixed(1)}</li>
+                            {
+                                (spot.avgRating > 4.5) &&
+                                <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
+                            }
+                            <li className="address"> {spot.name} {spot.city} {spot.state} </li>
+                        </ul>
+                    </div>
+
+                    <div id="spotImages">
+                        {(spot.image) &&
+                            spot?.image.map((image, idx) =>
+                                image.previewImage ? <img key={idx} src={image.url} :
+
+                                }
+                                <img key={idx} className="imgdetail" src={image.url}  />
+                            )}
+                    </div>
+
                     <div className="editDelete">
                         {(user) &&
                             (permission) &&
