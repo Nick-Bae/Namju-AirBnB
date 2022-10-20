@@ -33,7 +33,7 @@
 }
 
 #creatSpotCancel, #createSpotBt{
-    border: 1px solid var(--grey-light-color);
+    /* border: 1px solid var(--grey-light-color); */
     background-color: rgb(131, 209, 248);
     height:40px;
     width:130px;

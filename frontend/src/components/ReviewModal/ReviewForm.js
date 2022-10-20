@@ -4,11 +4,12 @@ import { useDispatch } from 'react-redux';
 import { getSpotReviews } from '../../store/comment';
 import { createReview } from '../../store/comment';
 import { useSelector } from 'react-redux';
+import { getSpotBySpotId } from '../../store/spot';
 import './ReviewForm.css'
 
 export const ReviewForm = ({spot, setShowModal}) => {
     const dispatch = useDispatch();
-
+    const {id} = useParams();
     const spotReviews = useSelector(state => Object.values(state.review))
     const user = useSelector(state=> state.session.user)
     // console.log("how many reviews?",spotReviewsObj)
@@ -57,7 +58,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
         //     .then(()=>dispatch(getSpotBySpotId(spot.id)))
             .then(()=>dispatch(getSpotReviews(spot.id)))
             // .then(()=>history.push(`/spots/${spot.id}`))
-        // setUpdate(true)
+        setUpdate(true)
         // const createRe = await dispatch(createReview(report));
 
         setShowModal(false)
@@ -66,12 +67,14 @@ export const ReviewForm = ({spot, setShowModal}) => {
     const cancel =()=>{
         setShowModal(false)
     }
-    // useEffect(() => {
-    //     // console.log("useeffect ",currSpot)
-    //     setHasSubmitted(false);
-    //     // dispatch(getSpotReviews(currSpot));
-    //     // dispatch(getAllSpots())
-    // }, [dispatch, update]);
+    useEffect(() => {
+        // console.log("useeffect ",currSpot)
+        setHasSubmitted(false);
+        dispatch(getSpotBySpotId(id))
+
+        // dispatch(getSpotReviews(currSpot));
+        // dispatch(getAllSpots())
+    }, [dispatch,  update]);
     
     // if (!spotReviews) return null
 
