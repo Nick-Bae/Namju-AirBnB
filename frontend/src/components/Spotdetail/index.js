@@ -85,7 +85,8 @@ export const Spotdetail = () => {
                                 (spot.avgRating > 4.5) &&
                                 <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
                             }
-                            <li className="address"> {spot.name} {spot.city} {spot.state} </li>
+                            <li id="spotName">{spot.name}</li>
+                            <li className="address">  {spot.city} {spot.state} </li>
                         </ul>
                     </div>
 
