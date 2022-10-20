@@ -110,11 +110,11 @@ export const ReviewDisplay = ({ spot, reviews }) => {
                             <li className='review'>
                                 {review}
                             </li>
-                            <li className='reviewStar'>
+                            {/* <li className='reviewStar'>
                                 Stars: {stars}
                                 {(<i class="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
 
-                            </li>
+                            </li> */}
 
                             {
                                 (userId === currentUser?.id) &&
