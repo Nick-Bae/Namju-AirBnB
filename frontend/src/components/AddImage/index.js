@@ -15,10 +15,12 @@ const AddImage = () => {
     const history = useHistory();
    const { id } = useParams();
 
+   
    const [deleteOn, setDeleteOn]=useState(false);
    const [imageId, setImageId] = useState('');
-// const id= spotId
-    const spot = useSelector(state => state.spot[id])
+   // const id= spotId
+   const spot = useSelector(state => state.spot[id])
+   console.log("spot detail",spot)
    
     const addImage = (e) => {
 
@@ -40,7 +42,6 @@ const AddImage = () => {
                 previewImage: false
             }
         }
-        console.log("previewImage", isPreviewImage.checked)
         dispatch(createImage(image))
         history.push(`/spots/${id}`);
         reset();
@@ -54,18 +55,29 @@ const AddImage = () => {
         history.goBack();
     };
 
-    // let img = document.getElementById(spot.id).addEventListener('click', function(e) {
-    //     setImageId()
-    //     setDeleteOn(true)
+    // spot.image.map((image) =>{
+    //     let img = document.getElementById(image.id)
+    //                  .addEventListener('click', function(e) {
+    //         setImageId()
+    //         setDeleteOn(true)
+    //        console.log("click")
+    //     })
 
     // })
+    
+    const imageSelect = (obj) => {
+       let id= obj.target.id
+        setImageId(id)
+        setDeleteOn(true)
+        console.log(id)
+    }
 
     const deleteBt = (e) => {
 
         // window.alert("Are you sure to delte the image?")
         e.preventDefault();
-        dispatch(deleteImage(id))
-        history.push(`/spots/${id}`);
+        dispatch(deleteImage(imageId))
+        // history.push(`/spots/${id}`);
     }
     useEffect(() => {
         dispatch(getSpotBySpotId(id))
@@ -80,7 +92,7 @@ const AddImage = () => {
         <>
             <div id="editImages">
                 {spot?.image.map(image => (
-                    <img id={image.id} className="imgdetail" src={image.url} />
+                    <img id={image.id} className="imgdetail" src={image.url} onClick={imageSelect} />
                 ))}
             </div>
 
@@ -105,7 +117,7 @@ const AddImage = () => {
                 </form>
             </div>
             
-            deleteOn && {
+            {(deleteOn) && 
                     <button id="imageDeleteBt" onClick={deleteBt}> Delete</button>
                 }
         </>

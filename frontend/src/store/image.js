@@ -57,18 +57,13 @@ export const updateImage = data => async dispatch => {
 }
 
 export const deleteImage = (id) => async dispatch => {
-    const spotDetail = await csrfFetch(`/api/spots/${id}`)
-    if (spotDetail.ok){
-        const spot = await spotDetail.json();
-
-        const response = await csrfFetch(`/api/images/${spot.image.id}`, {
+    
+        const response = await csrfFetch(`/api/images/${id}`, {
             method: "DELETE",
         });
         if (response.ok) {
             dispatch(deleteOne(id));
         }
-    }
-
     // return response;
 };
 

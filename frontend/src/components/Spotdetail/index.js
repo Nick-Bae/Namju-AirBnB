@@ -23,7 +23,7 @@ export const Spotdetail = () => {
     const [showSpot, setShowSpot] = useState(false);
     const [owner, setOwner] = useState(true);
     // const reviews = useSelector((state) => Object.values(state.reviews));
-    console.log("spot detail",spot.id)
+    console.log("spot detail",spot?.id)
 
     // if (spot.onwerId)
     // const openSpot = () => {
@@ -97,7 +97,7 @@ export const Spotdetail = () => {
 
                     <div id="spotImages">
                         <div id="previewImageBox">
-                            <img id="previewImage" src={isPreviewImage.url} />
+                            <img id="previewImage" src={isPreviewImage?.url} />
                         </div>
                         <div id="smallImages">
                             {spot?.image.map((image, idx) => (
