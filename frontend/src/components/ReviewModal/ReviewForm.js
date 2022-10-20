@@ -22,6 +22,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
     const currentUser = useSelector(state => state.session.user)
 
     const [review, setReview] = useState("");
+    const [leftNum, setLeftNum] = useState();
     const [stars, setStars] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -32,11 +33,18 @@ export const ReviewForm = ({spot, setShowModal}) => {
     useEffect(() => {
         const errors = [];
         if (!review.length) errors.push('-Please enter your review');
+        if (review.length >250) errors.push('your review is too long. Maximum is 255 characters')
         if (!stars.length) errors.push('-Please enter your stars');
         if (stars < 0 || stars > 6) errors.push('Please enter between 0~5')
         setValidationErrors(errors);
     }, [review, stars])
 
+    useEffect(()=>{
+        let reviewNum = review.trim().length
+        setLeftNum(250-reviewNum)
+    },[review])
+    
+    
     // ============ create new review======================
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -97,6 +105,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
                     <label id="reviewFormLabel">
                         Review
                         <textarea
+                         maxlength="250"
                             id="textInput"
                             type="textarea"
                             // placeholder='please leave a review'
@@ -104,6 +113,9 @@ export const ReviewForm = ({spot, setShowModal}) => {
                             onChange={e => setReview(e.target.value)}
                         />
                     </label>
+                    
+                    <p id="wordCount"> <span style={{color: 'red', fontSize:20}}>{leftNum}</span> characters left</p>
+
                     <label id="reviewFormStar">
                         Stars
                         <input
