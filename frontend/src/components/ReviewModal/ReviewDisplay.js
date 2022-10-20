@@ -1,11 +1,12 @@
 import { useState, useEffect, React } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getSpotReviews } from '../../store/comment';
 import { useSelector } from 'react-redux';
 import { deleteReview } from '../../store/comment';
 import { getSpotBySpotId } from '../../store/spot';
 import './ReviewDisplay.css'
+import ReviewFormModal from '.';
 
 export const ReviewDisplay = ({ spot }) => {
 
@@ -35,7 +36,9 @@ export const ReviewDisplay = ({ spot }) => {
     //     setValidationErrors(errors);
     // }, [review, stars])
 
-  
+    const reveiwModal =()=>{
+        <ReviewFormModal />
+    }
 
     useEffect(() => {
         // dispatch(getSpotReviews(id));
@@ -54,7 +57,15 @@ export const ReviewDisplay = ({ spot }) => {
 
     return (
         <>
-            <p id="reviewIcon"><i class="fa-solid fa-pen-to-square"> </i> Review </p>
+            <p id="reviewIcon">
+                {/* <button id="reviewModalClick" onClick={reveiwModal}> */}
+                    
+                <i class="fa-solid fa-pen-to-square"> </i> &nbsp; Review
+                     
+                     {/* <ReviewFormModal />
+                     </button> */}
+                
+                </p>
             <p id="numbers"><i class="fa-sharp fa-solid fa-star"></i> 
              {(spot.avgRating.toFixed(1))} · {spot.numReviews} Reviews</p>
             <div id="reviews">

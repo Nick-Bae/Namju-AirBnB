@@ -27,8 +27,15 @@
 #reviewIcon {
     margin-bottom: 10px;
     font-size: 25px;
+    display: flex;
+    flex-direction: row;
 }
+/* #reviewModalClick{
+height:40px;
+width: 180px;
+display: flex;
 
+} */
 .date {
     font-size: var(--font-micro);
     color: rgb(113, 114, 115);

@@ -124,7 +124,7 @@ export const Spotdetail = () => {
                                 <li> <i class="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
                                 <li><i class="fa-solid fa-calendar"></i> Free cancellation </li>
                             </div> */}
-                    <p id="info"><i class="fa-solid fa-house"></i> Information</p>
+                    <p id="info"><i class="fa-solid fa-house"></i> &nbsp;Information</p>
                     <div className="descprition">
                         {spot.description}
                     </div>
