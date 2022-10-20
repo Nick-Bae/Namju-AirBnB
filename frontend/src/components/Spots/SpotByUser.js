@@ -11,24 +11,28 @@ const SpotByUser = () => {
   const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
   const user = useSelector(state => state.session.user)
-  console.log(user)
-
+  const [update, setUpdate] = useState(false);
+   console.log("this is all spots or spots for user",spots)
+   
+//  const userSpots =  dispatch(getSpotByUser())
+//    setUpdate(true)
   useEffect(() => {
-    dispatch(getSpotByUser());
-  }, [dispatch]);
+    dispatch(getSpotByUser())
+    .then (()=> setUpdate(true))
+  },[dispatch, update] );
 
 
   //   onClick={() => {
   const login = (!user) ? false : true
   //     // if (!login) return ("please log in first")
 
-  return (
+  return update && (
     <main>
       <section className='spot-wrap'>
         <div className='list-container'>
           {/* <h1>Find Place</h1> */}
           
-
+ 
 
 
           {/* <Fab hidden={showForm} onClick={()=> setShowForm(true)} />
@@ -62,7 +66,7 @@ const SpotByUser = () => {
         </div>
       </section>
     </main>
-  );
+   );
 };
 
 export default SpotByUser;

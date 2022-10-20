@@ -41,6 +41,9 @@ function App() {
           {/* <Route path='/:spot.id/'>
             <AddImage />
           </Route> */}
+          <Route exact path='/spots/current'>
+            <SpotByUser />
+          </Route>
 
           <Route exact path='/spots/:id'>
             <Spotdetail />
@@ -52,7 +55,7 @@ function App() {
             <DeleteImage />
           </Route>
 
-          <Route path= "/spots/:id/edit" >
+          <Route exact path= "/spots/:id/edit" >
             <EditSpotForm />
           </Route>
           {/* <Route path="/login">
@@ -64,10 +67,7 @@ function App() {
           <Route path="/login">
             <LoginForm />
           </Route>
-          <Route path='/spots/current'>
-            <SpotByUser />
-          </Route>
-          <Route path="/spots">
+          <Route exact path="/spots">
             <Spots />
           </Route>
         </Switch>
