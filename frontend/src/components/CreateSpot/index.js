@@ -40,6 +40,7 @@ const CreateSpot = ({ spot, formType }) => {
         if (name.length >15) errors.push('Name must be less than 15 chracters');
         if (!description.length) errors.push('Please enter your description');
         if (price==="" || price < 0) errors.push('Please enter your Correct Price');
+        if (price > 5000) errors.push('Price should be less than $5,000');
         setValidationErrors(errors);
     }, [address, city, state, country, lat, lng, name, description, price,])
 
