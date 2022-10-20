@@ -41,8 +41,14 @@
     font-size:15px;
     font-weight: 300;
     color: black;
+    border: 1px solid black;
 }
-
+#createSpotBt{
+    border-radius: 7px ;
+}
+#creatSpotCancel{
+    font-weight: 300;
+}
 /* #spotErrorTItle, #errorMessages{
     margin-left:50px;
 } */

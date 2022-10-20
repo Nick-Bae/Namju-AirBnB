@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
             <NavLink to={`/spots/new`} className="spotnew">
               <i class="fa-solid fa-circle-plus"></i>
             </NavLink>
-            <NavLink to={`/spots/new`} className="spotnew">Become a Host</NavLink>
+            <NavLink to={`/spots/new`} className="newSpot">Become a Host</NavLink>
           </div>
         )}
         <button className="userlogo header" onClick={openMenu}>

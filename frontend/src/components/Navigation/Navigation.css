@@ -23,10 +23,12 @@
 }
 
 .logoMain {
-    margin-top: 7px;
+    margin-top: 4px;
     width: 97px;
     height: 51px;
     border-radius:7px;
+    justify-items: center;
+    display: flex;
 }
 
 .logolist {
@@ -36,6 +38,7 @@
     height: 60px;
     border-bottom: 1px solid var(--grey-light-color);
     flex-direction: row;
+    /* align-items: center; */
 }
 
 .underline {
@@ -123,7 +126,7 @@ height: 100px;
     display: flex;
     flex-direction: row;
     justify-items:end;
-    margin-top:10px;
+    /* margin-top:10px; */
 }
 
 #signupBt{
@@ -143,4 +146,16 @@ height: 100px;
 #navIcons {
     display: flex;
     flex-direction: row;
+    align-content: center;
+    justify-items: center;
 }
+
+.newSpot{
+    /* margin-top: 15px; */
+    text-decoration: none;
+}
+.addnewspot{
+    margin-top:5px;
+}
+
+
