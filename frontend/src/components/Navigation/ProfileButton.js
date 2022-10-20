@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import CreateSpot from "../CreateSpot";
 import { Link, NavLink } from 'react-router-dom';
+import SpotByUser from "../Spots/SpotByUser";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -47,9 +48,11 @@ function ProfileButton({ user }) {
       </div>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li id="loginfo">{user.username}</li>
-          <li id="loginfo">{user.email}</li>
-          <li id="loginfo">
+          <li id="userNameInfo">{user.username}</li>
+          <li id="emailInfo">{user.email}</li>
+          <NavLink id="myplaces" to='/spots/current'>My Places</NavLink> 
+          {/* <li id="myplaces">My Places</li> */}
+          <li id="logoutInfo">
             <button className="logOut" onClick={logout}>Log Out</button>
           </li>
         </ul>

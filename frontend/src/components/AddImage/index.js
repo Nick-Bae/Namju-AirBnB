@@ -43,7 +43,7 @@ const AddImage = () => {
             }
         }
         dispatch(createImage(image))
-        history.push(`/spots/${id}`);
+        // history.push(`/spots/${id}`);
         reset();
     }
     const reset = () => {
@@ -69,7 +69,6 @@ const AddImage = () => {
        let id= obj.target.id
         setImageId(id)
         setDeleteOn(true)
-        console.log(id)
     }
 
     const deleteBt = (e) => {
@@ -77,6 +76,7 @@ const AddImage = () => {
         // window.alert("Are you sure to delte the image?")
         e.preventDefault();
         dispatch(deleteImage(imageId))
+        setDeleteOn(false)
         // history.push(`/spots/${id}`);
     }
     useEffect(() => {
@@ -84,12 +84,13 @@ const AddImage = () => {
             // .then(() => dispatch(getSpotReviews(id)))
             // .then(() => setShowSpot(true))
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
-    }, [dispatch]);
+    }, [dispatch, deleteOn, imageId]);
 
 
 
     return (
         <>
+            <p id="imageEdit">Image upload & Delete</p>
             <div id="editImages">
                 {spot?.image.map(image => (
                     <img id={image.id} className="imgdetail" src={image.url} onClick={imageSelect} />
@@ -111,15 +112,15 @@ const AddImage = () => {
                     </div>
 
                     <div id="addImageBt">
-                        <button id="addImage" type="submit"> Add Image</button> &nbsp;
+                        <button id="addImage" type="submit"> Add</button> &nbsp;
+            {(deleteOn) && 
+                    <button id="imageDeleteBt" onClick={deleteBt}> Delete</button> 
+                }&nbsp;
                         <button id="imageCancel" type="button" onClick={handleCancelClick}>Cancel</button>
                     </div>
                 </form>
             </div>
             
-            {(deleteOn) && 
-                    <button id="imageDeleteBt" onClick={deleteBt}> Delete</button>
-                }
         </>
     )
 }

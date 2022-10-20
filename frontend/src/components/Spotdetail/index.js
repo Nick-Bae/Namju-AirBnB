@@ -23,7 +23,6 @@ export const Spotdetail = () => {
     const [showSpot, setShowSpot] = useState(false);
     const [owner, setOwner] = useState(true);
     // const reviews = useSelector((state) => Object.values(state.reviews));
-    console.log("spot detail",spot?.id)
 
     // if (spot.onwerId)
     // const openSpot = () => {

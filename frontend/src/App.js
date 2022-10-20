@@ -14,6 +14,8 @@ import AddImage from './components/AddImage'
 import LoginFormModal from "./components/LoginFormModal";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import DeleteImage from "./components/AddImage/Delete";
+import SpotByUser from "./components/Spots/SpotByUser";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -62,7 +64,10 @@ function App() {
           <Route path="/login">
             <LoginForm />
           </Route>
-          <Route paht="/spots">
+          <Route path='/spots/current'>
+            <SpotByUser />
+          </Route>
+          <Route path="/spots">
             <Spots />
           </Route>
         </Switch>
