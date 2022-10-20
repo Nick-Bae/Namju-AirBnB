@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import CreateSpot from "../CreateSpot";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import SpotByUser from "../Spots/SpotByUser";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -29,6 +30,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/');
   };
 
   const login = (!user) ? false : true
@@ -36,16 +38,18 @@ function ProfileButton({ user }) {
   return (
     <div id="log" className="loginfoBT">
       <div id="navIcons">
-        {(login) && (
+        {/* {(login) && ( */}
+         
           <div className="addnewspot">
             <i class="fa-solid fa-circle-plus"></i>
             <NavLink to={`/spots/new`} className="spotnew">Become a Host</NavLink>
           </div>
-        )}
+        
         <button className="userlogo header" onClick={openMenu}>
           <i className="fas fa-user-circle" />
         </button>
       </div>
+      
       {showMenu && (
         <ul className="profile-dropdown">
           <li id="userNameInfo">{user.username}</li>
