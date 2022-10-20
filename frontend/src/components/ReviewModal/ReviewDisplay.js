@@ -55,7 +55,7 @@ export const ReviewDisplay = ({ spot, reviews }) => {
         if (!stars.length) errors.push('Please enter your stars');
         if (stars < 0 || stars > 6) errors.push('Please enter between 0~5')
         setValidationErrors(errors);
-    }, [review, stars,])
+    }, [review, stars])
 
     // ============ create new review======================
     // const handleSubmit = async (e) => {
@@ -76,7 +76,7 @@ export const ReviewDisplay = ({ spot, reviews }) => {
         dispatch(getSpotBySpotId(id))
         // setSpotId(id)
         // console.log(id.id)
-    }, [dispatch, id]);
+    }, [dispatch], review);
 
     // console.log('allreviews', spotReviewsObj)
     // const reset = () => {
@@ -110,11 +110,11 @@ export const ReviewDisplay = ({ spot, reviews }) => {
                             <li className='review'>
                                 {review}
                             </li>
-                            {/* <li className='reviewStar'>
+                            <li className='reviewStar'>
                                 Stars: {stars}
                                 {(<i class="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
 
-                            </li> */}
+                            </li>
 
                             {
                                 (userId === currentUser?.id) &&

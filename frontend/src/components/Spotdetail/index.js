@@ -23,7 +23,6 @@ export const Spotdetail = () => {
     const [showSpot, setShowSpot] = useState(false);
     const [owner, setOwner] = useState(true);
     // const reviews = useSelector((state) => Object.values(state.reviews));
-    // console.log("spot detail",spot.ownerId)
 
     // if (spot.onwerId)
     // const openSpot = () => {
@@ -60,7 +59,7 @@ export const Spotdetail = () => {
             .then(() => dispatch(getSpotReviews(id)))
             .then(() => setShowSpot(true))
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
-    }, [dispatch], review);
+    }, [dispatch]);
 
     // useEffect(() => {
     //     dispatch(getSpotBySpotId(id)).then(() =>
@@ -106,7 +105,7 @@ export const Spotdetail = () => {
                                 <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                                 <button onClick={deleteReport} className="delete">Delete</button>
                                 <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
-                                <Link className="deleteimage" to={`/images/${id}`}> Delete Image </Link>
+                                <Link className="deleteimage" to={`/images/${spot?.image[0]?.id}`} spotId={spot.id}> Delete Image </Link>
 
                             </>
                         }

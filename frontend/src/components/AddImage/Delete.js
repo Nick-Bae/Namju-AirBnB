@@ -3,22 +3,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Redirect, useParams } from 'react-router-dom';
 import { deleteImage } from '../../store/image';
+import { getSpotBySpotId } from '../../store/spot';
 import './Delete.css'
 // import { createImage } from '../../store/image';
 
-const DeleteImage = () => {
-    const [url, setUrl] = useState('');
+const DeleteImage = ({spotId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
-
+    const spot = useSelector(state => state.spot[spotId]);
+    // console.log("spot spot spot", spot)
+    console.log("imageId",id)
+    console.log("spotId",spotId)
 
     const handleSubmit = (e) => {
 
         // window.alert("Are you sure to delte the image?")
+        // const imageId = spot?.image[0].id
+        // console.log("imageId",imageId)
         e.preventDefault();
         dispatch(deleteImage(id))
-        history.push(`/spots/${id}`);
+        // history.push(`/spots/${spot?.id}}`);
+        history.goBack();
     }
 
     const handleCancelClick = (e) => {
@@ -26,6 +32,10 @@ const DeleteImage = () => {
         // history.push(`/spots/${id}`);
         history.goBack();
     };
+
+    // useEffect(() => {
+    //     dispatch(getSpotBySpotId(spot?.id))
+    // }, [dispatch]);
 
     return (
         <div>
