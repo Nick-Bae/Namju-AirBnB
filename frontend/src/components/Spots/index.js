@@ -46,7 +46,7 @@ const SpotList = () => {
                     <Link to={`/spots/${spot.id}`} className="spotname" >{spot.name}, {spot.state}</Link>
                   </div>
                   <div className='rating'>
-                    ★ {(spot.avgRating)?.toFixed(1)}
+                    ★ {(spot?.avgRating).toFixed(1)}
                   </div>
                 </div>
                 <div>

@@ -67,7 +67,7 @@ export const ReviewDisplay = ({ spot }) => {
                 
                 </p>
             <p id="numbers"><i class="fa-sharp fa-solid fa-star"></i> 
-             {(spot.avgRating.toFixed(1))} · {spot.numReviews} Reviews</p>
+            &nbsp; {(spot.avgRating.toFixed(1))} · {spot.numReviews} Reviews</p>
             <div id="reviews">
 
                 {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars, User, updatedAt }) => (
