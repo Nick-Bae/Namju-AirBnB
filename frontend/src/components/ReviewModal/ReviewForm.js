@@ -114,7 +114,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
                         />
                     </label>
                     
-                    <p id="wordCount"> <span style={{color: 'red', fontSize:20}}>{leftNum}</span> characters left</p>
+                    <p id="wordCount"> <span style={{color: 'red', fontSize:16}}>{leftNum}</span> /250</p>
 
                     <label id="reviewFormStar">
                         Stars

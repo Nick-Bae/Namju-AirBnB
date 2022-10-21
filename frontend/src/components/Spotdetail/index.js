@@ -61,11 +61,6 @@ export const Spotdetail = () => {
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
     }, [dispatch]);
 
-    // useEffect(() => {
-    //     dispatch(getSpotBySpotId(id)).then(() =>
-    //     dispatch(getSpotReviews(id)))
-    //     .then(() => setShowSpot(true));
-    // }, [ dispatch, id ]);
 
     if (!spot) return null;
     return showSpot && (
