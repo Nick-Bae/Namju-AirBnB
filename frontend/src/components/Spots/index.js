@@ -36,7 +36,7 @@ const SpotList = () => {
           <div className='imglayout'>
             {spots.map((spot) => (
               <div key={spot.id} id="container" >
-                <div className='images'>
+                <div className='spotImages'>
                   <Link to={`/spots/${spot.id}`}>
                     <img spot={spot} className="img" src={spot.previewImage} />
                   </Link>
@@ -46,7 +46,8 @@ const SpotList = () => {
                     <Link to={`/spots/${spot.id}`} className="spotname" >{spot.name}, {spot.state}</Link>
                   </div>
                   <div className='rating'>
-                    ★ {(spot.avgRating).toFixed(1)}
+                    {/* ★ {(spot.avgRating).toFixed(1)} */}
+                    ★ {(spot.avgRating)}
                   </div>
                 </div>
                 <div>
