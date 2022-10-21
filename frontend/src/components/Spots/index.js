@@ -16,7 +16,9 @@ const SpotList = () => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
-
+useEffect(()=>{
+  console.log("this is all spots",spots)
+},[spots])
   //   onClick={() => {
   const login = (!user) ? false : true
   //     // if (!login) return ("please log in first")
@@ -39,8 +41,8 @@ const SpotList = () => {
                     <Link to={`/spots/${spot.id}`} className="spotname" >{spot.name}, {spot.state}</Link>
                   </div>
                   <div className='rating'>
-                    {/* ★ {(spot.avgRating).toFixed(1)} */}
-                    ★ {(spot.avgRating)}
+                    ★ {(spot.avgRating).toFixed(1)}
+                    {/* ★ {(spot.avgRating)} */}
                   </div>
                 </div>
                 <div>

@@ -61,6 +61,9 @@ export const Spotdetail = () => {
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
     }, [dispatch]);
 
+    useEffect(()=>{
+        console.log("this is a single spot",spot)
+      },[spot])
 
     if (!spot) return null;
     return showSpot && (
