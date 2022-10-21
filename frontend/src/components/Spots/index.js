@@ -25,14 +25,7 @@ const SpotList = () => {
     <main>
       <section className='spot-wrap'>
         <div className='list-container'>
-          {/* <h1>Find Place</h1> */}
           
-
-
-
-          {/* <Fab hidden={showForm} onClick={()=> setShowForm(true)} />
-      {showSpot && ( */}
-
           <div className='imglayout'>
             {spots.map((spot) => (
               <div key={spot.id} id="container" >
