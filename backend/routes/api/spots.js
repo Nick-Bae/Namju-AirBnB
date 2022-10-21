@@ -100,62 +100,78 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
             {
                 model: Image, attributes: ['url'],
             },
-        ],group: ['Spot.id'],
-        // attributes: {
-        //     include: [
-        //      [
-        //         sequelize.fn( "DATE_FORMAT", sequelize.col("createdAt"), "%d-%m-%Y %H:%i:%s"),
-        //      ],
-        //      ],
-        //   },
+        ], 
+        // order: ['Spot.id','ASC'],
+        
         ...pagination
     })
+    let spot=[];
 
-    const avgRating = await Spot.findAll({
-        attributes: {
-            include: [
-                [
-                    sequelize.fn('AVG', sequelize.col('stars')), "avgRating"
-                ],
-            ]
-        },
-        include: [
-            { model: Review, attributes: [] },
-        ],
-        group: ['Spot.id'],
-    })
-    // res.json(avgRating)
-
-
-    let Spots = [];
-
-    for (i = 0; i < spots.length; i++) {
-        if (spots[i].Images[0]) {
-            spots[i] = {
-                id: spots[i].id, ownerId: spots[i].ownerId,
-                address: spots[i].address, city: spots[i].city,
-                state: spots[i].state, country: spots[i].country,
-                lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
-                description: spots[i].description, price: spots[i].price,
-                createdAt: spots[i].createdAt, updatedAt: spots[i].updatedAt,
-                avgRating: Number(Number(avgRating[i].dataValues.avgRating).toFixed(1)),
-                previewImage: spots[i].Images[0].url
-            }
-            Spots.push(spots[i])
-        } else {
-            spots[i] = {
-                id: spots[i].id, ownerId: spots[i].ownerId,
-                address: spots[i].address, city: spots[i].city,
-                state: spots[i].state, country: spots[i].country,
-                lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
-                description: spots[i].description, price: spots[i].price,
-                createdAt: spots[i].createdAt, updatedAt: spots[i].updatedAt,
-                avgRating: Number(Number(avgRating[i].dataValues.avgRating).toFixed(1)),
-                // previewImage: spots[i].Images[0].url
-            }
-            Spots.push(spots[i])
-        }
+    for (let ele of spots){
+      const reviewRating = await Review.findAll({
+            where: {
+                spotId: ele.id
+            },
+            attributes: [
+                [sequelize.fn("avg", sequelize.col('stars')), "avgRating"]
+            ],
+            raw: true,
+        })
+  
+  
+    data = {
+      ...ele.dataValues,
+      avgRating:  reviewRating[0].avgRating
+  
     }
+    spot.push(data)
+    }
+
+    // const avgRating = await Spot.findAll({
+    //     attributes: {
+    //         include: [
+    //             [
+    //                 sequelize.fn('AVG', sequelize.col('stars')), "avgRating"
+    //             ],
+    //         ]
+    //     },
+    //     include: [
+    //         { model: Review, attributes: [] },
+    //     ],
+    //     group: ['Spot.id'],
+    //     // order: ['Spot.id', 'ASC']
+    // })
+
+
+    // let Spots = [];
+
+    // for (i = 0; i < spots.length; i++) {
+    //     if (spots[i].Images[0]) {
+    //         spots[i] = {
+    //             id: spots[i].id, ownerId: spots[i].ownerId,
+    //             address: spots[i].address, city: spots[i].city,
+    //             state: spots[i].state, country: spots[i].country,
+    //             lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
+    //             description: spots[i].description, price: spots[i].price,
+    //             createdAt: spots[i].createdAt, updatedAt: spots[i].updatedAt,
+    //             avgRating: Number(Number(avgRating[i].dataValues.avgRating).toFixed(1)),
+    //             previewImage: spots[i].Images[0].url
+    //         }
+    //         Spots.push(spots[i])
+    //     } else {
+    //         spots[i] = {
+    //             id: spots[i].id, ownerId: spots[i].ownerId,
+    //             address: spots[i].address, city: spots[i].city,
+    //             state: spots[i].state, country: spots[i].country,
+    //             lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
+    //             description: spots[i].description, price: spots[i].price,
+    //             createdAt: spots[i].createdAt, updatedAt: spots[i].updatedAt,
+    //             avgRating: Number(Number(avgRating[i].dataValues.avgRating).toFixed(1)),
+    //             // previewImage: spots[i].Images[0].url
+    //         }
+    //         Spots.push(spots[i])
+    //     }
+    // }
 
     //minPrice, maxPrice
     if (req.query.minPrice) {
@@ -166,7 +182,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
         Spots = Spots.filter(spot => spot.price <= parseInt(req.query.maxPrice))
     }
 
-    res.json({ Spots, page, size })
+    res.json({ Spots: spot, page, size })
 
 })
 
