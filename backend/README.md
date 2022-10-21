@@ -1,8 +1,8 @@
 # AirBnB Clone
 
 ## Database Schema Design
+![](vscode-remote://wsl%2Bubuntu-18.04/home/namju/test/AirBnB_back_front/backend/schema.png)
 
-![](airbnb_dbdiagram.png)
 ## API Documentation
 
 ## USER AUTHENTICATION/AUTHORIZATION
