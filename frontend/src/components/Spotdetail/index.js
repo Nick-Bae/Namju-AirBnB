@@ -80,10 +80,10 @@ export const Spotdetail = () => {
                         </div>
 
                         <ul className="breifinfo">
-                            <li className="rating"> <i id="star" class="fa-solid fa-star"></i>&nbsp;{(spot?.avgRating).toFixed(1)} · {spot?.numReviews} Reviews</li>
+                            <li className="rating"> <i id="star" className="fa-solid fa-star"></i>&nbsp;{(spot?.avgRating).toFixed(1)} · {spot?.numReviews} Reviews</li>
                             {
                                 (spot.avgRating > 4.5) &&
-                                <li className="smallinfo"> <i class="fa-solid fa-medal"></i> Superhost </li>
+                                <li className="smallinfo"> <i className="fa-solid fa-medal"></i> Superhost </li>
                             }
                             <li id="spotName">{spot.name}</li>
                             <li className="address">  {spot.city} {spot.state} </li>
@@ -106,7 +106,7 @@ export const Spotdetail = () => {
                                 <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
                                 <button onClick={deleteReport} className="delete">Delete</button>
                                 <Link className="addimage" to={`/spots/${id}/images`}> Add Image </Link>
-                                <Link className="deleteimage" to={`/images/${spot?.image[0]?.id}`} spotId={spot.id}> Delete Image </Link>
+                                <Link className="deleteimage" to={`/images/${spot?.image[0]?.id}`} > Delete Image </Link>
 
                             </>
                         }
@@ -120,11 +120,11 @@ export const Spotdetail = () => {
                                 <li> Entire home hosted by  </li>
                             </div>
                             <div className="checkinInfo">
-                                <li> <i class="fa-solid fa-building-circle-check"></i> &nbsp;Self check-in</li>
-                                <li> <i class="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
-                                <li><i class="fa-solid fa-calendar"></i> Free cancellation </li>
+                                <li> <i className="fa-solid fa-building-circle-check"></i> &nbsp;Self check-in</li>
+                                <li> <i className="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
+                                <li><i className="fa-solid fa-calendar"></i> Free cancellation </li>
                             </div> */}
-                    <p id="info"><i class="fa-solid fa-house"></i> &nbsp;Information</p>
+                    <p id="info"><i className="fa-solid fa-house"></i> &nbsp;Information</p>
                     <div className="descprition">
                         {spot.description}
                     </div>
@@ -136,7 +136,7 @@ export const Spotdetail = () => {
                                 <div className="float-top">
                                 <li className="price">${spot.price} </li>
                                 <li className="night">night</li>
-                                <li className="stars"> <i class="fa-solid fa-star"></i>{spot.avgRating}</li>
+                                <li className="stars"> <i className="fa-solid fa-star"></i>{spot.avgRating}</li>
                                 </div>
                                 <div>
 

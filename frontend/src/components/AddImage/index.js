@@ -63,7 +63,7 @@ const AddImage = () => {
                 />
                 <div>
                     <input id='preImageCheck' type="checkbox" value="previewImage" />
-                    <label for="previewImage"> Preview Image</label>
+                    <label > Preview Image</label>
                 </div>
 
                 <div id="addImageBt">

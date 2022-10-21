@@ -60,13 +60,13 @@ export const ReviewDisplay = ({ spot }) => {
             <p id="reviewIcon">
                 {/* <button id="reviewModalClick" onClick={reveiwModal}> */}
                     
-                <i class="fa-solid fa-pen-to-square"> </i> &nbsp; Review
+                <i className="fa-solid fa-pen-to-square"> </i> &nbsp; Review
                      
                      {/* <ReviewFormModal />
                      </button> */}
                 
                 </p>
-            <p id="numbers"><i class="fa-sharp fa-solid fa-star"></i> 
+            <p id="numbers"><i className="fa-sharp fa-solid fa-star"></i> 
             &nbsp; {(spot.avgRating.toFixed(1))} · {spot.numReviews} Reviews</p>
             <div id="reviews">
 
@@ -88,7 +88,7 @@ export const ReviewDisplay = ({ spot }) => {
                             </li>
                             {/* <li className='reviewStar'>
                                 Stars: {stars}
-                                {(<i class="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
+                                {(<i className="fa-sharp fa-solid fa-star"></i>) * Number(stars)}
 
                             </li> */}
 

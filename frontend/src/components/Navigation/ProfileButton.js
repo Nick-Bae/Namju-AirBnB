@@ -38,7 +38,7 @@ function ProfileButton({ user }) {
         {(login) && (
           <div className="addnewspot">
             <NavLink to={`/spots/new`} className="spotnew">
-              <i class="fa-solid fa-circle-plus"></i>
+              <i className="fa-solid fa-circle-plus"></i>
             </NavLink>
             <NavLink to={`/spots/new`} className="newSpot">Become a Host</NavLink>
           </div>

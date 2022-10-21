@@ -105,7 +105,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
                     <label id="reviewFormLabel">
                         Review
                         <textarea
-                         maxlength="250"
+                            maxLength="250"
                             id="textInput"
                             type="textarea"
                             // placeholder='please leave a review'
