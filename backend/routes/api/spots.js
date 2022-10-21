@@ -126,6 +126,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
     })
     // res.json(avgRating)
 
+
     let Spots = [];
 
     for (i = 0; i < spots.length; i++) {
