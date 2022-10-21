@@ -120,7 +120,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
         ],
         // group: ['Spot.id'],
         group: 'Spot.id',
-        // orderBy: ['Spot.id', 'ASC']
+        order: [['id', 'ASC']]
     })
 
 
