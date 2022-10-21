@@ -100,7 +100,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
             {
                 model: Image, attributes: ['url'],
             },
-        ],
+        ],group: ['Spot.id'],
         // attributes: {
         //     include: [
         //      [
