@@ -3,7 +3,8 @@
 # App Link 
 https://namju-airbnb.herokuapp.com/
 
-![main page](vscode-remote://wsl%2Bubuntu-18.04/home/namju/test/AirBnB_back_front/main%20page.png)
+<img width="755" alt="main page" src="https://user-images.githubusercontent.com/88744340/197250466-3a15acf3-bee0-4d3d-bb33-028df968f871.png">
+
 
 # Used technologies
  Javascript, Express, React, Redux, Html, Css
