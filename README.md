@@ -11,8 +11,8 @@ https://namju-airbnb.herokuapp.com/
 
 # Instructions on how to set up the repo to run locally.
 First, create .env file in backend root folder. There is.env_example
-Secon, run "npm install" in both folder backend and frontend
-Third, run "npm start" in both folder backend and frontend
+Second, run "npm install" in both folder backend and frontend
+Third, run "npm start" in both folder backend and frontend.
+Enjoy!!
 
-Note this part of documentation is usually done last. It should not be expected to look polished until mostly everything else has been done.
 
