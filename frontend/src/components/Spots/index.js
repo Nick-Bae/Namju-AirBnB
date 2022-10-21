@@ -20,7 +20,7 @@ const SpotList = () => {
   //   onClick={() => {
   const login = (!user) ? false : true
   //     // if (!login) return ("please log in first")
-
+  if (!spots) return null;
   return (
     <main>
       <section className='spot-wrap'>
