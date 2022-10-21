@@ -101,7 +101,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
                 model: Image, attributes: ['url'],
             },
         ], 
-        // order: ['Spot.id','ASC'],
+        orderBy: ['Spot.id','ASC'],
         
         ...pagination
     })
@@ -119,7 +119,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
             { model: Review, attributes: [] },
         ],
         group: ['Spot.id'],
-        // order: ['Spot.id', 'ASC']
+        orderBy: ['Spot.id', 'ASC']
     })
 
 
