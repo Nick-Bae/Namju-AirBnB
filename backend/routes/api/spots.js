@@ -95,7 +95,6 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
 
     }
 
-
     const spots = await Spot.findAll({
         include: [
             {
@@ -116,7 +115,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
         attributes: {
             include: [
                 [
-                    sequelize.fn('AVG', sequelize.col('Reviews.stars')), "avgRating"
+                    sequelize.fn('AVG', sequelize.col('stars')), "avgRating"
                 ],
             ]
         },
@@ -228,16 +227,15 @@ router.get('/current', requireAuth, async (req, res) => {
     const { user } = req;
     const spots = await Spot.findAll({
         where: { ownerId: user.id },
-        // attributes: {
-        //     include: [
-        //         [sequelize.fn('AVG', sequelize.col("Reviews.stars")), "avgRating"]
-        //     ]
-        // },
+        attributes: {
+            include: [
+                [sequelize.fn('AVG', sequelize.col("Reviews.stars")), "avgRating"]
+            ]
+        },
         include: [
             { model: Image, attributes: ['url'] },
-            { model: Review, attributes: [[sequelize.fn('AVG', sequelize.col("stars")), "avgRating"]] }
-        ], 
-        group: ['Spot.id', 'Images.id']
+            { model: Review, attributes: [] }
+        ], group: ['Spot.id', 'Images.id']
     })
 
     let Spots = [];

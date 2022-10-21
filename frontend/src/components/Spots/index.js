@@ -16,9 +16,9 @@ const SpotList = () => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
-useEffect(()=>{
-  console.log("this is all spots",spots)
-},[spots])
+// useEffect(()=>{
+//   console.log("this is all spots",spots)
+// },[spots])
   //   onClick={() => {
   const login = (!user) ? false : true
   //     // if (!login) return ("please log in first")
