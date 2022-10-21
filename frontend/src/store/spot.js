@@ -120,8 +120,10 @@ export const spotReducer = (state = {}, action) => {
             spots.forEach((spot) => {
                 newState[spot.id] = spot
             })
+            console.log("all spots case", spots)
             return newState;
         case READ:
+            console.log("single spot case", action.spot )
             newState[action.spot.id] = action.spot;
             return newState;
         case CREATE:
