@@ -33,8 +33,8 @@ const SpotList = () => {
               <div key={spot.id} id="container" >
                 <div className='spotImages'>
                   <Link to={`/spots/${spot.id}`}>
-                    {/* <img spot={spot} className="img" src={spot.previewImage} /> */}
-                    <img spot={spot} className="img" src={spot.Images[0].url} />
+                    <img spot={spot} className="img" src={spot.previewImage} />
+                    {/* <img spot={spot} className="img" src={spot?.Images[0]?.url} /> */}
                   </Link>
                 </div>
                 <div id="detail">
