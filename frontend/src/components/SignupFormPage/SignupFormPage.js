@@ -19,7 +19,7 @@
 
 // export default SignupFormModal;
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -37,6 +37,14 @@ function SignupFormPage({setShowModal}) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [validationErrors, setValidationErrors] = useState([]);
+
+  
+  // useEffect(()=>{
+  //   const errors=[];
+  //   if (!firstName) errors.push ("Please enter firstName")
+  //   setValidationErrors(errors);
+  // },[firstName])
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -53,18 +61,24 @@ function SignupFormPage({setShowModal}) {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
-  console.log(errors)
+
   return (
     <>
       <h2 id="signUpTitle">Sign up</h2>
       <form onSubmit={handleSubmit} className='signform'>
-        {errors.length > 0 && (
+        {/* {errors.length > 0 && ( */}
+          <div>
         <ul id="signupError">
-          <li id="signupErrorTitle">Error Message:</li>
+          {/* <li id="signupErrorTitle">Error Message:</li> */}
           {(Object.values(errors)).map((error, idx) => <li id="signupErrorMessage"key={idx}>{error}</li>)}
         </ul>
-        )}
-
+       </div>
+        {/* )} */}
+       
+        
+         {/* <ul>
+         {errors && errors.map((error, idx) => <li key={idx} className="signUperrors">{error}</li>)}
+       </ul> */}
         <label id="signupEmail">
             Email
             <input

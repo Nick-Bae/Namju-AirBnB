@@ -13,6 +13,7 @@ const handleValidationErrors = (req, _res, next) => {
       const err = Error('Validation error');
       err.status = 400;
 
+      console.log("errors",errors)
     // const errName = errors[0].split(" ")
     // errors = errName[0]
     // // _res.json(errors)

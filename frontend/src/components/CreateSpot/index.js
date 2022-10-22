@@ -8,7 +8,7 @@ import { getSpotBySpotId } from '../../store/spot';
 import './createSpot.css'
 
 const CreateSpot = ({ spot, formType }) => {
-    // const { id } = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user)
     const history = useHistory();
 
     const [address, setAddress] = useState('');
@@ -24,10 +24,12 @@ const CreateSpot = ({ spot, formType }) => {
     const dispatch = useDispatch();
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [errors, setErrors] = useState([]);
 
     const spotsObj = useSelector(state => state.spot);
     const spots = Object.values(spotsObj);
     // console.log(newSpotId)
+
 
     useEffect(() => {
         const errors = [];
@@ -38,17 +40,18 @@ const CreateSpot = ({ spot, formType }) => {
         if (lat < -90 || lat > 90 || lat ==="") errors.push('Please enter between -90 and 90 Latitude');
         if (lng < -180 || lng > 180 || lng ==="") errors.push('Please enter between -180 and 180 Longitude');
         if (!name.length) errors.push('Please enter your Name');
-        if (name.length >15) errors.push('Name must be less than 15 chracters');
+        if (name.length >30) errors.push('Name must be less than 30 chracters');
         if (!description.length) errors.push('Please enter your description');
         if (price==="" || price < 0) errors.push('Please enter your Correct Price');
         if (price > 5000) errors.push('Price should be less than $5,000');
-        if (url===" ") errors.push('Please enter url address for image')
+        if (url==="") errors.push('Please enter url address for image')
         if (url.length>255) errors.push('url should not be over 255 characters');
         setValidationErrors(errors);
-    }, [address, city, state, country, lat, lng, name, description, price,])
+    }, [address, city, state, country, lat, lng, name, description, price, url])
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        if (!user) alert ("Please log in before submit")
 
         setHasSubmitted(true);
         if (validationErrors.length) return alert(`Cannot Submit`);
@@ -65,12 +68,19 @@ const CreateSpot = ({ spot, formType }) => {
             price,
         };
         
-        const newSpot = await dispatch(createSpot(spot))
-        
+        const newSpot = await  dispatch(createSpot(spot))
+            .catch(async(res)=>{
+                if(res === undefined) return null;
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors)
+            })
+        console.log("image data before", newSpot.id)
         const imageUrl = {
             url,
             spotId: newSpot.id
         }
+        console.log("image data after", newSpot.id)
+
         await dispatch(createImage( imageUrl))
                         // .then((res)=> {
                         //     // const newSpot = res.json();
@@ -120,16 +130,12 @@ const CreateSpot = ({ spot, formType }) => {
             <form id="createSpotForm" onSubmit={onSubmit}>
                 <h2>{formType}</h2>
                 <h2 id="formTitle">Create Spot</h2>
-                {/* <div>
-                        <label htmlFor='url'>url:</label>
-                        <input
-                            id='url'
-                            type='text'
-                            placeholder='url'
-                            onChange={e => setUrl(e.target.value)}
-                            value={url}
-                        />
-                    </div> */}
+                {errors.length > 0 && (
+        <ul id="createSpot">
+          <li id="createSpotTitle">Error Message:</li>
+          {(Object.values(errors)).map((error, idx) => <li id="createSpotError"key={idx}>{error}</li>)}
+        </ul>
+        )}
             
                 <div id="spotInput">
                     <label htmlFor='address'>address:</label>
