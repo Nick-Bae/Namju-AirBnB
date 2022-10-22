@@ -20,6 +20,7 @@ const CreateSpot = ({ spot, formType }) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
+    const [url, setUrl] = useState('');
     const dispatch = useDispatch();
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -41,6 +42,8 @@ const CreateSpot = ({ spot, formType }) => {
         if (!description.length) errors.push('Please enter your description');
         if (price==="" || price < 0) errors.push('Please enter your Correct Price');
         if (price > 5000) errors.push('Price should be less than $5,000');
+        if (url===" ") errors.push('Please enter url address for image')
+        if (url.length>255) errors.push('url should not be over 255 characters');
         setValidationErrors(errors);
     }, [address, city, state, country, lat, lng, name, description, price,])
 
@@ -61,8 +64,14 @@ const CreateSpot = ({ spot, formType }) => {
             description,
             price,
         };
-
+        
         const newSpot = await dispatch(createSpot(spot))
+        
+        const imageUrl = {
+            url,
+            spotId: newSpot.id
+        }
+        await dispatch(createImage( imageUrl))
                         // .then((res)=> {
                         //     // const newSpot = res.json();
                         //     // newSpot.then((spot)=>{
@@ -102,7 +111,8 @@ const CreateSpot = ({ spot, formType }) => {
                     <p id="spotErrorTItle">The following errors were found:</p>
                     <ul id="errorMessages">
                         {validationErrors.map(error => (
-                            <li key={error}>-{error}</li>
+
+                            <li key={error}>-{error} </li> 
                         ))}
                     </ul>
                 </div>
@@ -202,6 +212,16 @@ const CreateSpot = ({ spot, formType }) => {
                         type='text'
                         onChange={e => setDescription(e.target.value)}
                         value={description}
+                    />
+                </div>
+                <div id="spotInput">
+                    <label htmlFor='url'>url image:</label>
+                    <textarea
+                        // maxLength='255'
+                        id='imageUrl'
+                        type='text'
+                        onChange={e => setUrl(e.target.value)}
+                        value={url}
                     />
                 </div>
 

@@ -59,6 +59,7 @@ export const getSpotByUser =()=> async dispatch => {
     }
 }
 
+let newSpot ={}
 export const createSpot = (payload) => async dispatch => {
     const response = await csrfFetch(`/api/spots`, {
         method: 'POST',
@@ -74,8 +75,7 @@ export const createSpot = (payload) => async dispatch => {
 }
 
 export const createImage = (payload) => async dispatch => {
-    // const response = await csrfFetch(`/api/${payload.image.spotId}/images`, {
-    const response = await csrfFetch(`/api/spots/:spotId/images`, {
+    const response = await csrfFetch(`/api/spots/${payload.spotId}/images`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
