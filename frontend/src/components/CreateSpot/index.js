@@ -72,7 +72,6 @@ const CreateSpot = ({ spot, formType }) => {
         
         const newSpot = await  dispatch(createSpot(spot))
             .catch(async(res)=>{
-                // if(res === undefined) return null;
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors)
             })
