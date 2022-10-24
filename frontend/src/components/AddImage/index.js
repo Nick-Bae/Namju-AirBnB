@@ -61,10 +61,11 @@ const AddImage = () => {
                     placeholder="Add a image"
                     id="new-image-form-textarea"
                 />
-                <div>
+        {/* setting this image as a previewImage */}
+                {/* <div>
                     <input id='preImageCheck' type="checkbox" value="previewImage" />
                     <label > Preview Image</label>
-                </div>
+                </div> */}
 
                 <div id="addImageBt">
                     <button id="addImage" type="submit"> Add Image</button> &nbsp;
