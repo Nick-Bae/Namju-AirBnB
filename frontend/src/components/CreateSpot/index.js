@@ -46,7 +46,7 @@ const CreateSpot = ({ spot, formType }) => {
         if (price > 5000) errors.push('Price should be less than $5,000');
         if (url==="") errors.push('Please enter url address for image')
         if (url.length>255) errors.push('url should not be over 255 characters');
-        if (!url.includes('https://')) errors.push('url should starts with http://');
+        if (!url.includes('https://')) errors.push('url should starts with https://');
 
         setValidationErrors(errors);
     }, [address, city, state, country, lat, lng, name, description, price, url])
