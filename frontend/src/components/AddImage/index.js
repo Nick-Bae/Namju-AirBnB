@@ -24,20 +24,19 @@ const AddImage = () => {
         const isPreviewImage  = document.querySelector('#preImageCheck');
 
         let image;
-        if (isPreviewImage.checked){
+        // if (isPreviewImage.checked){
             image = {
                 url: url,
                 spotId: id,
-                previewImage: true
+                // previewImage: true
             }
-        } else {
-            image = {
-                url: url,
-                spotId: id,
-                previewImage: false
-            }
-        }
-        console.log("previewImage",isPreviewImage.checked)
+        // } else {
+        //     image = {
+        //         url: url,
+        //         spotId: id,
+        //         previewImage: false
+        //     }
+        // }
         dispatch(createImage(image))
         history.push(`/spots/${id}`);
         reset();
