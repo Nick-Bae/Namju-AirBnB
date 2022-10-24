@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createSpot } from '../../store/spot';
 import { Redirect, useParams } from 'react-router-dom';
-import { createImage } from '../../store/spot';
+// import { createImage } from '../../store/spot';
+import { createImage } from '../../store/image';
 import { getSpotBySpotId } from '../../store/spot';
 import './createSpot.css'
 
@@ -27,7 +28,6 @@ const CreateSpot = ({ spot, formType }) => {
     const [errors, setErrors] = useState([]);
 
     const spotsObj = useSelector(state => state.spot);
-    const spots = Object.values(spotsObj);
     // console.log(newSpotId)
 
 
@@ -46,6 +46,8 @@ const CreateSpot = ({ spot, formType }) => {
         if (price > 5000) errors.push('Price should be less than $5,000');
         if (url==="") errors.push('Please enter url address for image')
         if (url.length>255) errors.push('url should not be over 255 characters');
+        if (!url.includes('https://')) errors.push('url should starts with http://');
+
         setValidationErrors(errors);
     }, [address, city, state, country, lat, lng, name, description, price, url])
 
@@ -70,11 +72,10 @@ const CreateSpot = ({ spot, formType }) => {
         
         const newSpot = await  dispatch(createSpot(spot))
             .catch(async(res)=>{
-                if(res === undefined) return null;
+                // if(res === undefined) return null;
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors)
             })
-        console.log("image data before", newSpot.id)
         const imageUrl = {
             url,
             spotId: newSpot.id
@@ -107,6 +108,7 @@ const CreateSpot = ({ spot, formType }) => {
         setLng("");
         setName("");
         setPrice("");
+        setUrl("");
     }
 
     const handleCancelClick = (e) => {
@@ -145,6 +147,7 @@ const CreateSpot = ({ spot, formType }) => {
                         // placeholder='address'
                         onChange={e => setAddress(e.target.value)}
                         value={address}
+                        // required
                     />
                 </div>
                 <div id="spotInput">

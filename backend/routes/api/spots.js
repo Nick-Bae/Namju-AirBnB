@@ -340,7 +340,7 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
         return require('moment')(date).format('YYYY-MM-DD');
     }
     const { address, city, state, country,
-        lat, lng, name, description, price, createdAt } = req.body
+        lat, lng, name, description, price } = req.body
     const newSpot = await Spot.create({
         ownerId: user.id,
         address,
@@ -353,7 +353,7 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
         description,
         price,
         // date: getDateWithoutTime(createdAt)
-        createdAt
+        // createdAt
         //createdAt: moment(req.getDataValue('updatedAt')).format('YYYY-MM-DD hh:mm:ss'),
         //  updatedAt
         //    createdAt: createdAt

@@ -59,7 +59,7 @@ img {
 #section {
 display: flex;
 flex-direction: column;
-justify-content: end;
+/* justify-content: flexend; */
 }
 #spotDetails{
   display: flex;

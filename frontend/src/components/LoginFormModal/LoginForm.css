@@ -50,6 +50,7 @@
     background-color: rgb(131, 209, 248);
     color: black;
     font-weight: 300;
+    margin-top:9px;
 }
 
 #loginInputCredential, #loginInputPassword {

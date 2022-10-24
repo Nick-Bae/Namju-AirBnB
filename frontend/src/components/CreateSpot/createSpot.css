@@ -29,7 +29,8 @@
 
 #description{
     margin-bottom: 20px;
-    resize: none
+    resize: none;
+    height:60px;
 }
 
 #creatSpotCancel, #createSpotBt{
