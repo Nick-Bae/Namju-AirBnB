@@ -13,7 +13,7 @@ const spot = require('../../db/models/spot');
 const validateCreateSpot = [
     check('name')
         .exists({ checkFalsy: true })
-        .isLength({ max: 15 })
+        .isLength({ max: 30 })
         .withMessage('name must be less than 15 characters'),
     check('address')
         .exists({ checkFalsy: true })
