@@ -14,6 +14,7 @@ export const ReviewDisplay = ({ spot }) => {
     const dispatch = useDispatch();
     const onlyspotReviews = useSelector(state => Object.values(state.review));
    
+    console.log("???????????????",onlyspotReviews)
     // const currSpot = spot.id;
     const [update, setUpdate] = useState(false);
     const [remove, setRemove] = useState(false);
@@ -44,7 +45,7 @@ export const ReviewDisplay = ({ spot }) => {
         // dispatch(getSpotReviews(id));
         dispatch(getSpotBySpotId(id))
 
-    }, [dispatch, update ]);
+    }, [dispatch]);
 
     // console.log('allreviews', spotReviewsObj)
     // const reset = () => {

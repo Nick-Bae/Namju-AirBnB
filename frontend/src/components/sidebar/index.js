@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CommentFormPage from '../sidebar/CommentFormPage';
+import CommentFormPage from './CommentFormPage.js';
 
-function SignupModal() {
+function SideBarModal() {
   const [showModal, setShowModal] = useState(false);
+  const [open, setOpen] = useState(false)
+  
+  const handleOpen = () => {
+    const timer =  setTimeout(() => {
+         setOpen(true);
+     }, 9000)
+      return () => clearTimeout(timer);
+ }
 
   return (
     <div className='session'>
       <button className="signupBt" onClick={() => setShowModal(true)
-      }>  Sign up  </button>
+      }>  comment  </button>
       <>&nbsp;</>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -19,4 +27,4 @@ function SignupModal() {
   );
 }
 
-export default SignupModal;
+export default SideBarModal;

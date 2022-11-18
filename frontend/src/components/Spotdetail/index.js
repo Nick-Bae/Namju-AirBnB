@@ -9,6 +9,8 @@ import { useHistory } from 'react-router-dom';
 import ReviewFormModal from "../ReviewModal";
 import ReviewDisplay from "../ReviewModal/ReviewDisplay";
 import { getSpotReviews } from "../../store/comment";
+import { likeStory } from "../../store/likeStory";
+import SideBarModal from "../sidebar";
 
 export const Spotdetail = () => {
     const dispatch = useDispatch();
@@ -16,24 +18,15 @@ export const Spotdetail = () => {
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
     const user = useSelector(state => state.session.user)
-    // console.log("spot information",spot.ownerId)
+    console.log("spot information",spot)
     // console.log("user info",user.id)
     const permission = spot?.ownerId !== user?.id ? false : true
     const review = useSelector((state) => state.review)
     const [showSpot, setShowSpot] = useState(false);
     const [owner, setOwner] = useState(true);
+    
     // const reviews = useSelector((state) => Object.values(state.reviews));
 
-    // if (spot.onwerId)
-    // const openSpot = () => {
-    //     if (!showSpot) return;
-    //     setShowSpot(true);
-    // }
-
-    // useEffect(() => {
-    //     if (showSpot) return;
-    //     setShowSpot(false);
-    // }, [showSpot]);
 
     // const login = (!user) ? alert("Please log in") : true
     // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
@@ -64,12 +57,15 @@ export const Spotdetail = () => {
     // useEffect(()=>{
     //     console.log("this is a single spot",spot)
     //   },[spot])
+    const clickLike = () =>{
+        dispatch(likeStory(id))
+    }
 
     if (!spot) return null;
     return showSpot && (
         // <body className="detailview">
         <section id="spotDetails">
-           <div className="spot-container">
+            <div className="spot-container">
                 {/* <div className="spot-outside"> */}
                 <div className="spot-inside">
                     <div id="spotTop">
@@ -93,7 +89,7 @@ export const Spotdetail = () => {
                             spot?.image.map((image, idx) =>
                                 image.previewImage ? <img key={idx} src={image.url} /> :
 
-                                <img key={idx} className="imgdetail" src={image.url} />
+                                    <img key={idx} className="imgdetail" src={image.url} />
                             )}
                     </div>
 
@@ -157,6 +153,10 @@ export const Spotdetail = () => {
                             <Review showSpot={false} id={id} />
                         </Route>
                     </div> */}
+                    <div>
+                        <button id="likeBt" onClick={clickLike}>Like</button>
+                        <SideBarModal />
+                    </div>
                     <div >
 
                         <ReviewDisplay reviews={review} spot={spot} />

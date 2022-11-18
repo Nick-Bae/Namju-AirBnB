@@ -17,7 +17,7 @@ const SpotList = () => {
   }, [dispatch]);
 
 // useEffect(()=>{
-//   console.log("this is all spots",spots)
+  console.log("this is all spots",spotsObj)
 // },[spots])
   //   onClick={() => {
   const login = (!user) ? false : true

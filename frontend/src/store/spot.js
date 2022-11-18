@@ -35,7 +35,7 @@ export const getAllSpots = () => async dispatch => {
 
     if (response.ok) {
         const spots = await response.json();
-        dispatch(load(spots));
+        dispatch(load(spots.Spots));
     }
 };
 
@@ -116,7 +116,7 @@ export const spotReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
         case LOAD:
-            const spots = action.spots.Spots
+            const spots = action.spots
             spots.forEach((spot) => {
                 newState[spot.id] = spot
             })

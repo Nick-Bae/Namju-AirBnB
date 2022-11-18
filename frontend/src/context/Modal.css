@@ -5,7 +5,7 @@
     left: 0;
     bottom: 0;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
    
   }
@@ -16,13 +16,17 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.1)
   }
   
   #modal-content {
-    position: absolute;
+    /* position: absolute; */
     background-color:white;
-    border-radius: 15px;
+    /* border-radius: 15px; */
+    position: relative;
+    height: 100%;
+    transition-delay: 2s;
   }
+
 
   

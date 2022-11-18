@@ -12,7 +12,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
     const {id} = useParams();
     const spotReviews = useSelector(state => Object.values(state.review))
     const user = useSelector(state=> state.session.user)
-    // console.log("how many reviews?",spotReviewsObj)
+    console.log("how many reviews?",spotReviews)
     // const currSpot = spot.id;
     const spotReview = spotReviews.filter(review=> review.spotId ===spot.id)
     const isReview = spotReview.filter(review => review.userId === user.id )
