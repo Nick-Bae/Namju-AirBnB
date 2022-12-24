@@ -14,7 +14,6 @@ export const ReviewDisplay = ({ spot }) => {
     const dispatch = useDispatch();
     const onlyspotReviews = useSelector(state => Object.values(state.review));
    
-    console.log("???????????????",onlyspotReviews)
     // const currSpot = spot.id;
     const [update, setUpdate] = useState(false);
     const [remove, setRemove] = useState(false);
@@ -37,9 +36,9 @@ export const ReviewDisplay = ({ spot }) => {
     //     setValidationErrors(errors);
     // }, [review, stars])
 
-    const reveiwModal =()=>{
-        <ReviewFormModal />
-    }
+    // const reveiwModal =()=>{
+    //     <ReviewFormModal />
+    // }
 
     useEffect(() => {
         // dispatch(getSpotReviews(id));

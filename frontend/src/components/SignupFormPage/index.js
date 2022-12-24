@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CommentFormPage from '../sidebar/CommentFormPage';
+// import CommentFormPage from '../sidebar/CommentFormPage';
+import SignupFormPage from './SignupFormPage';
 
 function SignupModal() {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +13,7 @@ function SignupModal() {
       <>&nbsp;</>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CommentFormPage setShowModal={setShowModal}/>
+          <SignupFormPage setShowModal={setShowModal}/>
         </Modal>
        )} 
     </div>

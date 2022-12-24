@@ -16,7 +16,7 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory();
   let sessionLinks;
-
+ 
   //=======here
   // const [showMenu, setShowMenu] = useState(false);
   // const [showModal, setShowModal] = useState(false);
