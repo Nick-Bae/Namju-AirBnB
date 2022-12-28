@@ -127,6 +127,7 @@ height: 100px;
     display: flex;
     flex-direction: row;
     justify-items:end;
+    align-items: center;
     /* margin-top:10px; */
 }
 

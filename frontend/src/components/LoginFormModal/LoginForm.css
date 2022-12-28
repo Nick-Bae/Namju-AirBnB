@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.session {
+    display: flex;
+    align-content: center;
+}
 
 
 .loginBt, .loginCancelBt, .demobt {
