@@ -24,11 +24,7 @@
   },
   "homepage": "https://github.com/Nick-Bae/AirBnB#readme",
   "dependencies": {
-    "pg": "^8.7.3"
-
-  },
-  "devDependencies": {}
-
+    "pg": "^8.7.3",
+    "react-images-viewer": "^1.7.1"
   }
-
-
+}

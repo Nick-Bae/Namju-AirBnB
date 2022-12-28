@@ -12,7 +12,7 @@
 .write,
 .addimage,
 .deleteimage,
-.delete {
+.deleteSpotBt {
   text-decoration: none;
   border: 1px solid var(--grey-light-color);
   border-radius: 7px;
@@ -35,37 +35,103 @@ li {
   /* flex-direction: column; */
   justify-content: center;
 }
-.spot-outside {
-  display: flex;
-  flex-direction: row;
-}
-
-
-img {
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-  max-width: 900px;
-  max-height: 600px;
-  display: block;
-  margin: auto;
-}
-
-#spotImages{
-  
-}
-
-
-#section {
-display: flex;
-flex-direction: column;
-/* justify-content: flexend; */
-}
 #spotDetails{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
 }
+
+.spot-inside{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* margin-left: 47px; */
+  justify-items: center;
+}
+
+#spotImages{
+  display: flex;
+  align-items: center;
+  /* justify-items: center; */
+  justify-content: center;
+  /* max-width:944px;
+  max-height: 496px; */
+  /* width: 100%;
+  height: 100%; */
+ width:950px;
+ height:472px;
+  /* display: block; */
+  /* margin: auto; */
+}
+
+
+
+#previewImage{
+  width:470px;
+  height:463px;
+  /* max-width:472px;
+  max-height:472px; */
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  /* padding: 8px 0 0 0; */
+}
+.smallDetialContainer{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+}
+/* #smallImages{
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ align-items: center;
+ justify-content: center;
+ width:1456px;
+ height: 470px;
+ border-radius: 10px;
+} */
+
+.imgdetail1{
+  border-radius: 0 10px 0 0 ;
+}
+
+.imgdetail3{
+  border-radius: 0 0 10px 0 ;
+}
+
+.imgdetail0, .imgdetail1{
+margin: 10px;
+}
+
+/* #spotImageDetail{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 472px;
+  height: 472px;
+  border-radius: 10px;
+} */
+
+#smallDetailImages{
+  width:227px;
+  height: 234px;
+}
+#smallDetailImages > img{
+  /* width:100%;
+  height:100%; */
+  width:226px;
+  height: 226px;
+  padding: 0 0 0 8px;
+  cursor: pointer;
+}
+
+
+/* #section {
+display: flex;
+flex-direction: column;
+justify-content: end;
+} */
+
 #spotTop{
   /* margin-left:150px; */
   font-display: flex;
@@ -195,7 +261,6 @@ flex-direction: column;
   padding: 0px;
 }
 
-#likeBt {
-  width:40px;
-  height: 30px;
+.deleteSpotBt{
+  cursor: pointer;
 }

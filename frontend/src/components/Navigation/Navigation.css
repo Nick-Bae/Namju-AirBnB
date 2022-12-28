@@ -55,6 +55,7 @@
     align-items: center;
     color:rgb(14, 165, 235);
     font-size:25px;
+    cursor: pointer;
 }
 
 
@@ -69,7 +70,7 @@
     border-radius: 10px; 
     box-shadow: 1px 1px -2px   rgb(244, 243, 243), 1px 1px -2px rgb(244, 243, 243);
     background-color: rgb(255, 255, 255); 
-    height:120px;
+    height:190px;
     width: 220px;
     justify-content: center;
 }
@@ -138,9 +139,15 @@ height: 100px;
     font-size: var(--font-large);
     color:black
 }
-#loginfo{
+#userNameInfo, #emailInfo, #myplaces, #logoutInfo{
     padding:3px;
-    margin-left:13px;
+    margin: 0 13px;
+}
+
+#emailInfo, #myplaces{
+    border-bottom: 1px solid var(--grey-light-color);
+    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 #navIcons {

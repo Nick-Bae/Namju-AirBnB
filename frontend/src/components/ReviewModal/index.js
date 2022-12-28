@@ -8,6 +8,8 @@ import { getSpotBySpotId } from '../../store/spot';
 
 function ReviewFormModal({spot, reviews}) {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user)
+
   // const reviews = useSelector((state) => state.reviews);
   // console.log("reviews",reviews)
 
@@ -26,10 +28,15 @@ function ReviewFormModal({spot, reviews}) {
   //   setShowModal(false);
    
   // },[reviews]);
+  const clickReviewBt = ()=>{
+    !user ? alert("please login") : setShowModal(true)
+  }
 
   return (
     <div >
-      <button className="reviewbt" onClick={() => setShowModal(true)}>Review</button>
+      <button className="clickReviewBt" onClick={clickReviewBt}>
+      <i class="fa-solid fa-pen-to-square"> </i> &nbsp; Review
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ReviewForm spot={spot} setShowModal={setShowModal} />

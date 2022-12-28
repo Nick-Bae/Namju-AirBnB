@@ -6,8 +6,9 @@
     min-width: 600px;
 }
 #new-image-form-textarea{
-    height:200px;
+    height:100px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 #new-image{
     display: flex;
@@ -21,7 +22,7 @@
     margin-top:30px;
 }
 
-#addImage, #imageCancel{
+#addImage, #imageCancel, #imageDeleteBt{
    background-color: rgb(131, 209, 248);
    height:40px;
    width:80px;
@@ -30,6 +31,35 @@
    color:black;
    border-radius: 3px;
 }
+
 textarea {
-    resize: none;
+    resize:none;
+
+}
+#editImages{
+    display: flex;
+    justify-content: center;
+}
+
+
+.selectedImg0, 
+.selectedImg1, 
+.selectedImg2, 
+.selectedImg3, 
+.selectedImg4 {
+    position: flex;
+    /* border-radius: 5px; */
+    justify-items: center;
+    width:200px;
+    height: 200px;
+    padding:10px;
+    cursor: pointer;
+}
+
+#imageEdit{
+    margin:50px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    
 }

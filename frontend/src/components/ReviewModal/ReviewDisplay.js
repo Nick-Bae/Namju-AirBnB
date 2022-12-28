@@ -58,16 +58,12 @@ export const ReviewDisplay = ({ spot }) => {
     return (
         <>
             <p id="reviewIcon">
-                {/* <button id="reviewModalClick" onClick={reveiwModal}> */}
-                    
-                <i className="fa-solid fa-pen-to-square"> </i> &nbsp; Review
-                     
-                     {/* <ReviewFormModal />
-                     </button> */}
-                
-                </p>
-            <p id="numbers"><i className="fa-sharp fa-solid fa-star"></i> 
-            &nbsp; {(spot.avgRating.toFixed(1))} · {spot.numReviews} Reviews</p>
+                {/* <i class="fa-solid fa-pen-to-square"> </i> */}
+                {/* {(user) && <ReviewFormModal spot={spot} />} */}
+                <ReviewFormModal spot={spot} />
+            </p>
+            <p id="numbers"><i class="fa-sharp fa-solid fa-star"></i> 
+             {(spot.avgRating.toFixed(1))}, {spot.numReviews} Reviews</p>
             <div id="reviews">
 
                 {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars, User, updatedAt }) => (
