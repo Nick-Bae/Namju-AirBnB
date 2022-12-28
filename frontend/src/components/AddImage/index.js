@@ -18,9 +18,9 @@ const AddImage = () => {
    
    const [deleteOn, setDeleteOn]=useState(false);
    const [imageId, setImageId] = useState('');
+   const [selectedImg, setSelectedImg] = useState('');
    // const id= spotId
    const spot = useSelector(state => state.spot[id])
-   console.log("spot detail",spot)
    
     const addImage = (e) => {
 
@@ -67,8 +67,9 @@ const AddImage = () => {
     
     const imageSelect = (obj) => {
        let id= obj.target.id
-        setImageId(id)
-        setDeleteOn(true)
+        setImageId(id);
+        setDeleteOn(true);
+        setSelectedImg(id)
     }
 
     const deleteBt = (e) => {
@@ -92,11 +93,17 @@ const AddImage = () => {
         <>
             <p id="imageEdit">Image upload & Delete</p>
             <div id="editImages">
-                {spot?.image.map(image => (
-                    <img id={image.id} className="imgdetail" src={image.url} onClick={imageSelect} />
+                {spot?.image.map((image, idx) => (
+                    <>
+                    <img id={image.id} 
+                        className={`selectedImg${idx}` }
+                        src={image.url} 
+                        onClick={imageSelect} 
+                        style={{ boxShadow: Number(selectedImg) === Number(image.id) ? "rgba(57,56,60,0.61) 0px 5px 15px" : ""  }}
+                    />
+                 </>
                 ))}
             </div>
-
             <div id="new-image">
                 <form id="new-image-form" onSubmit={addImage}>
                     <textarea

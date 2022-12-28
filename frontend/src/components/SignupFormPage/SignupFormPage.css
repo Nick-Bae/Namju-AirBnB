@@ -29,6 +29,7 @@
     width: 80px;
     color:black;
     font-weight: 300;
+    cursor: pointer;
 }
 
 #signupCancel {

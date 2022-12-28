@@ -16,7 +16,7 @@
     text-decoration: none;
     padding: 5px;
     border: 1px solid var(--grey-light-color);
-
+    cursor: pointer;
 }
 
 .review,
@@ -50,3 +50,18 @@
     margin-bottom: 30px;
 }
 
+.fa-pen-to-square{
+    border: none;
+}
+.reviewbt{
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.clickReviewBt{
+    border: none;
+    background-color: white;
+    font-size: 22px;
+    cursor: pointer;
+}

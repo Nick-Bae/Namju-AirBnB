@@ -16,6 +16,7 @@
     font-weight: 300;
     margin-right:5px;
     font-weight: 300;
+    cursor: pointer;
 }
 
 
@@ -50,6 +51,7 @@
     background-color: rgb(131, 209, 248);
     color: black;
     font-weight: 300;
+    cursor: pointer;
 }
 
 #loginInputCredential, #loginInputPassword {

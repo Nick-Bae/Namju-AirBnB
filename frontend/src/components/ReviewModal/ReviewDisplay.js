@@ -9,6 +9,7 @@ import { deleteReview } from '../../store/comment';
 import { getSpotBySpotId } from '../../store/spot';
 import { getAllImages } from '../../store/image';
 import './ReviewDisplay.css'
+import ReviewFormModal from '.';
 
 export const ReviewDisplay = ({ spot, reviews }) => {
 
@@ -89,7 +90,11 @@ export const ReviewDisplay = ({ spot, reviews }) => {
 
     return (
         <>
-            <p id="reviewIcon"><i class="fa-solid fa-pen-to-square"> </i> Review </p>
+            <p id="reviewIcon">
+                {/* <i class="fa-solid fa-pen-to-square"> </i> */}
+                {/* {(user) && <ReviewFormModal spot={spot} />} */}
+                <ReviewFormModal spot={spot} />
+            </p>
             <p id="numbers"><i class="fa-sharp fa-solid fa-star"></i> 
              {(spot.avgRating.toFixed(1))}, {spot.numReviews} Reviews</p>
             <div id="reviews">

@@ -12,7 +12,7 @@
 .write,
 .addimage,
 .deleteimage,
-.delete {
+.deleteSpotBt {
   text-decoration: none;
   border: 1px solid var(--grey-light-color);
   border-radius: 7px;
@@ -51,42 +51,56 @@ li {
 
 #spotImages{
   display: flex;
-  flex-direction: row;
-  /* align-items: center; */
+  align-items: center;
   /* justify-items: center; */
   justify-content: center;
   /* max-width:944px;
   max-height: 496px; */
   /* width: 100%;
   height: 100%; */
- width:932px;
+ width:950px;
  height:472px;
   /* display: block; */
   /* margin: auto; */
 }
 
-#previewImageBox{
-  
-}
+
 
 #previewImage{
+  width:470px;
+  height:463px;
   /* max-width:472px;
   max-height:472px; */
-  max-width:472px;
-  height:464px;
-  /* border-radius: 10px 0 0 10px; */
-  margin-top: 8px;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
   /* padding: 8px 0 0 0; */
 }
-
-#smallImages{
+.smallDetialContainer{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+}
+/* #smallImages{
  display: flex;
+ flex-direction: row;
  flex-wrap: wrap;
  align-items: center;
  justify-content: center;
- width:456px;
+ width:1456px;
  height: 470px;
  border-radius: 10px;
+} */
+
+.imgdetail1{
+  border-radius: 0 10px 0 0 ;
+}
+
+.imgdetail3{
+  border-radius: 0 0 10px 0 ;
+}
+
+.imgdetail0, .imgdetail1{
+margin: 10px;
 }
 
 /* #spotImageDetail{
@@ -98,19 +112,19 @@ li {
   border-radius: 10px;
 } */
 
-#spotImageDetail{
-  border-radius: 0 10px 10px 0;
-  width:228px;
-  height: 233px;
-
+#smallDetailImages{
+  width:227px;
+  height: 234px;
 }
-.imgdetail{
-  width:228px;
-  height: 227px;
-  /* border-radius: 0 10px 10px 0; */
+#smallDetailImages > img{
+  /* width:100%;
+  height:100%; */
+  width:226px;
+  height: 226px;
   padding: 0 0 0 8px;
-  margin-top:8px;
+  cursor: pointer;
 }
+
 
 /* #section {
 display: flex;
@@ -247,3 +261,6 @@ justify-content: end;
   padding: 0px;
 }
 
+.deleteSpotBt{
+  cursor: pointer;
+}

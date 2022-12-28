@@ -1,7 +1,9 @@
-import { getAllSpots, getSpotBySpotId } from "../../store/spot"
+import { getSpotBySpotId } from "../../store/spot"
 import { useParams, Link, Route, Redirect, NavLink } from 'react-router-dom';
+import ImgsViewer from "react-images-viewer";
 import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback  } from 'react';
+import ImageViewer from 'react-simple-image-viewer';
 import { useDispatch } from 'react-redux';
 import { deleteSpot } from "../../store/spot";
 import './spotdetail.css'
@@ -9,6 +11,7 @@ import { useHistory } from 'react-router-dom';
 import ReviewFormModal from "../ReviewModal";
 import ReviewDisplay from "../ReviewModal/ReviewDisplay";
 import { getSpotReviews } from "../../store/comment";
+
 
 export const Spotdetail = () => {
     const dispatch = useDispatch();
@@ -22,7 +25,11 @@ export const Spotdetail = () => {
     const review = useSelector((state) => state.review)
     const [showSpot, setShowSpot] = useState(false);
     const [owner, setOwner] = useState(true);
-    // const reviews = useSelector((state) => Object.values(state.reviews));
+
+    const [currentImage, setCurrentImage] = useState(0);
+    const [isViewerOpen, setIsViewerOpen] = useState(false);
+    const images = spot?.image?.map((image)=> image.url)
+        
 
     // if (spot.onwerId)
     // const openSpot = () => {
@@ -59,7 +66,7 @@ export const Spotdetail = () => {
             .then(() => dispatch(getSpotReviews(id)))
             .then(() => setShowSpot(true))
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
-    }, [dispatch], review);
+    }, [dispatch, review.length], review);
 
     // useEffect(() => {
     //     dispatch(getSpotBySpotId(id)).then(() =>
@@ -67,9 +74,31 @@ export const Spotdetail = () => {
     //     .then(() => setShowSpot(true));
     // }, [ dispatch, id ]);
 
-    const isPreviewImage = spot?.image?.find((image, idx) =>
-        image.previewImage = true
+    const previewImage =[]
+    const isPreviewImage = spot?.image?.filter((image, idx) =>{
+       if(image.previewImage === true){
+        return previewImage.push(image.url)
+       }
+    }
     )
+
+    const smallImages=[]
+    const filterImage =    spot?.image?.filter((image,idx) =>{
+                    if (image.previewImage === false) {
+                        return smallImages.push(image.url)
+                    }
+                }
+            )
+
+    const openImageViewer = useCallback((index) => {
+        setCurrentImage(index);
+        setIsViewerOpen(true);
+      }, []);
+    
+      const closeImageViewer = () => {
+        setCurrentImage(0);
+        setIsViewerOpen(false);
+      };
 
     if (!spot) return null;
     return showSpot && (
@@ -95,34 +124,54 @@ export const Spotdetail = () => {
                     </div>
 
                     <div id="spotImages">
-                        <div id="previewImageBox">
-                            <img id="previewImage" src={isPreviewImage?.url} />
-                        </div>
-                        <div id="smallImages">
-                            {spot?.image.map((image, idx) => (
-                                image.previewImage === false ?
-
-                                    <div id="spotImageDetail">
-                                        <img key={idx} className="imgdetail" src={image.url} />
-                                    </div>
-                                    : <div></div>
-                            ))}
-                        </div>
+                        {previewImage ?
+                            <div id="previewImageBox">
+                                {previewImage.map((src, index) => (
+                                    <img id="previewImage" src={src}  onClick={ () => openImageViewer(index)} />
+                                ))}
+                            </div>:<div></div>}
+                             <div className="smallDetialContainer">
+                                {smallImages.map((src, index) => (
+                                
+                                    <div id="smallDetailImages">
+                                             <img
+                                                className={`imgdetail${index}`}
+                                                src={ src }
+                                                onClick={ () => openImageViewer(index+1) }
+                                                width="300"
+                                                key={ index }
+                                                style={{ margin: '2px' }}
+                                                alt=""
+                                            />
+                                     </div> 
+                                ))}
+                            </div>
+                        
+                            {isViewerOpen && (
+                                <ImageViewer
+                                src={ images }
+                                currentIndex={ currentImage }
+                                disableScroll={ false }
+                                closeOnClickOutside={ true }
+                                onClose={ closeImageViewer }
+                                />
+                            )}
+                       
                     </div>
-
+                    
                     <div className="editDelete">
                         {(user) &&
                             (permission) &&
                             <>
                                 <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
-                                <button onClick={deleteReport} className="delete">Delete</button>
+                                <button onClick={deleteReport} className="deleteSpotBt">Delete</button>
                                 <Link className="addimage" to={`/spots/${id}/images`} spotId={spot.id}> Add Image </Link>
                                 <Link className="deleteimage" to={`/images/${id}`}> Delete Image </Link>
 
                             </>
                         }
 
-                        {(user) && <ReviewFormModal spot={spot} />}
+                        {/* {(user) && <ReviewFormModal spot={spot} />} */}
                     </div>
                     {/* <div className="maininfo"> */}
                     {/* <section className="maininfo-left"> */}
