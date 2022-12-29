@@ -77,7 +77,8 @@ const CreateSpot = ({ spot, formType }) => {
             })
         const imageUrl = {
             url,
-            spotId: newSpot.id
+            spotId: newSpot.id,
+            previewImage: true
         }
         console.log("image data after", newSpot.id)
 

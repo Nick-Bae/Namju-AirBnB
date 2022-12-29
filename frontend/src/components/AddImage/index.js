@@ -13,15 +13,18 @@ const AddImage = () => {
     const [url, setUrl] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
-   const { id } = useParams();
-
+    const { id } = useParams();
    
-   const [deleteOn, setDeleteOn]=useState(false);
-   const [imageId, setImageId] = useState('');
-   const [selectedImg, setSelectedImg] = useState('');
+    const [deleteOn, setDeleteOn]=useState(false);
+    const [imageId, setImageId] = useState('');
+    const [selectedImg, setSelectedImg] = useState('');
    // const id= spotId
-   const spot = useSelector(state => state.spot[id])
-   
+    const spot = useSelector(state => state.spot[id]);
+
+    useEffect(()=>{
+            dispatch(getSpotBySpotId(id));
+    },[dispatch])
+
     const addImage = (e) => {
 
         e.preventDefault();
@@ -42,7 +45,8 @@ const AddImage = () => {
                 previewImage: false
             }
         }
-        dispatch(createImage(image))
+        dispatch(createImage(image));
+        dispatch(getSpotBySpotId(id));
         // history.push(`/spots/${id}`);
         reset();
     }
@@ -87,7 +91,10 @@ const AddImage = () => {
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
     }, [dispatch, deleteOn, imageId]);
 
-
+    const spotNumImg = spot?.image?.length;
+    const checkImgNum =()=>{
+        spotNumImg > 5 ? alert("Maximum 5 images can be uploaded") : addImage()
+    }
 
     return (
         <>
@@ -119,9 +126,9 @@ const AddImage = () => {
                     </div>
 
                     <div id="addImageBt">
-                        <button id="addImage" type="submit"> Add</button> &nbsp;
+                        <button id="addImage" type="submit" onClick={checkImgNum}> Add</button> 
             {(deleteOn) && 
-                    <button id="imageDeleteBt" onClick={deleteBt}> Delete</button> 
+                    <button id="imageDeleteBt" onClick={deleteBt}> &nbsp; Delete</button> 
                 }&nbsp;
                         <button id="imageCancel" type="button" onClick={handleCancelClick}>Cancel</button>
                     </div>

@@ -31,6 +31,8 @@ export const getAllImages = () => async dispatch => {
         dispatch(load(spots));
     }
 };
+
+
 export const createImage = (data) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${data.spotId}/images`, {
         method: 'POST',
