@@ -30,6 +30,7 @@
    font-weight: 300;
    color:black;
    border-radius: 3px;
+   cursor: pointer;
 }
 
 textarea {

@@ -44,7 +44,7 @@ const AddImage = () => {
                 image = {
                     url: url,
                     spotId: id,
-                    // previewImage: true
+                    previewImage: true
                 }
             } else {
                 image = {
@@ -127,8 +127,8 @@ const AddImage = () => {
                         id="new-image-form-textarea"
                     />
                     <div>
-                        {/* <input id='preImageCheck' type="checkbox" value="previewImage" /> */}
-                        {/* <label for="previewImage"> Preview Image</label> */}
+                        <input id='preImageCheck' type="checkbox" value="previewImage" />
+                        <label for="previewImage"> Preview Image</label>
                     </div>
 
                     <div id="addImageBt">
