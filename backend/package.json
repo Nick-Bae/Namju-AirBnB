@@ -155,7 +155,7 @@
     "js-beautify": "^1.14.4",
     "json-buffer": "^3.0.0",
     "jsonfile": "^6.1.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwa": "^1.4.1",
     "jws": "^3.2.2",
     "keyv": "^3.1.0",
