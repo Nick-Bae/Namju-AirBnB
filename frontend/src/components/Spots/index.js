@@ -36,7 +36,7 @@ const SpotList = () => {
             {spots.map((spot) => (
               <div key={spot.id} id="container" >
                 <Carousel 
-                  showArrows={true} showThumbs={false} width={290} showStatus={false}
+                  showArrows={true} showThumbs={false} width={350} showStatus={false}
                   onClickItem={()=>history.push(`/spots/${spot.id}`)}> 
                       {spot?.previewImage?.map((image)=>(
                         <div className='spotImages'>

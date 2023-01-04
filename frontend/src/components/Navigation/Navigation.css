@@ -29,8 +29,11 @@
     border-radius:7px;
     justify-items: center;
     display: flex;
+    /* margin-left:60px; */
 }
-
+.loginfoBt, .userlogo{
+    /* margin-right:60px; */
+}
 .logolist {
     list-style-type: none;
     display: flex;
@@ -38,7 +41,6 @@
     height: 60px;
     border-bottom: 1px solid var(--grey-light-color);
     flex-direction: row;
-    /* align-items: center; */
 }
 
 .underline {
