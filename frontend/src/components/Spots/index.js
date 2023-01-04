@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import { getAllSpots } from '../../store/spot';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useState } from 'react'
 import './index.css'
 // import Transfer fr
@@ -11,13 +13,14 @@ const SpotList = () => {
   const spotsObj = useSelector(state => state.spot);
   const spots = Object.values(spotsObj);
   const user = useSelector(state => state.session.user)
-
+  // const spotImg = useSelector(state => state.spot[id].image);
+  
   useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
 // useEffect(()=>{
-  console.log("this is all spots",spotsObj)
+  console.log("this is all spots",spots)
 // },[spots])
   //   onClick={() => {
   const login = (!user) ? false : true
@@ -31,12 +34,21 @@ const SpotList = () => {
           <div className='imglayout'>
             {spots.map((spot) => (
               <div key={spot.id} id="container" >
-                <div className='spotImages'>
-                  <Link to={`/spots/${spot.id}`}>
-                    <img spot={spot} className="img" src={spot.previewImage} />
-                    {/* <img spot={spot} className="img" src={spot?.Images[0]?.url} /> */}
-                  </Link>
-                </div>
+                <Carousel 
+                  showArrows={true} showThumbs={false} width={290} showStatus={false}> 
+                      {spot.previewImage.map((image)=>(
+                        <div className='spotImages'>
+                    {/* <Link to={`/spots/${spot.id}`}> */}
+                        {/* <div> */}
+                        <img spot={spot} className="img" src={image.url} />
+                        <p className="legend"></p>
+                        {/* </div> */}
+
+                      {/* <img spot={spot} className="img" src={spot?.Images[0]?.url} /> */}
+                    {/* </Link> */}
+                  </div>
+                      ))}
+                      </Carousel>
                 <div id="detail">
                   <div className='smalltitle'>
                     <Link to={`/spots/${spot.id}`} className="spotname" >{spot.name}, {spot.state}</Link>

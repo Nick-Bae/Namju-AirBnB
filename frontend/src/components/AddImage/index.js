@@ -20,10 +20,15 @@ const AddImage = () => {
     const [selectedImg, setSelectedImg] = useState('');
    // const id= spotId
     const spot = useSelector(state => state.spot[id]);
+    const spotImg = useSelector(state => state.spot[id].image);
 
     useEffect(()=>{
             dispatch(getSpotBySpotId(id));
     },[dispatch])
+
+    // const checkPreviewImg = spotImg.find((img)=>{
+    //     img.previewImage === true ? img.id
+    // })
 
     const addImage = (e) => {
 

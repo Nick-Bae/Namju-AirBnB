@@ -155,10 +155,10 @@ export const Spotdetail = () => {
                         {(user) &&
                             (permission) &&
                             <>
-                                <Link to={`/spots/${id}/edit`} className="edit">Edit</Link>
+                                <Link to={`/spots/${id}/edit`} className="edit">Edit Spot</Link>
                                 <button onClick={deleteReport} className="deleteSpotBt">Delete</button>
-                                <Link className="addimage" to={`/spots/${id}/images`} spotId={spot.id}> Add Image </Link>
-                                <Link className="deleteimage" to={`/images/${id}`}> Delete Image </Link>
+                                <Link className="addimage" to={`/spots/${id}/images`} spotId={spot.id}> Edit Image </Link>
+                                {/* <Link className="deleteimage" to={`/images/${id}`}> Delete Image </Link> */}
 
                             </>
                         }
