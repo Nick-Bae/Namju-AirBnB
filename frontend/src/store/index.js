@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   spot: spotReducer,
   review: reviewReducer,
   image: imageReducer,
-  likeStory: likeStoryReducer
+  // likeStory: likeStoryReducer
 });
 
 let enhancer;

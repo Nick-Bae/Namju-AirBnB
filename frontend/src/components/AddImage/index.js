@@ -20,7 +20,7 @@ const AddImage = () => {
     const [selectedImg, setSelectedImg] = useState('');
    // const id= spotId
     const spot = useSelector(state => state.spot[id]);
-    const spotImg = useSelector(state => state.spot[id].image);
+    // const spotImg = useSelector(state => state.spot[id].image);
 
     useEffect(()=>{
             dispatch(getSpotBySpotId(id));
@@ -29,31 +29,35 @@ const AddImage = () => {
     // const checkPreviewImg = spotImg.find((img)=>{
     //     img.previewImage === true ? img.id
     // })
-
-    const addImage = (e) => {
-
-        e.preventDefault();
+    
+    const addImage = () => {
+        const spotNumImg = spot?.image?.length;
+        if (spotNumImg >= 5) {
+            alert("Maximum 5 images can be uploaded") 
+        }else {
+        // e.preventDefault();
         // let isPreviewImage=false;
-        const isPreviewImage = document.querySelector('#preImageCheck');
+            const isPreviewImage = document.querySelector('#preImageCheck');
 
-        let image;
-        if (isPreviewImage.checked) {
-            image = {
-                url: url,
-                spotId: id,
-                // previewImage: true
+            let image;
+            if (isPreviewImage.checked) {
+                image = {
+                    url: url,
+                    spotId: id,
+                    // previewImage: true
+                }
+            } else {
+                image = {
+                    url: url,
+                    spotId: id,
+                    previewImage: false
+                }
             }
-        } else {
-            image = {
-                url: url,
-                spotId: id,
-                previewImage: false
-            }
+            dispatch(createImage(image));
+            dispatch(getSpotBySpotId(id));
+            // history.push(`/spots/${id}`);
+            reset();
         }
-        dispatch(createImage(image));
-        dispatch(getSpotBySpotId(id));
-        // history.push(`/spots/${id}`);
-        reset();
     }
     const reset = () => {
         setUrl('');
@@ -61,7 +65,7 @@ const AddImage = () => {
     const handleCancelClick = (e) => {
         e.preventDefault();
         // history.push(`/spots/${id}`);
-        history.goBack();
+        history.push(`/spots/${id}`);
     };
 
     // spot.image.map((image) =>{
@@ -96,10 +100,7 @@ const AddImage = () => {
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
     }, [dispatch, deleteOn, imageId]);
 
-    const spotNumImg = spot?.image?.length;
-    const checkImgNum =()=>{
-        spotNumImg > 5 ? alert("Maximum 5 images can be uploaded") : addImage()
-    }
+    
 
     return (
         <>
@@ -126,16 +127,16 @@ const AddImage = () => {
                         id="new-image-form-textarea"
                     />
                     <div>
-                        <input id='preImageCheck' type="checkbox" value="previewImage" />
-                        <label for="previewImage"> Preview Image</label>
+                        {/* <input id='preImageCheck' type="checkbox" value="previewImage" /> */}
+                        {/* <label for="previewImage"> Preview Image</label> */}
                     </div>
 
                     <div id="addImageBt">
-                        <button id="addImage" type="submit" onClick={checkImgNum}> Add</button> 
+                        <button id="addImage" type="submit" > Add</button> 
             {(deleteOn) && 
                     <button id="imageDeleteBt" onClick={deleteBt}> &nbsp; Delete</button> 
                 }&nbsp;
-                        <button id="imageCancel" type="button" onClick={handleCancelClick}>Cancel</button>
+                        <button id="imageCancel" type="button" onClick={handleCancelClick}>Return </button>
                     </div>
                 </form>
             </div>

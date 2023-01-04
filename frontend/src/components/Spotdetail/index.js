@@ -20,7 +20,6 @@ export const Spotdetail = () => {
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
     const user = useSelector(state => state.session.user)
-    console.log("spot information",spot)
     // console.log("user info",user.id)
     const permission = spot?.ownerId !== user?.id ? false : true
     const review = useSelector((state) => state.review)
