@@ -73,6 +73,7 @@
     height:190px;
     width: 220px;
     justify-content: center;
+    z-index: 1
 }
 
 .logOut {
