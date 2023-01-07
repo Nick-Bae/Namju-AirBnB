@@ -9,7 +9,13 @@ module.exports = {
      */
     await queryInterface.bulkInsert('Images', [
       {
-        url: "https://static.studyusa.com/article/aws_BepGulJ9q0x83E5g45MeStlB7xio4gpq_sm_2x.jpg?format=webp",
+        url: [
+          "https://static.studyusa.com/article/aws_BepGulJ9q0x83E5g45MeStlB7xio4gpq_sm_2x.jpg?format=webp",
+          "https://a0.muscache.com/im/pictures/prohost-api/Hosting-49732987/original/ebafc4a6-981b-4b84-83c4-1d8d9c4e67eb.jpeg?im_w=1200",
+          "https://a0.muscache.com/im/pictures/prohost-api/Hosting-49732987/original/ada7893f-4a99-4cf9-a4b3-4ac16f55b923.jpeg?im_w=720",
+          "https://a0.muscache.com/im/pictures/prohost-api/Hosting-49732987/original/da3656f2-6221-49e0-ab19-c6c0769a5035.jpeg?im_w=720",
+          "https://a0.muscache.com/im/pictures/prohost-api/Hosting-49732987/original/31151875-d73f-4718-b409-d489738fd9fd.jpeg?im_w=720"
+        ],
         previewImage: true,
         spotId: 1,
         reviewId: 1,
@@ -43,46 +49,6 @@ module.exports = {
         reviewId: 5,
         userId:3
       },
-      //     {
-      //     spotId: 2,
-      //     reviewId: 2,
-      //     url: "https://images.app.goo.gl/eiR4ZwXGKZ21DfkS9"
-      //   },
-      //     {
-      //     spotId: 5,
-      //     reviewId: 4,
-      //     url: "https://images.app.goo.gl/K3YrBdzFCkN3vTkBA"
-      //   },
-      //     {
-      //     spotId: 2,
-      //     reviewId:5 ,
-      //     url: "https://images.app.goo.gl/9HAjMpf5FBEozvwy5"
-      //   },
-      //     {
-      //     spotId: 3,
-      //     reviewId:6 ,
-      //     url: "https://images.app.goo.gl/oLmp6E6t722Fb5PUA"
-      //   },
-      //     {
-      //     spotId: 1,
-      //     url: "https://images.app.goo.gl/iJnnVeTXiTXu9FGb6"
-      //   },
-      //     {
-      //     spotId: 2,
-      //     url: "https://images.app.goo.gl/LTFk2JmJ1LHuGvgo9"
-      //   },
-      //     {
-      //     spotId: 3,
-      //     url: 'https://images.app.goo.gl/6UvjgwTV2cySoer88'
-      //   },
-      //     {
-      //     spotId: 4,
-      //     url: "https://images.app.goo.gl/LgkqSUhfahfi3sB29"
-      //   },
-      //     {
-      //     spotId: 5,
-      //     url: "https://images.app.goo.gl/JaumvRr9qfhpo8v97"
-      //   },
 
     ], {});
   },

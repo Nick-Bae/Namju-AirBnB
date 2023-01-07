@@ -101,7 +101,7 @@ const AddImage = () => {
     }, [dispatch, deleteOn, imageId]);
 
     
-
+    console.log("spot information", spot )
     return (
         <>
             <p id="imageEdit">Image upload & Delete</p>
