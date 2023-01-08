@@ -62,15 +62,15 @@ export const ReviewDisplay = ({ spot }) => {
                 {/* {(user) && <ReviewFormModal spot={spot} />} */}
                 <ReviewFormModal spot={spot} />
             </p>
-            <p id="numbers"><i class="fa-sharp fa-solid fa-star"></i> 
+            <p id="numbers"><i className="fa-sharp fa-solid fa-star"></i> 
              {(spot.avgRating.toFixed(1))}, {spot.numReviews} Reviews</p>
             <div id="reviews">
 
                 {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars, User, updatedAt }) => (
 
-                    <>
+                    <div >
                         <ul  id='reviewer'>
-                            <li key={id} className='userId'>
+                            <li  className='userId'>
                                 {/* User Id: {userId} */}
                                 {User?.firstName} {User?.lastName}
                             </li>
@@ -108,7 +108,7 @@ export const ReviewDisplay = ({ spot }) => {
                                 </li>
                             }
                         </ul>
-                    </>
+                    </div>
                 ))}
             </div>
         </>
