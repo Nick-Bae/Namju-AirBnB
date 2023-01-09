@@ -194,6 +194,43 @@ module.exports = {
         reviewId: 5,
         userId:3
       },
+
+
+      {
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-9497176/original/45fd2d8d-6963-4cb8-831f-9c37fe5e45d0.jpeg?im_w=1200",
+        previewImage: true,
+        spotId: 6,
+        reviewId: 6,
+        userId:1
+      },
+      {
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-9497176/original/5e34ab2f-727e-4a81-a20a-da841314d241.jpeg?im_w=720",
+        previewImage: false,
+        spotId: 6,
+        reviewId: 6,
+        userId:1
+      },
+      {
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-9497176/original/604d7c02-09bf-4dec-a483-340301497a37.jpeg?im_w=720",
+        previewImage: false,
+        spotId: 6,
+        reviewId: 6,
+        userId:1
+      },
+      {
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-9497176/original/ea495396-8806-4398-bd45-b9bd05e95450.jpeg?im_w=720",
+        previewImage: false,
+        spotId: 6,
+        reviewId: 6,
+        userId:1
+      },
+      {
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-9497176/original/0de0c664-0def-4cb7-8c9f-51a05141f7b7.jpeg?im_w=720",
+        previewImage: false,
+        spotId: 6,
+        reviewId: 6,
+        userId:1
+      },
           
 
     ], {});

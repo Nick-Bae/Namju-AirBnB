@@ -12,6 +12,9 @@
     height: 350px;
     cursor: pointer;
 }
+.carouselContainer{
+    width: 350px;
+}
 .imglayout{
     display:flex;
     flex-direction: row;
@@ -110,3 +113,14 @@ main {
 } */
 /* grid-template-columns: repeat(auto-fill, minmax(auto, 280px)); */
 /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
+
+@media only screen and (max-width: 1024px) {
+    .spotImages{
+        width: 250px;
+        height: 250px;
+        cursor: pointer;
+    }
+    .carouselContainer{
+        width: 250px;
+    }
+}

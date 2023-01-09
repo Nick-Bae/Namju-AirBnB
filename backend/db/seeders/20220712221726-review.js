@@ -38,30 +38,13 @@ module.exports = {
      review: "The view is great" ,
      stars: 3,
    },
-  //   {
-  //    userId: 4 ,
-  //    spotId: 5,
-  //    review: "Everything is in walking distance",
-  //    stars: 4.5,
-  //    createdAt: new Date(),
-  //    updatedAt: new Date()
-  //  },
-  //   {
-  //    userId: 1,
-  //    spotId: 2,
-  //    comment: "My family had a great time",
-  //    stars: 4.9,
-  //    createdAt: new Date(),
-  //    updatedAt: new Date()
-  //  },
-  //   {
-  //    userId: 2,
-  //    spotId: 3,
-  //    comment: "Everything is good except bathrooms",
-  //    rating: 3.8,
-  //    createdAt: new Date(),
-  //    updatedAt: new Date()
-  //  },
+    {
+     userId: 2,
+     spotId: 6,
+     review: "This is a great house for a Fall/Winter girls getaway weekend! Great location close to Baraboo, Wisconsin Dells and several hiking trails at Devils' Lake and Parfrey's Glen. The house is" ,
+     stars: 5,
+   },
+  //  
   ], {});
   },
 
