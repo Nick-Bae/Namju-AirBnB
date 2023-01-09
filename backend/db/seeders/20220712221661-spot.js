@@ -261,20 +261,20 @@ module.exports = {
         createdAt:"2021-11-19 20:39:36",
         updatedAt: "2021-11-19 20:39:36"
       },
-      {
-        ownerId: 2,
-        address: "555 N Clarks St",
-        city: "Chicago",
-        state: "Illinois",
-        country: "United States of America",
-        lat: 51,
-        lng: 56,
-        name: "Wood Camper",
-        description: "Place where web developers are created",
-        price: 60,
-        createdAt:"2021-11-19 20:39:36",
-        updatedAt: "2021-11-19 20:39:36"
-      },
+      // {
+      //   ownerId: 2,
+      //   address: "555 N Clarks St",
+      //   city: "Chicago",
+      //   state: "Illinois",
+      //   country: "United States of America",
+      //   lat: 51,
+      //   lng: 56,
+      //   name: "Wood Camper",
+      //   description: "Place where web developers are created",
+      //   price: 60,
+      //   createdAt:"2021-11-19 20:39:36",
+      //   updatedAt: "2021-11-19 20:39:36"
+      // },
      
     ], { validate: true });
   },
