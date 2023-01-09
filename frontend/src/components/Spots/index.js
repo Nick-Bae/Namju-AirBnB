@@ -15,7 +15,7 @@ const SpotList = () => {
   const spots = Object.values(spotsObj);
   const user = useSelector(state => state.session.user)
   // const spotImg = useSelector(state => state.spot[id].image);
-  
+  console.log ("spots",spots)
   useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);
