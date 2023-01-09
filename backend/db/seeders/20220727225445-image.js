@@ -538,28 +538,28 @@ module.exports = {
       },
       {
         url: "https://a0.muscache.com/im/pictures/miso/Hosting-624434694304784721/original/52306811-b10c-4023-ac6e-772d52ac07f3.png?im_w=720",
-        previewImage: true,
+        previewImage: false,
         spotId: 15,
         reviewId: 15,
         userId:1
       },
       {
         url: "https://a0.muscache.com/im/pictures/miso/Hosting-624434694304784721/original/e437b9c1-7e9b-4a09-a22f-a64c6329b3dd.png?im_w=720",
-        previewImage: true,
+        previewImage: false,
         spotId: 15,
         reviewId: 15,
         userId:1
       },
       {
         url: "https://a0.muscache.com/im/pictures/miso/Hosting-624434694304784721/original/3adb1390-305d-4f0d-b07e-311d8d2cdab5.png?im_w=720",
-        previewImage: true,
+        previewImage: false,
         spotId: 15,
         reviewId: 15,
         userId:1
       },
       {
         url: "https://a0.muscache.com/im/pictures/miso/Hosting-624434694304784721/original/b01b7df8-d319-469c-867c-7ab2c026cd6c.png?im_w=720",
-        previewImage: true,
+        previewImage: false,
         spotId: 15,
         reviewId: 15,
         userId:1
