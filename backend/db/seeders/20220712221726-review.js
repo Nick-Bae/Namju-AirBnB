@@ -80,6 +80,42 @@ module.exports = {
      review: "Absolutely enjoyed my stay! The entire place was very clean and check in was easy. Everything was as described. I would definitely stay again!" ,
      stars: 5,
    },
+    {
+     userId: 1,
+     spotId: 13,
+     review: "If you are looking for an unforgettable getaway for a large group, don’t look any further. The pictures (albeit beautiful) just don’t do this beauty justice! You have to see this Airbnb" ,
+     stars: 4,
+   },
+    {
+     userId: 2,
+     spotId: 14,
+     review: "This apartment was well worth the price. My family and I had an excellent stay. We had plenty of room for the five of us. Everything you could need is walkable, including the Mag " ,
+     stars: 5,
+   },
+    {
+     userId: 3,
+     spotId: 15,
+     review: "Stephanie’s place is located in a fabulous location. Right in the centre of the action. Walking distance to the nearest centres. A clean, secure and tidy apartment. Highly recommended" ,
+     stars: 3,
+   },
+    {
+     userId: 1,
+     spotId: 16,
+     review: "Amy was a fantastic host. A group of friends and I were meeting for a reunion in Chicago and we felt at home with this stay. It was close to everything we wanted! When we weren’t" ,
+     stars: 5,
+   },
+    {
+     userId: 2,
+     spotId: 17,
+     review: "Beautiful apartment & great location. Sally was very responsive & accommodating to all requests. Would highly recommend!" ,
+     stars: 5,
+   },
+    {
+     userId: 3,
+     spotId: 18,
+     review: "Great view, nice furniture, and a safe location. The best place ever!" ,
+     stars: 4,
+   },
   //  
   ], {});
   },
