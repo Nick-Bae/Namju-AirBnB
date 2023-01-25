@@ -68,7 +68,7 @@ export const ReviewDisplay = ({ spot }) => {
 
                 {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars, User, updatedAt }) => (
 
-                    <div >
+                    <div key={id}>
                         <ul  id='reviewer'>
                             <li  className='userId'>
                                 {/* User Id: {userId} */}

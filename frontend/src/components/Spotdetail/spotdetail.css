@@ -205,7 +205,10 @@ justify-content: end;
 .column menu {
   margin: auto;
 }
-
+.maininfo{
+  display: flex;
+  
+}
 .maininfo-left {
   max-width: 500px;
 }
@@ -216,7 +219,7 @@ justify-content: end;
 }
 
 .menu {
-  width: 25%;
+  width: 50%;
 }
 
 .menu ul {
@@ -263,4 +266,9 @@ justify-content: end;
 
 .deleteSpotBt{
   cursor: pointer;
+}
+
+.reserveBt{
+  background-color: rgb(247, 177, 177);
+  width: auto;
 }

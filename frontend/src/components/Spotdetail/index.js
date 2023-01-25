@@ -1,8 +1,17 @@
+// import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
+// import aphroditeInterface from 'react-with-styles-interface-aphrodite';
+// import DefaultTheme from 'react-dates/lib/theme/DefaultTheme';
+
+// ThemedStyleSheet.registerInterface(aphroditeInterface);
+// ThemedStyleSheet.registerTheme(DefaultTheme);
+import 'react-dates/initialize';
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import "react-dates/lib/css/_datepicker.css";
 import { getSpotBySpotId } from "../../store/spot"
 import { useParams, Link, Route, Redirect, NavLink } from 'react-router-dom';
-import ImgsViewer from "react-images-viewer";
+// import ImgsViewer from "react-images-viewer";
 import { useSelector } from 'react-redux';
-import { useState, useEffect, useCallback  } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ImageViewer from 'react-simple-image-viewer';
 import { useDispatch } from 'react-redux';
 import { deleteSpot } from "../../store/spot";
@@ -12,7 +21,7 @@ import ReviewFormModal from "../ReviewModal";
 import ReviewDisplay from "../ReviewModal/ReviewDisplay";
 import { getSpotReviews } from "../../store/comment";
 import { likeStory } from "../../store/likeStory";
-
+import { Booking } from '../Booking';
 
 export const Spotdetail = () => {
     const dispatch = useDispatch();
@@ -28,9 +37,11 @@ export const Spotdetail = () => {
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);
-    const images = spot?.image?.map((image)=> image.url)
-        
+    const images = spot?.image?.map((image) => image.url)
 
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
+    const [focusedInput, setFocusedInput] = useState();
 
     // const login = (!user) ? alert("Please log in") : true
     // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
@@ -61,35 +72,35 @@ export const Spotdetail = () => {
     // useEffect(()=>{
     //     console.log("this is a single spot",spot)
     //   },[spot])
-    const clickLike = () =>{
+    const clickLike = () => {
         dispatch(likeStory(id))
     }
 
-    const previewImage =[]
-    const isPreviewImage = spot?.image?.filter((image, idx) =>{
-       if(image.previewImage === true){
-        return previewImage.push(image.url)
-       }
+    const previewImage = []
+    const isPreviewImage = spot?.image?.filter((image, idx) => {
+        if (image.previewImage === true) {
+            return previewImage.push(image.url)
+        }
     }
     )
 
-    const smallImages=[]
-    const filterImage =    spot?.image?.filter((image,idx) =>{
-                    if (image.previewImage === false) {
-                        return smallImages.push(image.url)
-                    }
-                }
-            )
+    const smallImages = []
+    const filterImage = spot?.image?.filter((image, idx) => {
+        if (image.previewImage === false) {
+            return smallImages.push(image.url)
+        }
+    }
+    )
 
     const openImageViewer = useCallback((index) => {
         setCurrentImage(index);
         setIsViewerOpen(true);
-      }, []);
-    
-      const closeImageViewer = () => {
+    }, []);
+
+    const closeImageViewer = () => {
         setCurrentImage(0);
         setIsViewerOpen(false);
-      };
+    };
 
     if (!spot) return null;
     return showSpot && (
@@ -118,38 +129,38 @@ export const Spotdetail = () => {
                         {previewImage ?
                             <div id="previewImageBox">
                                 {previewImage.map((src, index) => (
-                                    <img id="previewImage" src={src}  onClick={ () => openImageViewer(index)} />
+                                    <img id="previewImage" src={src} onClick={() => openImageViewer(index)} />
                                 ))}
-                            </div>:<div></div>}
-                             <div className="smallDetialContainer">
-                                {smallImages.map((src, index) => (
-                                
-                                    <div id="smallDetailImages">
-                                             <img
-                                                className={`imgdetail${index}`}
-                                                src={ src }
-                                                onClick={ () => openImageViewer(index+1) }
-                                                width="300"
-                                                key={ index }
-                                                style={{ margin: '2px' }}
-                                                alt=""
-                                            />
-                                     </div> 
-                                ))}
-                            </div>
-                        
-                            {isViewerOpen && (
-                                <ImageViewer
-                                src={ images }
-                                currentIndex={ currentImage }
-                                disableScroll={ false }
-                                closeOnClickOutside={ true }
-                                onClose={ closeImageViewer }
-                                />
-                            )}
-                       
+                            </div> : <div></div>}
+                        <div className="smallDetialContainer">
+                            {smallImages.map((src, index) => (
+
+                                <div key={index} id="smallDetailImages">
+                                    <img
+                                        className={`imgdetail${index}`}
+                                        src={src}
+                                        onClick={() => openImageViewer(index + 1)}
+                                        width="300"
+                                        key={index}
+                                        style={{ margin: '2px' }}
+                                        alt=""
+                                    />
+                                </div>
+                            ))}
+                        </div>
+
+                        {isViewerOpen && (
+                            <ImageViewer
+                                src={images}
+                                currentIndex={currentImage}
+                                disableScroll={false}
+                                closeOnClickOutside={true}
+                                onClose={closeImageViewer}
+                            />
+                        )}
+
                     </div>
-                    
+
                     <div className="editDelete">
                         {(user) &&
                             (permission) &&
@@ -164,47 +175,47 @@ export const Spotdetail = () => {
 
                         {/* {(user) && <ReviewFormModal spot={spot} />} */}
                     </div>
-                    {/* <div className="maininfo"> */}
-                    {/* <section className="maininfo-left"> */}
+                    <div className="maininfo">
+                        <section className="maininfo-left">
 
-                    {/* <div className="hostname">
+                            <div className="hostname">
                                 <li> Entire home hosted by  </li>
                             </div>
                             <div className="checkinInfo">
                                 <li> <i className="fa-solid fa-building-circle-check"></i> &nbsp;Self check-in</li>
                                 <li> <i className="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
                                 <li><i className="fa-solid fa-calendar"></i> Free cancellation </li>
-                            </div> */}
-                    <p id="info"><i className="fa-solid fa-house"></i> &nbsp;Information</p>
-                    <div className="descprition">
-                        {spot.description}
-                    </div>
+                            </div>
+                            <p id="info"><i className="fa-solid fa-house"></i> &nbsp;Information</p>
+                            <div className="descprition">
+                                {spot.description}
+                            </div>
 
-                    {/* </section> */}
+                        </section>
 
-                    {/* <section className="column menu maininfo-right">
+                        <section className="column menu maininfo-right">
                             <ul className="float">
                                 <div className="float-top">
-                                <li className="price">${spot.price} </li>
-                                <li className="night">night</li>
-                                <li className="stars"> <i className="fa-solid fa-star"></i>{spot.avgRating}</li>
+                                    <li className="price">${spot.price} </li>
+                                    <li className="night">night</li>
+                                    <li className="stars"> <i className="fa-solid fa-star"></i>{spot.avgRating}</li>
                                 </div>
                                 <div>
 
-                                <div className="calender"> 
-                                    <div className="checkin">
-                                    <li>check-in</li>
-                                    <li>check-out</li>
+                                    <div className="calender">
+                                        {/* <div className="checkin"> */}
+                                        <Booking spotId={spot.id} userId={user.id}/>
+                                        {/* </div> */}
                                     </div>
-                                    <div>Guests</div>                                
-                                </div>
-                                <li>Reserve</li>
-                                <li>Total before taxes</li>
+                                    <div>Guests</div>
+                                    <li>Total before taxes</li>
                                 </div>
                             </ul>
-                        </section> */}
+                            <div className="App">
+                            </div>
+                        </section>
 
-                    {/* </div> */}
+                    </div>
                     {/* <div className="review">
                         <Route path={`/spots/${id}`}>
                             <Review showSpot={false} id={id} />
@@ -217,6 +228,8 @@ export const Spotdetail = () => {
                 </div>
                 {/* )} */}
             </div>
+
+
         </section>
         // </body>
     )
