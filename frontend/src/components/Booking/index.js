@@ -21,6 +21,7 @@ import ReviewDisplay from "../ReviewModal/ReviewDisplay";
 import { getSpotReviews } from "../../store/comment";
 import { likeStory } from "../../store/likeStory";
 import { createBooking } from '../../store/booking';
+import moment from 'moment';
 
 export const Booking = ({spotId, userId}) => {
     const dispatch = useDispatch();
@@ -47,12 +48,13 @@ export const Booking = ({spotId, userId}) => {
 
     const reserve = (e) =>{
         e.preventDefault();
-
-        console.log ("startDate",startDate)
+        const SDate = new Date(startDate._d).toISOString().slice(0, 10);
+        const EDate = new Date(endDate._d).toISOString().slice(0, 10);
+        
         const booking = {
             spotId,
             userId,
-            startDate, endDate
+            startDate: SDate, endDate: EDate
         } 
         dispatch(createBooking(booking))
     }
@@ -74,6 +76,7 @@ export const Booking = ({spotId, userId}) => {
                 startDatePlaceholderText="Check-In"
                 endDatePlaceholderText="Check-Out"
             />
+            
             <button className='reserveBt' onClick={reserve}>Reserve</button>
         </div>
         {/* <p>{startDate.map(single=>(
