@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const LOAD = 'booking/LOAD';
 const LOADBYUSER = 'booking/LOADBYUSER';
-const READ = 'booking/ADD_ONE';
+const READ = 'booking/READ';
 const CREATE = 'booking/ADD_ONE'
 const DELETE = 'booking/DELETE';
 const UPDATE = 'booking/UPDATE'
@@ -123,8 +123,11 @@ export const bookingReducer = (state = {}, action) => {
             })
             return newState;
         case READ:
-            // console.log("single spot case", action.spot )
-            newState[action.booking.id] = action.booking;
+            const bookingsBySpot = action.bookings.Bookings
+            console.log("bookingsBySpot",bookingsBySpot)
+            bookingsBySpot.forEach((booking) => {
+                newState[booking.id] = booking
+            });
             return newState;
         case CREATE:
             newState[action.booking.id] = action.booking;
