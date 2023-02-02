@@ -533,31 +533,51 @@ router.post('/:spotId/reviews', requireAuth, restoreUser, validateReview, async 
 //==========Get all Bookings for a Spot based on t{he Spot's id============
 router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
-    const { user } = req;
-    const noUser = await Booking.findAll({
-        where: { spotId: req.params.spotId },
-        attributes: { exclude: ['id', 'userId', 'createdAt', 'updatedAt'] }
-    })
-    const currentUser = await Booking.findAll({
-        where: { spotId: req.params.spotId },
-    })
-    const response = currentUser.map(booking => booking = {
-        User: { id: user.id, firstName: user.firstName, lastName: user.lastName },
-        id: booking.id, spotId: booking.spotId, userId: booking.userId,
-        startDate: booking.startDate, endDate: booking.endDate,
-        createdAt: booking.createdAt, updatedAt: booking.updatedAt
-    })
-    if (currentUser.length === 0) {
-        res.status(404).json({
-            "message": "Spot couldn't be found",
-            "statusCode": 404
-        })
-    } else if (user.id === currentUser[0].userId) {
-        res.json({ Bookings: response })
-    } else {
-        res.json({ Bookings: noUser })
-    }
+    // const { user } = req;
+    // const noUser = await Booking.findAll({
+    //     where: { spotId: req.params.spotId },
+    //     attributes: { exclude: ['id', 'userId', 'createdAt', 'updatedAt'] }
+    // })
+    // const currentUser = await Booking.findAll({
+    //     where: { spotId: req.params.spotId },
+    // })
+    // const response = currentUser.map(booking => booking = {
+    //     User: { id: user.id, firstName: user.firstName, lastName: user.lastName },
+    //     id: booking.id, spotId: booking.spotId, userId: booking.userId,
+    //     startDate: booking.startDate, endDate: booking.endDate,
+    //     createdAt: booking.createdAt, updatedAt: booking.updatedAt
+    // })
+    // if (currentUser.length === 0) {
+    //     res.status(404).json({
+    //         "message": "Spot couldn't be found",
+    //         "statusCode": 404
+    //     })
+    // } else if (user.id === currentUser[0].userId) {
+    //     res.json({ Bookings: response })
+    // } else {
+    //     res.json({ Bookings: noUser })
+    // }
 
+    const spot = await Spot.findByPk(req.params.spotId)
+    
+    if(spot){ // if spot exists 
+        if(spot.ownerId === req.user.id){ // if user owns the spot
+            const bookings = await Booking.findAll({ where:{spotId:req.params.spotId},include:{model:User} })
+            res.statusCode = 200
+            return res.json({Bookings:bookings})
+        }else{ // if user doesnt own the spot 
+            const bookings = await Booking.findAll({ 
+                where: {spotId:req.params.spotId }, 
+                attributes: ['spotId','startDate','endDate']
+            })
+            res.statusCode = 200
+            console.log("check booking",bookings)
+            return res.json({ Bookings:bookings })
+        }
+   }else{ // if spot cant be found
+    res.statusCode = 404
+    return res.json({"message":"Spot couldn't be found","statusCode":res.statusCode})
+   }
 })
 
 // const validateBookingDate = [
