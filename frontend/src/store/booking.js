@@ -124,7 +124,6 @@ export const bookingReducer = (state = {}, action) => {
             return newState;
         case READ:
             const bookingsBySpot = action.bookings.Bookings
-            console.log("bookingsBySpot",bookingsBySpot)
             bookingsBySpot.forEach((booking, idx) => {
                 newState[idx] = booking
             });

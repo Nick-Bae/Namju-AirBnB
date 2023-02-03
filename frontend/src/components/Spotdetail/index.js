@@ -101,7 +101,7 @@ export const Spotdetail = () => {
         setCurrentImage(0);
         setIsViewerOpen(false);
     };
-    console.log("spot",spot)
+
     if (!spot) return null;
     return showSpot && (
         // <body className="detailview">
@@ -200,18 +200,16 @@ export const Spotdetail = () => {
                                     <li className="night">night</li>
                                     <li className="stars"> <i className="fa-solid fa-star"></i>{spot.avgRating}</li>
                                 </div>
-                                <div>
 
-                                    <div className="calender">
-                                        {/* <div className="checkin"> */}
-                                        {user && 
-                                        <Booking spotId={spot.id} userId={user.id}/>
-                                        } 
+                                <div className="calender">
+                                    {/* <div className="checkin"> */}
+                                    {user && 
+                                    <Booking spotId={spot.id} userId={user.id}/>
+                                    } 
                                         {/* </div> */}
-                                    </div>
-                                    <div>Guests</div>
-                                    <li>Total before taxes</li>
                                 </div>
+                                <div>Guests</div>
+                                <li>Total before taxes</li>
                             </ul>
                             <div className="App">
                             </div>

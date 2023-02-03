@@ -24,6 +24,7 @@ import { createBooking } from '../../store/booking';
 import Moment from 'moment';
 import { extendMoment } from "moment-range";
 import { getBookingBySpotId } from '../../store/booking';
+import "./booking.css"
 
 export const Booking = ({spotId, userId}) => {
     const dispatch = useDispatch();
