@@ -50,6 +50,8 @@ export const Booking = ({spotId, userId}) => {
     const [endDate, setEndDate] = useState();
     const [focusedInput, setFocusedInput] = useState();
     const [errors, setErrors] = useState([]);
+    const [guestNum, setGuestNum] = useState(0);
+    const [guestShow, setGuestShow] = useState(false);
 
     // const login = (!user) ? alert("Please log in") : true
     // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
@@ -89,6 +91,13 @@ export const Booking = ({spotId, userId}) => {
 
     }
 
+    const guestNumPlus = (e) => {
+        setGuestNum(guestNum+1)
+    }
+    const guestNumMinus = (e) => {
+        guestNum > 0 ? setGuestNum(guestNum-1) : setGuestNum(0)
+    }
+
     return (
     <>
         <div className='errorBookingMessage'>{errors}</div>
@@ -107,8 +116,25 @@ export const Booking = ({spotId, userId}) => {
                 startDatePlaceholderText="Check-In"
                 endDatePlaceholderText="Check-Out"
                 isDayBlocked={isBlocked}
+                noBorder
             />
-            
+            <div className='guestNum'>
+                <div onClick={() => setGuestShow(!guestShow)}>
+                    Guest {guestShow ? <i class="fa fa-angle-down"></i> 
+                    : <i class="fa fa-angle-up"></i>} 
+                </div>
+                {guestShow && <div className='guestSelect'>
+                    <div>
+                        Adults
+                        <button onClick={guestNumMinus}>-</button>
+                        {guestNum}
+                        <button onClick={guestNumPlus}>+</button>
+                    </div>
+                    <div>Children</div>
+                    <div>Infants</div>
+                    <div>Pets</div>
+                </div>}
+            </div>
             <button className='reserveBt' onClick={reserve}>Reserve</button>
         </div>
         {/* <p>{startDate.map(single=>(
