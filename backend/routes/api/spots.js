@@ -571,7 +571,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
                 attributes: ['spotId','startDate','endDate']
             })
             res.statusCode = 200
-            console.log("check booking",bookings)
+            // console.log("check booking",bookings)
             return res.json({ Bookings:bookings })
         }
    }else{ // if spot cant be found
