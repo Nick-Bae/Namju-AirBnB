@@ -20,6 +20,10 @@ module.exports = {
         references: {model: 'Users'},
         onDelete: 'CASCADE'
       },
+      guestNum: {
+        type: Sequelize.INTEGER,
+        allowNull:false
+      },
       startDate: {
         type: Sequelize.DATEONLY,
         // allowNull:false

@@ -68,6 +68,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull:false
     },
+    guestNum: {
+      type: DataTypes.INTEGER,
+      allowNull:false
+    },
     createdAt: {
       type: DataTypes.DATE,                  
     get() {

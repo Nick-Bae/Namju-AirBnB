@@ -37,7 +37,8 @@ router.get('/current', requireAuth, async (req, res) => {
             address: booking.Spot.address, city: booking.Spot.city,
             state: booking.Spot.state, country: booking.Spot.country,
             lat: booking.Spot.lat, lng: booking.Spot.lng, name: booking.Spot.name,
-            price: booking.Spot.price, previewImage: booking.Spot.Images[0].url
+            price: booking.Spot.price, previewImage: booking.Spot.Images[0].url,
+            guestNum: booking.Spot.guestNum
         },
         userId: booking.userId, startDate: booking.startDate, endDate: booking.endDate,
         createdAt: booking.createdAt, updatedAt: booking.updatedAt

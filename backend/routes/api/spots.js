@@ -43,6 +43,9 @@ const validateCreateSpot = [
     check('price')
         .exists({ checkFalsy: true })
         .withMessage('Price per day is required'),
+    check('guestNum')
+        .exists({ checkFalsy: true })
+        .withMessage('Guest Number is required'),
     // check('size')
     //     .custom(({req})=> req.query.size <0)
     //     .withMessage('Size must be greater than 0'),
@@ -134,6 +137,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
                 state: spots[i].state, country: spots[i].country,
                 lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
                 description: spots[i].description, price: spots[i].price,
+                guestNum: spots[i].guestNum,
                 createdAt: spots[i].createdAt, updatedAt: spots[i].updatedAt,
                 avgRating: Number(Number(avgRating[i].dataValues.avgRating).toFixed(1)),
                 previewImage: spots[i].Images
@@ -146,6 +150,7 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
                 state: spots[i].state, country: spots[i].country,
                 lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
                 description: spots[i].description, price: spots[i].price,
+                guestNum: spots[i].guestNum,
                 createdAt: spots[i].createdAt, updatedAt: spots[i].updatedAt,
                 avgRating: Number(Number(avgRating[i].dataValues.avgRating).toFixed(1)),
                 // previewImage: spots[i].Images[0].url
@@ -198,6 +203,7 @@ router.get('/', async (req, res) => {
                 state: spots[i].state, country: spots[i].country,
                 lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
                 description: spots[i].description, price: spots[i].price,
+                guestNum: spots[i].guestNum,
                 createAt: spots[i].createdAt, updateAt: spots[i].updatedAt,
                 avgRating: Number(Number(spots[i].dataValues.avgRating).toFixed(1)),
                 previewImage: spots[i].Images[0].url
@@ -210,6 +216,7 @@ router.get('/', async (req, res) => {
                 state: spots[i].state, country: spots[i].country,
                 lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
                 description: spots[i].description, price: spots[i].price,
+                guestNum: spots[i].guestNum,
                 createAt: spots[i].createdAt, updateAt: spots[i].updatedAt,
                 avgRating: Number(Number(spots[i].dataValues.avgRating).toFixed(1)),
                 // previewImage: spots[i].Images[0].url
@@ -246,6 +253,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 state: spots[i].state, country: spots[i].country,
                 lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
                 description: spots[i].description, price: spots[i].price,
+                guestNum: spots[i].guestNum,
                 createAt: spots[i].createdAt, updateAt: spots[i].updatedAt,
                 avgRating: Number(Number(spots[i].dataValues.avgRating).toFixed(1)),
                 previewImage: spots[i].Images[0].url
@@ -258,6 +266,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 state: spots[i].state, country: spots[i].country,
                 lat: spots[i].lat, lng: spots[i].lng, name: spots[i].name,
                 description: spots[i].description, price: spots[i].price,
+                guestNum: spots[i].guestNum,
                 createAt: spots[i].createdAt, updateAt: spots[i].updatedAt,
                 avgRating: Number(Number(spots[i].dataValues.avgRating).toFixed(1)),
                 // previewImage: spots[i].Images[0].url
@@ -352,6 +361,7 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
         name,
         description,
         price,
+        guestNum
         // date: getDateWithoutTime(createdAt)
         // createdAt
         //createdAt: moment(req.getDataValue('updatedAt')).format('YYYY-MM-DD hh:mm:ss'),
@@ -370,6 +380,7 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
         name: newSpot.name,
         description: newSpot.description,
         price: newSpot.price,
+        guestNum,
         createdAt: newSpot.createdAt,
         updatedAt: newSpot.updatedAt
     }
@@ -431,6 +442,7 @@ router.put('/:spotId', requireAuth, validateCreateSpot, async (req, res) => {
             name,
             description,
             price,
+            guestNum
         })
         res.status(200)
         res.json(editSpot)
@@ -607,7 +619,7 @@ const validateBookingDate = (req, res, next) => {
 // =============Create a Booking from a Spot based on the Spot's id=============
 router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const { user } = req;
-    const { startDate, endDate } = req.body
+    const { guestNum, startDate, endDate } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
     const duplicateBooking = await Booking.findOne({
         where: { userId: user.id, startDate: startDate, endDate: endDate }
@@ -682,6 +694,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         const newBooking = await Booking.create({
             spotId: req.params.spotId,
             userId: user.id,
+            guestNum: guestNum,
             startDate, endDate
         })
         res.json(newBooking)

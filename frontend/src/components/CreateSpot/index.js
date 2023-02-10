@@ -22,6 +22,7 @@ const CreateSpot = ({ spot, formType }) => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [url, setUrl] = useState('');
+    const [guestNum, setGuestNum] = useState('');
     const dispatch = useDispatch();
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -36,6 +37,7 @@ const CreateSpot = ({ spot, formType }) => {
         if (!address.length) errors.push('Please enter your address');
         if (!city.length) errors.push('Please enter your City');
         if (!state.length) errors.push('Please enter your State');
+        if (!guestNum.length) errors.push('Please enter your guest number');
         if (!country.length) errors.push('Please enter your Country');
         if (lat < -90 || lat > 90 || lat ==="") errors.push('Please enter between -90 and 90 Latitude');
         if (lng < -180 || lng > 180 || lng ==="") errors.push('Please enter between -180 and 180 Longitude');
@@ -68,6 +70,7 @@ const CreateSpot = ({ spot, formType }) => {
             name,
             description,
             price,
+            guestNum
         };
         
         const newSpot = await  dispatch(createSpot(spot))
@@ -109,6 +112,7 @@ const CreateSpot = ({ spot, formType }) => {
         setName("");
         setPrice("");
         setUrl("");
+        setGuestNum("")
     }
 
     const handleCancelClick = (e) => {
@@ -203,6 +207,15 @@ const CreateSpot = ({ spot, formType }) => {
                         type='text'
                         onChange={e => setName(e.target.value)}
                         value={name}
+                    />
+                </div>
+                <div id="spotInput">
+                    <label htmlFor='guestNum'>Guest Number:</label>
+                    <input
+                        id='guestNum'
+                        type='text'
+                        onChange={e => setGuestNum(e.target.value)}
+                        value={guestNum}
                     />
                 </div>
                 <div id="spotInput">
