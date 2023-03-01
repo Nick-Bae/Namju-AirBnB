@@ -79,7 +79,7 @@ export const Spotdetail = () => {
     const previewImage = []
     const isPreviewImage = spot?.image?.filter((image, idx) => {
         if (image.previewImage === true) {
-            return previewImage.push(image.url)
+             previewImage.push(image.url)
         }
     }
     )
@@ -87,7 +87,7 @@ export const Spotdetail = () => {
     const smallImages = []
     const filterImage = spot?.image?.filter((image, idx) => {
         if (image.previewImage === false) {
-            return smallImages.push(image.url)
+             smallImages.push(image.url)
         }
     }
     )

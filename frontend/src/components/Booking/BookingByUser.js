@@ -1,20 +1,23 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory,useLocation } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
-import { getBookingByUser } from '../../store/booking';
 import BookingDetail from './BookingDetail';
+import { getBookingByUser } from '../../store/bookingHistory';
 
 export const BookingByUser =()=> {
     const dispatch = useDispatch();
     const history = useHistory();
-    const bookings = Object.values(useSelector(state => state.booking))
-
-    console.log("bookings", bookings)
+    const location = useLocation();
+    const user = useSelector(state => state.session.user)
+    const allBookings = Object.values(useSelector(state => state.bookingHistory))
+    const bookings = allBookings.filter(booking=> booking.userId === user.id )
+    
+    
 
     useEffect(() => {
         dispatch(getBookingByUser());
-      }, [dispatch]);
+      }, [dispatch, location]);
 
     let startDate
     let endDate
@@ -31,11 +34,11 @@ export const BookingByUser =()=> {
                   showArrows={true} showThumbs={false} width={"100%"} showStatus={false}
                   onClickItem={()=>history.push(`/spots/${booking.spotId}`)}>  */}
                       {booking.Spot?.previewImage?.map((image)=>(
-                        <div className='spotImages'>
+                        <div key={image.id} className='spotImages'>
                           <Link to={`/spots/${booking.spotId}`}>
                               {/* <div> */}
                               {/* <img spot={spot} className="img" src={image.url} /> */}
-                              <img spot={booking.Spot} className="img" src={image.url} />
+                              <img  className="img" src={image.url} />
                               <p className="legend"></p>
                               {/* </div> */}
 

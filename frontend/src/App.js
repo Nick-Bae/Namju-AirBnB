@@ -49,9 +49,9 @@ function App() {
           <Route exact path='/bookings/current'>
             <BookingByUser />
           </Route>
-          <Route exact path='/bookings/confirm'>
-            <BookingConfirm />
-          </Route>
+          {/* <Route exact path='/bookings/confirm'> */}
+            {/* <BookingConfirm />
+          </Route> */}
 
           <Route exact path='/spots/:id'>
             <Spotdetail />

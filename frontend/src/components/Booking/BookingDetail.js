@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { deleteBooking, getBookingByUser } from '../../store/booking';
+import { deleteBooking } from '../../store/booking';
 
 export const BookingDetail =({booking})=> {
     const dispatch = useDispatch();

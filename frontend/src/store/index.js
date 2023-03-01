@@ -6,13 +6,15 @@ import likeStoryReducer from "./likeStory";
 import sessionReducer from './session';
 import { spotReducer } from "./spot";
 import bookingReducer from "./booking";
+import { bookingHistory } from "./bookingHistory";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   spot: spotReducer,
   review: reviewReducer,
   image: imageReducer,
-  booking: bookingReducer
+  booking: bookingReducer,
+  bookingHistory: bookingHistory
   // likeStory: likeStoryReducer
 });
 

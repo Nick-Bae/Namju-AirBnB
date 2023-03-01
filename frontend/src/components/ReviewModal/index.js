@@ -35,7 +35,7 @@ function ReviewFormModal({spot, reviews}) {
   return (
     <div >
       <button className="clickReviewBt" onClick={clickReviewBt}>
-      <i class="fa-solid fa-pen-to-square"> </i> &nbsp; Review
+      <i className="fa-solid fa-pen-to-square"> </i> &nbsp; Review
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

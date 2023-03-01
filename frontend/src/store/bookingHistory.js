@@ -1,7 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD = 'booking/LOAD';
-const LOADBYUSER = 'booking/LOADBYUSER';
+const LOADBYUSER = 'bookingHistory/LOADBYUSER';
 const READ = 'booking/READ';
 const CREATE = 'booking/ADD_ONE'
 const DELETE = 'booking/DELETE';
@@ -19,9 +19,9 @@ const load = (bookings) => ({
     type: LOAD,
     bookings
 });
-const loadByUser = (bookings) => ({
+const loadByUser = (allBookings) => ({
     type: LOADBYUSER,
-    bookings
+    allBookings
 });
 const deleteOne = bookingId => ({
     type: DELETE,
@@ -55,14 +55,14 @@ export const getBookingBySpotId =spotId =>async dispatch =>{
     };
 }
 
-// export const getBookingByUser =()=> async dispatch => {
-//     const response = await csrfFetch(`/api/bookings/current`);
-//     if (response.ok){
-//         const bookings = await response.json();
-//         dispatch(loadByUser(bookings));
-//         return bookings;
-//     }
-// }
+export const getBookingByUser =()=> async dispatch => {
+    const response = await csrfFetch(`/api/bookings/current`);
+    if (response.ok){
+        const bookings = await response.json();
+        dispatch(loadByUser(bookings));
+        return bookings;
+    }
+}
 
 let newSpot ={}
 export const createBooking = (payload) => async dispatch => {
@@ -106,7 +106,7 @@ export const deleteBooking = (id) => async (dispatch) => {
 
 
 // const initialState = { lists: [] }
-export const bookingReducer = (state = {}, action) => {
+export const bookingHistory = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
         case LOAD:
@@ -117,7 +117,7 @@ export const bookingReducer = (state = {}, action) => {
             // console.log("all spots case", spots)
             return newState;
         case LOADBYUSER:
-            const bookingsByUser = action.bookings.Bookings
+            const bookingsByUser = action.allBookings.Bookings
             bookingsByUser.forEach((booking) => {
                 newState[booking.id] = booking
             })
@@ -143,4 +143,4 @@ export const bookingReducer = (state = {}, action) => {
     }
 }
 
-export default bookingReducer
+export default bookingHistory

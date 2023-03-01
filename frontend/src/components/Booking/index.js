@@ -8,7 +8,7 @@ import 'react-dates/initialize';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import "react-dates/lib/css/_datepicker.css";
 import { getSpotBySpotId } from "../../store/spot"
-import { useParams, Link, Route, Redirect, NavLink } from 'react-router-dom';
+import { useParams, useLocation, Route, Redirect, NavLink } from 'react-router-dom';
 // import ImgsViewer from "react-images-viewer";
 import { useSelector } from 'react-redux';
 import { useState, useEffect, useCallback } from 'react';
@@ -30,6 +30,7 @@ export const Booking = ({spotId}) => {
     const dispatch = useDispatch();
     const moment = extendMoment(Moment);
     const history = useHistory();
+    const location = useLocation();
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
     const user = useSelector(state => state.session.user)
@@ -53,11 +54,12 @@ export const Booking = ({spotId}) => {
     const [guestShow, setGuestShow] = useState(false);
     const [reservedDate, setReservedDate] = useState(0);
 
+    console.log("bookings",bookings)
     // const login = (!user) ? alert("Please log in") : true
     // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
     useEffect(()=>{
         dispatch(getBookingBySpotId(id))
-    },[dispatch])
+    },[dispatch, location])
 
     // useEffect(()=>{
     //     dispatch()
@@ -171,8 +173,8 @@ export const Booking = ({spotId}) => {
                         Guest
                     </div>
                     <div onClick={() => setGuestShow(!guestShow)}>
-                        {guestShow ? <i class="fa fa-angle-down"></i> 
-                        : <i class="fa fa-angle-up"></i>} 
+                        {guestShow ? <i className="fa fa-angle-down"></i> 
+                        : <i className="fa fa-angle-up"></i>} 
                     </div>
                 </div>
                 {guestShow && <div className='guestSelect'>
