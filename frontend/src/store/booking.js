@@ -93,7 +93,7 @@ export const editBooking = data => async dispatch => {
     }
 }
 
-export const deleteSpot = (id) => async (dispatch) => {
+export const deleteBooking = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/bookings/${id}`, {
         method: "DELETE",
     });
@@ -117,7 +117,7 @@ export const bookingReducer = (state = {}, action) => {
             // console.log("all spots case", spots)
             return newState;
         case LOADBYUSER:
-            const bookingsByUser = action.booking.Bookings
+            const bookingsByUser = action.bookings.Bookings
             bookingsByUser.forEach((booking) => {
                 newState[booking.id] = booking
             })

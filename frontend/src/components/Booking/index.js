@@ -26,10 +26,9 @@ import { extendMoment } from "moment-range";
 import { getBookingBySpotId } from '../../store/booking';
 import "./booking.css"
 
-export const Booking = ({spotId, userId}) => {
+export const Booking = ({spotId}) => {
     const dispatch = useDispatch();
     const moment = extendMoment(Moment);
-
     const history = useHistory();
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id]);
@@ -52,6 +51,7 @@ export const Booking = ({spotId, userId}) => {
     const [errors, setErrors] = useState([]);
     const [guestNum, setGuestNum] = useState(0);
     const [guestShow, setGuestShow] = useState(false);
+    const [reservedDate, setReservedDate] = useState(0);
 
     // const login = (!user) ? alert("Please log in") : true
     // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
@@ -59,7 +59,10 @@ export const Booking = ({spotId, userId}) => {
         dispatch(getBookingBySpotId(id))
     },[dispatch])
 
-    console.log("bookings",bookings)
+    // useEffect(()=>{
+    //     dispatch()
+    // },[dispatch, reservedDate])
+
     const isBlocked = date => {
         let bookedRanges = [];
         let blocked;
@@ -72,23 +75,58 @@ export const Booking = ({spotId, userId}) => {
       return blocked;
     };
 
+    // let sDate
+    // let eDate
+
+    // if (!startDate) {
+    //     sDate = new Date().toISOString().slice(0, 10);
+    //     eDate = new Date().toISOString().slice(0, 10);
+    //     const startingDate = new Date(sDate);
+    //     const endingDate = new Date(eDate);
+    
+    //     let differenceTime = endingDate.getTime() - startingDate.getTime();
+    //     reservedDate = differenceTime / (1000*3600 * 24);
+        
+    // } else if (startDate) {
+        // const sDate = new Date(startDate._d).toISOString().slice(0, 10);
+        // const eDate = new Date(endDate?._d).toISOString().slice(0, 10);
+        // const startingDate = new Date(sDate);
+        // const endingDate = new Date(eDate);
+    
+        // let differenceTime = endingDate.getTime() - startingDate.getTime();
+        // let reservedDate = differenceTime / (1000*3600 * 24);      
+    // }
+    
     const reserve = async (e) =>{
         e.preventDefault();
-        const sDate = new Date(startDate._d).toISOString().slice(0, 10);
-        const eDate = new Date(endDate._d).toISOString().slice(0, 10);
-        
-        const bookingInfo = {
-            spotId,
-            userId,
-            startDate: sDate, endDate: eDate
-        } 
-        // dispatch(createBooking(booking))
-       const booking = await dispatch(createBooking(bookingInfo))
-            .catch(async(res)=>{
-                const data = await res.json();
-                if (data) setErrors(data.message) 
-            })
 
+        const sDate = new Date(startDate._d).toISOString().slice(0, 10);
+        const eDate = new Date(endDate?._d).toISOString().slice(0, 10);
+        // const startingDate = new Date(sDate);
+        // const endingDate = new Date(eDate);
+    
+        // let differenceTime = endingDate.getTime() - startingDate.getTime();
+        //  reservedDate = differenceTime / (1000*3600 * 24); 
+
+        if (!user) {
+            alert("please log in") 
+        } else {
+            const bookingInfo = {
+                spotId,
+                userId: user.id,
+                startDate: sDate, endDate: eDate
+            } 
+            const booking = await dispatch(createBooking(bookingInfo))
+                 .catch(async(res)=>{
+                     const data = await res.json();
+                     if (data) setErrors(data.message) 
+                 })
+            // history.push({
+            //     pathname:'/bookings/confirm',
+            //    state: bookingInfo 
+            // });
+        }
+        // dispatch(createBooking(booking))
     }
 
     const guestNumPlus = (e) => {
@@ -97,7 +135,7 @@ export const Booking = ({spotId, userId}) => {
     const guestNumMinus = (e) => {
         guestNum > 0 ? setGuestNum(guestNum-1) : setGuestNum(0)
     }
-
+    const serviceFee = 60;
     return (
     <>
         <div className='errorBookingMessage'>{errors}</div>
@@ -110,18 +148,32 @@ export const Booking = ({spotId, userId}) => {
                 onDatesChange={({ startDate, endDate }) => {
                     setStartDate(startDate);
                     setEndDate(endDate);
+                    let sDate = new Date(startDate._d).toISOString().slice(0, 10);
+                    let eDate = new Date(endDate._d).toISOString().slice(0, 10);
+                    let startingDate = new Date(sDate);
+                    let endingDate = new Date(eDate);
+                
+                    let differenceTime = endingDate.getTime() - startingDate.getTime();
+                    setReservedDate(differenceTime / (1000*3600 * 24)); 
                 }}
                 focusedInput={focusedInput}
                 onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
                 startDatePlaceholderText="Check-In"
                 endDatePlaceholderText="Check-Out"
                 isDayBlocked={isBlocked}
-                noBorder
+                // initialStartDate={new Date().toJSON().slice(0,10).replace(/-/g,'/')}
+                // noBorder
             />
             <div className='guestNum'>
-                <div onClick={() => setGuestShow(!guestShow)}>
-                    Guest {guestShow ? <i class="fa fa-angle-down"></i> 
-                    : <i class="fa fa-angle-up"></i>} 
+                <div className='guestLabel'>
+
+                    <div >
+                        Guest
+                    </div>
+                    <div onClick={() => setGuestShow(!guestShow)}>
+                        {guestShow ? <i class="fa fa-angle-down"></i> 
+                        : <i class="fa fa-angle-up"></i>} 
+                    </div>
                 </div>
                 {guestShow && <div className='guestSelect'>
                     <div>
@@ -135,11 +187,27 @@ export const Booking = ({spotId, userId}) => {
                     <div>Pets</div>
                 </div>}
             </div>
+        </div>
+    
+        <div className='reserveBtContainer'>
             <button className='reserveBt' onClick={reserve}>Reserve</button>
         </div>
-        {/* <p>{startDate.map(single=>(
-            <p>single</p>
-        ))}</p> */}
+        <div className='calForCost'>
+            <div className='priceNights'> ${spot.price} x {reservedDate} nights  </div>
+            <div className='beforeCost'> ${spot.price*reservedDate}</div> 
+        </div>
+        <div className='serviceFeeTotal'>
+            <div className='serviceFee'> Servie fee</div>
+            <div> ${serviceFee}</div>
+        </div>
+        <div className='totalCost'>
+            Total before taxes
+            <div>
+                ${serviceFee+(spot.price*reservedDate)}
+            </div>
+        </div>
+        
+
     </>
     )
 

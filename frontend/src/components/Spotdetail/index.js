@@ -182,9 +182,12 @@ export const Spotdetail = () => {
                                 <li> Entire home hosted by  </li>
                             </div>
                             <div className="checkinInfo">
-                                <li> <i className="fa-solid fa-building-circle-check"></i> &nbsp;Self check-in</li>
+                                <div>
+                                    <li> <i className="fa fa-building-circle-check"></i> &nbsp;Self check-in</li>
+                                    <li>Check yourself in with the keypad.</li>
+                                </div>
                                 <li> <i className="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
-                                <li><i className="fa-solid fa-calendar"></i> Free cancellation </li>
+                                <li> <i className="fa-solid fa-calendar"></i> Free cancellation </li>
                             </div>
                             <p id="info"><i className="fa-solid fa-house"></i> &nbsp;Information</p>
                             <div className="descprition">
@@ -194,23 +197,24 @@ export const Spotdetail = () => {
                         </section>
 
                         <section className="column menu maininfo-right">
-                            <ul className="float">
+                            <div className="float">
                                 <div className="float-top">
-                                    <li className="price">${spot.price} </li>
-                                    <li className="night">night</li>
-                                    <li className="stars"> <i className="fa-solid fa-star"></i>{spot.avgRating}</li>
+                                    <div className='dailyPrice'>
+                                        <div className="price">${spot.price} </div>
+                                        <div className="night">night</div>
+                                    </div>
+                                    <div className="stars"> <i className="fa-solid fa-star"></i>{spot.avgRating}</div>
                                 </div>
 
                                 <div className="calender">
                                     {/* <div className="checkin"> */}
-                                    {user && 
-                                    <Booking spotId={spot.id} userId={user.id}/>
-                                    } 
+                                    {/* {user &&  */}
+                                    <Booking spotId={spot.id} />
+                                    {/* }  */}
                                         {/* </div> */}
                                 </div>
-                                <div>Guests</div>
-                                <li>Total before taxes</li>
-                            </ul>
+                                
+                            </div>
                             <div className="App">
                             </div>
                         </section>

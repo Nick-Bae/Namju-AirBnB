@@ -207,6 +207,7 @@ justify-content: end;
 }
 .maininfo{
   display: flex;
+  justify-content: space-between;
   
 }
 .maininfo-left {
@@ -219,7 +220,7 @@ justify-content: end;
 }
 
 .menu {
-  width: 50%;
+  width: 40%;
 }
 
 .menu ul {
@@ -239,25 +240,46 @@ justify-content: end;
   box-shadow: 15px 15px 50px var(--grey-light-color);
   display: flex;
   flex-direction: column;
+  margin: 20px;
+}
+
+.float-top{
+  margin:20px;
 }
 
 .float-top {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: 1px;
 }
 
+.guestNumLabel{
+  margin-left: 20px;
+}
 
 .night {
-  font-size: var(--font-micro);
+  font-size: 13px;
+  margin-bottom: 1px;
+  /* align-items: end; */
+  /* justify-content: end; */
 }
 
 .calender {
-  border: 1px solid var(--grey-light-color);
+  /* border: 1px solid var(--grey-light-color); */
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
   margin: 5px;
   padding: 0px;
+  /* align-items: center; */
 }
+
+.reserveBtContainer{
+  display: flex;
+  justify-content: center;
+}
+
 
 .checkin {
   display: flex;
@@ -269,6 +291,29 @@ justify-content: end;
 }
 
 .reserveBt{
-  background-color: rgb(247, 177, 177);
-  width: auto;
+  background-color:rgb(234,84,134);
+  width: 290px;
+  height:40px;
+  border-radius:10px;
+  justify-items: center
+}
+
+.price{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dailyPrice{
+  display: flex;
+  /* align-content: center; */
+  align-items:end
+}
+
+.stars{
+  display: flex;
+  align-items: center;
+}
+
+.fa-building-circle-check{
+  font-weight:50px
 }

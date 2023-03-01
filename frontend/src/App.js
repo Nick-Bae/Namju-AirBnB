@@ -15,6 +15,8 @@ import LoginFormModal from "./components/LoginFormModal";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import DeleteImage from "./components/AddImage/Delete";
 import SpotByUser from "./components/Spots/SpotByUser";
+import BookingByUser from "./components/Booking/BookingByUser";
+import BookingConfirm from "./components/Booking/BookingConfirm";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +45,12 @@ function App() {
           </Route> */}
           <Route exact path='/spots/current'>
             <SpotByUser />
+          </Route>
+          <Route exact path='/bookings/current'>
+            <BookingByUser />
+          </Route>
+          <Route exact path='/bookings/confirm'>
+            <BookingConfirm />
           </Route>
 
           <Route exact path='/spots/:id'>

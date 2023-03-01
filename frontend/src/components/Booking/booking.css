@@ -4,3 +4,70 @@
     justify-content: center;
     align-items: center;
 }
+
+.guestNum{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.guestLabel{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: flex-end;
+}
+
+.priceNights, .serviceFee{
+text-decoration: underline;
+}
+
+.calForCost, .serviceFeeTotal{
+    display: flex;
+    justify-content: space-between;
+    margin:20px;
+}
+
+.serviceFeeTotal{
+    border-bottom-color: red;
+    
+}
+
+.totalCost{
+    display: flex;
+    justify-content: space-between;
+    margin:20px;
+    border-top-color: red;
+}
+
+.bookingStartDates, .bookingEndDates, .bookingTotalPrice{
+    display: flex;
+    justify-content: space-between;
+}
+
+#bookingDetail{
+    display: flex;
+    flex-direction: column;
+}
+
+.smalltitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookingDelete, .bookingEdit{
+    width:50px;
+    background-color: rgb(246, 124, 124);
+    border-radius: 4px;
+}
+
+.bookingEdit{
+    margin-right:5px;
+}
+
+.spotName{
+    width:180px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
