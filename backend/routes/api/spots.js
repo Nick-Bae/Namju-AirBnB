@@ -248,7 +248,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 description: spots[i].description, price: spots[i].price,
                 createAt: spots[i].createdAt, updateAt: spots[i].updatedAt,
                 avgRating: Number(Number(spots[i].dataValues.avgRating).toFixed(1)),
-                previewImage: spots[i].Images[0].url
+                previewImage: spots[i].Images
             }
             Spots.push(spots[i])
         } else {

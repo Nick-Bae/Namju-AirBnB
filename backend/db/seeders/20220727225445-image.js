@@ -122,7 +122,7 @@ module.exports = {
 
 
       {
-        url: "https://www.austrianblog.com/media/images/header_NY_BLOG_.original.jpg",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-51866988/original/601f8dd1-73f3-4084-92ae-09064a8bd975.jpeg?im_w=960",
         previewImage: true,
         spotId: 4,
         reviewId: 4,
