@@ -32,7 +32,7 @@
 .singleReview,
 .reviewStar {
     font-size: 15px;
-    max-width: 950px;
+    max-width: 475px;
     word-wrap: break-word;
 }
 
@@ -56,7 +56,6 @@ display: flex;
 
 .reviewUserId {
     font-size: 17px;
-    font-weight: 540;
     font-weight: bold;
     
 }
