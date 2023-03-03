@@ -5,7 +5,7 @@
 // ThemedStyleSheet.registerInterface(aphroditeInterface);
 // ThemedStyleSheet.registerTheme(DefaultTheme);
 import 'react-dates/initialize';
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import "react-dates/lib/css/_datepicker.css";
 import { getSpotBySpotId } from "../../store/spot"
 import { useParams, useLocation, Route, Redirect, NavLink } from 'react-router-dom';
