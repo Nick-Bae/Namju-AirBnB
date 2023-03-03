@@ -105,7 +105,6 @@ export const deleteBooking = (id) => async (dispatch) => {
 };
 
 
-// const initialState = { lists: [] }
 export const bookingHistory = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
@@ -114,7 +113,6 @@ export const bookingHistory = (state = {}, action) => {
             spots.forEach((spot) => {
                 newState[spot.id] = spot
             })
-            // console.log("all spots case", spots)
             return newState;
         case LOADBYUSER:
             const bookingsByUser = action.allBookings.Bookings
