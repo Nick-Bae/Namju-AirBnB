@@ -56,7 +56,7 @@ export const ReviewDisplay = ({ spot }) => {
     if (!spotReview) return null
 
     return (
-        <>
+        <div className='reviewContainer'>
             <p id="reviewIcon">
                 {/* <i class="fa-solid fa-pen-to-square"> </i> */}
                 {/* {(user) && <ReviewFormModal spot={spot} />} */}
@@ -64,22 +64,22 @@ export const ReviewDisplay = ({ spot }) => {
             </p>
             <p id="numbers"><i className="fa-sharp fa-solid fa-star"></i> 
              {(spot.avgRating.toFixed(1))}, {spot.numReviews} Reviews</p>
-            <div id="reviews">
+            <div id="reviewsForSpot">
 
                 {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars, User, updatedAt }) => (
 
-                    <div key={id}>
+                    <div key={id} className="singleReviewContainer">
                         <ul  id='reviewer'>
-                            <li  className='userId'>
+                            <li  className='reviewUserId'>
                                 {/* User Id: {userId} */}
                                 {User?.firstName} {User?.lastName}
                             </li>
-                            <li key={updatedAt} className='date'>
+                            <li key={updatedAt} className='reviewDate'>
                                 {updatedAt.split('T')[0]}
                             </li>
                         </ul>
-                        <ul>
-                            <li key={review} className='review'>
+                        <ul id="reviewContents">
+                            <li key={review} className='singleReview'>
                                 {review}
                             </li>
                             {/* <li className='reviewStar'>
@@ -111,7 +111,7 @@ export const ReviewDisplay = ({ spot }) => {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 

@@ -102,6 +102,8 @@ export const Spotdetail = () => {
         setIsViewerOpen(false);
     };
 
+    console.log("spot info", spot)
+
     if (!spot) return null;
     return showSpot && (
         // <body className="detailview">
@@ -179,15 +181,22 @@ export const Spotdetail = () => {
                         <section className="maininfo-left">
 
                             <div className="hostname">
-                                <li> Entire home hosted by  </li>
+                                <li id="hostTitle"> Entire home hosted by</li>
+                                <li id="ownerName">&nbsp; {spot.Owner.firstName} </li>
                             </div>
                             <div className="checkinInfo">
                                 <div>
                                     <li> <i className="fa fa-building-circle-check"></i> &nbsp;Self check-in</li>
-                                    <li>Check yourself in with the keypad.</li>
+                                    <li className='checkLabel'>Check yourself in with the keypad.</li>
                                 </div>
-                                <li> <i className="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
-                                <li> <i className="fa-solid fa-calendar"></i> Free cancellation </li>
+                                <div>
+                                    <li className='generalInfo'> <i className="fa-solid fa-key"></i>&nbsp;&nbsp;Great check-in experience</li>
+                                    <li className='checkLabel'>Easy to check in.</li>
+                                </div>
+                                <div>
+                                    <li className='generalInfo'> <i className="fa-solid fa-calendar"></i> &nbsp; Free cancellation </li>
+                                    <li className='checkLabel'>Cancel your booking anytime.</li>
+                                </div>
                             </div>
                             <p id="info"><i className="fa-solid fa-house"></i> &nbsp;Information</p>
                             <div className="descprition">

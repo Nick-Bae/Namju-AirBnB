@@ -1,12 +1,22 @@
-#reviews {
+.reviewContainer{
+    max-width: 950px;
+    display: flex;
+    flex-direction: column;
+}
+
+#reviewsForSpot {
     display: grid;
     grid-template-columns: minmax(max-content, min-content) auto;
     gap: 5px;
  
     justify-items: start;
     align-content: space-evenly;
-    max-width: 800px;
+    width: 100%;
     margin: 0 50px 50px 0;
+}
+
+#reviewContent{
+    width:100%;
 }
 .deleteBt {
     color: var(--button-color);
@@ -19,9 +29,11 @@
     cursor: pointer;
 }
 
-.review,
+.singleReview,
 .reviewStar {
-    font-size: var(--font-medium);
+    font-size: 15px;
+    max-width: 950px;
+    word-wrap: break-word;
 }
 
 #reviewIcon {
@@ -36,15 +48,17 @@ width: 180px;
 display: flex;
 
 } */
-.date {
-    font-size: var(--font-micro);
+.reviewDate {
+    font-size: var(--font-medium);
     color: rgb(113, 114, 115);
 
 }
 
-.userId {
-    font-size: 13px;
+.reviewUserId {
+    font-size: 17px;
     font-weight: 540;
+    font-weight: bold;
+    
 }
 
 
@@ -71,4 +85,12 @@ display: flex;
     background-color: white;
     font-size: 22px;
     cursor: pointer;
+}
+
+#reviewer{
+    margin-bottom: 10px;
+}
+
+.singleReviewContainer{
+    margin-bottom:15px;
 }
