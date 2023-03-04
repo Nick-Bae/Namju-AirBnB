@@ -21,7 +21,7 @@ import ReviewFormModal from "../ReviewModal";
 import ReviewDisplay from "../ReviewModal/ReviewDisplay";
 import { getSpotReviews } from "../../store/comment";
 import { likeStory } from "../../store/likeStory";
-import { Booking } from '../Booking';
+import Booking from '../Booking/Booking';
 
 export const Spotdetail = () => {
     const dispatch = useDispatch();
@@ -39,9 +39,7 @@ export const Spotdetail = () => {
     const [isViewerOpen, setIsViewerOpen] = useState(false);
     const images = spot?.image?.map((image) => image.url)
 
-    const [startDate, setStartDate] = useState();
-    const [endDate, setEndDate] = useState();
-    const [focusedInput, setFocusedInput] = useState();
+   
 
     // const login = (!user) ? alert("Please log in") : true
     // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
@@ -67,7 +65,7 @@ export const Spotdetail = () => {
             .then(() => dispatch(getSpotReviews(id)))
             .then(() => setShowSpot(true))
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
-    }, [dispatch, review.length], review);
+    }, [dispatch, review.length]);
 
     // useEffect(()=>{
     //     console.log("this is a single spot",spot)
@@ -131,7 +129,7 @@ export const Spotdetail = () => {
                         {previewImage ?
                             <div id="previewImageBox">
                                 {previewImage.map((src, index) => (
-                                    <img id="previewImage" src={src} onClick={() => openImageViewer(index)} />
+                                    <img key={index} id="previewImage" src={src} onClick={() => openImageViewer(index)} />
                                 ))}
                             </div> : <div></div>}
                         <div className="smallDetialContainer">
@@ -198,7 +196,7 @@ export const Spotdetail = () => {
                                     <li className='checkLabel'>Cancel your booking anytime.</li>
                                 </div>
                             </div>
-                            <p id="info"><i className="fa-solid fa-house"></i> &nbsp;Information</p>
+                            <div id="info"><i className="fa-solid fa-house"></i> &nbsp;Information</div>
                             <div className="descprition">
                                 {spot.description}
                             </div>

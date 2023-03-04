@@ -7,6 +7,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import { createImage } from '../../store/image';
 import { getSpotBySpotId } from '../../store/spot';
 import './createSpot.css'
+import Booking from '../Booking/Booking';
 
 const CreateSpot = ({ spot, formType }) => {
     const user = useSelector(state => state.session.user)
@@ -240,6 +241,7 @@ const CreateSpot = ({ spot, formType }) => {
                 <button id="creatSpotCancel" type="button" onClick={handleCancelClick}>Cancel</button>
                 </div>
             </form>
+            <Booking />
         </section>
     );
 
