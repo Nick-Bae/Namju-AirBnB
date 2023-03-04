@@ -20,7 +20,7 @@ import { extendMoment } from "moment-range";
 import { getBookingBySpotId } from '../../store/booking';
 import "./booking.css"
 
-export const Booking = ({spotId}) => {
+export const Booking = ({spotid}) => {
     const dispatch = useDispatch();
     const moment = extendMoment(Moment);
     const history = useHistory();
@@ -108,7 +108,7 @@ export const Booking = ({spotId}) => {
             alert("please log in") 
         } else {
             const bookingInfo = {
-                spotId,
+                spotId: spotid,
                 userId: user.id,
                 startDate: sDate, endDate: eDate
             } 
