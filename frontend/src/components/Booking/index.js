@@ -127,6 +127,7 @@ export const Booking = ({spotId}) => {
             //     pathname:'/bookings/confirm',
             //    state: bookingInfo 
             // });
+            history.push(`/bookings/current`)
         }
         // dispatch(createBooking(booking))
     }
@@ -150,19 +151,21 @@ export const Booking = ({spotId}) => {
                 onDatesChange={({ startDate, endDate }) => {
                     setStartDate(startDate);
                     setEndDate(endDate);
-                    let sDate = new Date(startDate._d).toISOString().slice(0, 10);
-                    let eDate = new Date(endDate._d).toISOString().slice(0, 10);
-                    let startingDate = new Date(sDate);
-                    let endingDate = new Date(eDate);
+                    // let sDate = new Date(startDate._d).toISOString().slice(0, 10);
+                    // let eDate = new Date(endDate._d).toISOString().slice(0, 10);
+                    // let startingDate = new Date(sDate);
+                    // let endingDate = new Date(eDate);
                 
-                    let differenceTime = endingDate.getTime() - startingDate.getTime();
-                    setReservedDate(differenceTime / (1000*3600 * 24)); 
+                    // let differenceTime = endingDate.getTime() - startingDate.getTime();
+                    // setReservedDate(differenceTime / (1000*3600 * 24)); 
+                    const dayDiff = endDate?.diff(startDate.clone().startOf('day').hour(12), 'days');
+                    setReservedDate(dayDiff); 
                 }}
                 focusedInput={focusedInput}
                 onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
                 startDatePlaceholderText="Check-In"
                 endDatePlaceholderText="Check-Out"
-                isDayBlocked={isBlocked}
+                // isDayBlocked={isBlocked}
                 // initialStartDate={new Date().toJSON().slice(0,10).replace(/-/g,'/')}
                 // noBorder
             />

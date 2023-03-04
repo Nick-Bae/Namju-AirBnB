@@ -19,7 +19,8 @@ export const BookingDetail =({booking})=> {
     const bookingDelete = ()=>{
         dispatch(deleteBooking(booking.id))
     }
-
+    const total = booking?.Spot?.price*bookingDate;
+    const totalInNumberFormat = new Intl.NumberFormat("en-US").format(total)
     return (
         <>
         <div id="bookingDetail">
@@ -54,7 +55,7 @@ export const BookingDetail =({booking})=> {
                     ${booking?.Spot?.price} x {bookingDate}nights
                     </div>
                     <div>
-                    ${booking?.Spot?.price*bookingDate}
+                    ${totalInNumberFormat}
                     </div>
                 </div>
                 </div>

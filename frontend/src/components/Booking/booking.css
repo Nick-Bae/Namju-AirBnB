@@ -71,3 +71,8 @@ text-decoration: underline;
     display: inline-block;
     text-overflow: ellipsis;
 }
+
+.reserveBt{
+    border: none;
+    color: white;
+}
