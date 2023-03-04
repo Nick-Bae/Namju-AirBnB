@@ -6,7 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Spots from './components/Spots'
-import Spotdetail from "./components/Spotdetail";
+// import Spotdetail from "./components/Spotdetail";
+import Spotdetail from "./components/Spotdetail/Spotdetail";
 import SpotList from "./components/Spots";
 import EditSpotForm from "./components/EditSpotForm";
 import CreateSpot from "./components/CreateSpot";

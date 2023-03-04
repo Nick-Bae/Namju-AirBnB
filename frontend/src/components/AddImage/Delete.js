@@ -7,14 +7,14 @@ import { getSpotBySpotId } from '../../store/spot';
 import './Delete.css'
 // import { createImage } from '../../store/image';
 
-const DeleteImage = ({spotId}) => {
+const DeleteImage = ({spotid}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
-    const spot = useSelector(state => state.spot[spotId]);
+    const spot = useSelector(state => state.spot[spotid]);
     // console.log("spot spot spot", spot)
     console.log("imageId",id)
-    console.log("spotId",spotId)
+    console.log("spotid",spotid)
 
     const handleSubmit = (e) => {
 

@@ -7,7 +7,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import { createImage } from '../../store/image';
 import { getSpotBySpotId } from '../../store/spot';
 import './createSpot.css'
-import Booking from '../Booking/Booking';
+import Booking from '../Booking/Booking_test';
 
 const CreateSpot = ({ spot, formType }) => {
     const user = useSelector(state => state.session.user)

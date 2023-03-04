@@ -57,13 +57,13 @@ export const ReviewDisplay = ({ spot }) => {
 
     return (
         <div className='reviewContainer'>
-            <p id="reviewIcon">
+            <div id="reviewIcon">
                 {/* <i class="fa-solid fa-pen-to-square"> </i> */}
                 {/* {(user) && <ReviewFormModal spot={spot} />} */}
                 <ReviewFormModal spot={spot} />
-            </p>
-            <p id="numbers"><i className="fa-sharp fa-solid fa-star"></i> 
-             {(spot.avgRating.toFixed(1))}, {spot.numReviews} Reviews</p>
+            </div>
+            <div id="numbers"><i className="fa-sharp fa-solid fa-star"></i> 
+             {(spot.avgRating.toFixed(1))}, {spot.numReviews} Reviews</div>
             <div id="reviewsForSpot">
 
                 {setHasSubmitted && spotReview.map(({ id, userId, spotId, review, stars, User, updatedAt }) => (
