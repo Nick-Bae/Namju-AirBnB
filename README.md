@@ -1,10 +1,9 @@
-# AirBnB Clone
-
+# Airbnb Clone
+Airbnb clone is a web application inspired by the actual Airbnb.
 # App Link 
 https://namju-airbnb.herokuapp.com/
 
-<img width="755" alt="main page" src="https://user-images.githubusercontent.com/88744340/197250466-3a15acf3-bee0-4d3d-bb33-028df968f871.png">
-
+<img width="1175" alt="airbnb screenshot" src="https://user-images.githubusercontent.com/88744340/223170379-2692f9e3-554a-4e6d-a965-2fcf02a81ae9.png">
 
 # Used technologies
 <img src="https://camo.githubusercontent.com/ab4c3c731a174a63df861f7b118d6c8a6c52040a021a552628db877bd518fe84/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656163742d2532333230323332612e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d253233363144414642" /> <img src="https://camo.githubusercontent.com/9a7c7ebbabb2096c0ad0cac6f64bc9fe93f4954a3ae3f51d6f3e076ba462aab1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656475782d2532333539336438382e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d7265647578266c6f676f436f6c6f723d7768697465" />
