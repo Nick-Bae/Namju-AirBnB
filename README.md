@@ -22,7 +22,7 @@ https://namju-airbnb.herokuapp.com/
 1. Clone this repository (only this branch)
     
   ```
-  git clone https://github.com/appacademy-starters/python-project-starter.git
+  git clone https://github.com/Nick-Bae/Namju-AirBnB.git
   ```
 
 2. Create a .env file based on the example with proper settings for your development environment
