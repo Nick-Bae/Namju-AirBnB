@@ -7,7 +7,7 @@ https://namju-airbnb.herokuapp.com/
 
 
 # Used technologies
- Javascript, Express, React, Redux, Html, Css
+React Redux JavaScript NodeJS Express.js Sequelize HTML CSS3 Heroku
 
 # Instructions on how to set up the repo to run locally.
 First, create .env file in backend root folder. There is.env_example
