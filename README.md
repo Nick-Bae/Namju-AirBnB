@@ -34,12 +34,28 @@ https://namju-airbnb.herokuapp.com/
   ```
   npm start
   ```
+# Features
+<div>
+    List Spots
+    <div align="center">
+        <img width="70%" src="https://user-images.githubusercontent.com/88744340/223185786-b4921b3b-ab16-48af-85a8-8c6d7721b8e5.gif" />
+    </div>
+    <br>
+    <br>
+   List a new place
+    <div align="center">
+        <img width="70%" src="https://user-images.githubusercontent.com/88744340/223187231-78154ebd-a608-4d78-960c-a78aa3a1c405.gif" />
+    </div>
+</div>
 
+Comments
+<div align="center">
+    <img width="70%" src="https://user-images.githubusercontent.com/88744340/223188426-6c9a177c-5113-40ae-941c-a4805d56b510.gif" />
+</div>
+<br>
+<br>
+Making a reservation & My Trips
+<div align="center">
+    <img width="70%" src="https://user-images.githubusercontent.com/88744340/223193621-9c6f663f-b28a-4c73-888c-ae0c2083bfee.gif" />
+</div>
 
-![airbnb-main (1)](https://user-images.githubusercontent.com/88744340/223185786-b4921b3b-ab16-48af-85a8-8c6d7721b8e5.gif)
-
-
-![airbnb-new-place](https://user-images.githubusercontent.com/88744340/223187231-78154ebd-a608-4d78-960c-a78aa3a1c405.gif)
-
-
-![airbnb-review](https://user-images.githubusercontent.com/88744340/223188426-6c9a177c-5113-40ae-941c-a4805d56b510.gif)
