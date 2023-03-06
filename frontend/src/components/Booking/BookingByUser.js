@@ -19,14 +19,15 @@ export const BookingByUser =()=> {
         dispatch(getBookingByUser());
       }, [dispatch, location]);
 
-    let startDate
-    let endDate
+   console.log(bookings)
+   console.log(user)
     return (
         <main>
       <section className='spot-wrap'>
         <div className='list-container'>
-          
+            <div className='bookingUser' style={{fontSize: "40px"}}> {user.username}'s trips </div>
           <div className='imglayout'>
+            
             {bookings.map((booking) => (
               <div key={booking.id} id="container" >
                 {/* <Carousel  */}
