@@ -19,9 +19,22 @@ https://namju-airbnb.herokuapp.com/
 
 
 # Instructions on how to set up the repo to run locally.
-First, create .env file in backend root folder. There is.env_example
-Second, run "npm install" in both folder backend and frontend
-Third, run "npm start" in both folder backend and frontend.
-Enjoy!!
+1. Clone this repository (only this branch)
+    
+  ```
+  git clone https://github.com/appacademy-starters/python-project-starter.git
+  ```
+
+2. Create a .env file based on the example with proper settings for your development environment
+
+3. Run "npm install" in both folder backend and frontend
+  ```
+  npm install
+  ```
+
+4. Run "npm start" in both folder backend and frontend.
+  ```
+  npm start
+  ```
 
 
