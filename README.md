@@ -58,4 +58,9 @@ Making a reservation & My Trips
 <div align="center">
     <img width="70%" src="https://user-images.githubusercontent.com/88744340/223193621-9c6f663f-b28a-4c73-888c-ae0c2083bfee.gif" />
 </div>
-
+<br>
+<br>
+Image slider
+<div align="center">
+     <img width="70%" src="https://user-images.githubusercontent.com/88744340/223200186-7f6a024d-7568-44c9-bf9d-9cab91fdafd5.gif" />
+</div>
