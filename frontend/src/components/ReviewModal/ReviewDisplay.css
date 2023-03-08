@@ -32,7 +32,7 @@
 .singleReview,
 .reviewStar {
     font-size: 15px;
-    width: 475px;
+    width: 440px;
     word-wrap: break-word;
 }
 
@@ -92,4 +92,8 @@ display: flex;
 
 .singleReviewContainer{
     margin-bottom:15px;
+    border: 1px solid var(--grey-light-color);
+    border-radius: 10px;
+    padding:10px;
+    margin-right:5px;
 }
