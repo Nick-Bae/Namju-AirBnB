@@ -29,7 +29,7 @@ export const Spotdetail = () => {
     const [isViewerOpen, setIsViewerOpen] = useState(false);
     const images = spot?.image?.map((image) => image.url)
 
-    const login = (!user) ? alert("Please log in") : true
+    // const login = (!user) ? alert("Please log in") : true
     // const permission = spot.owner.id === user.id ? setOwner(true) : setOwner(false);
 
     const deleteReport = async (e) => {
