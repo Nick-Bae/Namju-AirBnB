@@ -1,10 +1,15 @@
-.signform {
+.signUpform {
     display: flex;
     flex-direction: column;
     align-items: center;
     width:400px;
+    height:550px;
     margin-bottom: 25px;
     /* margin-left: 60px; */
+}
+#signUpForm{
+    
+    /* height:1600px; */
 }
 
 .signbt {
@@ -65,7 +70,7 @@
 
 #signUpTitle {
     margin-left: 60px;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 

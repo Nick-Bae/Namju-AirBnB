@@ -164,7 +164,7 @@ export const Booking = ({spotid}) => {
                 // noBorder
             />
             <div className='guestNum'>
-                <div className='guestLabel'>
+                {/* <div className='guestLabel'>
 
                     <div >
                         Guest
@@ -173,7 +173,7 @@ export const Booking = ({spotid}) => {
                         {guestShow ? <i className="fa fa-angle-down"></i> 
                         : <i className="fa fa-angle-up"></i>} 
                     </div>
-                </div>
+                </div> */}
                 {guestShow && <div className='guestSelect'>
                     <div>
                         Adults

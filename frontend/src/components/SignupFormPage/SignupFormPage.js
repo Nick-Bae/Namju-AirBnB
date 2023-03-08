@@ -65,7 +65,8 @@ function SignupFormPage({setShowModal}) {
   return (
     <>
       <h2 id="signUpTitle">Sign up</h2>
-      <form onSubmit={handleSubmit} className='signform'>
+      <form onSubmit={handleSubmit} className='signUpform' >
+      <div id="signUpForm">
         {/* {errors.length > 0 && ( */}
           <div>
         <ul id="signupError">
@@ -149,6 +150,7 @@ function SignupFormPage({setShowModal}) {
           <button type="submit" className="signbt">Sign Up</button>&nbsp;
           <button id="signupCancel" onClick={() => setShowModal(false)}>Cancel</button>
         </div>
+      </div>
       </form>
     </>
   );
