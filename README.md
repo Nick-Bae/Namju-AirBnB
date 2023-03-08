@@ -19,21 +19,21 @@ https://namju-airbnb.herokuapp.com/
 # Instructions on how to set up the repo to run locally.
 1. Clone this repository (only this branch)
     
-  ```
-  git clone https://github.com/Nick-Bae/Namju-AirBnB.git
-  ```
+      ```
+      git clone https://github.com/Nick-Bae/Namju-AirBnB.git
+      ```
 
 2. Create a .env file based on the example with proper settings for your development environment
 
 3. Run "npm install" in both folder backend and frontend
-  ```
-  npm install
-  ```
+      ```
+      npm install
+      ```
 
 4. Run "npm start" in both folder backend and frontend.
-  ```
-  npm start
-  ```
+      ```
+      npm start
+      ```
 # Features
 <div>
     List Spots
