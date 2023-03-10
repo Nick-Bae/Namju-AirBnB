@@ -18,6 +18,8 @@ import DeleteImage from "./components/AddImage/Delete";
 import SpotByUser from "./components/Spots/SpotByUser";
 import BookingByUser from "./components/Booking/BookingByUser";
 import BookingConfirm from "./components/Booking/BookingConfirm";
+import AboutMe from "./components/AboutMe";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -81,6 +83,9 @@ function App() {
           </Route>
         </Switch>
       )}
+        <div>
+          <AboutMe />
+        </div>
     </>
   );
 }

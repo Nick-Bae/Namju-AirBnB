@@ -29,7 +29,7 @@ export const BookingDetail =({booking})=> {
                             <Link to={`/spots/${booking.spotId}`} className="spotName" >{booking?.Spot?.name}, {booking?.Spot?.state}</Link>
                         </div>
                         <div>
-                            <button className='bookingEdit'>edit</button>
+                            {/* <button className='bookingEdit'>edit</button> */}
                             <button className='bookingDelete' onClick={bookingDelete}>delete</button>
                         </div>
                   </div>

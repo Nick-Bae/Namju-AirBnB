@@ -58,6 +58,7 @@ text-decoration: underline;
     width:50px;
     background-color: rgb(246, 124, 124);
     border-radius: 4px;
+    cursor: pointer
 }
 
 .bookingEdit{

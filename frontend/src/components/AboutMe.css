@@ -1,0 +1,8 @@
+.aboutMe, .socialNetwork{
+    font-size: 30px;
+  }
+
+.aboutC{
+    display: flex;
+    flex-direction: row;
+}
