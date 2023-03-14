@@ -1,9 +1,10 @@
 import React from 'react';
+import './AboutMe.css'
 
 const AboutMe = () => {
     
 return (
-    <div className='about'>
+    <div className='aboutC'>
             <p className='aboutMe'> About me </p>
             <a className="socialNetwork" target="_blank" rel="noreferrer" href='https://github.com/Nick-Bae'>  
                 <i class="fa-brands fa-github"></i>

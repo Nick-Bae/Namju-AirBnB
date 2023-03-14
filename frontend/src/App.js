@@ -83,7 +83,7 @@ function App() {
           </Route>
         </Switch>
       )}
-        <div>
+        <div className="aboutMeContainer">
           <AboutMe />
         </div>
     </>

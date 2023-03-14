@@ -12,8 +12,8 @@
 
 }
 #formTitle{
-    margin-top:20px;
-    margin-bottom: 20px;
+    margin-top:60px;
+    margin-bottom: 40px;
 }
 
 #address, #city, #state, #country, #lat, #lng, #name, #price, #description{
