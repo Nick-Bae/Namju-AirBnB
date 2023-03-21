@@ -7,6 +7,14 @@
     font-size: 30px;
   }
 
+.aboutMe{
+  margin-right:10px;
+}
+
+.fa-github, .fa-linkedin{
+  color:black;
+}
+
 .aboutC{
     display: flex;
     flex-direction: row;
