@@ -23,9 +23,9 @@
     margin-right:10px;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1280px) {
   .aboutC{
-    min-width: 840px;
+    min-width: 1180px;
   }
   
 }
@@ -38,10 +38,10 @@
   
 }
 
-@media only screen and (min-width: 1790px) {
+@media only screen and (min-width: 1920px) {
   .aboutC{
-    min-width: 2200px;
-    min-height: 2000px;
+    min-width: 1820px;
+    /* min-height: 2000px; */
     /* justify-content: flex-end; */
   }
   
