@@ -16,9 +16,7 @@ const SpotByUser = () => {
   const [update, setUpdate] = useState(false);
   
   const spots = spotsAll.filter(spot=>spot.ownerId === user.id)
-  //  console.log("this is all spots or spots for user",spots)
-//  const userSpots =  dispatch(getSpotByUser())
-//    setUpdate(true)
+  
   useEffect(() => {
     dispatch(getSpotByUser())
     .then (()=> setUpdate(true))
