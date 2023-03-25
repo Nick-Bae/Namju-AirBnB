@@ -1,5 +1,5 @@
 import { getSpotBySpotId } from "../../store/spot"
-import { useParams, Link, Route, Redirect, NavLink } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState, useEffect, useCallback } from 'react';
 import ImageViewer from 'react-simple-image-viewer';
@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { deleteSpot } from "../../store/spot";
 import './spotdetail.css'
 import { useHistory } from 'react-router-dom';
-import ReviewFormModal from "../ReviewModal";
 import ReviewDisplay from "../ReviewModal/ReviewDisplay";
 import { getSpotReviews } from "../../store/comment";
 import { likeStory } from "../../store/likeStory";
