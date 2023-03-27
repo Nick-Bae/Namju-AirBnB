@@ -10,7 +10,6 @@ import { useHistory } from 'react-router-dom';
 import ReviewDisplay from "../ReviewModal/ReviewDisplay";
 import { getSpotReviews } from "../../store/comment";
 import { likeStory } from "../../store/likeStory";
-// import Booking from '../Booking/Booking';
 import Booking from "../Booking";
 
 export const Spotdetail = () => {
