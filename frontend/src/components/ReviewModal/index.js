@@ -16,9 +16,7 @@ function ReviewFormModal({spot, reviews}) {
   const [showModal, setShowModal] = useState(false);
   
   // const reviews = useSelector(state=>state.reviews)
-  
-  // console.log("reviewformModal",spot)
-  // console.log("reviews from useSelector",reviews)
+
 //   useEffect(() => {
 //     dispatch(getSpotBySpotId(spot.id));
 //     dispatch(getSpotReviews(spot.id));
