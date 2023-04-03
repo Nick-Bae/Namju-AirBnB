@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, useHistory, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { getAllSpots } from '../../store/spot';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useState } from 'react'
 import './index.css'
-// import Transfer fr
+
 
 const SpotList = () => {
   const dispatch = useDispatch();

@@ -12,7 +12,6 @@ import SpotList from "./components/Spots";
 import EditSpotForm from "./components/EditSpotForm";
 import CreateSpot from "./components/CreateSpot";
 import AddImage from './components/AddImage'
-import LoginFormModal from "./components/LoginFormModal";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import DeleteImage from "./components/AddImage/Delete";
 import SpotByUser from "./components/Spots/SpotByUser";
