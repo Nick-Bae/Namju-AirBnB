@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-// import CommentFormPage from '../sidebar/CommentFormPage';
 import SignupFormPage from './SignupFormPage';
 
 function SignupModal() {
