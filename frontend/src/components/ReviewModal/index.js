@@ -3,7 +3,6 @@ import { useSelector,useDispatch } from 'react-redux';
 import { Modal } from '../../context/Modal';
 import ReviewForm from './ReviewForm';
 // import { getSpotReviews } from '../../store/comment';
-import { getSpotBySpotId } from '../../store/spot';
 // import './review.css';
 
 function ReviewFormModal({spot, reviews}) {
