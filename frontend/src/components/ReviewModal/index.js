@@ -16,10 +16,6 @@ function ReviewFormModal({spot, reviews}) {
   
   // const reviews = useSelector(state=>state.reviews)
 
-//   useEffect(() => {
-//     dispatch(getSpotBySpotId(spot.id));
-//     dispatch(getSpotReviews(spot.id));
-// }, [dispatch, spot.id]);
 
   // useEffect(()=> {
   //   setShowModal(false);
