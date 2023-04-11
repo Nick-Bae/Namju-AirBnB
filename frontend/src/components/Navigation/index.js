@@ -37,7 +37,6 @@ function Navigation({ isLoaded }) {
     <ul className='underline'>
       <li className='logolist'>
         <NavLink className="navlink" exact to="/" >
-          {/* <img className="logo header" src="https://miro.medium.com/max/1400/0*NChTo-XqLOxLabIW"></img> */}
           <img className="logoMain" src="../../../images/logo.png"></img>
         </NavLink>
         {isLoaded && sessionLinks}
