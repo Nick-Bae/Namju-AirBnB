@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { Link, useHistory,useLocation } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import BookingDetail from './BookingDetail';
