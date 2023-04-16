@@ -7,7 +7,6 @@ import { getBookingByUser } from '../../store/bookingHistory';
 
 export const BookingByUser =()=> {
     const dispatch = useDispatch();
-    const history = useHistory();
     const location = useLocation();
     const user = useSelector(state => state.session.user)
     const allBookings = Object.values(useSelector(state => state.bookingHistory))
