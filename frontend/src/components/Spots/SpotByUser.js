@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, useParams, Link, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import { getSpotByUser } from '../../store/spot';
 import { useState } from 'react'
