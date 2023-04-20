@@ -21,7 +21,6 @@ export const Spotdetail = () => {
     const permission = spot?.ownerId !== user?.id ? false : true
     const review = useSelector((state) => state.review)
     const [showSpot, setShowSpot] = useState(false);
-    const [owner, setOwner] = useState(true);
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);
