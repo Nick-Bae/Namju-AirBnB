@@ -101,7 +101,6 @@ export const deleteBooking = (id) => async (dispatch) => {
     if (response.ok) {
         dispatch(deleteOne(id));
     }
-    // return response;
 };
 
 
