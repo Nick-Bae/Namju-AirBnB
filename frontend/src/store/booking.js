@@ -135,7 +135,6 @@ export const bookingReducer = (state = {}, action) => {
             return newState;
         case DELETE:
             delete newState[action.bookingId]
-            // delete newState[action.spot]
             return newState;
         default:
             return state;
