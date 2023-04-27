@@ -4,7 +4,6 @@ import { useHistory, Link } from 'react-router-dom';
 import { getAllSpots } from '../../store/spot';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { useState } from 'react'
 import './index.css'
 
 
