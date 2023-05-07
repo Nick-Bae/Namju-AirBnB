@@ -91,7 +91,7 @@ const AddImage = () => {
         e.preventDefault();
         dispatch(deleteImage(imageId))
         setDeleteOn(false)
-        // history.push(`/spots/${id}`);
+        
     }
     useEffect(() => {
         dispatch(getSpotBySpotId(id))
