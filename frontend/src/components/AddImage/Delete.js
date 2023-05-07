@@ -20,7 +20,6 @@ const DeleteImage = ({spotid}) => {
 
         e.preventDefault();
         dispatch(deleteImage(id))
-        // history.push(`/spots/${spot?.id}}`);
         history.goBack();
     }
 
