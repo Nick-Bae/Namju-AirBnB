@@ -7,7 +7,6 @@ export default function DemoUser() {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
 
-
   const demo = (e) => {
     e.preventDefault();
     setErrors([]);
