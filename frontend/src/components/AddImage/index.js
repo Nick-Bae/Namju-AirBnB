@@ -55,7 +55,7 @@ const AddImage = () => {
             }
             dispatch(createImage(image));
             dispatch(getSpotBySpotId(id));
-            // history.push(`/spots/${id}`);
+            
             reset();
         }
     }
