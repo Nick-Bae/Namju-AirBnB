@@ -10,7 +10,6 @@ export const EditSpotForm = () => {
     const { id } = useParams();
     const spot = useSelector(state => state.spot[id])
     const history = useHistory();
-    // let updateSpot= spot.find(info => info.id == spotId)
     const [address, setAddress] = useState(spot.address);
     const [city, setCity] = useState(spot.city);
     const [state, setState] = useState(spot.state);
