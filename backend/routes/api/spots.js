@@ -271,7 +271,6 @@ router.get('/current', requireAuth, async (req, res) => {
 // 
 
 
-
 //=================Get details of a Spot from an id (56:23)==============
 router.get('/:spotId', async (req, res) => {
 
