@@ -462,8 +462,6 @@ router.delete('/:spotId', restoreUser,requireAuth, async (req, res) => {
     }
 })
 
-
-
 // ===========Get all Reviews by a Spot's id============
 router.get('/:spotId/reviews', async (req, res,next) => {
     
