@@ -232,7 +232,6 @@ const CreateSpot = ({ spot, formType }) => {
                     />
                 </div>
 
-                {/* <button type='submit'>Creat new spot</button> */}
                 <div>
                 <input id="createSpotBt" type="submit" /> &nbsp;
                 <button id="creatSpotCancel" type="button" onClick={handleCancelClick}>Cancel</button>
