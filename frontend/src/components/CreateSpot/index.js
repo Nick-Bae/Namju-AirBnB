@@ -28,8 +28,6 @@ const CreateSpot = ({ spot, formType }) => {
     const [errors, setErrors] = useState([]);
 
     const spotsObj = useSelector(state => state.spot);
-    // console.log(newSpotId)
-
 
     useEffect(() => {
         const errors = [];
