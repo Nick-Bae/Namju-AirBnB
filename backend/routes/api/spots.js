@@ -609,7 +609,6 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const duplicateBooking = await Booking.findOne({
         where: { userId: user.id, startDate: startDate, endDate: endDate }
     })
-    // res.json(spot)
 
     if (spot === null) {
         res.status(404).json({
