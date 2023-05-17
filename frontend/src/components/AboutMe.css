@@ -41,8 +41,7 @@
 @media only screen and (min-width: 1920px) {
   .aboutC{
     min-width: 1820px;
-    /* min-height: 2000px; */
-    /* justify-content: flex-end; */
+    
   }
   
 }
