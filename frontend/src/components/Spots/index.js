@@ -37,10 +37,8 @@ const SpotList = () => {
                       {spot?.previewImage?.map((image)=>(
                         <div className='spotImages'>
                           <Link to={`/spots/${spot.id}`}>
-                              {/* <div> */}
                               <img spot={spot} className="img" src={image.url} />
                               <p className="legend"></p>
-                              {/* </div> */}
 
                             {/* <img spot={spot} className="img" src={spot?.Images[0]?.url} /> */}
                           </Link>
