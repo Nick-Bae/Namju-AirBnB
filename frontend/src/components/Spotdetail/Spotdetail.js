@@ -207,7 +207,7 @@ export const Spotdetail = () => {
 
 
         </section>
-        // </body>
+        
     )
 }
 
