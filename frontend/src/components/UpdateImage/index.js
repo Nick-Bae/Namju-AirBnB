@@ -13,7 +13,6 @@ const UpdateImage = () => {
 
     const img = useSelector(state => state);
 
-    // console.log('spotid',id)
 
     const handleSubmit = (e) => {
 
