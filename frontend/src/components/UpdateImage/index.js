@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Redirect, useParams } from 'react-router-dom';
 import { updateImage } from '../../store/image';
-// import { createImage } from '../../store/image';
 
 const UpdateImage = () => {
     const [url, setUrl] = useState('');
