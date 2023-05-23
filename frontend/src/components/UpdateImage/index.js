@@ -10,7 +10,7 @@ const UpdateImage = () => {
     const history = useHistory();
     const { id } = useParams();
 
-    const img = useSelector(state => state);
+    // const img = useSelector(state => state);
 
 
     const handleSubmit = (e) => {
