@@ -12,10 +12,7 @@ export const BookingDetail =({booking})=> {
     let differenceTime = endingDate.getTime() - startingDate.getTime();
     let bookingDate = (differenceTime / (1000*3600 * 24)); 
 
-    // useEffect(() => {
-    //     dispatch(getBookingByUser());
-    //   }, [dispatch]);
-
+ 
     const bookingDelete = ()=>{
         dispatch(deleteBooking(booking.id))
     }
