@@ -5,7 +5,6 @@ import { Carousel } from 'react-responsive-carousel';
 import { getSpotByUser } from '../../store/spot';
 import { useState } from 'react'
 import './index.css'
-// import Transfer fr
 
 const SpotByUser = () => {
   const dispatch = useDispatch();
