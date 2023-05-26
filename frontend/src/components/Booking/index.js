@@ -13,7 +13,6 @@ import { useHistory } from 'react-router-dom';
 import ReviewFormModal from "../ReviewModal";
 import ReviewDisplay from "../ReviewModal/ReviewDisplay";
 import { getSpotReviews } from "../../store/comment";
-import { likeStory } from "../../store/likeStory";
 import { createBooking } from '../../store/booking';
 import Moment from 'moment';
 import { extendMoment } from "moment-range";
