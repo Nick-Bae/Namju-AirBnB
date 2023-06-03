@@ -67,7 +67,7 @@ export const deleteImage = (id) => async dispatch => {
             dispatch(deleteOne(id));
         }
 }
-    // return response;
+    
 
 
 // const initialState = { lists: [] }
