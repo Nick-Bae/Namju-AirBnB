@@ -97,7 +97,6 @@ export const deleteReview = (id) => async (dispatch) => {
 };
 
 
-// const initialState = { lists: [] }
 export const reviewReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
