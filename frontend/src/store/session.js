@@ -22,7 +22,6 @@ export const restoreUser = () => async dispatch => {
   if(data) {
     dispatch(setUser(data.user));
   }
-  // console.log('restore',data)
   return response;
 };
 
