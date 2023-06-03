@@ -32,7 +32,7 @@ const update = spot => ({
     spot
 });
 
-// export const getSpots =(state)=>Object.values(state.spot)
+
 
 export const getAllSpots = () => async dispatch => {
     const response = await csrfFetch('/api/spots');
