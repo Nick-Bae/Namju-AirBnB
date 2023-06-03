@@ -32,17 +32,7 @@ const update = booking => ({
     booking
 });
 
-// export const getSpots =(state)=>Object.values(state.spot)
 
-// export const getAllBookings = () => async dispatch => {
-//     const response = await csrfFetch('/api/spots');
-//     console.log(response)
-
-//     if (response.ok) {
-//         const spots = await response.json();
-//         dispatch(load(spots.Spots));
-//     }
-// };
 
 export const getBookingBySpotId =spotId =>async dispatch =>{
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`)
