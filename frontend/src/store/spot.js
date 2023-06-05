@@ -116,7 +116,7 @@ export const deleteSpot = (id) => async (dispatch) => {
 };
 
 
-// const initialState = { lists: [] }
+
 export const spotReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
