@@ -21,7 +21,6 @@ const SpotByUser = () => {
     .then (()=> setUpdate(true))
   },[dispatch] );
 
-
    // if (!login) return ("please log in first")
 
   return update && (
