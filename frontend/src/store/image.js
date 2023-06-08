@@ -68,8 +68,6 @@ export const deleteImage = (id) => async dispatch => {
         }
 }
     
-
-
 // const initialState = { lists: [] }
 export const imageReducer = (state = {}, action) => {
     let newState = { ...state };
