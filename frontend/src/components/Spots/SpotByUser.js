@@ -42,7 +42,6 @@ const SpotByUser = () => {
                               <img spot={spot} className="img" src={image.url} />
                               <p className="legend"></p>
                               {/* </div> */}
-
                             {/* <img spot={spot} className="img" src={spot?.Images[0]?.url} /> */}
                           </Link>
                         </div>
