@@ -142,7 +142,6 @@ const CreateSpot = ({ spot, formType }) => {
                     <input 
                         id='address'
                         type='text'
-                        // placeholder='address'
                         onChange={e => setAddress(e.target.value)}
                         value={address}
                         // required
