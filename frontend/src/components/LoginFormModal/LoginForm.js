@@ -63,7 +63,6 @@ function LoginForm({ setShowModal }) {
         </label>
         <div id="loginButtons">
           <button className="loginBt" type="submit">Log In </button>
-          {/* <DemoUser /> */}
           <button className="demobt" onClick={demo}>Demo</button>
           <button className="loginCancelBt" type="submit" onClick={cancel}>Cancel</button>
         </div>
