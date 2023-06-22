@@ -58,7 +58,6 @@ function ProfileButton({ user }) {
           <li id="emailInfo">{user.email}</li>
           <NavLink id="myplaces" to='/spots/current'>My Places</NavLink> 
           <NavLink id="myBookings" to='/bookings/current'>My Bookings</NavLink> 
-          {/* <li id="myplaces">My Places</li> */}
           <li id="logoutInfo">
             <button className="logOut" onClick={logout}>Log Out</button>
           </li>
