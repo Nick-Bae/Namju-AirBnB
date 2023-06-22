@@ -6,7 +6,6 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './index.css'
 
-
 const SpotList = () => {
   const dispatch = useDispatch();
   const history = useHistory();
