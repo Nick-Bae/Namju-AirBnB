@@ -36,7 +36,6 @@ li {
 #spotDetails{
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
 }
 
 .spot-inside{
