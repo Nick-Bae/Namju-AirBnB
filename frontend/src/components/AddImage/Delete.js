@@ -12,7 +12,6 @@ const DeleteImage = ({spotid}) => {
     const history = useHistory();
     const { id } = useParams();
     const spot = useSelector(state => state.spot[spotid]);
-    // console.log("spot spot spot", spot)
     console.log("imageId",id)
     console.log("spotid",spotid)
 
