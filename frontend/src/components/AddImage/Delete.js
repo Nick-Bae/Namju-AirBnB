@@ -28,9 +28,7 @@ const DeleteImage = ({spotid}) => {
         history.goBack();
     };
 
-    // useEffect(() => {
-    //     dispatch(getSpotBySpotId(spot?.id))
-    // }, [dispatch]);
+    
 
     return (
         <div>
