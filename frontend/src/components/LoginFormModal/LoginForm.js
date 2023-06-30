@@ -12,7 +12,6 @@ function LoginForm({ setShowModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (errors.length) return alert(`Cannot Submit`);
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
