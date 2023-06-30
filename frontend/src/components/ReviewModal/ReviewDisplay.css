@@ -42,12 +42,7 @@
     display: flex;
     flex-direction: row;
 }
-/* #reviewModalClick{
-height:40px;
-width: 180px;
-display: flex;
 
-} */
 .reviewDate {
     font-size: var(--font-medium);
     color: rgb(113, 114, 115);
