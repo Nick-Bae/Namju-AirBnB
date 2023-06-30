@@ -10,8 +10,7 @@ export default function DemoUser() {
   const demo = (e) => {
     e.preventDefault();
     setErrors([]);
-    // const credential = "demo";
-    // const password = "111111";
+    
     return dispatch(sessionActions.login({ credential:'demo', password:'111111' })).catch(
       async (res) => {
         const data = await res.json();
