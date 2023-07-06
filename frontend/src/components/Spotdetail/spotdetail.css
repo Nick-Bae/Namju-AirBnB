@@ -276,7 +276,7 @@ justify-content: end;
 }
 
 .calender {
-  /* border: 1px solid var(--grey-light-color); */
+  
   display: flex;
   flex-direction: column;
   border-radius: 5px;
