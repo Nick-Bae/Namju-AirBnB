@@ -13,7 +13,6 @@ const SpotByUser = () => {
   const spotsAll = Object.values(spotsObj);
   const user = useSelector(state => state.session.user)
   const [update, setUpdate] = useState(false);
-  
   const spots = spotsAll.filter(spot=>spot.ownerId === user.id)
   
   useEffect(() => {
