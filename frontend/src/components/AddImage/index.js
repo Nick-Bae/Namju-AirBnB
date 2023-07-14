@@ -7,7 +7,6 @@ import { deleteImage } from '../../store/image';
 import { getAllImages } from '../../store/image';
 import { getSpotBySpotId } from '../../store/spot';
 import './addImage.css'
-// import { createImage } from '../../store/image';
 
 const AddImage = () => {
     const [url, setUrl] = useState('');
