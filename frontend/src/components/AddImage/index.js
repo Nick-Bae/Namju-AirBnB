@@ -17,7 +17,6 @@ const AddImage = () => {
     const [deleteOn, setDeleteOn]=useState(false);
     const [imageId, setImageId] = useState('');
     const [selectedImg, setSelectedImg] = useState('');
-   // const id= spotId
     const spot = useSelector(state => state.spot[id]);
     // const spotImg = useSelector(state => state.spot[id].image);
 
