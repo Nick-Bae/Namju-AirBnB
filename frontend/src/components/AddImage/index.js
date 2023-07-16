@@ -32,7 +32,7 @@ const AddImage = () => {
         if (spotNumImg >= 5) {
             alert("Maximum 5 images can be uploaded") 
         }else {
-        // e.preventDefault();
+        
         // let isPreviewImage=false;
             const isPreviewImage = document.querySelector('#preImageCheck');
 
