@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { Redirect, useParams } from 'react-router-dom';
 import { createImage } from '../../store/image';
 import { deleteImage } from '../../store/image';
-import { getAllImages } from '../../store/image';
 import { getSpotBySpotId } from '../../store/spot';
 import './addImage.css'
 
