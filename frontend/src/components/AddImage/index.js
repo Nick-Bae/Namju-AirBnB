@@ -96,7 +96,6 @@ const AddImage = () => {
         // .then(()=>spot.Owner.id === user.id ? setOwner(true): setOwner(false))
     }, [dispatch, deleteOn, imageId]);
 
-    
     console.log("spot information", spot )
     return (
         <>
