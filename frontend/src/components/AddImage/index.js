@@ -33,7 +33,6 @@ const AddImage = () => {
             alert("Maximum 5 images can be uploaded") 
         }else {
         
-        // let isPreviewImage=false;
             const isPreviewImage = document.querySelector('#preImageCheck');
 
             let image;
