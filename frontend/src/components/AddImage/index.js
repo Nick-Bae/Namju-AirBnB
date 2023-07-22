@@ -17,8 +17,7 @@ const AddImage = () => {
     const [imageId, setImageId] = useState('');
     const [selectedImg, setSelectedImg] = useState('');
     const spot = useSelector(state => state.spot[id]);
-    // const spotImg = useSelector(state => state.spot[id].image);
-
+    
     useEffect(()=>{
             dispatch(getSpotBySpotId(id));
     },[dispatch])
