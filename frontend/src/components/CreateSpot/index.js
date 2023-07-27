@@ -152,7 +152,6 @@ const CreateSpot = ({ spot, formType }) => {
                     <input
                         id='city'
                         type='text'
-                        // placeholder='city'
                         onChange={e => setCity(e.target.value)}
                         value={city}
                     />
