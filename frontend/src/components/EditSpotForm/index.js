@@ -203,7 +203,6 @@ export const EditSpotForm = () => {
                     />
                 </div>
 
-                {/* <button type='submit'>Creat new spot</button> */}
                 <div id="updateButtons">
                     <button id="updateBt" type="submit"  > Update</button> &nbsp;
                     <button id="updateCancel" type="button" onClick={handleCancelClick}>Cancel</button>
