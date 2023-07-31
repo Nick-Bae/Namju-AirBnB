@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink, useHistory } from 'react-router-dom';
-// import SpotByUser from "../Spots/SpotByUser";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
