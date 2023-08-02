@@ -14,7 +14,6 @@ export const ReviewDisplay = ({ spot }) => {
     const dispatch = useDispatch();
     const onlyspotReviews = useSelector(state => Object.values(state.review));
    
-    // const currSpot = spot.id;
     const [update, setUpdate] = useState(false);
     const [remove, setRemove] = useState(false);
     const currentUser = useSelector(state => state.session.user)
