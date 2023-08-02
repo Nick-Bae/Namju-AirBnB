@@ -12,8 +12,6 @@ export const BookingByUser =()=> {
     const allBookings = Object.values(useSelector(state => state.bookingHistory))
     const bookings = allBookings.filter(booking=> booking.userId === user.id )
     
-    
-
     useEffect(() => {
         dispatch(getBookingByUser());
       }, [dispatch, location]);
