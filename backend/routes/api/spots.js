@@ -334,7 +334,6 @@ router.get('/:spotId', async (req, res) => {
 //===============Create a Spot================
 router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
     const { user } = req;
-    // const {createdAt}= req
     function getDateWithoutTime(date) {
         return require('moment')(date).format('YYYY-MM-DD');
     }
