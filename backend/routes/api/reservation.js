@@ -78,7 +78,6 @@ router.get('/spot/:spotId/bookings', requireAuth, async (req, res) => {
 })
 
 
-
 //==============Edit a Booking=========================
 router.put('/:bookingId', async (req, res) => {
     const {user}=req;
