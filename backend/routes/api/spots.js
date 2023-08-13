@@ -92,7 +92,6 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
         //     res.body.errors.size = "Size must be greater than or equal to 0"
         //     res.json(res.body.errors)
         // } else if (page<0){
-
     }
 
     const spots = await Spot.findAll({
