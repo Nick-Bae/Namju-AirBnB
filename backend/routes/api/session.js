@@ -15,7 +15,6 @@ router.delete(
     }
   );
 
-
   const validateLogin = [
     check('credential')
       .exists({ checkFalsy: true })
