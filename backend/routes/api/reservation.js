@@ -162,6 +162,7 @@ router.put('/:bookingId', async (req, res) => {
     }
 })
 
+
 //Delete a Booking
 router.delete('/:bookingId', requireAuth, async (req, res) => {
 
