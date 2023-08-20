@@ -66,7 +66,6 @@ router.post(
     const user = await User.signup({ firstName, lastName, email, username, password });
     // const user = await User.signup({  email, username, password });
 
-
     const token = setTokenCookie(res, user);
     // const { token2 } = restoreUser();
     // const { token } = req.csrfToken();
