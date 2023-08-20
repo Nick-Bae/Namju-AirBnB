@@ -403,7 +403,6 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     }
 })
 
-
 //==============Edit a Spot===================
 router.put('/:spotId', requireAuth, validateCreateSpot, async (req, res) => {
     const { user } = req;
