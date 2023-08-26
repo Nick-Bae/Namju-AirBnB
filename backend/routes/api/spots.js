@@ -103,7 +103,6 @@ router.get('/', validatePage, validatePrice, async (req, res, next) => {
         
         ...pagination
     })
-   
 
     const avgRating = await Spot.findAll({
         attributes: {
