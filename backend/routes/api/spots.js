@@ -78,7 +78,6 @@ const validatePrice = (req, res, next) => {
 //================ Add Query Filters to Get All Spots==========================
 router.get('/', validatePage, validatePrice, async (req, res, next) => {
     //page
-
     let pagination = {};
     let { page, size } = req.query;
     console.log(req.query)
