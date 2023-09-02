@@ -93,7 +93,6 @@ export const deleteBooking = (id) => async (dispatch) => {
     }
 };
 
-
 export const bookingReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
