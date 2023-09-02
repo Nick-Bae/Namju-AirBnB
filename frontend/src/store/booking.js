@@ -33,7 +33,6 @@ const update = booking => ({
 });
 
 
-
 export const getBookingBySpotId =spotId =>async dispatch =>{
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`)
 
