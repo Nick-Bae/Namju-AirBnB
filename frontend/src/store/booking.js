@@ -43,7 +43,6 @@ export const getBookingBySpotId =spotId =>async dispatch =>{
         return bookings;
     };
 }
-
 // export const getBookingByUser =()=> async dispatch => {
 //     const response = await csrfFetch(`/api/bookings/current`);
 //     if (response.ok){
