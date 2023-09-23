@@ -44,7 +44,6 @@ export const ReviewForm = ({spot, setShowModal}) => {
         setLeftNum(250-reviewNum)
     },[review])
     
-    
     // ============ create new review======================
     const handleSubmit = async(e) => {
         e.preventDefault();
