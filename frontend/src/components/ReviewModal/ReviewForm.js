@@ -158,5 +158,4 @@ export const ReviewForm = ({spot, setShowModal}) => {
 //     //   window.location.reload(true);
 // };
 
-
 export default ReviewForm
