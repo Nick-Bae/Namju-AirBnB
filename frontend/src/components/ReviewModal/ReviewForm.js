@@ -47,8 +47,7 @@ export const ReviewForm = ({spot, setShowModal}) => {
     // ============ create new review======================
     const handleSubmit = async(e) => {
         e.preventDefault();
-        
-        
+                
         setHasSubmitted(true);
         // setClose(false)
         // console.log("showModal",setShowModal)
