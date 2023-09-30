@@ -16,7 +16,6 @@ function ReviewFormModal({spot, reviews}) {
   
   // const reviews = useSelector(state=>state.reviews)
 
-
   // useEffect(()=> {
   //   setShowModal(false);
    
