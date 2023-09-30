@@ -1,5 +1,5 @@
 import { useState, useEffect, React } from 'react';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getSpotReviews } from '../../store/comment';
 import { useSelector } from 'react-redux';
